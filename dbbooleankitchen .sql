@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 14-03-2024 a las 03:52:46
+-- Tiempo de generación: 14-03-2024 a las 21:20:44
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.0.30
 
@@ -161,6 +161,7 @@ CREATE TABLE `tb_bk_notice` (
 
 CREATE TABLE `tb_bk_origin` (
   `ID` int(11) NOT NULL,
+  `IDENTIFICADOR` int(11) NOT NULL,
   `NOMBRE` varchar(100) NOT NULL,
   `DESCRIPCION` text NOT NULL,
   `ID_IMG` int(11) NOT NULL,
@@ -176,13 +177,24 @@ CREATE TABLE `tb_bk_origin` (
 
 CREATE TABLE `tb_bk_preparation` (
   `ID` int(11) NOT NULL,
-  `CANTIDAD_PASOS` varchar(400) NOT NULL,
   `ID_RECIPE` int(11) NOT NULL,
   `DIFICULTAD` varchar(50) NOT NULL,
   `TIEMPO` time NOT NULL,
   `ID_IMG` int(11) NOT NULL,
   `PORCIONES` int(11) NOT NULL,
   `NOTA_AUTOR` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `tb_bk_preparation_list`
+--
+
+CREATE TABLE `tb_bk_preparation_list` (
+  `ID` int(11) NOT NULL,
+  `ID_PREPARACION` int(11) NOT NULL,
+  `PASO` varchar(500) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -197,7 +209,8 @@ CREATE TABLE `tb_bk_recipe` (
   `ORIGIN` int(11) NOT NULL,
   `ID_CATEGORY` int(11) NOT NULL,
   `CALIFICACION` int(11) NOT NULL,
-  `ID_IMG` int(11) NOT NULL
+  `ID_IMG` int(11) NOT NULL,
+  `ID_USER` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -373,6 +386,7 @@ ALTER TABLE `tb_bk_notice`
 --
 ALTER TABLE `tb_bk_origin`
   ADD PRIMARY KEY (`ID`),
+  ADD UNIQUE KEY `IDENTIFICADOR` (`IDENTIFICADOR`),
   ADD KEY `ID_IMG` (`ID_IMG`);
 
 --
@@ -384,13 +398,21 @@ ALTER TABLE `tb_bk_preparation`
   ADD KEY `ID_IMG` (`ID_IMG`);
 
 --
+-- Indices de la tabla `tb_bk_preparation_list`
+--
+ALTER TABLE `tb_bk_preparation_list`
+  ADD PRIMARY KEY (`ID`),
+  ADD KEY `ID_PREPARACION` (`ID_PREPARACION`);
+
+--
 -- Indices de la tabla `tb_bk_recipe`
 --
 ALTER TABLE `tb_bk_recipe`
   ADD PRIMARY KEY (`ID`),
   ADD KEY `ID_CATEGORY` (`ID_CATEGORY`),
   ADD KEY `ID_IMG` (`ID_IMG`),
-  ADD KEY `ORIGIN` (`ORIGIN`);
+  ADD KEY `ORIGIN` (`ORIGIN`),
+  ADD KEY `ID_USER` (`ID_USER`);
 
 --
 -- Indices de la tabla `tb_bk_recipe_in`
@@ -513,6 +535,12 @@ ALTER TABLE `tb_bk_preparation`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
+-- AUTO_INCREMENT de la tabla `tb_bk_preparation_list`
+--
+ALTER TABLE `tb_bk_preparation_list`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT de la tabla `tb_bk_recipe`
 --
 ALTER TABLE `tb_bk_recipe`
@@ -623,12 +651,19 @@ ALTER TABLE `tb_bk_preparation`
   ADD CONSTRAINT `tb_bk_preparation_ibfk_2` FOREIGN KEY (`ID_IMG`) REFERENCES `tb_bk_img` (`ID`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
+-- Filtros para la tabla `tb_bk_preparation_list`
+--
+ALTER TABLE `tb_bk_preparation_list`
+  ADD CONSTRAINT `tb_bk_preparation_list_ibfk_1` FOREIGN KEY (`ID_PREPARACION`) REFERENCES `tb_bk_preparation` (`ID`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
 -- Filtros para la tabla `tb_bk_recipe`
 --
 ALTER TABLE `tb_bk_recipe`
   ADD CONSTRAINT `tb_bk_recipe_ibfk_1` FOREIGN KEY (`ID_IMG`) REFERENCES `tb_bk_img` (`ID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `tb_bk_recipe_ibfk_2` FOREIGN KEY (`ID_CATEGORY`) REFERENCES `tb_bk_category` (`ID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `tb_bk_recipe_ibfk_3` FOREIGN KEY (`ORIGIN`) REFERENCES `tb_bk_origin` (`ID`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `tb_bk_recipe_ibfk_3` FOREIGN KEY (`ORIGIN`) REFERENCES `tb_bk_origin` (`ID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `tb_bk_recipe_ibfk_4` FOREIGN KEY (`ID_USER`) REFERENCES `tb_bk_user` (`ID`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Filtros para la tabla `tb_bk_recipe_in`
