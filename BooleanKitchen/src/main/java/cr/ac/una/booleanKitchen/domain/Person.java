@@ -19,6 +19,7 @@ public class Person {
     private String nationality;
     private String phoneNumber;
     //comentario
+    //Kendall y rebecca 
     public Person(String nationality, String phoneNumber) {
         this.nationality = nationality;
         this.phoneNumber = phoneNumber;
