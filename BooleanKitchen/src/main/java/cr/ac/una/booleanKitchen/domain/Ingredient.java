@@ -22,7 +22,7 @@ public class Ingredient {
     private String name;
     private Float quantity;
     private Float weight;
-    private String category; // Category category, hace falta
+    private Category category; 
     private Float calories;
     private String description;
     private String image;
@@ -30,7 +30,7 @@ public class Ingredient {
     //Constructores
     public Ingredient() {}
 
-    public Ingredient(String id, String name, Float quantity, Float weight, String category, Float calories, String description, String image) {
+    public Ingredient(String id, String name, Float quantity, Float weight, Category category, Float calories, String description, String image) {
         
         this.id = id;
         this.name = name;
