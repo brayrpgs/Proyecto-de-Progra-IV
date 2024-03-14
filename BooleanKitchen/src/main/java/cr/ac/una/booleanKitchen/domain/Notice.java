@@ -45,6 +45,7 @@ public class Notice {
         this.url = url;
         this.image = image;
         
+        
     }
     
 }
