@@ -18,7 +18,7 @@ import lombok.ToString;
 public class Person {
     private String nationality;
     private String phoneNumber;
-    //comentario
+    
     public Person(String nationality, String phoneNumber) {
         this.nationality = nationality;
         this.phoneNumber = phoneNumber;
