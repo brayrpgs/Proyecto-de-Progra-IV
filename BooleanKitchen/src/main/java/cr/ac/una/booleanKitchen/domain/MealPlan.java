@@ -25,7 +25,7 @@ public class MealPlan {
     private Time duration;
     private Integer idUser;
 
-    public MealPlan(Integer id, String name, String description, Date date, Double price, String typeDiet, Boolean state, Time duration, Integer idUser) {
+    public MealPlan(Integer  id, String name, String description, Date date, Double price, String typeDiet, Boolean state, Time duration, Integer idUser) {
         this.id = id;
         this.name = name;
         this.description = description;
