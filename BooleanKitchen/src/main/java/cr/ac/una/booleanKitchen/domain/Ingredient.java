@@ -18,19 +18,19 @@ import lombok.ToString;
 public class Ingredient {
     
     //Atributos de la clase
-    private String id;
+    private String id; 
     private String name;
-    private float quantity;
-    private float weight;
+    private Float quantity;
+    private Float weight;
     private String category; // Category category, hace falta
-    private float calories;
+    private Float calories;
     private String description;
     private String image;
 
     //Constructores
     public Ingredient() {}
 
-    public Ingredient(String id, String name, float quantity, float weight, String category, float calories, String description, String image) {
+    public Ingredient(String id, String name, Float quantity, Float weight, String category, Float calories, String description, String image) {
         
         this.id = id;
         this.name = name;

@@ -26,15 +26,15 @@ public class Notice {
     private String resume;
     private Date date;
     private String author;
-    private boolean status;
+    private Boolean status;
     private String url;
-    private String image; //cambiar
+    private String image; 
     
     //Constructores
 
     public Notice() {}
 
-    public Notice(String id, String tittle, String resume, Date date, String author, boolean status, String url, String image) {
+    public Notice(String id, String tittle, String resume, Date date, String author, Boolean status, String url, String image) {
         
         this.id = id;
         this.tittle = tittle;
