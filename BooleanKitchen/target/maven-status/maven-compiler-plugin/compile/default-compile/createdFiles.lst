@@ -1,2 +1,15 @@
-cr\ac\una\booleanKitchen\PaginasDeRecetasApplication.class
+cr\ac\una\booleanKitchen\Data\ConectarDB.class
 cr\ac\una\booleanKitchen\bussines\MainController.class
+cr\ac\una\booleanKitchen\PaginasDeRecetasApplication.class
+<<<<<<< HEAD
+cr\ac\una\booleanKitchen\bussines\MainController.class
+=======
+cr\ac\una\booleanKitchen\domain\Preparation.class
+cr\ac\una\booleanKitchen\domain\MealPlan.class
+cr\ac\una\booleanKitchen\domain\Notice.class
+cr\ac\una\booleanKitchen\domain\Person.class
+cr\ac\una\booleanKitchen\Controller\LoginController.class
+cr\ac\una\booleanKitchen\Controller\MainController.class
+cr\ac\una\booleanKitchen\domain\Category.class
+cr\ac\una\booleanKitchen\domain\Ingredient.class
+>>>>>>> fbd279885285e633de499ab5351ce5e3f5c42922
