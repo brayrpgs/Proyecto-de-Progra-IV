@@ -1,16 +1,19 @@
-<<<<<<< HEAD
-C:\Users\Usuario\Documents\NetBeansProjects\Proyecto-de-Progra-IV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\bussines\MainController.java
-C:\Users\Usuario\Documents\NetBeansProjects\Proyecto-de-Progra-IV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\PaginasDeRecetasApplication.java
-=======
-C:\Users\BrayRPGs\Documents\NetBeansProjects\Proyecto-de-Progra-IV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\Controller\LoginController.java
-C:\Users\BrayRPGs\Documents\NetBeansProjects\Proyecto-de-Progra-IV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\domain\Ingredient.java
+C:\Users\BrayRPGs\Documents\NetBeansProjects\Proyecto-de-Progra-IV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\domain\Recipe.java
+C:\Users\BrayRPGs\Documents\NetBeansProjects\Proyecto-de-Progra-IV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\domain\Image.java
 C:\Users\BrayRPGs\Documents\NetBeansProjects\Proyecto-de-Progra-IV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\Controller\MainController.java
 C:\Users\BrayRPGs\Documents\NetBeansProjects\Proyecto-de-Progra-IV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\domain\Person.java
 C:\Users\BrayRPGs\Documents\NetBeansProjects\Proyecto-de-Progra-IV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\PaginasDeRecetasApplication.java
 C:\Users\BrayRPGs\Documents\NetBeansProjects\Proyecto-de-Progra-IV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\domain\Preparation.java
-C:\Users\BrayRPGs\Documents\NetBeansProjects\Proyecto-de-Progra-IV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\Data\ConectarDB.java
-C:\Users\BrayRPGs\Documents\NetBeansProjects\Proyecto-de-Progra-IV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\domain\Category.java
+C:\Users\BrayRPGs\Documents\NetBeansProjects\Proyecto-de-Progra-IV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\domain\Comment.java
+C:\Users\BrayRPGs\Documents\NetBeansProjects\Proyecto-de-Progra-IV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\domain\ShopList.java
 C:\Users\BrayRPGs\Documents\NetBeansProjects\Proyecto-de-Progra-IV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\domain\MealPlan.java
-C:\Users\BrayRPGs\Documents\NetBeansProjects\Proyecto-de-Progra-IV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\domain\Notice.java
+C:\Users\BrayRPGs\Documents\NetBeansProjects\Proyecto-de-Progra-IV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\domain\User.java
 C:\Users\BrayRPGs\Documents\NetBeansProjects\Proyecto-de-Progra-IV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\bussines\MainController.java
->>>>>>> fbd279885285e633de499ab5351ce5e3f5c42922
+C:\Users\BrayRPGs\Documents\NetBeansProjects\Proyecto-de-Progra-IV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\Controller\LoginController.java
+C:\Users\BrayRPGs\Documents\NetBeansProjects\Proyecto-de-Progra-IV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\domain\Ingredient.java
+C:\Users\BrayRPGs\Documents\NetBeansProjects\Proyecto-de-Progra-IV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\domain\Utensil.java
+C:\Users\BrayRPGs\Documents\NetBeansProjects\Proyecto-de-Progra-IV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\Data\ConectarDB.java
+C:\Users\BrayRPGs\Documents\NetBeansProjects\Proyecto-de-Progra-IV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\domain\Admin.java
+C:\Users\BrayRPGs\Documents\NetBeansProjects\Proyecto-de-Progra-IV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\domain\Category.java
+C:\Users\BrayRPGs\Documents\NetBeansProjects\Proyecto-de-Progra-IV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\domain\Origin.java
+C:\Users\BrayRPGs\Documents\NetBeansProjects\Proyecto-de-Progra-IV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\domain\Notice.java

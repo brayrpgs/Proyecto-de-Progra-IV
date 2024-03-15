@@ -1,11 +1,4 @@
-<<<<<<< HEAD
 -------------------------------------------------------------------------------
 Test set: cr.ac.una.booleanKitchen.PaginasDeRecetasApplicationTests
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.338 s -- in cr.ac.una.booleanKitchen.PaginasDeRecetasApplicationTests
-=======
--------------------------------------------------------------------------------
-Test set: cr.ac.una.booleanKitchen.PaginasDeRecetasApplicationTests
--------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.877 s -- in cr.ac.una.booleanKitchen.PaginasDeRecetasApplicationTests
->>>>>>> fbd279885285e633de499ab5351ce5e3f5c42922
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.105 s -- in cr.ac.una.booleanKitchen.PaginasDeRecetasApplicationTests
