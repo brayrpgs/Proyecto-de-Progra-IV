@@ -23,7 +23,7 @@ public class Preparation {
     private List<String> steps;
     private String difficulty;
     private LocalTime time;
-    private Imagen img;
+    private Image img;
     private int portion;
     private String authorNote;
 
@@ -31,7 +31,7 @@ public class Preparation {
     public Preparation() {
     }
 
-    public Preparation(int id, List<String> steps, String difficulty, LocalTime time, int portion, String authorNote,Imagen img) {
+    public Preparation(int id, List<String> steps, String difficulty, LocalTime time, int portion, String authorNote,Image img) {
         this.id = id;
         this.steps = steps;
         this.difficulty = difficulty;
