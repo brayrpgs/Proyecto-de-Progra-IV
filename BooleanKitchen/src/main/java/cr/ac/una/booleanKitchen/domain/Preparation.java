@@ -20,6 +20,7 @@ import lombok.ToString;
 public class Preparation {
     //Atributos
     private int id;
+    private String idSerial;
     private List<String> steps;
     private String difficulty;
     private LocalTime time;
@@ -31,7 +32,7 @@ public class Preparation {
     public Preparation() {
     }
 
-    public Preparation(int id, List<String> steps, String difficulty, LocalTime time, int portion, String authorNote,Image img) {
+    public Preparation(int id,String idSerial ,List<String> steps, String difficulty, LocalTime time, int portion, String authorNote,Image img) {
         this.id = id;
         this.steps = steps;
         this.difficulty = difficulty;
@@ -39,6 +40,7 @@ public class Preparation {
         this.img=img;
         this.portion = portion;
         this.authorNote = authorNote;
+        this.idSerial=idSerial;
     }
     
     

@@ -18,8 +18,9 @@ import lombok.ToString;
 @ToString
 public class Category {
     //Atributos a utilizar
-    
+    //CAT-
     private int id;
+    private String idSerial;
     private String name;
     private String description;
     private Image image;
@@ -31,7 +32,7 @@ public class Category {
     public Category() {
     }
 
-    public Category(int id, String name, String description, String label, int quantity, LocalDate date, Image image) {
+    public Category(int id,String idSerial ,String name, String description, String label, int quantity, LocalDate date, Image image) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -39,6 +40,7 @@ public class Category {
         this.quantity = quantity;
         this.date = date;
         this.image = image;
+        this.idSerial=idSerial;
     }
     
     
