@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 27-03-2024 a las 19:33:42
+-- Tiempo de generación: 12-04-2024 a las 19:08:14
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.0.30
 
@@ -49,7 +49,10 @@ CREATE TABLE `tb_bk_category` (
   `RUTA_IMG` varchar(100) NOT NULL,
   `ETIQUETA` varchar(255) NOT NULL,
   `CANTIDAD` int(11) NOT NULL,
-  `DURACION` time NOT NULL
+  `FECHA` date NOT NULL,
+  `VISIBLE` tinyint(1) NOT NULL,
+  `ADMIN_COMMENT` varchar(255) NOT NULL,
+  `CREATE_BY_ADMIN` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -176,8 +179,10 @@ CREATE TABLE `tb_bk_preparation` (
   `DIFICULTAD` varchar(50) NOT NULL,
   `TIEMPO` time NOT NULL,
   `RUTA_IMG` varchar(100) NOT NULL,
-  `PORCIONES` int(11) NOT NULL,
-  `NOTA_AUTOR` varchar(255) NOT NULL
+  `CANT_PASOS` int(11) NOT NULL,
+  `NOTA_AUTOR` varchar(255) NOT NULL,
+  `ALTERNATIVAS_INGRE` varchar(255) NOT NULL,
+  `WARNINGS` varchar(150) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
