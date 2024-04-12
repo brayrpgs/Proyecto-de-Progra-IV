@@ -25,23 +25,33 @@ public class Preparation {
     private String difficulty;
     private LocalTime time;
     private Image img;
-    private int portion;
+    private String alternative; //alternativa de ingredientes
+    private String warnings;//advertencias sobre acciones con cosas peligrosas
+    private int step; //pasos
     private String authorNote;
 
     //Constructores
     public Preparation() {
     }
 
-    public Preparation(int id,String idSerial ,List<String> steps, String difficulty, LocalTime time, int portion, String authorNote,Image img) {
+    public Preparation(int id, String idSerial, List<String> steps, String difficulty, LocalTime time, Image img, String alternative, String warnings, int step, String authorNote) {
         this.id = id;
+        this.idSerial = idSerial;
         this.steps = steps;
         this.difficulty = difficulty;
         this.time = time;
-        this.img=img;
-        this.portion = portion;
+        this.img = img;
+        this.alternative = alternative;
+        this.warnings = warnings;
+        this.step = step;
         this.authorNote = authorNote;
-        this.idSerial=idSerial;
     }
+
+    
+
+    
+
+    
     
     
     

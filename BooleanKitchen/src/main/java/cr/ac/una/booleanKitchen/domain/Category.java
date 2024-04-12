@@ -24,24 +24,34 @@ public class Category {
     private String name;
     private String description;
     private Image image;
-    private String label;
-    private int quantity;
-    private LocalDate date;
+    private String label; //eqtiqueta de categoria: utencilio, ingrediente, receta
+    private String createBy; //registro de la persona que creo la categoria
+    private boolean catVisible; //poner la categoria visible o no
+    private int quantity; //cantiidad de recetas asociadas
+    private String comment;//agregar un comentario referente a lo que se realizo en la categoria
+    private LocalDate date;// fecha de creacion
 
     //Constructores
     public Category() {
     }
 
-    public Category(int id,String idSerial ,String name, String description, String label, int quantity, LocalDate date, Image image) {
+    public Category(int id, String idSerial, String name, String description, Image image, String label, String createBy, boolean catVisible, int quantity, String comment, LocalDate date) {
         this.id = id;
+        this.idSerial = idSerial;
         this.name = name;
         this.description = description;
-        this.label = label;
-        this.quantity = quantity;
-        this.date = date;
         this.image = image;
-        this.idSerial=idSerial;
+        this.label = label;
+        this.createBy = createBy;
+        this.catVisible = catVisible;
+        this.quantity = quantity;
+        this.comment = comment;
+        this.date = date;
     }
+
+    
+
+   
     
     
     
