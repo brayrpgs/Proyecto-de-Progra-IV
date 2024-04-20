@@ -4,9 +4,9 @@
  */
 package cr.ac.una.booleanKitchen.Controller;
 
-import com.prograIV.Usuario.Services.UserRepository;
-import com.prograIV.Usuario.models.User;
-import com.prograIV.Usuario.models.UserDto;
+import cr.ac.una.booleanKitchen.service.UserRepository;
+import cr.ac.una.booleanKitchen.domain.User;
+import cr.ac.una.booleanKitchen.domain.UserDto;
 import jakarta.validation.Valid;
 import java.io.IOException;
 import java.io.InputStream;
@@ -30,7 +30,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  *
- * @author Dj229
+ * @author Maik
  */
 @Controller
 @RequestMapping("/users")
