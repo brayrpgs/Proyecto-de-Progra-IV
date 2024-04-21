@@ -20,20 +20,21 @@ public class Origin {
     private int id;
     private String name;
     private String description;
-    //private Imagen img; //falta imagen
+    private Image img; //falta imagen
     private String continent;
     private String taste;
-
+//cambios
     public Origin() {
     }
 
-    public Origin(int id, String name, String description, String continent, String taste) {
+    public Origin(int id, String name,Image image, String description, String continent, String taste) {
         this.id = id;
+        this.img = img;
         this.name = name;
         this.description = description;
         this.continent = continent;
         this.taste = taste;
     }
     
-    
+
 }
