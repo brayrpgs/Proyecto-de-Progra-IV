@@ -29,7 +29,7 @@ public class Category {
     private boolean catVisible; //poner la categoria visible o no
     private int quantity; //cantiidad de recetas asociadas
     private String comment;//agregar un comentario referente a lo que se realizo en la categoria
-    private LocalDate date;// fecha de creacion
+    private LocalDate date;// fecha de creacion de plantillas
 
     //Constructores
     public Category() {
