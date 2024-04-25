@@ -18,7 +18,7 @@ public class LoginController {
 
             if(usuario.equals("admin") && contrasena.equals("123")){ //Aqui debe validar que 
                 System.out.println("Acceso exitoso"); //coincida en BD
-                return "login"; // Cambiar** Aqui abre un menu principal
+                return "redirect:/c_inicio/index"; // Cambiar** Aqui abre un menu principal
             }
 
             return "login"; // Debe mostrar un mensaje que no coinciden los datos
