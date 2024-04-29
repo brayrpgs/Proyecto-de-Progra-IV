@@ -3,6 +3,9 @@
     /* Tamaño para el texto */
     --text-size: 14px;
 
+/*     Tamaño de los botones Editar y eliminar */
+    --size-btn: 55px;
+
     /* Color de textos */
     --color-text-primary: green;
     --color-text-secondary: black;
