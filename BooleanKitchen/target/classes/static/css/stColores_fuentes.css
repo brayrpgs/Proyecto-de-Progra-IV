@@ -1,0 +1,41 @@
+
+:root{
+    /* Tamaño para el texto */
+    --text-size: 14px;
+
+    /* Color de textos */
+    --color-text-primary: green;
+    --color-text-secondary: black;
+
+    /* Botones de los modal */
+    --color-btn-modal-first-child: blue;
+    --color-btn-modal-first-child-hover: rgb(58, 58, 107);
+
+    --color-btn-modal-last-child: red;
+    --color-btn-modal-last-child-hover: rgb(202, 77, 77);
+    --color-border-last-child-modal: #0B6477;
+
+    --color-btn-modal-finish-child: purple;
+    --color-btn-modal-finish-child-hover: rgb(107, 58, 58);
+
+
+    /* Mostrar datos */
+    --background-card: #fff;
+    --background-card-hover: rgb(228, 183, 101);
+
+
+
+    /* Btn Eliminar animado */
+    --background-color-btn-delete-animated: rgb(255, 95, 95);
+    --background-color-btn-delete-animated-hover: rgb(255, 0, 0);
+
+    /* Btn Editar animado */
+    --background-color-btn-edit-animated: rgb(54, 179, 54);
+    --background-color-btn-edit-animated-hover: rgb(61, 161, 43);
+}
+
+body {
+    font-family: "Segoe UI", "Noto Sans", "sans-serif", "Blanc-Regular";
+    font-size: var(--text-size);
+    background-color: #f4f6f4;
+}
