@@ -1,0 +1,50 @@
+
+
+#modal {
+    position: absolute;
+    border-radius: 4px;
+    width: 20%;
+}
+  
+#modal {
+    max-width: 600px;
+    padding: 1.5rem;
+    border: 0;
+}
+  
+#modal .modal-btn {
+    padding: 10px 18px;
+    margin-top: 10px;
+}
+
+#modal .modal-btn:first-child {
+    /* Siguiente Button */
+    background-color: var(--color-btn-modal-first-child);
+}
+
+#modal .modal-btn:first-child:hover{
+    background-color: var(--color-btn-modal-first-child-hover);
+    cursor: pointer;
+}
+
+#modal .modal-btn:last-child {
+    /* Cerrar Button */
+    border: 1px solid var(--color-border-last-child-modal);
+    background-color: var(--color-btn-modal-last-child);
+    margin-left: 16px;
+}
+#modal .modal-btn:last-child:hover {
+    color: white;
+    background-color: var(--color-btn-modal-last-child-hover);
+}
+  
+#modal::backdrop {
+    background: rgb(0 0 0 / 0.5);
+}
+  
+button, .modal-btn{
+    border: none;
+    font-family: inherit;
+    cursor: pointer;
+}
+
