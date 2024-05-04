@@ -29,7 +29,7 @@ public class Origin {
 
     public Origin(int id, String name,Image image, String description, String continent, String taste) {
         this.id = id;
-        this.img = img;
+        this.img = image;
         this.name = name;
         this.description = description;
         this.continent = continent;

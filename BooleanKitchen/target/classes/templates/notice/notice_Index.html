@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Noticias</title>
+        <meta charset="UTF-8">
+        <script text="text/javascript"
+            th:src="@{/js/functionsIngredient.js}"></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+        <style>
+
+            body {
+                margin: 0;
+                padding: 0;
+                font-family: Arial, sans-serif;
+
+            }
+            #contenedor {
+                max-width: 100%;
+                overflow-x: auto;
+                text-align: center;
+            }
+            #tabla-container {
+                max-width: 1700px;
+                overflow-x: auto;
+                margin: auto;
+            }
+            table {
+                width: 100%;
+                border-collapse: collapse;
+            }
+            th, td {
+                padding: 10px;
+                text-align: center;
+                border: 1px solid black;
+            }
+            th {
+                background-color: #f2f2f2;
+            }
+            a {
+                color: blue;
+                text-decoration: none;
+            }
+            .icono {
+                font-size: 20px; /* Tamaño de los íconos */
+            }
+
+            .contenedor-acciones{
+                display: flex;
+            }
+
+            .contenedor-acciones form{
+                padding: 2px;
+            }
+
+            .contenedor-acciones form button{
+                border: none;
+                width: 32px;
+                height: 32px;
+                border-radius: 4px;
+            }
+
+
+        </style>
+
+    </head>
+    <body>
+
+        <div id="contenedor">
+            <h1>Noticias</h1>
+            <a href="./">Inicio</a>
+            <br><br><br>
+            <div id="tabla-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Identificador</th>
+                            <th>Título</th>
+                            <th>Resumen</th>
+                            <th>Fecha</th>
+                            <th>Autor</th>
+                            <th>Estado</th>
+                            <th>URL</th>
+                            <th>Imagen</th>
+                            <th>Acción</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="data:${db}">
+                            <td th:text="${data.identifier}"></td>
+                            <td th:text="${data.tittle}"></td>
+                            <td th:text="${data.summary}"></td>
+                            <td th:text="${data.date}"></td>
+                            <td th:text="${data.author}"></td>
+                            <td th:text="${data.state}"></td>
+                            <td th:text="${data.url}"></td>
+                            <td th:text="${data.image}"></td>
+                            <td style="width: 50px;">
+                                <div class="contenedor-acciones">
+                                    <form id="buttonDelete">
+                                        <button type="button"
+                                            style="background-color: #dfc06d; border: none; padding: 0;"
+                                            th:attr="data-code=${data.identifier}"
+                                            onclick="deleteIngredient(this)">
+                                            <i class="fas fa-trash-alt icono"
+                                                style="color: #b6d8d9;"></i>
+                                        </button>
+
+                                    </form>
+                                    <form th:action="@{'Noticias/actualizarNoticia'}" method="get">
+                                        <input type="hidden" name="identifier" th:value="${data.identifier}" />
+                                        <button type="submit" style="background-color: #b6d8d9;">
+                                            <i class="fas fa-edit icono" style="color: #dfc06d;"></i>
+                                        </button>
+                                    </form>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <br><br>
+            <a href="Noticias/agregarNoticia"
+                style="color: black; text-decoration: none;">Agregar
+                Noticia</a>
+        </div>
+    </body>
+</html>

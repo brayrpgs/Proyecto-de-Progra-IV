@@ -4,17 +4,17 @@ function showImagePreview(file) {
     //Creamos una img y lo agregamos
     var img = document.createElement("img");
     img.setAttribute("id", "imagen-usuario");
-    var header = document.querySelector('.header');
+    var header = document.querySelector('.headerP');
     header.appendChild(img);
 
     reader.onload = function() {
         var container = document.querySelector(".container");
-        var header = document.querySelector(".header");
-        var footer = document.querySelector(".footer");
+        var header = document.querySelector(".headerP");
+        var footer = document.querySelector(".footerP");
 
         // Eliminar el svg
-        var svg = document.querySelector('.header svg');
-        var p = document.querySelector('.header p');
+        var svg = document.querySelector('.headerP svg');
+        var p = document.querySelector('.headerP p');
         if (svg && p) {
             svg.parentNode.removeChild(svg);
             p.parentNode.removeChild(p);
@@ -46,7 +46,7 @@ document.addEventListener("DOMContentLoaded", function() {
 document.addEventListener("DOMContentLoaded", function() {
     //Carga el svg si no existe ya que se elimina la imagen
         document.getElementById("deleteBtn").addEventListener("click", function() {
-            var header = document.querySelector('.header');
+            var header = document.querySelector('.headerP');
             var img = document.getElementById("imagen-usuario");
     
             // Si existe una imagen cargada, la eliminamos
@@ -58,7 +58,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 function cargarSvg() {
-    var header = document.querySelector('.header');
+    var header = document.querySelector('.headerP');
     
     // Eliminar la imagen si existe
     var img = document.getElementById("imagen-usuario");

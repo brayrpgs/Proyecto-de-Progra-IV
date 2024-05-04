@@ -1,51 +1,53 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package cr.ac.una.booleanKitchen.domain;
 
+
 import java.util.Date;
+
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
-/**
- *
- * @author kenda
- */
-
-@Setter
 @Getter
+@Setter
 @ToString
 public class Notice {
+
     
+    private Integer id;
+
     
-    //Atributos de la clase
-    private String id;
-    private String tittle;
-    private String resume;
+    private String identifier;
+
+   
+    private String title;
+
+    
+    private String summary;
+
+    
     private Date date;
-    private String author;
-    private Boolean status;
-    private String url;
-    private String image; 
+
     
-    //Constructores
+    private String author;
 
-    public Notice() {}
+    
+    private Boolean state;
+    private String url;
+    private String image;
 
-    public Notice(String id, String tittle, String resume, Date date, String author, Boolean status, String url, String image) {
-        
+    public Notice() {
+    }
+
+    public Notice(Integer id, String identifier, String title, String summary, Date date, String author, Boolean state,
+            String url, String image) {
         this.id = id;
-        this.tittle = tittle;
-        this.resume = resume;
+        this.identifier = identifier;
+        this.title = title;
+        this.summary = summary;
         this.date = date;
         this.author = author;
-        this.status = status;
+        this.state = state;
         this.url = url;
         this.image = image;
-        
-        
     }
-    
 }

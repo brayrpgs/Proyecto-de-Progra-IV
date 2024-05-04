@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Actualizar Ingrediente</title>
+        <meta charset="UTF-8">
+        <script text="text/javascript"
+            th:src="@{/js/functionsIngredient.js}"></script>
+
+        <script text="text/javascript"
+            th:src="@{/js/jsUpload_img.js}"></script>
+        <link rel="stylesheet" th:href="@{/css/stColores_fuentes.css}">
+        <link rel="stylesheet" th:href="@{/css/stNav.css}">
+        <link rel="stylesheet" th:href="@{/css/stFooter.css}">
+        <link rel="stylesheet" th:href="@{/css/stDialog.css}">
+        <link rel="stylesheet" th:href="@{/css/stInputs_Select_uimg.css}">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <style>
+
+            .form-container{
+                position: relative;
+                
+            }
+
+            .image-container {
+                position: absolute;
+                margin-left: 150px;
+            
+            }
+            .code {
+                position: absolute;
+                margin-top: 10px;
+                margin-left: 600px;
+            
+            }
+            .name {
+                position: absolute;
+                margin-top: 10px;
+                margin-left: 1000px;
+            }
+            .quantity {
+                position: absolute;
+                margin-top: 90px;
+                margin-left: 600px;
+            
+            }
+            .weight {
+                position: absolute;
+                margin-top: 90px;
+                margin-left: 1000px;
+            
+            }
+            .category {
+                position: absolute;
+                margin-top: 250px;
+                margin-left: 600px;
+            
+            }
+            .calories {
+                position: absolute;
+                margin-top: 170px;
+                margin-left: 600px;
+            
+            }
+            .description {
+                position: absolute;
+                margin-top: 170px;
+                margin-left: 1000px;
+            
+            }
+            .button-updatePosition{
+                position: absolute;
+                margin-top: 250px;
+                margin-left: 1025px;
+            }
+            .button-updateStyle{
+                font-size: 15px;
+                padding: 11px 23px;
+            }
+            .button-returnPosition{
+                position: absolute;
+                margin-top: 250px;
+                margin-left: 1225px;
+            }
+            .button-returnStyle{
+                font-size: 15px;
+                padding: 11px 23px;
+            }
+            .border-box {
+                position: absolute;
+                top: -2px; 
+                left: 148px; 
+                width: 1300px; 
+                height: 350px; 
+                border: 3px solid #000000;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+                border-radius: 10px;
+            }
+            
+        </style>
+
+    </head>
+
+    <body>
+
+        <div th:replace="plantillas/nav :: nav"></div>
+        <br><br>
+        <h1 style="text-align: center">Actualizar Ingrediente</h1>
+
+        <br><br>
+        
+        <div class="form-container">
+            <div class="border-box"></div>
+            <form id="myForm">
+
+                <div class="image-container">
+
+                    <div class="container-elements">
+                        <div class="inputs-items">
+                            <div class="container-upload-img" id="dropArea"
+                                ondragover="allowDrop(event)"
+                                ondrop="drop(event)">
+                                <div class="headerP" id="header">
+                                    <svg viewBox="0 0 24 24" fill
+                                        xmlns="http://www.w3.org/2000/svg"><g
+                                            id="SVGRepo_bgCarrier"
+                                            stroke-width="0"></g><g
+                                            id="SVGRepo_tracerCarrier"
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"></g><g
+                                            id="SVGRepo_iconCarrier"> <path
+                                                fill-rule="evenodd"
+                                                clip-rule="evenodd"
+                                                d="M10 1C9.73478 1 9.48043 1.10536 9.29289 1.29289L3.29289 7.29289C3.10536 7.48043 3 7.73478 3 8V20C3 21.6569 4.34315 23 6 23H7C7.55228 23 8 22.5523 8 22C8 21.4477 7.55228 21 7 21H6C5.44772 21 5 20.5523 5 20V9H10C10.5523 9 11 8.55228 11 8V3H18C18.5523 3 19 3.44772 19 4V9C19 9.55228 19.4477 10 20 10C20.5523 10 21 9.55228 21 9V4C21 2.34315 19.6569 1 18 1H10ZM9 7H6.41421L9 4.41421V7ZM14 15.5C14 14.1193 15.1193 13 16.5 13C17.8807 13 19 14.1193 19 15.5V16V17H20C21.1046 17 22 17.8954 22 19C22 20.1046 21.1046 21 20 21H13C11.8954 21 11 20.1046 11 19C11 17.8954 11.8954 17 13 17H14V16V15.5ZM16.5 11C14.142 11 12.2076 12.8136 12.0156 15.122C10.2825 15.5606 9 17.1305 9 19C9 21.2091 10.7909 23 13 23H20C22.2091 23 24 21.2091 24 19C24 17.1305 22.7175 15.5606 20.9844 15.122C20.7924 12.8136 18.858 11 16.5 11Z"
+                                                fill></path> </g></svg>
+                                    <p>Cargar imagen</p>
+                                </div>
+                                <label for="file" class="footerP"
+                                    id="deleteBtn">
+                                    <svg fill="#000000" viewBox="0 0 32 32"
+                                        xmlns="http://www.w3.org/2000/svg"><g
+                                            id="SVGRepo_bgCarrier"
+                                            stroke-width="0"></g><g
+                                            id="SVGRepo_tracerCarrier"
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"></g><g
+                                            id="SVGRepo_iconCarrier"><path
+                                                d="M15.331 6H8.5v20h15V14.154h-8.169z"></path><path
+                                                d="M18.153 6h-.009v5.342H23.5v-.002z"></path></g></svg>
+                                    <p id="sms-imagen">No hay imagen</p>
+                                    <svg viewBox="0 0 24 24" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg"><g
+                                            id="SVGRepo_bgCarrier"
+                                            stroke-width="0"></g><g
+                                            id="SVGRepo_tracerCarrier"
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"></g><g
+                                            id="SVGRepo_iconCarrier"> <path
+                                                d="M5.16565 10.1534C5.07629 8.99181 5.99473 8 7.15975 8H16.8402C18.0053 8 18.9237 8.9918 18.8344 10.1534L18.142 19.1534C18.0619 20.1954 17.193 21 16.1479 21H7.85206C6.80699 21 5.93811 20.1954 5.85795 19.1534L5.16565 10.1534Z"
+                                                stroke="#000000"
+                                                stroke-width="2"></path>
+                                            <path
+                                                d="M19.5 5H4.5"
+                                                stroke="#000000"
+                                                stroke-width="2"
+                                                stroke-linecap="round"></path>
+                                            <path
+                                                d="M10 3C10 2.44772 10.4477 2 11 2H13C13.5523 2 14 2.44772 14 3V5H10V3Z"
+                                                stroke="#000000"
+                                                stroke-width="2"></path>
+                                        </g></svg>
+                                </label>
+                                <input id="file" type="file"
+                                    accept="image/*">
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="code">
+
+                    <!--Codigo del producto-->
+                    <div class="container-elements">
+                        <div class="inputs-modal">
+                            <div class="inputs-items">
+                                <div class="wave-group">
+
+                                    <input class="input" type="text"
+                                        name="code"
+                                        id="code" required readonly
+                                        th:value="${ingredient.code}" autocomplete="off"
+                                        title="Formato válido: ING-[números]"
+                                        oninput="addIngPrefix(this);">
+                                    <span class="bar"></span>
+                                    <label class="label">
+                                        <span class="label-char"
+                                            style="--index: 0">C</span>
+                                        <span class="label-char"
+                                            style="--index: 1">ó</span>
+                                        <span class="label-char"
+                                            style="--index: 2">d</span>
+                                        <span class="label-char"
+                                            style="--index: 3">i</span>
+                                        <span class="label-char"
+                                            style="--index: 4">g</span>
+                                        <span class="label-char"
+                                            style="--index: 5">o</span>
+                                    </label>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="name">
+                    <!--Nombre del producto-->
+                    <div class="container-elements">
+                        <div class="inputs-modal">
+                            <div class="inputs-items">
+                                <div class="wave-group">
+
+                                    <input class="input" name="name"
+                                        id="name"
+                                        required th:value="${ingredient.name}"
+                                        pattern="^(?!\s*$)[a-zA-Z\s]+$"
+                                        autocomplete="off"
+                                        oninput="validateLetter(this)"
+                                        title="Ingresa solo letras y asegúrate de no dejar el campo en blanco">
+
+                                    <span class="bar"></span>
+                                    <label class="label">
+                                        <span class="label-char"
+                                            style="--index: 0">N</span>
+                                        <span class="label-char"
+                                            style="--index: 1">o</span>
+                                        <span class="label-char"
+                                            style="--index: 2">m</span>
+                                        <span class="label-char"
+                                            style="--index: 3">b</span>
+                                        <span class="label-char"
+                                            style="--index: 4">r</span>
+                                        <span class="label-char"
+                                            style="--index: 5">e</span>
+                                    </label>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="quantity">
+                    <!--Cantidad del producto-->
+                    <div class="container-elements">
+                        <div class="inputs-modal">
+                            <div class="inputs-items">
+                                <div class="wave-group">
+
+                                    <input class="input" type="number"
+                                        step="0.1"
+                                        min="0.1" th:value="${ingredient.quantity}"
+                                        name="quantity" id="quantity"
+                                        required>
+
+                                    <span class="bar"></span>
+                                    <label class="label">
+                                        <span class="label-char"
+                                            style="--index: 0">C</span>
+                                        <span class="label-char"
+                                            style="--index: 1">a</span>
+                                        <span class="label-char"
+                                            style="--index: 2">n</span>
+                                        <span class="label-char"
+                                            style="--index: 3">t</span>
+                                        <span class="label-char"
+                                            style="--index: 4">i</span>
+                                        <span class="label-char"
+                                            style="--index: 5">d</span>
+                                        <span class="label-char"
+                                            style="--index: 6">a</span>
+                                        <span class="label-char"
+                                            style="--index: 7">d</span>
+                                    </label>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="weight">
+                    <!--Peso del producto-->
+                    <div class="container-elements">
+                        <div class="inputs-modal">
+                            <div class="inputs-items">
+                                <div class="wave-group">
+
+                                    <input class="input" type="number"
+                                        step="0.1"
+                                        min="0.1" name="weight"
+                                        th:value="${ingredient.weight}"
+                                        required id="weight">
+
+                                    <span class="bar"></span>
+                                    <label class="label">
+                                        <span class="label-char"
+                                            style="--index: 0">P</span>
+                                        <span class="label-char"
+                                            style="--index: 1">e</span>
+                                        <span class="label-char"
+                                            style="--index: 2">s</span>
+                                        <span class="label-char"
+                                            style="--index: 3">o</span>
+                                    </label>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="calories">
+                    <!--Calorias del producto-->
+                    <div class="container-elements">
+                        <div class="inputs-modal">
+                            <div class="inputs-items">
+                                <div class="wave-group">
+
+                                    <input class="input" type="number"
+                                        step="0.1"
+                                        min="0.1"
+                                        name="calories" id="calories"
+                                        th:value="${ingredient.calories}" required>
+
+                                    <span class="bar"></span>
+                                    <label class="label">
+                                        <span class="label-char"
+                                            style="--index: 0">C</span>
+                                        <span class="label-char"
+                                            style="--index: 1">a</span>
+                                        <span class="label-char"
+                                            style="--index: 2">l</span>
+                                        <span class="label-char"
+                                            style="--index: 3">o</span>
+                                        <span class="label-char"
+                                            style="--index: 4">r</span>
+                                        <span class="label-char"
+                                            style="--index: 5">í</span>
+                                        <span class="label-char"
+                                            style="--index: 6">a</span>
+                                        <span class="label-char"
+                                            style="--index: 7">s</span>
+
+                                    </label>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="description">
+
+                    <!--Descripcion del producto-->
+
+                    <div class="container-elements">
+
+                        <div class="inputs-modal">
+                            <div class="inputs-items">
+
+                                <div class="wave-group">
+
+                                    <input class="input" type="text"
+                                        name="description"
+                                        id="description"
+                                        autocomplete="off" th:value="${ingredient.description}"
+                                        placeholder="(Opcional)">
+                                    <span class="bar"></span>
+                                    <label class="label">
+                                        <span class="label-char"
+                                            style="--index: 0">D</span>
+                                        <span class="label-char"
+                                            style="--index: 1">e</span>
+                                        <span class="label-char"
+                                            style="--index: 2">s</span>
+                                        <span class="label-char"
+                                            style="--index: 3">c</span>
+                                        <span class="label-char"
+                                            style="--index: 4">r</span>
+                                        <span class="label-char"
+                                            style="--index: 5">i</span>
+                                        <span class="label-char"
+                                            style="--index: 6">p</span>
+                                        <span class="label-char"
+                                            style="--index: 7">c</span>
+                                        <span class="label-char"
+                                            style="--index: 8">i</span>
+                                        <span class="label-char"
+                                            style="--index: 9">ó</span>
+                                        <span class="label-char"
+                                            style="--index: 10">n</span>
+
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="category">
+
+                    <!--Categoria del producto-->
+                    <div class="container-elements">
+                        <div class="inputs-items">
+                            <div class="wave-group">
+
+                                <select class="select" name="category"
+                                    id="category"
+                                    required
+                                    onmousedown="this.size=5;"
+                                    onchange="this.size=0;"
+                                    onblur="this.size=0;">
+                                    <option style="display:none"></option>
+                                    <option
+                                        th:each="category : ${categories}"
+                                        th:value="${category.id}"
+                                        th:text="${category.nameCategory}"
+                                        th:selected="${category.id == ingredient.category}">
+                                    </option>
+                                </select>
+
+                                <span class="bar"></span>
+                                <label class="label">
+                                    <span class="label-char"
+                                        style="--index: 0">C</span>
+                                    <span class="label-char"
+                                        style="--index: 1">a</span>
+                                    <span class="label-char"
+                                        style="--index: 2">t</span>
+                                    <span class="label-char"
+                                        style="--index: 3">e</span>
+                                    <span class="label-char"
+                                        style="--index: 4">g</span>
+                                    <span class="label-char"
+                                        style="--index: 5">o</span>
+                                    <span class="label-char"
+                                        style="--index: 6">r</span>
+                                    <span class="label-char"
+                                        style="--index: 7">í</span>
+                                    <span class="label-char"
+                                        style="--index: 8">a</span>
+
+                                </label>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="button-updatePosition">
+
+                    <button class="button-updateStyle" type="button"
+                        onclick="update(this)" th:attr="ingredient-code=${ingredient.code}">
+                        Actualizar Ingrediente
+                    </button>
+
+                </div>
+                <div class="button-returnPosition">
+
+                    <a href="/ingredientes"><button class="button-returnStyle" type="button">Regresar a la tabla</button></a>
+
+                    
+                </div>
+
+            </form>
+
+            <dialog id="modal">
+                <div id="aux">
+
+                </div>
+
+                <button onclick="closeDialog()">Cerrar</button>
+
+            </dialog>
+
+            <br><br>
+        </div>
+
+        <br><br><br><br><br><br>
+        <br><br><br><br><br><br>
+        <br><br><br><br><br><br>
+        <br><br><br><br><br><br>
+
+        <div th:replace="plantillas/footer :: footer"></div>
+    </body>
+
+</html>
+

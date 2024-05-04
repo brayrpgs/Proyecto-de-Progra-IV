@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class MainController {
     @GetMapping({ "/", "/home", "/index", "/login" })
     public String inicio() {
-        System.out.println("cambio en rama de brayan");
         return "login";
     }
 }

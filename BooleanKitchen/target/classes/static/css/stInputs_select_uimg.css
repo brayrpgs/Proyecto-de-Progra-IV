@@ -113,7 +113,7 @@
     gap: 5px;
 }
 
-.header {
+.headerP {
     flex: 1;
     width: 100%;
     border: 2px dashed var(--color-text-primary);
@@ -124,17 +124,17 @@
     flex-direction: column;
 }
 
-.header svg {
+.headerP svg {
     height: 100px;
 
 }
 
-.header p {
+.headerP p {
     text-align: center;
     color: #999;
 }
 
-.footer {
+.footerP {
     background-color: rgba(0, 110, 255, 0.075);
     width: 100%;
     height: 40px;
@@ -148,7 +148,7 @@
     border: none;
 }
 
-.footer svg {
+.footerP svg {
     height: 130%;
     fill: var(--color-text-primary);
     background-color: rgba(70, 66, 66, 0.103);
@@ -158,7 +158,7 @@
     box-shadow: 0 2px 30px rgba(0, 0, 0, 0.205);
 }
 
-.footer p {
+.footerP p {
     flex: 1;
     text-align: center;
 }
