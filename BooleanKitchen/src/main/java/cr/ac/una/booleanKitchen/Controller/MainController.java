@@ -3,6 +3,7 @@ package cr.ac.una.booleanKitchen.Controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
@@ -34,21 +35,33 @@ public class MainController {
 
     @PostMapping("/upload")
     public String uploadImage(@RequestParam("image") MultipartFile image) {
-        // Procesa la imagen aquí
-        
-        String url = "Proyecto-de-Progra-IV/BooleanKitchen/src/main/resources/static/img/prueba/kendallfallas2018@gmail.com/";
-        
-        try {
-            File destino = new File(url + image.getOriginalFilename());
-            destino.createNewFile();
-            image.transferTo(destino);
-            
-        } catch (Exception e) {
-           
+
+        if (!image.isEmpty()) {
+            try {
+                // Obtener los bytes de la imagen
+                byte[] bytes = image.getBytes();
+
+                // Ruta del directorio de destino
+                String uploadDir = "Proyecto-de-Progra-IV/BooleanKitchen/src/main/resources/static/img/prueba/kendallfallas2018@gmail.com/";
+
+                // Ruta del archivo de destino
+                String filePath = uploadDir + image.getOriginalFilename();
+
+                // Escribir los bytes en el archivo de destino
+                Path path = Paths.get(filePath);
+                Files.write(path, bytes);
+
+                return "image/img";
+            } catch (IOException e) {
+                // Manejar la excepción
+                e.printStackTrace();
+                return "error";
+            }
+        } else {
+            // Manejar el caso de que el archivo esté vacío
+            return "empty";
         }
-
-
-        return "image/img";
+        
     }
 
 }

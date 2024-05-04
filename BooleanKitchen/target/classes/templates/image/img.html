@@ -3,13 +3,17 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <script text="text/javascript"
+            th:src="@{/js/prueba.js}"></script>
+
     <title>Subir Imagen</title>
 </head>
 <body>
     <h1>Subir Imagen</h1>
-    <form th:action="@{/upload}" method="post" enctype="multipart/form-data">
-        <input type="file" name="image" accept="image/*" required>
-        <button type="submit">Subir</button>
+    <form id="form">
+
+        <input type="file" id="image" accept="image/*">
+        <button onclick="subir()" type="submit">Subir</button>
     </form>
 </body>
 </html>
