@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 06-05-2024 a las 05:21:25
+-- Tiempo de generación: 06-05-2024 a las 05:27:16
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.0.30
 
@@ -73,7 +73,7 @@ CREATE TABLE `tb_bk_comment` (
   `DIFICULTAD` varchar(100) NOT NULL,
   `CLARIDAD_INST` int(11) NOT NULL,
   `SUGERENCIA` varchar(255) NOT NULL,
-  `REMENDACION` tinyint(1) NOT NULL,
+  `RECOMENDACION` tinyint(1) NOT NULL,
   `MODIFICACION` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
