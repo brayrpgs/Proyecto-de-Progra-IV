@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>mostrar habitaciones</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <h1> <button onclick="location.href = './'">Inicio</button> Panel de control de Lista de Compras</h1>
+        <button style="color: blue", onclick="location.href = './paneShoplistAdd'">Agregar Registro</button>
+        <hr>
+        <table>
+            <thead>
+                <tr >
+                    <th th:each="data:${dataColum}" th:text="${data}", style="text-align: center"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="data:${dataDB}">
+                    <td th:text="${data.id}", style="text-align: center"></td>
+                    <td th:text="${data.name}", style="text-align: center"></td>
+                    <td th:text="${data.amount}", style="text-align: center"></td>
+                    <td th:text="${data.notes}", style="text-align: center"></td>
+                    <td th:text="${data.brand}", style="text-align: center"></td>
+                    <td th:text="${data.state}", style="text-align: center"></td>
+                    <td th:text="${data.idUser}", style="text-align: center"></td>
+            <form th:action="@{./selectShoplist}" method="post">
+                <input type="hidden" name="id" th:value="${data.id}">
+                <td><button  type="submit" style="color: darkorange">Editar registro</button></td>
+                
+            </form>
+            <form th:action="@{./deleteShoplist}" method="post">
+                <input type="hidden" name="id" th:value="${data.id}">
+                <td><button type="submit" style="color: crimson">Eliminar registro</button></td>
+            </form>
+        </tr>
+    </tbody>
+</table>
+</body>
+</html>
