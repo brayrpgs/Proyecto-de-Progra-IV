@@ -20,11 +20,12 @@ import cr.ac.una.booleanKitchen.domain.ShopList;
 public class ShoplistController {
 
     /**
-     *
+     * accede al panel de control de las listas de compras creadas por el usuario
+     * 
      * @param model
      * @return
      */
-    @GetMapping("/paneShoplist")
+    @GetMapping("/panel")
     public String paneShoplist(Model model) {
         // contexto
         model.addAttribute("dataColum", new ShoplistService().dataTableCrud());
@@ -34,28 +35,19 @@ public class ShoplistController {
     }
 
     /**
-     *
+     * inserta un registro de compras
+     * 
      * @param model
      * @return
      */
-    @GetMapping("/paneShoplistAdd")
+    @GetMapping("/insert")
     public String paneShoplistAdd(Model model) {
         // contexto
         model.addAttribute("dataColum", new ShoplistService().dataTableCrud());
         // template
-        return "./paneShoplist/paneShoplistAdd";
+        return "shoplist/insert";
     }
-    /*
-     * @GetMapping("/paneShoplistUpdate")
-     * public String paneShoplistUpdate(Model model) {
-     * //contexto
-     * model.addAttribute("dataColum", new ShoplistService().dataTableCrud());
-     * //template
-     * return "./paneShoplist/paneShoplistUpdate";
-     * }
-     */
 
-    // clase que se va encargar de el registro y insercecion en la base de datos
     /**
      *
      * @param name
@@ -66,7 +58,7 @@ public class ShoplistController {
      * @param idUser
      * @return
      */
-    @PostMapping("/inserShoplist")
+    @PostMapping("/insertShoplist")
     public String insertDB(@RequestParam(value = "name") String name,
             @RequestParam(value = "amount") Float amount,
             @RequestParam(value = "notes") String notes,
