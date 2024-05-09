@@ -1,13 +1,15 @@
 
 package cr.ac.una.booleanKitchen.Controller;
 
-import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.Paths;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 
-import org.springframework.http.ResponseEntity;
+import javax.swing.text.html.ImageView;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -33,35 +35,13 @@ public class MainController {
         return "image/img"; // Este es el nombre de la plantilla Thymeleaf
     }
 
-    @PostMapping("/upload")
+    @PostMapping("/uploadimage")
     public String uploadImage(@RequestParam("image") MultipartFile image) {
-
-        if (!image.isEmpty()) {
-            try {
-                // Obtener los bytes de la imagen
-                byte[] bytes = image.getBytes();
-
-                // Ruta del directorio de destino
-                String uploadDir = "Proyecto-de-Progra-IV/BooleanKitchen/src/main/resources/static/img/prueba/kendallfallas2018@gmail.com/";
-
-                // Ruta del archivo de destino
-                String filePath = uploadDir + image.getOriginalFilename();
-
-                // Escribir los bytes en el archivo de destino
-                Path path = Paths.get(filePath);
-                Files.write(path, bytes);
-
-                return "image/img";
-            } catch (IOException e) {
-                // Manejar la excepción
-                e.printStackTrace();
-                return "error";
-            }
-        } else {
-            // Manejar el caso de que el archivo esté vacío
-            return "empty";
-        }
-        
+        // contexto
+        // TODO recordar devuelve la ruta para guradarla en bd
+        // Llamar a bd y traer el id de bd
+        new ImagenService().saveImage(image, "01", "ORG", "BRAYAN");
+        return "image/img";
     }
 
 }
