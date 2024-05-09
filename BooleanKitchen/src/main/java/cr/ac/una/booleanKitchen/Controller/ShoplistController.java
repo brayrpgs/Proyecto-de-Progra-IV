@@ -16,6 +16,7 @@ import cr.ac.una.booleanKitchen.domain.ShopList;
  * @author BrayRPGs
  */
 @Controller
+@RequestMapping("/shoplist")
 public class ShoplistController {
 
     /**
@@ -29,7 +30,7 @@ public class ShoplistController {
         model.addAttribute("dataColum", new ShoplistService().dataTableCrud());
         model.addAttribute("dataDB", new AccesDataShoplist().showAll());
         // template
-        return "./paneShoplist/paneAdminCrud";
+        return "shoplist/panel";
     }
 
     /**
