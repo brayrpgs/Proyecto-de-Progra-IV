@@ -33,3 +33,17 @@ function showComponentInsert() {
         return;
     }
 }
+
+function generateInputs(id, type, data) {
+    //ajax
+    let http = new XMLHttpRequest();
+    let url = "/shoplist/insert";
+    http.open("GET", url, true);
+    http.send();
+    http.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            document.getElementById("insertData").innerHTML = this.responseText;
+        }
+    }
+    return;
+}

@@ -49,6 +49,15 @@ public class ShoplistController {
         return "shoplist/insert";
     }
 
+    @GetMapping("/inputs")
+    public String paneInputs(Model model) {
+        // contexto
+        String 
+        model.addAttribute("data", {hola,});
+        // template
+        return "shoplist/insert";
+    }
+
     /**
      *
      * @param name
