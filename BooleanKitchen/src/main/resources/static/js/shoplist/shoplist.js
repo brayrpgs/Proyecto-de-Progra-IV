@@ -10,8 +10,9 @@ function goTo(value) {
 
 function showComponentInsert() {
     if (document.getElementById("insert").getAttribute("value") === "0") {
-        alert("cambiando value");
         document.getElementById("insert").setAttribute("value", "1");
+        document.getElementById("insert").innerHTML = "Cancelar Registro";
+        document.getElementById("insert").style.color = "Orange";
         //ajax
         let http = new XMLHttpRequest();
         let url = "/shoplist/insert";
@@ -25,9 +26,10 @@ function showComponentInsert() {
         return;
     }
     else {
-        alert("cambiando value");
         document.getElementById("insert").setAttribute("value", "0");
         document.getElementById("insertData").innerHTML = "";
+        document.getElementById("insert").innerHTML = "Agregar Registros";
+        document.getElementById("insert").style.color = "Blue";
         return;
     }
 }

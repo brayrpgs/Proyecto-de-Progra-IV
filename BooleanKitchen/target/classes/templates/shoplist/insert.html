@@ -1,33 +1,135 @@
-<form th:fragment="insert" th:action="@{./inserShoplist}" method="post">
-    <table>
-        <thead>
-            <tr>
-                <th th:each="data:${dataColum}" th:unless="${data == 'ID'}" th:text="${data}"
-                    style="text-align: center"></th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>
-                    <input type="text" name="name"></input>
-                </td>
-                <td>
-                    <input type="number" name="amount"></input>
-                </td>
-                <td>
-                    <input type="text" name="notes"></input>
-                </td>
-                <td>
-                    <input type="text" name="brand"></input>
-                </td>
-                <td>
-                    <input type="checkbox" name="state"></input>
-                </td>
-                <td>
-                    <input type="number" name="idUser"></input>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <button type="submit">Save records</button>
-</form>
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>Agregar lista de compra</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+    <hr>
+    <form th:action="@{./inserShoplist}" method="post">
+        <table>
+            <tbody>
+                <tr>
+                    <td>
+                        <div class="container-elements">
+                            <div class="inputs-modal">
+                                <div class="inputs-items">
+                                    <div class="wave-group">
+                                        <input required="" type="text" name="name" class="input">
+                                        <span class="bar"></span>
+                                        <label class="label">
+                                            <span class="label-char" style="--index: 0">N</span>
+                                            <span class="label-char" style="--index: 1">o</span>
+                                            <span class="label-char" style="--index: 2">m</span>
+                                            <span class="label-char" style="--index: 3">b</span>
+                                            <span class="label-char" style="--index: 4">r</span>
+                                            <span class="label-char" style="--index: 5">e</span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                    </td>
+                    <td>
+                        <div class="container-elements">
+                            <div class="inputs-modal">
+                                <div class="inputs-items">
+                                    <div class="wave-group">
+                                        <input required="" type="text" name="amount" class="input">
+                                        <span class="bar"></span>
+                                        <label class="label">
+                                            <span class="label-char" style="--index: 0">C</span>
+                                            <span class="label-char" style="--index: 1">a</span>
+                                            <span class="label-char" style="--index: 2">n</span>
+                                            <span class="label-char" style="--index: 3">t</span>
+                                            <span class="label-char" style="--index: 4">i</span>
+                                            <span class="label-char" style="--index: 5">d</span>
+                                            <span class="label-char" style="--index: 5">a</span>
+                                            <span class="label-char" style="--index: 5">d</span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                    </td>
+                    <td>
+                        <div class="container-elements">
+                            <div class="inputs-modal">
+                                <div class="inputs-items">
+                                    <div class="wave-group">
+                                        <input required="" type="text" name="notes" class="input">
+                                        <span class="bar"></span>
+                                        <label class="label">
+                                            <span class="label-char" style="--index: 0">N</span>
+                                            <span class="label-char" style="--index: 1">o</span>
+                                            <span class="label-char" style="--index: 2">t</span>
+                                            <span class="label-char" style="--index: 3">a</span>
+                                            <span class="label-char" style="--index: 4">s</span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                    </td>
+                    <td>
+                        <div class="container-elements">
+                            <div class="inputs-modal">
+                                <div class="inputs-items">
+                                    <div class="wave-group">
+                                        <input required="" type="text" name="brand" class="input">
+                                        <span class="bar"></span>
+                                        <label class="label">
+                                            <span class="label-char" style="--index: 0">M</span>
+                                            <span class="label-char" style="--index: 1">a</span>
+                                            <span class="label-char" style="--index: 2">r</span>
+                                            <span class="label-char" style="--index: 3">c</span>
+                                            <span class="label-char" style="--index: 4">a</span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                    </td>
+                    <td>
+                        <div class="container-elements">
+                            <div class="inputs-modal">
+                                <div class="inputs-items">
+                                    <div class="wave-group">
+                                        <label>Estado</label>
+                                        <input required="" type="checkbox" name="state" class="input">
+                                    </div>
+                                </div>
+                            </div>
+                    </td>
+                    <td>
+                        <div class="container-elements">
+                            <div class="inputs-modal">
+                                <div class="inputs-items">
+                                    <div class="wave-group">
+                                        <input required="" type="text" class="input">
+                                        <span class="bar"></span>
+                                        <label class="label">
+                                            <span class="label-char" style="--index: 0">I</span>
+                                            <span class="label-char" style="--index: 1">D</span>
+                                            <span class="label-char" style="--index: 2">u</span>
+                                            <span class="label-char" style="--index: 3">s</span>
+                                            <span class="label-char" style="--index: 4">u</span>
+                                            <span class="label-char" style="--index: 5">a</span>
+                                            <span class="label-char" style="--index: 5">r</span>
+                                            <span class="label-char" style="--index: 5">i</span>
+                                            <span class="label-char" style="--index: 5">o</span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                    </td>
+                    <td>
+                        <button type="submit" style="color: green;">Guardar Mi Compra</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </form>
+</body>
+
+</html>
