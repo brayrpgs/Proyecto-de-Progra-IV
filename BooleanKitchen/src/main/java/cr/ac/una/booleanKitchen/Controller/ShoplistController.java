@@ -19,12 +19,6 @@ import cr.ac.una.booleanKitchen.domain.ShopList;
 @RequestMapping("/shoplist")
 public class ShoplistController {
 
-    /**
-     * accede al panel de control de las listas de compras creadas por el usuario
-     * 
-     * @param model
-     * @return
-     */
     @GetMapping("/panel")
     public String paneShoplist(Model model) {
         // contexto
@@ -35,25 +29,20 @@ public class ShoplistController {
         return "shoplist/panel";
     }
 
-    /**
-     * inserta un registro de compras
-     * 
-     * @param model
-     * @return
-     */
     @GetMapping("/insert")
     public String paneShoplistAdd(Model model) {
         // contexto
-        model.addAttribute("dataColum", new ShoplistService().dataTableCrud());
-        // template
-        return "shoplist/insert";
-    }
+        // datos de los placeholder
+        String placeholders[] = { "nombre", "cantidad", "notas", "marca", "estado" };
+        model.addAttribute("dataInputs", placeholders);
 
-    @GetMapping("/inputs")
-    public String paneInputs(Model model) {
-        // contexto
-        String 
-        model.addAttribute("data", {hola,});
+        // datos de los names de las etiquetas
+        String names[] = { "name", "amount", "notes", "brand", "state" };
+        model.addAttribute("namesTags", names);
+
+        // datos de los tipos de inputs
+        String inputs[] = { "text", "text", "text", "text", "checkbox" };
+        model.addAttribute("inputsTypes", inputs);
         // template
         return "shoplist/insert";
     }

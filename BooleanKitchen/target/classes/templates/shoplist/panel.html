@@ -78,7 +78,11 @@
             </tr>
         </tbody>
     </table>
+    <script th:src="/js/shoplist/shoplist.js">
+        generateInputs("name", "Text", "name");
+    </script>
+
+    <footer th:insert="~{ /plantillas/footer :: footer }"></footer>
 </body>
-<footer th:insert="~{ /plantillas/footer :: footer }"></footer>
 
 </html>
