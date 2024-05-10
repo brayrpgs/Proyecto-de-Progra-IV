@@ -9,8 +9,9 @@
     <link rel="stylesheet" th:href="@{/css/stColores_fuentes.css}" />
     <link rel="stylesheet" th:href="@{/css/stBtnEditar.css}" />
     <link rel="stylesheet" th:href="@{/css/stBtnEliminar.css}" />
-    <link rel="stylesheet" type="text/css" th:href="@{/css/stFooter.css}">
-    <link rel="stylesheet" type="text/css" th:href="@{/css/stModal.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/stFooter.css}" />
+    <link rel="stylesheet" type="text/css" th:href="@{/css/stModal.css}" />
+    <link rel="stylesheet" type="text/css" thth:href="@{/css/shoplist/shoplist.css}" />
     <script text="text/javascript" th:src="@{/js/jsNav.js}" defer></script>
     <script th:src="@{/js/shoplist/shoplist.js}"></script>
 </head>
@@ -78,10 +79,6 @@
             </tr>
         </tbody>
     </table>
-    <script th:src="/js/shoplist/shoplist.js">
-        generateInputs("name", "Text", "name");
-    </script>
-
     <footer th:insert="~{ /plantillas/footer :: footer }"></footer>
 </body>
 

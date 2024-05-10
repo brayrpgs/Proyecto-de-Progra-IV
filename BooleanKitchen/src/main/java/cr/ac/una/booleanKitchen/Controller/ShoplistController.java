@@ -24,25 +24,12 @@ public class ShoplistController {
         // contexto
         model.addAttribute("dataColum", new ShoplistService().dataTableCrud());
         model.addAttribute("dataDB", new AccesDataShoplist().showAll());
-        model.addAttribute("btnInsert", "/shoplist/insert");
         // template
         return "shoplist/panel";
     }
 
     @GetMapping("/insert")
     public String paneShoplistAdd(Model model) {
-        // contexto
-        // datos de los placeholder
-        String placeholders[] = { "nombre", "cantidad", "notas", "marca", "estado" };
-        model.addAttribute("dataInputs", placeholders);
-
-        // datos de los names de las etiquetas
-        String names[] = { "name", "amount", "notes", "brand", "state" };
-        model.addAttribute("namesTags", names);
-
-        // datos de los tipos de inputs
-        String inputs[] = { "text", "text", "text", "text", "checkbox" };
-        model.addAttribute("inputsTypes", inputs);
         // template
         return "shoplist/insert";
     }
@@ -64,8 +51,6 @@ public class ShoplistController {
             @RequestParam(value = "brand") String brand,
             @RequestParam(value = "state", required = false) String state,
             @RequestParam("idUser") Integer idUser) {
-        // hay que arreglar el parameto state porque viene con on deberia hacerlo el
-        // logica luego
         Boolean stateNew = true;
         if (state == null) {
             stateNew = false;
@@ -76,26 +61,21 @@ public class ShoplistController {
 
         // validamos que esten en orden todos los campos
         if (!new ShoplistService().insert(data)) {
-            return "redirect:/error";
+            return "redirect:/shoplist/error";
         }
         // redireccionamos si todo salio bien
-        return "redirect:/paneShoplist";
+        return "/shoplist/panel";
 
     }
 
-    /**
-     *
-     * @param id
-     * @return
-     */
     @RequestMapping(value = { "/deleteShoplist" }, method = { RequestMethod.POST })
     public String deleteDB(@RequestParam Integer id) {
         // validamos que se realizen los cambios con exito
         if (!new ShoplistService().delete(id)) {
-            return "redirect:/error";
+            return "redirect:/shoplist/error";
         }
         // redireccionamos si todo salio bien
-        return "redirect:/paneShoplist";
+        return "/shoplist/panel";
     }
 
     /**
