@@ -9,16 +9,17 @@
     <link rel="stylesheet" th:href="@{/css/stColores_fuentes.css}" />
     <link rel="stylesheet" th:href="@{/css/stBtnEditar.css}" />
     <link rel="stylesheet" th:href="@{/css/stBtnEliminar.css}" />
+    <script th:src="@{/js/shoplist/shoplist.js}"></script>
 </head>
 
 <body>
-    <div th:replace="~{ plantillas/nav :: nav }"></div>
+    <div th:insert="~{ plantillas/nav :: nav }"></div>
     <br />
     <h1>Panel de control de Lista de Compras</h1>
-    <script src=""></script>
-    <button style="color: blue" , onclick="location.href = './paneShoplistAdd'">
+    <button id="insert" style="color: blue" , th:attr="onclick='showComponentInsert()'" value="0">
         Agregar Registro
     </button>
+    <form id="insertData"></form>
     <hr />
     <table>
         <thead>

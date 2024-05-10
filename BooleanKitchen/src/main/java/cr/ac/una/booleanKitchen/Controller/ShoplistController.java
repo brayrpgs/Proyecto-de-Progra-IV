@@ -30,6 +30,7 @@ public class ShoplistController {
         // contexto
         model.addAttribute("dataColum", new ShoplistService().dataTableCrud());
         model.addAttribute("dataDB", new AccesDataShoplist().showAll());
+        model.addAttribute("btnInsert", "/shoplist/insert");
         // template
         return "shoplist/panel";
     }
