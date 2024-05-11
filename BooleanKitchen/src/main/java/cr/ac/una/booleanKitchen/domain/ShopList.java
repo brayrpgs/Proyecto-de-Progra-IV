@@ -22,9 +22,8 @@ import lombok.ToString;
 @ToString
 @Builder
 @Entity
-@Table(name = "tb_Shoplist")
+@Table(name = "TB_SHOPLIST")
 public class ShopList {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
