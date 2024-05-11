@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>Agregar lista de compra</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+    <button onclick="location.href = './paneShoplist'">Regresar al Panel</button>
+    <br>
+    <hr>
+    <form th:action="@{./updateShoplist}" method="post">
+        <table>
+            <thead>
+                <tr>
+                    <th th:each="data:${dataColum}" th:unless="${data == 'ID'}" th:text="${data}"
+                        style="text-align: center"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <input type="hidden" name="id" th:value="${dataDB.id}">
+                        <input type="text" name="name" th:value="${dataDB.name}"></input>
+                    </td>
+                    <td>
+                        <input type="number" name="amount" th:value="${dataDB.amount}"></input>
+                    </td>
+                    <td>
+                        <input type="text" name="notes" th:value="${dataDB.notes}"></input>
+                    </td>
+                    <td>
+                        <input type="text" name="brand" th:value="${dataDB.brand}"></input>
+                    </td>
+                    <td>
+                        <input type="checkbox" name="state" th:value="${dataDB.state}"></input>
+                    </td>
+                    <td>
+                        <input type="number" name="idUser" th:value="${dataDB.idUser}"></input>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <button type="submit">Update records</button>
+    </form>
+</body>
+
+</html>
