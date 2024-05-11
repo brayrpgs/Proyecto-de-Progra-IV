@@ -9,9 +9,8 @@
     <link rel="stylesheet" th:href="@{/css/stColores_fuentes.css}" />
     <link rel="stylesheet" th:href="@{/css/stBtnEditar.css}" />
     <link rel="stylesheet" th:href="@{/css/stBtnEliminar.css}" />
-    <link rel="stylesheet" type="text/css" th:href="@{/css/stFooter.css}" />
-    <link rel="stylesheet" type="text/css" th:href="@{/css/stModal.css}" />
-    <link rel="stylesheet" type="text/css" thth:href="@{/css/shoplist/shoplist.css}" />
+    <link rel="stylesheet" th:href="@{/css/stFooter.css}" />
+    <link rel="stylesheet" th:href="@{/css/stModal.css}" />
     <script text="text/javascript" th:src="@{/js/jsNav.js}" defer></script>
     <script th:src="@{/js/shoplist/shoplist.js}"></script>
 </head>
@@ -20,11 +19,11 @@
     <div th:insert="~{ plantillas/nav :: nav }"></div>
     <br />
     <h1>Panel de control de Lista de Compras</h1>
-    <button id="insert" style="color: blue" , th:attr="onclick='showComponentInsert()'" value="0"
+    <button id="insert" style="color: blue; margin-bottom: 10px;" , th:attr="onclick='showComponentInsert()'" value="0"
         title="insertar registros">
         Agregar Registro
     </button>
-    <form id="insertData"></form>
+    <form id="insertData" method="post" th:action="@{/shoplist/insertShoplist}"></form>
     <hr />
     <table>
         <thead>

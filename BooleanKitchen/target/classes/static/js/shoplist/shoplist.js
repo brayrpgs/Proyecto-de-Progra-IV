@@ -11,7 +11,7 @@ function goTo(value) {
 function showComponentInsert() {
     if (document.getElementById("insert").getAttribute("value") === "0") {
         document.getElementById("insert").setAttribute("value", "1");
-        document.getElementById("insert").innerHTML = "Cancelar Registro";
+        document.getElementById("insert").innerHTML = "Cancelar Compra";
         document.getElementById("insert").style.color = "Orange";
         //ajax
         let http = new XMLHttpRequest();
@@ -28,7 +28,7 @@ function showComponentInsert() {
     else {
         document.getElementById("insert").setAttribute("value", "0");
         document.getElementById("insertData").innerHTML = "";
-        document.getElementById("insert").innerHTML = "Agregar Registros";
+        document.getElementById("insert").innerHTML = "Agregar Compra";
         document.getElementById("insert").style.color = "Blue";
         return;
     }

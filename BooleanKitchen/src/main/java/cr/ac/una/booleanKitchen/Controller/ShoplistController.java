@@ -1,14 +1,13 @@
 package cr.ac.una.booleanKitchen.Controller;
 
+import java.sql.Date;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import cr.ac.una.booleanKitchen.Data.AccesDataShoplist;
-import cr.ac.una.booleanKitchen.bussines.ShoplistService;
+
 import cr.ac.una.booleanKitchen.domain.ShopList;
 
 /**
@@ -22,8 +21,8 @@ public class ShoplistController {
     @GetMapping("/panel")
     public String paneShoplist(Model model) {
         // contexto
-        model.addAttribute("dataColum", new ShoplistService().dataTableCrud());
-        model.addAttribute("dataDB", new AccesDataShoplist().showAll());
+        // model.addAttribute("dataColum",);
+        // model.addAttribute("dataDB", new AccesDataShoplist().showAll());
         // template
         return "shoplist/panel";
     }
@@ -34,91 +33,17 @@ public class ShoplistController {
         return "shoplist/insert";
     }
 
-    /**
-     *
-     * @param name
-     * @param amount
-     * @param notes
-     * @param brand
-     * @param state
-     * @param idUser
-     * @return
-     */
     @PostMapping("/insertShoplist")
-    public String insertDB(@RequestParam(value = "name") String name,
-            @RequestParam(value = "amount") Float amount,
-            @RequestParam(value = "notes") String notes,
-            @RequestParam(value = "brand") String brand,
-            @RequestParam(value = "state", required = false) String state,
-            @RequestParam("idUser") Integer idUser) {
-        Boolean stateNew = true;
-        if (state == null) {
-            stateNew = false;
-        }
-
-        // llenamos los registros
-        ShopList data = new ShopList(null, name, amount, notes, brand, stateNew, idUser);
-
-        // validamos que esten en orden todos los campos
-        if (!new ShoplistService().insert(data)) {
-            return "redirect:/shoplist/error";
-        }
-        // redireccionamos si todo salio bien
-        return "/shoplist/panel";
-
-    }
-
-    @RequestMapping(value = { "/deleteShoplist" }, method = { RequestMethod.POST })
-    public String deleteDB(@RequestParam Integer id) {
-        // validamos que se realizen los cambios con exito
-        if (!new ShoplistService().delete(id)) {
-            return "redirect:/shoplist/error";
-        }
-        // redireccionamos si todo salio bien
-        return "/shoplist/panel";
-    }
-
-    /**
-     *
-     * @param id
-     * @param model
-     * @return
-     */
-    @RequestMapping(value = { "/selectShoplist" }, method = { RequestMethod.POST })
-    public String selectDB(@RequestParam Integer id, Model model) {
-        // recolectamos el id para consultar los datos en la base de datos y los campos
-        // de la tab
-        // contexto
-        ShopList dataBD = new ShoplistService().select(id);
-        model.addAttribute("dataColum", new ShoplistService().dataTableCrud());
-        model.addAttribute("dataDB", dataBD);
-        // redireccionamos si todo salio bien
-        return "./paneShoplist/paneShoplistUpdate";
-    }
-
-    @PostMapping("/updateShoplist")
-    public String UpdateDB(@RequestParam(value = "id") Integer id,
-            @RequestParam(value = "name") String name,
-            @RequestParam(value = "amount") Float amount,
-            @RequestParam(value = "notes") String notes,
-            @RequestParam(value = "brand") String brand,
-            @RequestParam(value = "state", required = false) String state,
-            @RequestParam("idUser") Integer idUser) {
-        // hay que arreglar el parameto state porque viene con on deberia hacerlo el
-        // logica luego
-        Boolean stateNew = true;
-        if (state == null) {
-            stateNew = false;
-        }
-        System.out.println(id);
-        // llenamos los registros
-        ShopList data = new ShopList(id, name, amount, notes, brand, stateNew, idUser);
-
-        // validamos que esten en orden todos los campos para actualizar
-        if (!new ShoplistService().update(data)) {
-            return "redirect:/error";
-        }
-        // redireccionamos si todo salio bien
-        return "redirect:/paneShoplist";
+    public String insertShopList(@RequestParam String name, @RequestParam float amount, @RequestParam String notes,
+            @RequestParam String brand, @RequestParam Boolean state, @RequestParam String date) {
+        ShopList shopList = new ShopList();
+        shopList.setName(name);
+        shopList.setAmount(amount);
+        shopList.setNotes(notes);
+        shopList.setBrand(brand);
+        shopList.setState(state);
+        shopList.setDate(Date.valueOf(date));
+        System.out.println(shopList.getDate().toString());
+        return "redirect: /shoplist/panel";
     }
 }

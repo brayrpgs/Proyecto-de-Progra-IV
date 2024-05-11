@@ -1,9 +1,15 @@
-<form th:action="@{/shoplist/panel}" method="post" class="formCreate">
-    <input type="text" name="name" id="name" placeholder="Nombre del producto" autocomplete="name">
-    <input type="number" name="amount" id="amount" placeholder="Cantidad de producto">
-    <textarea name="notes" id="notes" placeholder="notas"></textarea>
-    <input type="text" name="brand" id="brand" placeholder="marca">
-    <input type="checkbox" name="state" id="state" checked="true" title="ESTADO">
-    <input type="date" name="date" id="" placeholder="fecha">
-    <input type="submit" value="Guardar Compra">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/css/shoplist/insert.css}" />
+</head>
+<form method="post" action="/shoplist/insertShoplist">
+    <input type="text" name="name" id="name" placeholder="Nombre del producto" autocomplete="name" required="true">
+    <input type="number" name="amount" id="amount" placeholder="Cantidad de producto" required="true">
+    <textarea name="notes" id="notes" placeholder="notas" required="true"></textarea>
+    <input type="text" name="brand" id="brand" placeholder="marca" required="true">
+    <input type="checkbox" name="state" id="state" checked="true" title="ESTADO" required="true">
+    <input type="date" name="date" id="" placeholder="fecha" required="true">
+    <script th:src="@{/js/shoplist/shoplist.js}"></script>
+    <input type="submit" id="save" value="Guardar Compra">
 </form>

@@ -1,5 +1,8 @@
 package cr.ac.una.booleanKitchen.domain;
 
+import java.util.Date;
+
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -11,6 +14,7 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
+@Builder
 public class ShopList {
 
     private Integer id;
@@ -19,15 +23,18 @@ public class ShopList {
     private String notes;
     private String brand;
     private Boolean state;
+    private Date date;
     private Integer idUser;
 
-    public ShopList(Integer id, String name, Float amount, String notes, String brand, Boolean state, Integer idUser) {
+    public ShopList(Integer id, String name, Float amount, String notes, String brand, Boolean state, Date date,
+            Integer idUser) {
         this.id = id;
         this.name = name;
         this.amount = amount;
         this.notes = notes;
         this.brand = brand;
         this.state = state;
+        this.date = date;
         this.idUser = idUser;
     }
 
