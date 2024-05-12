@@ -23,7 +23,7 @@ public interface ICategoryService {
     
     Category getCategory(String cat);
     
-    public boolean DeleteCategory(String cat);
+    public int DeleteCategory(String cat);
     
     public boolean modifyCat(Category cat);
     

@@ -230,15 +230,19 @@ public class CategoryController {
      @GetMapping({"/DeleteCategory/{idCode}/{url}"})
      
      public String EliminarCategory(@PathVariable String idCode,@PathVariable String url, Model model,@PageableDefault(size = 4, page = 0) Pageable pageable){
+      int status=catRepo.DeleteCategory(idCode);
       
-         if(catRepo.DeleteCategory(idCode)){
-           
-            if( !new CategoryServiceUpdate().deleteImage(url)){
-                showMessage("Error", "circle-xmark-regular", "Error de conectividad", model);
-            }
-             showMessage("success", "square-check-regular", "Categoría eliminada con éxito.", model);
-         }
-         
+          switch (status) {
+              case 1 -> {
+                  if( !new CategoryServiceUpdate().deleteImage(url)){
+                      showMessage("Error", "circle-xmark-regular", "Error de conectividad", model);
+                  }     showMessage("success", "square-check-regular", "Categoría eliminada con éxito.", model);
+              }
+              case -1 -> showMessage("Error", "circle-xmark-regular", "La categoria no se puede eliminar por que ya esta asociada a otro", model);
+              case -2 -> showMessage("Error", "circle-xmark-regular", "Error de conexion", model);
+              default -> {
+              }
+          }
            //model.addAttribute("ListaCategory", catRepo.getCategorias());
            refreshTable(pageable, model);
          

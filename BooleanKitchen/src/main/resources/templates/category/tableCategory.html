@@ -1,5 +1,5 @@
 
- <dialog style="background-color: green" open id="view-message">
+ <dialog th:class="${class}" open id="view-message">
 
            <div th:class="'warning ' + ${class}" th:if="${message}" id="notificacion">
                <img style="width: 20px; height: 30px;" th:src="@{'/iconos/' + ${type} + '.svg'}"  alt="alt"/>

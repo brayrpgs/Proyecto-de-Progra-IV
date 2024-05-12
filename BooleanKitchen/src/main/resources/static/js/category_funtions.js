@@ -124,9 +124,10 @@ function DeleteValidation(button) {
 
     xmlhttp.onreadystatechange = function() {
         if (this.readyState === 4 && this.status === 200) {
-            getRedirectPage(currentPage,pageElements);
             contenedor.innerHTML = this.responseText;
-            
+            setTimeout(function () {
+                getRedirectPage(currentPage, pageElements);
+            }, 2000); 
            
         }
     };
