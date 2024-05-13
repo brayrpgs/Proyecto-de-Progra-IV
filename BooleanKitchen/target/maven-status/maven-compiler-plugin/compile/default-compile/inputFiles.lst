@@ -10,8 +10,11 @@ C:\Users\BrayRPGs\Documents\NetBeansProjects\Proyecto-de-Progra-IV\BooleanKitche
 C:\Users\BrayRPGs\Documents\NetBeansProjects\Proyecto-de-Progra-IV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\service\ImagenService.java
 C:\Users\BrayRPGs\Documents\NetBeansProjects\Proyecto-de-Progra-IV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\domain\MealPlan.java
 C:\Users\BrayRPGs\Documents\NetBeansProjects\Proyecto-de-Progra-IV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\domain\User.java
+C:\Users\BrayRPGs\Documents\NetBeansProjects\Proyecto-de-Progra-IV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\data\ShoplistJPA.java
+C:\Users\BrayRPGs\Documents\NetBeansProjects\Proyecto-de-Progra-IV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\service\ServiceShopList.java
 C:\Users\BrayRPGs\Documents\NetBeansProjects\Proyecto-de-Progra-IV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\Utilidades\Utilidades.java
 C:\Users\BrayRPGs\Documents\NetBeansProjects\Proyecto-de-Progra-IV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\Controller\LoginController.java
+C:\Users\BrayRPGs\Documents\NetBeansProjects\Proyecto-de-Progra-IV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\service\IServiceShoplist.java
 C:\Users\BrayRPGs\Documents\NetBeansProjects\Proyecto-de-Progra-IV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\domain\Ingredient.java
 C:\Users\BrayRPGs\Documents\NetBeansProjects\Proyecto-de-Progra-IV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\domain\Utensil.java
 C:\Users\BrayRPGs\Documents\NetBeansProjects\Proyecto-de-Progra-IV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\domain\Admin.java

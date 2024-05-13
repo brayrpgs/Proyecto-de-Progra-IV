@@ -19,7 +19,7 @@ function showComponentInsert() {
         http.open("GET", url, true);
         http.send();
         http.onreadystatechange = function () {
-            if (this.readyState == 4 && this.status == 200) {
+            if (this.readyState === 4 && this.status === 200) {
                 document.getElementById("insertData").innerHTML = this.responseText;
             }
         };
@@ -31,5 +31,18 @@ function showComponentInsert() {
         document.getElementById("insert").innerHTML = "Agregar Compra";
         document.getElementById("insert").style.color = "Blue";
         return;
+    }
+    
+    
+    function getRegisters(path, numPage){
+        let http = new XMLHttpRequest();
+        let url = path;
+        http.open("GET", url, true);
+        http.send();
+        http.onreadystatechange = function () {
+            if (this.readyState === 4 && this.status === 200) {
+                document.getElementById("insertData").innerHTML = this.responseText;
+            }
+        };
     }
 }

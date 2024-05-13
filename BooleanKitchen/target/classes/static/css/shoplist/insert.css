@@ -6,3 +6,30 @@ form {
     justify-content: space-between;
     align-items: stretch;
 }
+
+table {
+    border-spacing: 0;
+    width: -webkit-fill-available;
+}
+thead {
+    font-family: cursive;
+}
+
+th {
+    border-bottom-style: double;
+    border-bottom-color: darkgreen;
+    border-bottom-width: medium;
+}
+
+td {
+    border-bottom-style: groove;
+    text-align: -webkit-center;
+}
+
+tr {
+    text-align: center;
+}
+
+#Pageable{
+    display: flow;
+}

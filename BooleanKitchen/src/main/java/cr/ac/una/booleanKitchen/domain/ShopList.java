@@ -1,13 +1,13 @@
 package cr.ac.una.booleanKitchen.domain;
 
 import jakarta.persistence.Column;
-import java.util.Date;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import java.sql.Date;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
@@ -15,7 +15,7 @@ import lombok.ToString;
 
 /**
  *
- * @author Brayan Rosales Perez , Fecha de modificacion: 14/03/2024
+ * @author Brayan Rosales Perez , Fecha de modificacion: 10/05/2024
  */
 @Getter
 @Setter
@@ -40,7 +40,7 @@ public class ShopList {
     private Boolean state;
     @Column(name = "date", nullable = false)
     private Date date;
-    @Column(name = "idUser", nullable = false, unique = true)
+    @Column(name = "idUser", nullable = false)
     private Integer idUser;
 
     public ShopList(Integer id, String name, Float amount, String notes, String brand, Boolean state, Date date,

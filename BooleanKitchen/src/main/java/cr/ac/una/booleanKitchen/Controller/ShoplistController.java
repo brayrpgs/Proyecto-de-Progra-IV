@@ -9,6 +9,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import cr.ac.una.booleanKitchen.domain.ShopList;
+import cr.ac.una.booleanKitchen.service.IServiceShoplist;
+import cr.ac.una.booleanKitchen.service.ServiceShopList;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.web.bind.annotation.PathVariable;
 
 /**
  *
@@ -18,12 +23,23 @@ import cr.ac.una.booleanKitchen.domain.ShopList;
 @RequestMapping("/shoplist")
 public class ShoplistController {
 
+    @Autowired
+    private IServiceShoplist jpa;
+
     @GetMapping("/panel")
     public String paneShoplist(Model model) {
         // contexto
-        // model.addAttribute("dataColum",);
-        // model.addAttribute("dataDB", new AccesDataShoplist().showAll());
+        new ServiceShopList().setOptions(model, null, jpa);
+
         // template
+        return "shoplist/panel";
+    }
+
+    @GetMapping("/panel/{numPage}")
+    public String paneShoplist(Model model, @PathVariable Integer numPage) {
+        // contexto
+        new ServiceShopList().setOptions(model, numPage, jpa);
+        // vista
         return "shoplist/panel";
     }
 
@@ -36,14 +52,8 @@ public class ShoplistController {
     @PostMapping("/insertShoplist")
     public String insertShopList(@RequestParam String name, @RequestParam float amount, @RequestParam String notes,
             @RequestParam String brand, @RequestParam Boolean state, @RequestParam String date) {
-        ShopList shopList = new ShopList();
-        shopList.setName(name);
-        shopList.setAmount(amount);
-        shopList.setNotes(notes);
-        shopList.setBrand(brand);
-        shopList.setState(state);
-        shopList.setDate(Date.valueOf(date));
-        System.out.println(shopList.getDate().toString());
-        return "redirect: /shoplist/panel";
+        ShopList shopList = new ShopList(null, name, amount, notes, brand, state, Date.valueOf(date), 01);
+        jpa.save(shopList);
+        return "redirect:/shoplist/panel";
     }
 }
