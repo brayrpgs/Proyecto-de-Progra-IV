@@ -14,5 +14,7 @@ public interface IServiceShoplist {
 
     public Boolean save(ShopList s);
     public Page<ShopList> getAll(Integer numPage);
+    public Boolean delete(Integer id);
+    public Boolean update(ShopList shopList);
     
 }

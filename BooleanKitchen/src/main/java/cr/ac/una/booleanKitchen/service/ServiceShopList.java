@@ -6,6 +6,8 @@ package cr.ac.una.booleanKitchen.service;
 
 import cr.ac.una.booleanKitchen.data.ShoplistJPA;
 import cr.ac.una.booleanKitchen.domain.ShopList;
+import java.util.ArrayList;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
 import org.springframework.data.domain.Page;
@@ -40,9 +42,9 @@ public class ServiceShopList implements IServiceShoplist {
         return jpa.findAll(pageable);
     }
 
-    public void setOptions(Model model, Integer numPage, IServiceShoplist jpa) {
+    public void setOptionsPane(Model model, Integer numPage, IServiceShoplist jpa) {
         //nombres de las columnas 
-        String[] dataColum = {"Nombre","Cantidad","Notas","Marca","Estado","Fecha"};
+        String[] dataColum = {"Nombre","Cantidad","Notas","Marca","Estado","Fecha","Acciones"};
         model.addAttribute("dataColum",dataColum);
         Page<ShopList> page;
         int totalPages;
@@ -69,6 +71,29 @@ public class ServiceShopList implements IServiceShoplist {
             //pagina actual
             model.addAttribute("numPage", 0);
         }
+        //para contabilizar las paginas
+        List<Integer> pageableCollection = new ArrayList<>();
+        for(int i = 0 ; i < totalPages; i++){
+            pageableCollection.add(i);
+        }
+        //cantidad de paginas 
+        model.addAttribute("pageableCollection", pageableCollection);
+        //endpoints del crud
+        String delete = "/shoplist/deleteById";
+        model.addAttribute("delete",delete);
+        model.addAttribute("update", "/shoplist/insertShoplist");//update
+        model.addAttribute("create", "/shoplist/insertShoplist");//create
+    }
+
+    @Override
+    public Boolean delete(Integer id) {
+        jpa.deleteById(id);
+        return true;
+    }
+
+    @Override
+    public Boolean update(ShopList shopList) {
+      return true;  
     }
 
 }

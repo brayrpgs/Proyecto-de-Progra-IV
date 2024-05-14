@@ -12,7 +12,6 @@ import cr.ac.una.booleanKitchen.domain.ShopList;
 import cr.ac.una.booleanKitchen.service.IServiceShoplist;
 import cr.ac.una.booleanKitchen.service.ServiceShopList;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.PathVariable;
 
 /**
@@ -29,7 +28,7 @@ public class ShoplistController {
     @GetMapping("/panel")
     public String paneShoplist(Model model) {
         // contexto
-        new ServiceShopList().setOptions(model, null, jpa);
+        new ServiceShopList().setOptionsPane(model, null, jpa);
 
         // template
         return "shoplist/panel";
@@ -38,22 +37,32 @@ public class ShoplistController {
     @GetMapping("/panel/{numPage}")
     public String paneShoplist(Model model, @PathVariable Integer numPage) {
         // contexto
-        new ServiceShopList().setOptions(model, numPage, jpa);
+        new ServiceShopList().setOptionsPane(model, numPage, jpa);
         // vista
         return "shoplist/panel";
     }
 
-    @GetMapping("/insert")
-    public String paneShoplistAdd(Model model) {
-        // template
-        return "shoplist/insert";
-    }
-
     @PostMapping("/insertShoplist")
-    public String insertShopList(@RequestParam String name, @RequestParam float amount, @RequestParam String notes,
+    public String insertShopList(@RequestParam(required = false) Integer id, @RequestParam String name, @RequestParam float amount, @RequestParam String notes,
             @RequestParam String brand, @RequestParam Boolean state, @RequestParam String date) {
-        ShopList shopList = new ShopList(null, name, amount, notes, brand, state, Date.valueOf(date), 01);
+        System.out.println(id);
+        ShopList shopList = new ShopList(id, name, amount, notes, brand, state, Date.valueOf(date), 01);
+        
         jpa.save(shopList);
         return "redirect:/shoplist/panel";
     }
+    
+    @PostMapping("/deleteById")
+    public String deleteShopList(@RequestParam Integer id) {
+        jpa.delete(id);
+        return "redirect:/shoplist/panel";
+    }
+    
+    @GetMapping("/update")
+    public String updateView() {
+        return "/shoplist/update";
+    }
+    
+    
+    
 }
