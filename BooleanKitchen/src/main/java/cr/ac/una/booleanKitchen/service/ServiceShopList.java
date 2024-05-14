@@ -10,6 +10,8 @@ import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
+import org.springframework.data.domain.Example;
+import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -44,8 +46,8 @@ public class ServiceShopList implements IServiceShoplist {
 
     public void setOptionsPane(Model model, Integer numPage, IServiceShoplist jpa) {
         //nombres de las columnas 
-        String[] dataColum = {"Nombre","Cantidad","Notas","Marca","Estado","Fecha","Acciones"};
-        model.addAttribute("dataColum",dataColum);
+        String[] dataColum = {"Nombre", "Cantidad", "Notas", "Marca", "Estado", "Fecha", "Acciones"};
+        model.addAttribute("dataColum", dataColum);
         Page<ShopList> page;
         int totalPages;
         if (numPage != null) {
@@ -59,8 +61,7 @@ public class ServiceShopList implements IServiceShoplist {
             model.addAttribute("totalPages", totalPages);
             //pagina actual
             model.addAttribute("numPage", numPage);
-        }
-        else {
+        } else {
             //datos paginados
             page = jpa.getAll(0);
             model.addAttribute("dataDB", jpa.getAll(0).toList());
@@ -73,14 +74,14 @@ public class ServiceShopList implements IServiceShoplist {
         }
         //para contabilizar las paginas
         List<Integer> pageableCollection = new ArrayList<>();
-        for(int i = 0 ; i < totalPages; i++){
+        for (int i = 0; i < totalPages; i++) {
             pageableCollection.add(i);
         }
         //cantidad de paginas 
         model.addAttribute("pageableCollection", pageableCollection);
         //endpoints del crud
         String delete = "/shoplist/deleteById";
-        model.addAttribute("delete",delete);
+        model.addAttribute("delete", delete);
         model.addAttribute("update", "/shoplist/insertShoplist");//update
         model.addAttribute("create", "/shoplist/insertShoplist");//create
     }
@@ -92,8 +93,10 @@ public class ServiceShopList implements IServiceShoplist {
     }
 
     @Override
-    public Boolean update(ShopList shopList) {
-      return true;  
+    public List<ShopList> search(String data) {
+        return jpa.findByPartialName(data);
     }
+
+    
 
 }

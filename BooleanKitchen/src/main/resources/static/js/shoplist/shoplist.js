@@ -93,3 +93,16 @@ function updateShoplist() {
     }
 }
 
+function search() {
+        //ajax
+        let http = new XMLHttpRequest();
+        let url = "/shoplist/find?data="+document.getElementById("findInput").value;
+        http.open("GET", url, true );
+        http.send();
+        http.onreadystatechange = function () {
+            if (this.readyState === 4 && this.status === 200) {
+                document.getElementById("TableDataUser").innerHTML = this.responseText;
+            }
+        };
+        return;
+}

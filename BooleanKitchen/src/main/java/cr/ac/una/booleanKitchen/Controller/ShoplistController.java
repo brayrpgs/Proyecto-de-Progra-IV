@@ -47,22 +47,27 @@ public class ShoplistController {
             @RequestParam String brand, @RequestParam Boolean state, @RequestParam String date) {
         System.out.println(id);
         ShopList shopList = new ShopList(id, name, amount, notes, brand, state, Date.valueOf(date), 01);
-        
+
         jpa.save(shopList);
         return "redirect:/shoplist/panel";
     }
-    
+
     @PostMapping("/deleteById")
     public String deleteShopList(@RequestParam Integer id) {
         jpa.delete(id);
         return "redirect:/shoplist/panel";
     }
-    
+
     @GetMapping("/update")
     public String updateView() {
         return "/shoplist/update";
     }
-    
-    
-    
+
+    @GetMapping("/find")
+    public String find(@RequestParam String data, Model model) {
+        //lista las validaciones de busqueda
+        model.addAttribute("dataDB", jpa.search(data));
+        return "shoplist/search";
+    }
+
 }

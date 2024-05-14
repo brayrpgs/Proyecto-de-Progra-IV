@@ -4,6 +4,7 @@
  */
 package cr.ac.una.booleanKitchen.service;
 import cr.ac.una.booleanKitchen.domain.ShopList;
+import java.util.List;
 import org.springframework.data.domain.Page;
 
 /**
@@ -15,6 +16,7 @@ public interface IServiceShoplist {
     public Boolean save(ShopList s);
     public Page<ShopList> getAll(Integer numPage);
     public Boolean delete(Integer id);
-    public Boolean update(ShopList shopList);
+    public List<ShopList> search(String data);
+    
     
 }

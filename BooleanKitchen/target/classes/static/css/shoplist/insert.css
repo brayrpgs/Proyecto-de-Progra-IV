@@ -42,3 +42,38 @@ tr {
 a {
     color: darkgreen;
 }
+
+#postNav{
+    display: flex;
+    align-items: stretch;
+    align-content: center;
+    justify-content: space-between;
+    justify-items: stretch;
+    flex-direction: row;
+    flex-wrap: nowrap;
+}
+
+#serch{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: center;
+    align-items: stretch;
+}
+
+#findBtn{
+    display: flex;
+    color: blue;
+    margin-bottom: 0px;
+    margin-left: 10px;
+    border-radius: 10px;
+    border: solid;
+    border-color: black;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: center;
+    align-items: stretch;
+    font-size: 23px;
+}
