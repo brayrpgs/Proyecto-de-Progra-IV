@@ -149,12 +149,13 @@ public class CategoryController {
    
     
     private Category CreateCategory(Category cat, LocalDate local,String status,String notaAdmin,MultipartFile file){
+              String note=(notaAdmin.trim().isEmpty())?"NS":notaAdmin;
               cat.setId(0);
               cat.setCatVisible(new CategoryServiceUpdate().getVisibleCat(status));
               cat.setQuantity(0);
               cat.setUrlImagen(new CategoryServiceUpdate().getRoute(file));
               cat.setDate(local);
-              cat.setComment(notaAdmin);//commit: 
+              cat.setComment(note);//commit: 
               cat.setCreateBy("Josue Porras");
               
         return cat;
@@ -166,6 +167,9 @@ public class CategoryController {
     public String modifyCategory(@PathVariable String idCode, Model model){
         
            Category cat=catRepo.getCategory(idCode);
+            if(cat.getComment().trim().equalsIgnoreCase("NS")){
+           cat.setComment("");     
+           }
            model.addAttribute("selectedCat", cat);
            setUrlAct(cat.getUrlImagen());
             model.addAttribute("Labels", new CategoryServiceUpdate().getListLabel());
@@ -180,12 +184,12 @@ public class CategoryController {
         LocalDate local= LocalDate.now();
             
             if(new CategoryServiceUpdate().validation(cat, status)){
-            
+             String note=(notaAdmin.trim().isEmpty()|| notaAdmin.trim().equalsIgnoreCase("Sin nota de autor"))?"NS":notaAdmin;
               cat.setCatVisible(new CategoryServiceUpdate().getVisibleCat(status));
               cat.setQuantity(0);
               
               cat.setDate(local);
-              cat.setComment(notaAdmin);
+              cat.setComment(note);
               cat.setCreateBy("Josue Porras");
               
               if(file.isEmpty()){
@@ -220,7 +224,8 @@ public class CategoryController {
               
        
            //model.addAttribute("ListaCategory", catRepo.getCategorias());
-            refreshTable(pageable, model);
+           // refreshTable(pageable, model);
+            model.addAttribute("Labels", new CategoryServiceUpdate().getListLabel());
         
          return "category/category_View";
     }

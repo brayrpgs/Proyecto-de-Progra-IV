@@ -204,7 +204,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                         <div class="inputs-modal">
                             <div class="inputs-items">
                                 <div class="wave-group">
-                                    <input required type="text" class="input"  name="notaAdmin"  autocomplete="off" placeholder="(opcional)" th:value="${selectedCat != null ? selectedCat.comment : (dateElement != null ? dateElement.comment : '')}">
+                                    <input  type="text" class="input"  name="notaAdmin"  autocomplete="off" placeholder="(opcional)" th:value="${selectedCat != null ? selectedCat.comment!=''?selectedCat.comment:'Sin nota de autor' : (dateElement != null ? dateElement.comment : '')}">
                                     <span class="bar"></span>
                                     <label class="label">
                                         <span class="label-char" style="--index: 0">N</span>

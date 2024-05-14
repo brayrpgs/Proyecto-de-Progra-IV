@@ -103,16 +103,16 @@
                             </div>
                             
                             <dialog  id="view-category">
-                                <h1>Detalles de categoria</h1>
-                                <h2 th:text="'Categoria: '+${category.name}"></h2>
+                                <h1>Detalles de categoría</h1>
+                                <h2 th:text="'Categoría: '+${category.name}"></h2>
                                  <img th:src="@{'/img/' + ${category.urlImagen}}" alt="Imagen vista"/>
                                  <p th:text="'No.Serial: '+${category.idSerial}"></p>
-                                 <p th:text="'Descripcion: '+${category.description}"></p>
+                                 <p th:text="'Descripción: '+${category.description}"></p>
                                  <p th:text="'Etiqueta: '+${category.label}"></p>
-                                 <p th:text="'Estado: '+${category.catVisible?'Publica':'Oculta'}"></p>
+                                 <p th:text="'Estado: '+${category.catVisible?'Público':'Privado'}"></p>
                                  <p th:text="'Notas de mejoras: '+${category.comment}"></p>
-                                 <p th:text="${'Fecha de Actualizacion: '+#temporals.format(category.date, 'dd-MM-yyyy')}">text</p>
-                                 <p th.text="'Modificacion hecha por: '${category.createBy}"></p>
+                                 <p th:text="${'Fecha de Actualización: '+#temporals.format(category.date, 'dd-MM-yyyy')}">text</p>
+                                 <p th.text="'Modificación hecha por: '${category.createBy}"></p>
                                <button class="modal-btn" data-close  onclick="openDialog(event)" style="background-color: red">
                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z"/></svg>
                                 </button>
