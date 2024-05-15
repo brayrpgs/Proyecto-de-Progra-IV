@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package cr.ac.una.booleanKitchen.service;
+import cr.ac.una.booleanKitchen.Utilidades.Utilidades;
 import org.springframework.core.io.Resource;
 import cr.ac.una.booleanKitchen.domain.Preparation;
 import cr.ac.una.booleanKitchen.domain.Step;
@@ -12,18 +13,27 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Primary;
 
 import org.springframework.core.io.ClassPathResource;
+import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 /**
  *
  * @author Daniel Briones
  */
-public class PreparationService {
+@Service
+@Primary
+public class PreparationService implements IPreparationService {
+    @Autowired
+    private preparationRepository repoPrep;
 
-    private LinkedList<Step> stepsLis;
+    //private LinkedList<Step> stepsLis;
     private Preparation prep;
     private int index;
     public final String UPLOAD = "src/main/resources/static/assets";
@@ -31,7 +41,7 @@ public class PreparationService {
     /*Lista de dificultad*/
 
     public PreparationService() {
-        stepsLis = new LinkedList();
+      //  stepsLis = new LinkedList();
         prep = new Preparation();
     }
 
@@ -47,21 +57,21 @@ public class PreparationService {
         String regex = "[-+]?\\d*\\.?\\d+";
         return input.matches(regex);
     }
+    
+     public boolean validarCadena(String input) {
+    String regex = "^[\\p{L}\\s]+$";
 
-    public boolean validarCadena(String input) {
-        String regex = "^[\\p{L}\\s]+$";
-
-        return input.matches(regex);
-    }
-
-    public LinkedList<Step> getStepsLis() {
+    return input.matches(regex);
+}
+    /*
+    public List<Step> getStepsLis() {
         return stepsLis;
     }
 
-    public void setStepsLis(LinkedList<Step> stepsLis) {
+    public void setStepsLis(List<Step> stepsLis) {
         this.stepsLis = stepsLis;
     }
-
+*/
     public int getIndex() {
         return index;
     }
@@ -69,72 +79,96 @@ public class PreparationService {
     public void setIndex(int index) {
         this.index = index;
     }
-
-    public LinkedList<String> getDifficulty() {
-        LinkedList<String> list = new LinkedList<>();
+    
+    public LinkedList<String> getDifficulty (){
+        LinkedList<String> list= new LinkedList();
         list.add("Novato");
         list.add("Cocinero");
         list.add("Chef");
-
+        
         return list;
     }
-
-    public boolean verifyNameTitle(String date) {
-
-        for (Step step : getStepsLis()) {
-            if (step.getTitle().trim().equalsIgnoreCase(date.trim())) {
+    
+    public boolean verifyNameTitle(String date){
+        
+        for(Step step: Utilidades.stepsLis){
+            if(step.getTitle().trim().equalsIgnoreCase(date.trim())){
                 return true;
             }
         }
         return false;
     }
-
-    public boolean validation(String label, String time, String warning) {
-
-        return !(label.trim().isEmpty() || time.trim().isEmpty() || warning.trim().isEmpty());
+    
+    public boolean verifyNameTitleModify(String date){
+        int indexSize=0;
+        for(Step step: Utilidades.stepsLis){
+           if(Utilidades.index!=indexSize){
+            if(step.getTitle().trim().equalsIgnoreCase(date.trim())){
+                return true;
+            }
+           }
+            indexSize+=1;
+        }
+        return false;
     }
-
-    public boolean ValidationStep(String title, String step) {
-        return !(title.trim().isEmpty() || step.trim().isEmpty());
+    
+    public boolean validation(String label, String time, String warning){
+        
+     return !(label.trim().isEmpty() || time.trim().isEmpty() || warning.trim().isEmpty());
     }
-
-    public String date(LocalDateTime localDate) {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy MM dd HH mm ss");
+    
+    
+    public boolean ValidationStep(String title,String step){
+        return !(title.trim().isEmpty()||step.trim().isEmpty());
+    }
+    
+    
+      public String date(LocalDateTime localDate){
+           DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy MM dd HH mm ss");
         return localDate.format(formatter);
     }
+   
+   
+     public String getRoute(MultipartFile file){
+           LocalDateTime dateTime=LocalDateTime.now();
+             String att=date(dateTime);
 
-    public String getRoute(MultipartFile file) {
-        LocalDateTime dateTime = LocalDateTime.now();
-        String att = date(dateTime);
-
-        // Ruta donde se guardará la imagen en el directorio de recursos estáticos
-        String route = att + file.getOriginalFilename();
-        return route;
-    }
-
-    //metodo de ingreso de imagen a carpeta externa en proyecto
-    public boolean insertImg(MultipartFile file, String route) {
-        if (!file.isEmpty()) {
+                // Ruta donde se guardará la imagen en el directorio de recursos estáticos
+               String route= att+file.getOriginalFilename();
+               return route;
+      }
+     
+     
+       //metodo de ingreso de imagen a carpeta externa en proyecto
+       public boolean  insertImg(MultipartFile file,String route){
+            if (!file.isEmpty()) {
             try {
-                byte[] bytes = file.getBytes();
+                
                 Resource resource = new ClassPathResource("");
-                String absolutePath = resource.getFile().getAbsolutePath().replace("\\target\\classes", "\\src\\main\\resources\\static\\assets");
-                Path path = Paths.get(absolutePath + "/" + route);
-
+                String absolutePath = resource.getFile().getAbsolutePath();
+         
+                byte[] bytes = file.getBytes();
+                Path path = Paths.get(absolutePath.replace("\\target\\classes", "\\src\\main\\resources\\static\\assets") + "/" +route);
                 System.out.println("\nLa ruta es: " + path);
                 Files.write(path, bytes);
-                return true;
+               return true;
             } catch (IOException e) {
                 //por si da error
-                return false;
+              return false;
             }
-        }
-        return false;
-    }
+        } 
+            return false;
+      }
+      
+      
+      public  boolean deleteImage(String imageName) {
+        
+      
 
-    public boolean deleteImage(String imageName) {
         try {
-            Path imagePath = Paths.get(UPLOAD, imageName);
+               Resource resource = new ClassPathResource("");
+                String absolutePath = resource.getFile().getAbsolutePath();
+            Path imagePath = Paths.get(absolutePath.replace("\\target\\classes", "\\src\\main\\resources\\static\\assets"), imageName);
             Files.deleteIfExists(imagePath);
             return true;
         } catch (Exception e) {
@@ -142,10 +176,19 @@ public class PreparationService {
             return false;
         }
     }
+    
+      public String getCodePrep(){
+          LocalDateTime ahora = LocalDateTime.now();
 
-    public int getIndexSteps(String url) {
+        DateTimeFormatter formateador = DateTimeFormatter.ofPattern("yyyyMMddHHmmssSSS");
+
+        String fechaFormateada = ahora.format(formateador);
+        return "PRP-"+fechaFormateada;
+      }
+      
+     public int getIndexSteps(String url) {
         int i = 0; // Inicializar a 0
-        for (Step step : getStepsLis()) {
+        for (Step step : Utilidades.stepsLis) {
             if (step.getTitle().trim().equalsIgnoreCase(url.trim())) {
                 return i; // Devuelve el índice actual si hay una coincidencia
             }
@@ -153,5 +196,22 @@ public class PreparationService {
         }
         return -1; // Devuelve -1 si no se encontró ninguna coincidencia
     }
+
+    @Override
+    public void guardar(Preparation prep) {
+        //prep.getIdRecipe().setImage(prep.getIdRecipe().getImage().replace(":", "-"));
+        //prep.setRouteImg(prep.getRouteImg().replace(":", "-"));
+        repoPrep.save(prep);
+    }
+
+public List<Step> getStepsByPrep(Preparation prep){
+   List<Step> steps = new ArrayList();
+   for (Step step : Utilidades.stepsLis){
+        step.setPreparation(prep);
+        steps.add(step);
+    }
+return steps;
+}
+    
 
 }

@@ -74,14 +74,39 @@ function enviarComentario(event) {
 
 function like_dislike(cbox) {
     var numero_likes = cbox.parentElement.querySelector('#numero-likes');
-
+    var idComentario = cbox.parentElement.querySelector("#idComentario").value;
+    var xmlhttp = new XMLHttpRequest();
     if (cbox.checked) {
         // Si el checkbox está marcado, incrementa el número de likes
         numero_likes.innerHTML = parseInt(numero_likes.innerHTML) + 1;
+         xmlhttp.open("GET", "/c_comentarios/like?identificadorComentario=" + idComentario + "&aumentar=1", true);
     } else {
         // Si el checkbox no está marcado, decrementa el número de likes
         numero_likes.innerHTML = parseInt(numero_likes.innerHTML) - 1;
+        xmlhttp.open("GET", "/c_comentarios/like?identificadorComentario=" + idComentario + "&aumentar=0", true);
     }
+   
+    
+    // Enviar la solicitud
+    xmlhttp.send();
+
+    // Manejar la respuesta
+    xmlhttp.onreadystatechange = function () {
+        if (this.readyState === 4) {
+
+            if (this.status === 200) {
+
+                // Si la respuesta es exitosa, actualizar el contenido del contenedor de comentarios
+                var contenedor = document.getElementById("comments");
+                //contenedor.innerHTML = this.responseText;
+            } else {
+                // Si hay un error, mostrar un mensaje
+                alert('Error al enviar el comentario. Por favor, inténtelo de nuevo.');
+            }
+        }
+    };
+    
+    
 
     // Aquí puedes agregar la lógica para enviar a la base de datos y actualizar los likes
 }
@@ -89,14 +114,35 @@ function like_dislike(cbox) {
 
 function editComment(button) {
     // Aquí puedes agregar la lógica para editar el comentario
-    var idComentario = button.parentElement.querySelector("#idCategoria").value;
+    var idComentario = button.parentElement.querySelector("#idComentario").value;
     
 }
 
 function deleteComment(button) {
     // Aquí puedes agregar la lógica para eliminar el comentario
-    var idComentario = button.parentElement.querySelector("#idCategoria").value;
-    
+    var idComentario = button.parentElement.querySelector("#idComentario").value;
+    var idReceta = document.getElementById("identificadorReceta").value;
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.open("GET", "/c_comentarios/eliminarComentario?identificadorComentario=" + idComentario + "&idReceta="+idReceta, true);
+
+    // Enviar la solicitud
+    xmlhttp.send();
+
+    // Manejar la respuesta
+    xmlhttp.onreadystatechange = function () {
+        if (this.readyState === 4) {
+
+            if (this.status === 200) {
+
+                // Si la respuesta es exitosa, actualizar el contenido del contenedor de comentarios
+                var contenedor = document.getElementById("comments");
+                contenedor.innerHTML = this.responseText;
+            } else {
+                // Si hay un error, mostrar un mensaje
+                alert('Error al enviar el comentario. Por favor, inténtelo de nuevo.');
+            }
+        }
+    };
 }
 
 

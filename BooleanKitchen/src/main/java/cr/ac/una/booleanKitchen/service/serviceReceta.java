@@ -35,47 +35,24 @@ public class serviceReceta implements IRecetaService{
     
     @Override
     public Recipe findByIdentificador(String identificador) {
-        return repoReceta.findByIdentificador(identificador);
+        return repoReceta.findOneRecipe(identificador);
     }
     
     @Override
     public void eliminar(Recipe receta){
         repoReceta.delete(receta);
     }
-    
-    
-//    public LinkedList<Recipe> mejoresRecetas(){
-//        // Obtiene las mejores 10 recetas
-//        return new AccesoDatosReceta().mejoresRecetas();
-//    }
-//
-//    public LinkedList<Recipe> todasLasRecetas(){
-//        // Obtiene las mejores 10 recetas
-//        return new AccesoDatosReceta().todasLasRecetas();
-//    }
-//
-//    public boolean agregarReceta(Recipe recipe){
-//        return new AccesoDatosReceta().agregarReceta(recipe);
-//    }   
-//
-//    public Recipe verDetallesReceta(String identificador) {
-//        return new AccesoDatosReceta().verDetallesReceta(identificador);
-//    }
-//
-//    public boolean editarReceta(Recipe recipe) {
-//        return new AccesoDatosReceta().editarReceta(recipe);
-//    }
-//
-//    public boolean eliminarReceta(String identificador) {
-//        return new AccesoDatosReceta().eliminarReceta(identificador);
-//    }
-//
-//    public LinkedList<Recipe> obtenerTodasLasRecetas(){
-//        return new AccesoDatosReceta().obtenerTodasLasRecetas();
-//    }
-//    
 
-
-    
-    
+     @Override
+    public boolean DeleteRecipe(String idSerial) {
+        try{
+        repoReceta.deleteStepsByRecetaIdentificador(idSerial);
+        repoReceta.deletePreparacionByRecetaIdentificador(idSerial);
+        repoReceta.deleteByIdentificador(idSerial);
+        return true;
+        }catch(Exception e){
+            return false;
+        }
+    }
+     
 }

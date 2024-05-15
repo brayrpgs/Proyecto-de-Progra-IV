@@ -20,4 +20,5 @@ public interface IRecetaService{
     public Recipe findByIdentificador(String identificador);
     
     public void eliminar(Recipe receta);
+     public boolean DeleteRecipe(String idSerial);
 }

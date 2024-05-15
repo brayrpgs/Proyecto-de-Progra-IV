@@ -523,6 +523,21 @@
                         <div style="width: 100%; display: flex; justify-content: center; flex-wrap: wrap;">
                             <div class="container-elements" style="width: 400px; margin-left: 30px;">
                                 <div class="inputs-modal">
+                                    
+                                    <div class="inputs-items">
+                                        <div class="wave-group">
+                                            <input required type="text" id="Titulo" oninput="this.className = ''">
+                                            <span class="bar"></span>
+                                            <label class="label">
+                                                <span class="label-char" style="--index: 0">T</span>
+                                                <span class="label-char" style="--index: 1">i</span>
+                                                <span class="label-char" style="--index: 2">t</span>
+                                                <span class="label-char" style="--index: 3">u</span>
+                                                <span class="label-char" style="--index: 4">l</span>
+                                                <span class="label-char" style="--index: 5">o</span>
+                                            </label>
+                                        </div>
+                                    </div>
                                     <div class="inputs-items">
                                         <div class="wave-group">
                                             <input required type="text" id="input_paso" oninput="this.className = ''">
@@ -571,6 +586,7 @@
                                                 <table id="table-pasos">
                                                     <thead>
                                                         <tr>
+                                                            <th>Titulo</th>
                                                             <th>Paso</th>
                                                             <th>Imagen</th>
                                                             <th>Acciones</th>

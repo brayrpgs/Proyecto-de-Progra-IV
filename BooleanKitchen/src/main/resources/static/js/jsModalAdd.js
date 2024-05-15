@@ -20,11 +20,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 function abrirDialogNuevaReceta(){
-    const modal = document.querySelector("#modal-add-recipe");
-    
-    
-    
-    modal.show();
+    alert("Proximamente");
 
     
 }

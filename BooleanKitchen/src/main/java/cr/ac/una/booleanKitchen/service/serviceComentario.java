@@ -36,7 +36,14 @@ public class serviceComentario implements IComentariosService {
         return repoComment.findByRecipeIdentificador(identificador);
     }
 
-//    public LinkedList<Comment> comentarios(String codReceta){
-//        return new AccesoDatosComentarios().comentarios(codReceta);
-//    }
+    @Override
+    public Comment findByIdentificador(String identificador) {
+        return repoComment.findByIdentificador(identificador);
+    }
+    
+    @Override
+    public void eliminar(Comment comentario){
+        repoComment.delete(comentario);
+    }
+
 }

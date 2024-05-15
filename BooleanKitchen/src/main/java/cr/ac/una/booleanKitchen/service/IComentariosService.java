@@ -19,5 +19,9 @@ public interface IComentariosService {
      public List<Comment> getComments();
  
 //     public void deleteCom(String idSerial);
-     List<Comment> findByRecetaId(String identificador);
+     public List<Comment> findByRecetaId(String identificador);
+     
+     public Comment findByIdentificador(String identificador);
+     
+     public void eliminar(Comment comentario);
 }

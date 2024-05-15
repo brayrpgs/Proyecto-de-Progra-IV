@@ -3,15 +3,16 @@
 
     <head>
         <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" th:href="@{/css/stRecetasYNoticias.css}">
         <link rel="stylesheet" type="text/css" th:href="@{/css/stNav.css}">
         <link rel="stylesheet" type="text/css" th:href="@{/css/stFooter.css}">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" type="text/css" th:href="@{/css/stModal.css}">
-        <link rel="stylesheet" type="text/css" th:href="@{/css/stRecetasYNoticias.css}">
-        <link rel="stylesheet" type="text/css" th:href="@{/css/stColores_fuentes.css}">
         <link rel="stylesheet" type="text/css" th:href="@{/css/stTable.css}">
         <link rel="stylesheet" type="text/css" th:href="@{/css/stBtnEliminar.css}">
         <link rel="stylesheet" type="text/css" th:href="@{/css/stBtnEditar.css}">
+        <link rel="stylesheet" type="text/css" th:href="@{/css/stColores_fuentes.css}">
+        <script text="text/javascript" th:src="@{/js/jsNav.js}" defer></script>
         <script text="text/javascript" th:src="@{/js/jsModalAdd.js}"></script>
         <script text="text/javascript" th:src="@{/js/jsNav.js}" defer></script>
         <title>Ver recetas</title>
@@ -116,7 +117,7 @@
         <main class="main">
             <div class="container-recipe">
                 <div style="width: 100%; margin-left: 6%; margin-top: 70px;">
-                    <button type="button" class="button-add-recipe">
+                    <button type="button" class="button-add-recipe" id="BtnNuevaReceta" onclick="abrirDialogNuevaReceta()">
                         <span class="button__text">Recetas</span>
                         <span class="button__icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" viewBox="0 0 24 24"
                                                         stroke-width="2" stroke-linejoin="round" stroke-linecap="round" stroke="currentColor"

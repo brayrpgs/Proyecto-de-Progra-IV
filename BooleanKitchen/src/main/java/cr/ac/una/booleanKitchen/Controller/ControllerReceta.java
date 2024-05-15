@@ -31,8 +31,9 @@ import cr.ac.una.booleanKitchen.domain.Origin;
 import cr.ac.una.booleanKitchen.domain.Preparation;
 import cr.ac.una.booleanKitchen.domain.Recipe;
 import cr.ac.una.booleanKitchen.domain.Utensil;
+import cr.ac.una.booleanKitchen.service.IPreparationService;
 import cr.ac.una.booleanKitchen.service.IRecetaService;
-import cr.ac.una.booleanKitchen.service.serviceReceta;
+import cr.ac.una.booleanKitchen.service.PreparationService;
 import org.springframework.beans.factory.annotation.Autowired;
 
 /**
@@ -42,7 +43,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 @Controller
 @RequestMapping("/c_receta")
 public class ControllerReceta {
-    
+    @Autowired
+    private IPreparationService prepService;
     @Autowired
     private IRecetaService recetaService;
     
@@ -84,30 +86,46 @@ public class ControllerReceta {
         cat.setId(1);
         cat.setIdSerial(categoria);
 
-        Preparation prep = new Preparation();
-        prep.setIdSerial("PREP-"+dificultad+LocalDateTime.now());
-        prep.setDifficulty(dificultad);
-        prep.setTime(LocalTime.parse(tiempo, DateTimeFormatter.ofPattern("HH:mm")));
-        prep.setWarnings(advertencias);
-        prep.setNoteAuthor(nota);
-        System.out.println("\nPreparación:\n");
-        System.out.println(prep.getDifficulty());
-        System.out.println(prep.getTime());
-        System.out.println(prep.getWarnings());
-        System.out.println(prep.getNoteAuthor());
-        System.out.println("IMG_preparación: " + img_preparacion.getOriginalFilename());
-
-//        Recipe receta = new Recipe(-1, "REC-" + nombre + LocalDateTime.now(), listaIngredientes, nombre, Integer.parseInt(origen.substring(origen.length() -1)), listaUtensilios, null, cat, prep, 0, "REC-" + nombre + LocalDateTime.now()+ img_receta.getOriginalFilename() , "");
         Origin orige = new Origin();
         orige.setId(1);
         
-        Recipe receta = new Recipe(0, "REC-" + nombre + LocalDateTime.now(), nombre, orige, cat, 0, "REC-" + nombre + LocalDateTime.now()+ img_receta.getOriginalFilename(), Utilidades.user, 0);
-        insertImg(img_receta, receta.getIdentificador() + img_receta.getOriginalFilename());
-        insertImg(img_preparacion, prep.getIdSerial()+img_preparacion.getOriginalFilename());
-
-//        new serviceReceta().agregarReceta(receta);
+        if(new PreparationService().validation(dificultad,tiempo,advertencias)){
+         
+            Utilidades.preparacion.setIdSerial("PREP-"+dificultad+LocalDateTime.now());
+            Utilidades.preparacion.setDifficulty(dificultad);
+            Utilidades.preparacion.setTime(LocalTime.parse(tiempo, DateTimeFormatter.ofPattern("HH:mm")));
+            Utilidades.preparacion.setWarnings(advertencias);
+            Utilidades.preparacion.setNoteAuthor(nota);
+            System.out.println("\nPreparación:\n");
+            System.out.println("La dificultad: " + Utilidades.preparacion.getDifficulty());
+            System.out.println(Utilidades.preparacion.getTime());
+            System.out.println(Utilidades.preparacion.getWarnings());
+            System.out.println(Utilidades.preparacion.getNoteAuthor());
+            System.out.println("IMG_preparación: " + img_preparacion.getOriginalFilename());
+            
+            System.out.println("primero en la Lista: " + Utilidades.stepsLis.get(0).getTitle());
+            Recipe receta = new Recipe(0, "REC-" + nombre + LocalDateTime.now(), nombre, orige, cat, 0, ("REC-" + nombre + LocalDateTime.now()+ img_receta.getOriginalFilename()).replaceAll("[^a-zA-Z0-9.-]", "-"), Utilidades.user, 0);
+            insertImg(img_receta, receta.getImage());
+            Utilidades.preparacion.setRouteImg( (Utilidades.preparacion.getIdSerial()+img_preparacion.getOriginalFilename()).replaceAll("[^a-zA-Z0-9.-]", "-"));
+            insertImg(img_preparacion, Utilidades.preparacion.getRouteImg());
+  
+            Utilidades.preparacion.setIdRecipe(receta);
+            System.out.println("Tamaño de la lista de pasos: " + Utilidades.stepsLis.size() + " : " + Utilidades.stepsLis.get(0).getTitle());
+            Utilidades.preparacion.setPreparationList(Utilidades.stepsLis);
+            //prep.setPreparationList(new PreparationService().getStepsByPrep(prep));
+            
+            
+            prepService.guardar(Utilidades.preparacion);
+            
+            Utilidades.stepsLis.clear(); //Limpiamos las listas de pasos
+            Utilidades.preparacion = new Preparation();
+            //recetaService.Guardar(receta);
+        }else{
+            //MENSAJE DE ERROR
+        }
+       
         
-        recetaService.Guardar(receta);
+        
         return "redirect:/c_inicio/index";
     }
 
@@ -115,8 +133,10 @@ public class ControllerReceta {
 
     @GetMapping("/verDetallesDeReceta")
     public String verDetallesDeReceta(@RequestParam("id") String identificador, Model model){
-          
-        model.addAttribute("receta", recetaService.findByIdentificador(identificador));
+        Recipe re = recetaService.findByIdentificador(identificador);
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss");
+        re.getPreparacion().setTimeStr(re.getPreparacion().getTime().format(formatter));
+        model.addAttribute("receta", re);
         return "detallesRecetas";
     }
     
@@ -142,22 +162,23 @@ public class ControllerReceta {
         return "redirect:/c_inicio/index";
     }
 
-    public boolean insertImg(MultipartFile file, String name) {
-        if (!file.isEmpty()) {
+    public boolean  insertImg(MultipartFile file,String route){
+            if (!file.isEmpty()) {
             try {
-                byte[] bytes = file.getBytes();
+                
                 Resource resource = new ClassPathResource("");
-                String absolutePath = resource.getFile().getAbsolutePath().replace("\\target\\classes", "\\src\\main\\resources\\static\\assets");
-                Path path = Paths.get(absolutePath + "/" + name.replace(":", "-"));
-
+                String absolutePath = resource.getFile().getAbsolutePath();
+         
+                byte[] bytes = file.getBytes();
+                Path path = Paths.get(absolutePath.replace("\\target\\classes", "\\src\\main\\resources\\static\\assets") + "/" +route.replaceAll("[^a-zA-Z0-9.-]", "-"));
                 System.out.println("\nLa ruta es: " + path);
                 Files.write(path, bytes);
-                return true;
+               return true;
             } catch (IOException e) {
                 //por si da error
-                return false;
+              return false;
             }
-        }
-        return false;
-    }
+        } 
+            return false;
+      }
 }

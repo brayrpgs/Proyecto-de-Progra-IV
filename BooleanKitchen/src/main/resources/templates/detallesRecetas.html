@@ -31,25 +31,17 @@
                 </ul>
                 <div class="preparation">
                     <h2>Preparación:</h2>
-                    <p><span>Dificultad: </span><span style="font-weight: normal;" th:text="${receta.category.name}"></span></p>
-                    <p><span>Tiempo: </span><span style="font-weight: normal;" th:text="${receta.category.name}"></span></p>
-                    <p><span>Advertencias: </span><span style="font-weight: normal;" th:text="${receta.category.name}"></span></p>
-                    <img th:src="@{/assets/__${receta.image}__}" alt="Imagen de la Preparación">
+                    <p><span>Dificultad: </span><span style="font-weight: normal;" th:text="${receta.preparacion.difficulty}"></span></p>
+                    <p><span>Tiempo: </span><span style="font-weight: normal;" th:text="${receta.preparacion.timeStr}"></span></p>
+                    <p><span>Advertencias: </span><span style="font-weight: normal;" th:text="${receta.preparacion.warnings}"></span></p>
+                    <img th:src="@{/assets/__${receta.preparacion.routeImg}__}" alt="Imagen de la Preparación">
                 </div>
                 <div class="steps">
                     <h2>Pasos</h2>
-                    <ol> <!--th:if="${receta.preparacion.pasos != null and !receta.preparacion.pasos.empty}"-->
-                        <li> <!--th:each="paso : ${receta.preparacion.pasos}"-->
-                            <p>Paso 1: Descripción del paso 1</p>
-                            <img th:src="@{/assets/__${receta.image}__}" alt="Imagen de un paso">
-                        </li>
-                        <li>
-                            <p>Paso 2: Descripción del paso 2</p>
-                            <img src="assets/Noticia2.jpg" alt="Paso 2">
-                        </li>
-                        <li>
-                            <p>Paso 3: Descripción del paso 3</p>
-                            <img src="assets/Noticia3.jpg" alt="Paso 3">
+                    <ol th:if="${receta.preparacion.preparationList != null and !receta.preparacion.preparationList.empty}">
+                        <li th:each="paso : ${receta.preparacion.preparationList}">
+                            <p th:text="${paso.title}"></p>
+                            <img th:src="@{/assets/__${paso.routeImg}__}" alt="Imagen de un paso">
                         </li>
                     </ol>
                 </div>

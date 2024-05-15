@@ -223,16 +223,18 @@ function agregarPaso() {
     event.preventDefault();
     // Obtener el valor del campo de texto
     var paso = document.getElementById("input_paso").value;
-    if (paso.trim() === '') {
+    var titulo = document.getElementById("Titulo").value;
+    if (paso.trim() === '' || titulo.trim() === '') {
         return false;
     }
     // Obtener el archivo de imagen seleccionado por el usuario
     var fileInput = document.getElementById("file3");
     var imagenFile = fileInput.files[0];
     
+    
     var formData = new FormData();
     formData.append("img", imagenFile);
-    formData.append("texto", "Hola");
+    formData.append("texto", titulo);
     formData.append("paso", paso);
 
     var xmlhttp = new XMLHttpRequest();
@@ -250,11 +252,13 @@ function agregarPaso() {
             var newRow = document.createElement("tr");
 
             // Crear las celdas para la nueva fila
+            var tituloCell = document.createElement("td");
             var pasoCell = document.createElement("td");
             var imagenCell = document.createElement("td");
             var accionesCell = document.createElement("td");
 
             // Agregar el texto del paso a la celda correspondiente
+            tituloCell.textContent = titulo;
             pasoCell.textContent = paso;
 
             // Crear un elemento de imagen y establecer una imagen por defecto si no se ha cargado ninguna
@@ -334,6 +338,7 @@ function agregarPaso() {
     `;
 
             // Agregar las celdas a la nueva fila
+            newRow.appendChild(tituloCell);
             newRow.appendChild(pasoCell);
             newRow.appendChild(imagenCell);
             newRow.appendChild(accionesCell);

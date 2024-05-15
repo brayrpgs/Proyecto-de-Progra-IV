@@ -67,6 +67,49 @@ public class ControllerComentarios {
         return "cargarComentarios";
     }
     
+        @GetMapping("/like")
+    public String likes(@RequestParam("identificadorComentario") String identificador, @RequestParam("aumentar") String aumentar, Model model){
+        
+        Comment comentario = comentarioService.findByIdentificador(identificador);
+        if(comentario != null){
+            if(aumentar.equals("1")){
+                comentario.setReaccionesPositivas(comentario.getReaccionesPositivas() + 1);
+            } else {
+                comentario.setReaccionesPositivas(comentario.getReaccionesPositivas() - 1);
+            }
+            
+            comentarioService.guardar(comentario);
+        }
+        
+        return "cargarComentarios";
+    }
+    
+    
+    @GetMapping("/editarComentario")
+    public String editar(@RequestParam("identificadorComentario") String identificador, Model model){
+        
+        System.out.println("Comentario a editar: " + identificador);
+        return "redirect:/c_inicio/index";
+    }
+    
+    @GetMapping("/eliminarComentario")
+    public String eliminar(@RequestParam("identificadorComentario") String identificador, @RequestParam("idReceta") String idReceta, Model model){
+        
+        System.out.println("Comentario a eliminar: " + identificador);
+        
+        Comment comentario = comentarioService.findByIdentificador(identificador);
+        if(comentario != null){
+            comentarioService.eliminar(comentario);
+        } else {
+            System.out.println("No se puedo eliminar el comentario con el identificador: " + identificador);
+        }
+        Recipe recipe = new Recipe();
+        recipe.setIdentificador(idReceta);
+        model.addAttribute("receta", recipe);
+        model.addAttribute("comentarios", comentarioService.findByRecetaId(idReceta));
+        return "cargarComentarios";
+    }
+    
     
     private String calcularAntiguedad(LocalDateTime fechaPublicacion) {
         LocalDateTime ahora = LocalDateTime.now();
@@ -95,6 +138,8 @@ public class ControllerComentarios {
             return "Hace " + meses + " mes" + (meses == 1 ? "" : "es");
         }
     }
+    
+
     
     private List<Comment> comentarios(String identificador){
         List<Comment> comentarios = comentarioService.findByRecetaId(identificador);
