@@ -1,0 +1,110 @@
+.titleAndButton {
+    display: flex;
+    justify-content: space-between;
+    align-items: left;
+    width: 100%;
+    padding-left: 30px;
+}
+
+.main-container{
+    padding-top: 2%;
+    width: 100%;
+}
+
+.main-container h1{
+    text-transform: uppercase;
+    color: var(--color-text-primary);
+    font-family: "Blanc-Regular";
+    font-weight: normal;
+    font-style: normal;
+    font-size: 2.063rem;
+    line-height: 2.313rem;
+    margin-bottom: 0.625rem;
+    margin: 0;
+}
+
+
+.container{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+
+.card {
+    width: 190px;
+    background: var(--background-card);
+    padding: .4em;
+    border-radius: 6px;
+    margin: 15px;
+    transition: background-color 0.7s ease;
+}
+
+.card:active{
+    transform: scale(0.9);
+}
+
+.card:hover {
+    background-color: var(--background-card-hover);
+    cursor: pointer;
+}
+
+.card-image {
+    background-color: rgb(236, 236, 236);
+    width: 100%;
+    height: 130px;
+    border-radius: 6px 6px 0 0;
+}
+
+.card-image svg{
+    background-color: rgb(236, 236, 236);
+    width: 50%;
+    margin-left: 24%;
+    height: 130px;
+    border-radius: 6px 6px 0 0;
+}
+
+.card-image img{
+    width: 100%;
+    height: 130px;
+}
+  
+.card-image:hover {
+    transform: scale(0.98);
+}
+
+
+/* Si en alguna otra parte ocupan mostrar la categoria pueden ponerle class="category" y copian el metodo de abajo 👇 */
+.category {
+    text-transform: uppercase;
+    font-size: 0.7em;
+    font-weight: 600;
+    color: rgb(63, 121, 230);
+    padding: 10px 7px 0;
+}
+  
+  
+.heading {
+    font-weight: 600;
+    color: var(--color-text-secondary);
+    padding: 7px;
+}
+  
+
+/* Si en alguna otra parte ocupan mostrar la categoria pueden ponerle class="autor" y class="name" y copian los metodos de abajo 👇  */
+.author {
+    color: gray;
+    font-weight: 400;
+    font-size: 11px;
+    padding-top: 20px;
+}
+  
+.name {
+    font-weight: 600;
+}
+  
+.name:hover {
+    cursor: pointer;
+} 
