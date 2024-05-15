@@ -1,22 +1,37 @@
-C:\Users\Mecag\OneDrive\Documentos\NetBeansProjects\Proyecto-de-Progra-IV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\Controller\ControllerPaginaInicio.java
-C:\Users\Mecag\OneDrive\Documentos\NetBeansProjects\Proyecto-de-Progra-IV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\domain\Notice.java
-C:\Users\Mecag\OneDrive\Documentos\NetBeansProjects\Proyecto-de-Progra-IV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\Controller\LoginController.java
-C:\Users\Mecag\OneDrive\Documentos\NetBeansProjects\Proyecto-de-Progra-IV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\bussines\MainController.java
-C:\Users\Mecag\OneDrive\Documentos\NetBeansProjects\Proyecto-de-Progra-IV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\domain\User.java
-C:\Users\Mecag\OneDrive\Documentos\NetBeansProjects\Proyecto-de-Progra-IV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\domain\Admin.java
-C:\Users\Mecag\OneDrive\Documentos\NetBeansProjects\Proyecto-de-Progra-IV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\domain\ShopList.java
-C:\Users\Mecag\OneDrive\Documentos\NetBeansProjects\Proyecto-de-Progra-IV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\domain\MealPlan.java
-C:\Users\Mecag\OneDrive\Documentos\NetBeansProjects\Proyecto-de-Progra-IV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\domain\Utensil.java
-C:\Users\Mecag\OneDrive\Documentos\NetBeansProjects\Proyecto-de-Progra-IV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\domain\Person.java
-C:\Users\Mecag\OneDrive\Documentos\NetBeansProjects\Proyecto-de-Progra-IV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\domain\Preparation.java
-C:\Users\Mecag\OneDrive\Documentos\NetBeansProjects\Proyecto-de-Progra-IV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\domain\Recipe.java
-C:\Users\Mecag\OneDrive\Documentos\NetBeansProjects\Proyecto-de-Progra-IV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\Controller\MainController.java
-C:\Users\Mecag\OneDrive\Documentos\NetBeansProjects\Proyecto-de-Progra-IV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\domain\Comment.java
-C:\Users\Mecag\OneDrive\Documentos\NetBeansProjects\Proyecto-de-Progra-IV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\PaginasDeRecetasApplication.java
-C:\Users\Mecag\OneDrive\Documentos\NetBeansProjects\Proyecto-de-Progra-IV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\Utilidades\Utilidades.java
-C:\Users\Mecag\OneDrive\Documentos\NetBeansProjects\Proyecto-de-Progra-IV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\domain\Origin.java
-C:\Users\Mecag\OneDrive\Documentos\NetBeansProjects\Proyecto-de-Progra-IV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\Data\ConectarDB.java
-C:\Users\Mecag\OneDrive\Documentos\NetBeansProjects\Proyecto-de-Progra-IV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\domain\Ingredient.java
-C:\Users\Mecag\OneDrive\Documentos\NetBeansProjects\Proyecto-de-Progra-IV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\domain\Image.java
-C:\Users\Mecag\OneDrive\Documentos\NetBeansProjects\Proyecto-de-Progra-IV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\service\ImagenService.java
-C:\Users\Mecag\OneDrive\Documentos\NetBeansProjects\Proyecto-de-Progra-IV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\domain\Category.java
+D:\OneDrive - Universidad Nacional de Costa Rica\Tercer Año ING en Sistemas\Cursos\Programación 4\Proyecto-de-Progra-IV-DBV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\domain\Comment.java
+D:\OneDrive - Universidad Nacional de Costa Rica\Tercer Año ING en Sistemas\Cursos\Programación 4\Proyecto-de-Progra-IV-DBV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\domain\Notice.java
+D:\OneDrive - Universidad Nacional de Costa Rica\Tercer Año ING en Sistemas\Cursos\Programación 4\Proyecto-de-Progra-IV-DBV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\service\CategoryRepository.java
+D:\OneDrive - Universidad Nacional de Costa Rica\Tercer Año ING en Sistemas\Cursos\Programación 4\Proyecto-de-Progra-IV-DBV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\domain\Step.java
+D:\OneDrive - Universidad Nacional de Costa Rica\Tercer Año ING en Sistemas\Cursos\Programación 4\Proyecto-de-Progra-IV-DBV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\service\RecetaRepository.java
+D:\OneDrive - Universidad Nacional de Costa Rica\Tercer Año ING en Sistemas\Cursos\Programación 4\Proyecto-de-Progra-IV-DBV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\domain\Person.java
+D:\OneDrive - Universidad Nacional de Costa Rica\Tercer Año ING en Sistemas\Cursos\Programación 4\Proyecto-de-Progra-IV-DBV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\domain\Preparation.java
+D:\OneDrive - Universidad Nacional de Costa Rica\Tercer Año ING en Sistemas\Cursos\Programación 4\Proyecto-de-Progra-IV-DBV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\domain\MealPlan.java
+D:\OneDrive - Universidad Nacional de Costa Rica\Tercer Año ING en Sistemas\Cursos\Programación 4\Proyecto-de-Progra-IV-DBV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\Data\AccesoDatosReceta.java
+D:\OneDrive - Universidad Nacional de Costa Rica\Tercer Año ING en Sistemas\Cursos\Programación 4\Proyecto-de-Progra-IV-DBV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\Controller\PreparationController.java
+D:\OneDrive - Universidad Nacional de Costa Rica\Tercer Año ING en Sistemas\Cursos\Programación 4\Proyecto-de-Progra-IV-DBV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\domain\User.java
+D:\OneDrive - Universidad Nacional de Costa Rica\Tercer Año ING en Sistemas\Cursos\Programación 4\Proyecto-de-Progra-IV-DBV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\service\comentarioRepository.java
+D:\OneDrive - Universidad Nacional de Costa Rica\Tercer Año ING en Sistemas\Cursos\Programación 4\Proyecto-de-Progra-IV-DBV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\service\serviceComentario.java
+D:\OneDrive - Universidad Nacional de Costa Rica\Tercer Año ING en Sistemas\Cursos\Programación 4\Proyecto-de-Progra-IV-DBV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\domain\Admin.java
+D:\OneDrive - Universidad Nacional de Costa Rica\Tercer Año ING en Sistemas\Cursos\Programación 4\Proyecto-de-Progra-IV-DBV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\domain\Origin.java
+D:\OneDrive - Universidad Nacional de Costa Rica\Tercer Año ING en Sistemas\Cursos\Programación 4\Proyecto-de-Progra-IV-DBV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\service\ImagenService.java
+D:\OneDrive - Universidad Nacional de Costa Rica\Tercer Año ING en Sistemas\Cursos\Programación 4\Proyecto-de-Progra-IV-DBV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\Controller\ControllerPaginaInicio.java
+D:\OneDrive - Universidad Nacional de Costa Rica\Tercer Año ING en Sistemas\Cursos\Programación 4\Proyecto-de-Progra-IV-DBV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\service\PreparationService.java
+D:\OneDrive - Universidad Nacional de Costa Rica\Tercer Año ING en Sistemas\Cursos\Programación 4\Proyecto-de-Progra-IV-DBV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\Controller\ControllerReceta.java
+D:\OneDrive - Universidad Nacional de Costa Rica\Tercer Año ING en Sistemas\Cursos\Programación 4\Proyecto-de-Progra-IV-DBV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\domain\Image.java
+D:\OneDrive - Universidad Nacional de Costa Rica\Tercer Año ING en Sistemas\Cursos\Programación 4\Proyecto-de-Progra-IV-DBV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\service\IComentariosService.java
+D:\OneDrive - Universidad Nacional de Costa Rica\Tercer Año ING en Sistemas\Cursos\Programación 4\Proyecto-de-Progra-IV-DBV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\service\serviceReceta.java
+D:\OneDrive - Universidad Nacional de Costa Rica\Tercer Año ING en Sistemas\Cursos\Programación 4\Proyecto-de-Progra-IV-DBV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\domain\Category.java
+D:\OneDrive - Universidad Nacional de Costa Rica\Tercer Año ING en Sistemas\Cursos\Programación 4\Proyecto-de-Progra-IV-DBV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\service\CategoryService.java
+D:\OneDrive - Universidad Nacional de Costa Rica\Tercer Año ING en Sistemas\Cursos\Programación 4\Proyecto-de-Progra-IV-DBV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\bussines\MainController.java
+D:\OneDrive - Universidad Nacional de Costa Rica\Tercer Año ING en Sistemas\Cursos\Programación 4\Proyecto-de-Progra-IV-DBV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\Utilidades\Utilidades.java
+D:\OneDrive - Universidad Nacional de Costa Rica\Tercer Año ING en Sistemas\Cursos\Programación 4\Proyecto-de-Progra-IV-DBV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\PaginasDeRecetasApplication.java
+D:\OneDrive - Universidad Nacional de Costa Rica\Tercer Año ING en Sistemas\Cursos\Programación 4\Proyecto-de-Progra-IV-DBV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\Controller\MainController.java
+D:\OneDrive - Universidad Nacional de Costa Rica\Tercer Año ING en Sistemas\Cursos\Programación 4\Proyecto-de-Progra-IV-DBV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\domain\Ingredient.java
+D:\OneDrive - Universidad Nacional de Costa Rica\Tercer Año ING en Sistemas\Cursos\Programación 4\Proyecto-de-Progra-IV-DBV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\domain\Utensil.java
+D:\OneDrive - Universidad Nacional de Costa Rica\Tercer Año ING en Sistemas\Cursos\Programación 4\Proyecto-de-Progra-IV-DBV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\service\ICategoryService.java
+D:\OneDrive - Universidad Nacional de Costa Rica\Tercer Año ING en Sistemas\Cursos\Programación 4\Proyecto-de-Progra-IV-DBV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\service\IRecetaService.java
+D:\OneDrive - Universidad Nacional de Costa Rica\Tercer Año ING en Sistemas\Cursos\Programación 4\Proyecto-de-Progra-IV-DBV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\Controller\ControllerComentarios.java
+D:\OneDrive - Universidad Nacional de Costa Rica\Tercer Año ING en Sistemas\Cursos\Programación 4\Proyecto-de-Progra-IV-DBV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\Controller\LoginController.java
+D:\OneDrive - Universidad Nacional de Costa Rica\Tercer Año ING en Sistemas\Cursos\Programación 4\Proyecto-de-Progra-IV-DBV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\domain\Recipe.java
+D:\OneDrive - Universidad Nacional de Costa Rica\Tercer Año ING en Sistemas\Cursos\Programación 4\Proyecto-de-Progra-IV-DBV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\domain\ConectarDB.java
+D:\OneDrive - Universidad Nacional de Costa Rica\Tercer Año ING en Sistemas\Cursos\Programación 4\Proyecto-de-Progra-IV-DBV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\domain\ShopList.java

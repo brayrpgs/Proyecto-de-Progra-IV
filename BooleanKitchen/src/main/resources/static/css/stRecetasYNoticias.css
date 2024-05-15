@@ -232,7 +232,14 @@ body {
     font-weight: 600;
     color: var(--dark);
     padding: 7px;
+    display: block;
+    overflow: hidden;
+    word-wrap: break-word;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 2;
 }
+
+
   
   
 .author {

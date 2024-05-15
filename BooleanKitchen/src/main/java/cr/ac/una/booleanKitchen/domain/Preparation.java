@@ -5,11 +5,10 @@
 package cr.ac.una.booleanKitchen.domain;
 
 import java.time.LocalTime;
-import java.util.List;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
-
+import java.util.LinkedList;
 /**
  *
  * @author josue
@@ -18,41 +17,35 @@ import lombok.ToString;
 @Setter
 @ToString
 public class Preparation {
-    //Atributos
     private int id;
+    private int idRecipe;
     private String idSerial;
-    private List<String> steps;
     private String difficulty;
     private LocalTime time;
-    private Image img;
-    private String alternative; //alternativa de ingredientes
-    private String warnings;//advertencias sobre acciones con cosas peligrosas
-    private int step; //pasos
-    private String authorNote;
+    private String routeImg;
+    private String noteAuthor;
+    private String warnings;
+    
+    
+    private int timeMinute;
+    
+    private LinkedList<Step> preparationList;
+  
 
-    //Constructores
     public Preparation() {
     }
 
-    public Preparation(int id, String idSerial, List<String> steps, String difficulty, LocalTime time, Image img, String alternative, String warnings, int step, String authorNote) {
+    public Preparation(int id, int idRecipe, String idSerial, String difficulty, LocalTime time, String routeImg, String noteAuthor, String warnings, LinkedList<Step> preparationList) {
         this.id = id;
+        this.idRecipe = idRecipe;
         this.idSerial = idSerial;
-        this.steps = steps;
         this.difficulty = difficulty;
         this.time = time;
-        this.img = img;
-        this.alternative = alternative;
+        this.routeImg = routeImg;
+        this.noteAuthor = noteAuthor;
         this.warnings = warnings;
-        this.step = step;
-        this.authorNote = authorNote;
+        this.preparationList = preparationList;
     }
 
-    
-
-    
-
-    
-    
-    
     
 }

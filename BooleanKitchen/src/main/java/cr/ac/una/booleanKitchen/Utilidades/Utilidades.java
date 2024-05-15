@@ -4,7 +4,10 @@
  */
 package cr.ac.una.booleanKitchen.Utilidades;
 
+import cr.ac.una.booleanKitchen.domain.Recipe;
 import cr.ac.una.booleanKitchen.domain.User;
+import java.time.LocalDate;
+import java.util.LinkedList;
 
 
 
@@ -14,5 +17,7 @@ import cr.ac.una.booleanKitchen.domain.User;
  */
 public class Utilidades {
     
-    public static final User user = new User(-1, "Daniel Briones", "ejemplo@gmail.com", "1234", "admin", "Costarricence", "88888888");
+//    public static final User user1 = new User(1, "Daniel Briones", "ejemplo@gmail.com", "1234", "admin", "Costarricence", "88888888");
+    public static final User user = new User(1, LocalDate.now(), "USE-001", "Daniel Briones","ejemplo@gmail.com", "1234", "default_profile", "admin");
+    
 }

@@ -19,18 +19,20 @@ import lombok.ToString;
 public class Utensil {
     
     private int id;
+    private String identificador;
     private String name;
     private String material;
     private Category category;
     private float price;
     private int quantity;
+    private String imagen;
     //private Imagen img; //falta imagen
     private String description;
 
     public Utensil() {
     }
 
-    public Utensil(int id, String name, String material, Category category, float price, int quantity, String description) {
+    public Utensil(int id, String name, String material, Category category, float price, int quantity, String description, String identificador) {
         this.id = id;
         this.name = name;
         this.material = material;
@@ -38,6 +40,7 @@ public class Utensil {
         this.price = price;
         this.quantity = quantity;
         this.description = description;
+        this.identificador = identificador;
     }
     
     

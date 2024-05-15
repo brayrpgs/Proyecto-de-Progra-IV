@@ -4,6 +4,7 @@
  */
 package cr.ac.una.booleanKitchen.domain;
 
+import java.time.LocalDate;
 import java.util.Date;
 import lombok.Getter;
 import lombok.Setter;
@@ -24,7 +25,7 @@ public class Notice {
     private String id;
     private String tittle;
     private String resume;
-    private Date date;
+    private LocalDate date;
     private String author;
     private Boolean status;
     private String url;
@@ -34,7 +35,7 @@ public class Notice {
 
     public Notice() {}
 
-    public Notice(String id, String tittle, String resume, Date date, String author, Boolean status, String url, String image) {
+    public Notice(String id, String tittle, String resume, LocalDate date, String author, Boolean status, String url, String image) {
         
         this.id = id;
         this.tittle = tittle;
@@ -44,8 +45,6 @@ public class Notice {
         this.status = status;
         this.url = url;
         this.image = image;
-        
-        
     }
     
 }
