@@ -1,9 +1,7 @@
 cr\ac\una\booleanKitchen\domain\Comment.class
 cr\ac\una\booleanKitchen\Controller\CategoryController.class
 cr\ac\una\booleanKitchen\domain\Preparation.class
-cr\ac\una\booleanKitchen\service\ServiceMealPlan.class
 cr\ac\una\booleanKitchen\domain\MealPlan.class
-cr\ac\una\booleanKitchen\Controller\MealPlanController.class
 cr\ac\una\booleanKitchen\service\IngredientRepository.class
 cr\ac\una\booleanKitchen\Controller\MainController.class
 cr\ac\una\booleanKitchen\Data\ConectarDB.class
@@ -11,18 +9,13 @@ cr\ac\una\booleanKitchen\service\PreparationService.class
 cr\ac\una\booleanKitchen\Controller\NoticeController.class
 cr\ac\una\booleanKitchen\service\CategoryService.class
 cr\ac\una\booleanKitchen\domain\Notice.class
-cr\ac\una\booleanKitchen\service\ServiceShopList.class
-cr\ac\una\booleanKitchen\Data\MealplanJPA.class
-cr\ac\una\booleanKitchen\domain\MealPlan$MealPlanBuilder.class
 cr\ac\una\booleanKitchen\domain\User.class
 cr\ac\una\booleanKitchen\domain\Recipe.class
 cr\ac\una\booleanKitchen\Controller\OriginController.class
 cr\ac\una\booleanKitchen\Controller\LoginController.class
 cr\ac\una\booleanKitchen\service\OriginServices.class
-cr\ac\una\booleanKitchen\domain\ShopList$ShopListBuilder.class
 cr\ac\una\booleanKitchen\service\preparationRepository.class
 cr\ac\una\booleanKitchen\domain\Image.class
-cr\ac\una\booleanKitchen\service\IServiceShoplist.class
 cr\ac\una\booleanKitchen\domain\Step.class
 cr\ac\una\booleanKitchen\Data\IngredientData.class
 cr\ac\una\booleanKitchen\service\comentarioRepository.class
@@ -42,8 +35,6 @@ cr\ac\una\booleanKitchen\Data\DataOrigin.class
 cr\ac\una\booleanKitchen\PaginasDeRecetasApplication.class
 cr\ac\una\booleanKitchen\domain\ConectarDB.class
 cr\ac\una\booleanKitchen\Controller\ControllerPaginaInicio.class
-cr\ac\una\booleanKitchen\Data\ShoplistJPA.class
-cr\ac\una\booleanKitchen\service\IServiceMealplan.class
 cr\ac\una\booleanKitchen\service\serviceComentario.class
 cr\ac\una\booleanKitchen\domain\Ingredient.class
 cr\ac\una\booleanKitchen\service\IngredientService.class
@@ -55,7 +46,6 @@ cr\ac\una\booleanKitchen\Controller\ControllerUtensil.class
 cr\ac\una\booleanKitchen\service\IUtensilioService.class
 cr\ac\una\booleanKitchen\Utilidades\Utilidades.class
 cr\ac\una\booleanKitchen\service\NoticeRepository.class
-cr\ac\una\booleanKitchen\Controller\ShoplistController.class
 cr\ac\una\booleanKitchen\service\ICategoryService.class
 cr\ac\una\booleanKitchen\service\IPreparationService.class
 cr\ac\una\booleanKitchen\domain\Category.class
