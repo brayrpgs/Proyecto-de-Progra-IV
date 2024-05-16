@@ -5,7 +5,6 @@
 package cr.ac.una.booleanKitchen.Controller;
 
 import cr.ac.una.booleanKitchen.Utilidades.Utilidades;
-import cr.ac.una.booleanKitchen.domain.Preparation;
 import cr.ac.una.booleanKitchen.domain.Step;
 import cr.ac.una.booleanKitchen.service.PreparationService;
 import java.time.LocalTime;

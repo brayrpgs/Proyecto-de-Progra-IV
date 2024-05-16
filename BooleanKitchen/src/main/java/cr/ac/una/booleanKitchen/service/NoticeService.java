@@ -13,7 +13,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 import cr.ac.una.booleanKitchen.domain.Notice;
 import jakarta.transaction.Transactional;
-import java.util.List;
 
 @Service
 public class NoticeService {

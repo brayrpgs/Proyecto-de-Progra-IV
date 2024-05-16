@@ -5,8 +5,6 @@
 package cr.ac.una.booleanKitchen.Data;
 
 import cr.ac.una.booleanKitchen.domain.Origin;
-import cr.ac.una.booleanKitchen.Data.ConectarDB;
-import static cr.ac.una.booleanKitchen.Data.ConectarDB.conectar;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
