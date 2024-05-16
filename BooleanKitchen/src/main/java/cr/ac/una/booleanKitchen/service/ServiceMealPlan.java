@@ -4,7 +4,7 @@
  */
 package cr.ac.una.booleanKitchen.service;
 
-import cr.ac.una.booleanKitchen.data.MealplanJPA;
+import cr.ac.una.booleanKitchen.Data.MealplanJPA;
 import cr.ac.una.booleanKitchen.domain.MealPlan;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -4,7 +4,7 @@
  */
 package cr.ac.una.booleanKitchen.service;
 
-import cr.ac.una.booleanKitchen.data.ShoplistJPA;
+import cr.ac.una.booleanKitchen.Data.ShoplistJPA;
 import cr.ac.una.booleanKitchen.domain.ShopList;
 import java.util.ArrayList;
 import java.util.List;
