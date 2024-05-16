@@ -17,8 +17,13 @@ function showComponentInsert() {
         http.onreadystatechange = function () {
             if (this.readyState === 4 && this.status === 200) {
                 document.getElementById("formUpdate").innerHTML = this.responseText;
+                document.getElementById("update").type = "submit";
+                document.getElementById("update").value = "Guardar Compra";
+                document.getElementById("update").setAttribute("onclick","");
+                
             }
         };
+        
         return;
     } else {
         document.getElementById("insert").setAttribute("value", "0");

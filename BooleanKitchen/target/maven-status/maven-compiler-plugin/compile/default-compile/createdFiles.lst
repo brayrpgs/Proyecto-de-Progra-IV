@@ -1,6 +1,9 @@
 cr\ac\una\booleanKitchen\domain\Comment.class
+cr\ac\una\booleanKitchen\data\MealplanJPA.class
 cr\ac\una\booleanKitchen\domain\Preparation.class
+cr\ac\una\booleanKitchen\service\ServiceMealPlan.class
 cr\ac\una\booleanKitchen\domain\MealPlan.class
+cr\ac\una\booleanKitchen\Controller\MealPlanController.class
 cr\ac\una\booleanKitchen\Controller\MainController.class
 cr\ac\una\booleanKitchen\service\ImagenService.class
 cr\ac\una\booleanKitchen\domain\Origin.class
@@ -17,6 +20,7 @@ cr\ac\una\booleanKitchen\Controller\ControllerPaginaInicio.class
 cr\ac\una\booleanKitchen\domain\Recipe.class
 cr\ac\una\booleanKitchen\Controller\LoginController.class
 cr\ac\una\booleanKitchen\domain\ShopList$ShopListBuilder.class
+cr\ac\una\booleanKitchen\service\IServiceMealplan.class
 cr\ac\una\booleanKitchen\domain\Ingredient.class
 cr\ac\una\booleanKitchen\domain\ShopList.class
 cr\ac\una\booleanKitchen\domain\Image.class
