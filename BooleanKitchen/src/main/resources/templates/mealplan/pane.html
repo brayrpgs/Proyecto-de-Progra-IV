@@ -1,40 +1,41 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org"
-      >
-    <head>
-        <title>Planes de Comidas</title>
-        <meta charset="UTF-8"/>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-        <link rel="stylesheet" th:href="@{/css/stFooter.css}" />
-        <link rel="stylesheet" th:href="@{/css/stModal.css}" />
-        <link rel="stylesheet" th:href="@{/css/stNav.css}" />
-        <link rel="stylesheet" th:href="@{/css/stColores_fuentes.css}" />
-        <link rel="stylesheet" th:href="@{/css/mealplan/mealplan.css}" />
-        <script th:src="@{/js/mealplan/mealplan.js}"></script>
-        <script th:src="@{/js/jsNav.js}"></script>
-    </head>
-    <body>
-        <div th:insert="~{ plantillas/nav :: nav }"></div>
-        <br />
-        <h1 >Plan de Comidas</h1>
-        <ol id="listCards">
-            <!-- aca th:each con if -->
-            <li th:insert="~{ mealplan/setAll :: li }">
-                <div id="data" >No Hay Planes Disponibles</div>
-            </li>
-            <li>
-                <div id="addNewCard">
-                    <input type="button" value="&#128240" id="btnAddCard" onclick="insertCard()">
-                </div>
-            </li>
-        </ol>
-        <div id="Pageable">
-            <a th:if="${numPage != 0}" th:href="@{|/mealplan/pane/${numPage-1}|}">&#10550 Anterior</a>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 
-            <a th:if="${numPage < totalPages-1}" th:href="@{|/mealplan/pane/${numPage+1}|}">Siguiente &#10551</a>
-            <a th:each="page : ${pageableCollection}" th:text="${page}" th:href="@{|/mealplan/pane/${page}|}"></a>
-        </div>
-    </body>
-    <footer th:insert="~{ /plantillas/footer :: footer }"></footer>
+<head>
+    <title>Planes de Comidas</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" th:href="@{/css/stFooter.css}" />
+    <link rel="stylesheet" th:href="@{/css/stModal.css}" />
+    <link rel="stylesheet" th:href="@{/css/stNav.css}" />
+    <link rel="stylesheet" th:href="@{/css/stColores_fuentes.css}" />
+    <script th:src="@{/js/jsNav.js}"></script>
+    <script th:src="@{/js/mealplan/mealplan.js}"></script>
+    <link rel="stylesheet" th:href="@{/css/mealplan/mealplan.css}" />
+</head>
+
+<body>
+    <div th:insert="~{ plantillas/nav :: nav }"></div>
+    <br />
+    <h1>Plan de Comidas</h1>
+    <ol id="listCards">
+        <!-- aca th:each con if -->
+        <li th:insert="~{ mealplan/setAll :: li }">
+            <div id="data">No Hay Planes Disponibles</div>
+        </li>
+        <li>
+            <div id="addNewCard">
+                <input type="button" value="&#128240" id="btnAddCard" onclick="insertCard()">
+            </div>
+        </li>
+    </ol>
+    <div id="Pageable">
+        <a th:if="${numPage != 0}" th:href="@{|/mealplan/pane/${numPage-1}|}">&#10550 Anterior</a>
+
+        <a th:if="${numPage < totalPages-1}" th:href="@{|/mealplan/pane/${numPage+1}|}">Siguiente &#10551</a>
+        <a th:each="page : ${pageableCollection}" th:text="${page}" th:href="@{|/mealplan/pane/${page}|}"></a>
+    </div>
+</body>
+<footer th:insert="~{ /plantillas/footer :: footer }"></footer>
+
 </html>
