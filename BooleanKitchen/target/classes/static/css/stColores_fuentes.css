@@ -2,7 +2,7 @@
 :root{
     /* Tamaño para el texto */
     --text-size: 14px;
-
+    --size-btn: 55px;
     /* Color de textos */
     --color-text-primary: green;
     --color-text-secondary: black;
@@ -38,4 +38,5 @@ body {
     font-family: "Segoe UI", "Noto Sans", "sans-serif", "Blanc-Regular";
     font-size: var(--text-size);
     background-color: #f4f6f4;
+    height: 100vh;
 }

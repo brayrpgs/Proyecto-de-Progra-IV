@@ -1,8 +1,14 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package cr.ac.una.booleanKitchen.domain;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import jakarta.persistence.Temporal;
+import jakarta.persistence.TemporalType;
+import java.time.LocalDate;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -13,23 +19,40 @@ import lombok.Setter;
  */
 @Setter
 @Getter
-public class User extends Person{
+@Entity
+@Table (name="tb_bk_user")
+public class User {
+     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="ID",nullable = false)
     private int id;
+    @Column(name="CREACION_AT",nullable = false)
+    @Temporal(TemporalType.DATE)
+    private LocalDate creacionAT;
+    @Column(name="IDENTIFICADOR",nullable = false,unique = true)
+    private String ident;
+    @Column(name="NOMBRE_USUARIO",nullable = false,unique = true)
     private String username;
-    private String email;
+    @Column(name="EMAIL",nullable = false,unique = true)
+    private String emai;
+    @Column(name="PASSWORD")
     private String password;
+    @Column(name="RUTA_IMG")
+    private String url;
+    @Column(name="TIPO_USUARIO")
     private String userType;
-   //private Image image;
 
     public User() {
     }
 
-    public User(int id, String username, String email, String password, String userType, String nationality, String phoneNumber) {
-        super(nationality, phoneNumber);
+    public User(int id, LocalDate creacionAT, String ident, String username, String emai, String password, String url, String userType) {
         this.id = id;
+        this.creacionAT = creacionAT;
+        this.ident = ident;
         this.username = username;
-        this.email = email;
+        this.emai = emai;
         this.password = password;
+        this.url = url;
         this.userType = userType;
     }
 

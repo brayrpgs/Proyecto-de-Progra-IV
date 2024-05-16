@@ -1,47 +1,44 @@
-function showImagePreview(file) {
-    var reader = new FileReader();
-            
-    //Creamos una img y lo agregamos
-    var img = document.createElement("img");
-    img.setAttribute("id", "imagen-usuario");
-    var header = document.querySelector('.header');
-    header.appendChild(img);
-
+function showImagePreview(fileInput) {
+    const container = fileInput.parentElement; // Get the parent container element
+    const header = container.querySelector('.header');
+    const preview = header.querySelector('img'); // Assuming you have an img element for preview
+  
+    const reader = new FileReader();
+  
     reader.onload = function() {
-        var container = document.querySelector(".container");
-        var header = document.querySelector(".header");
-        var footer = document.querySelector(".footer");
-
-        // Eliminar el svg
-        var svg = document.querySelector('.header svg');
-        var p = document.querySelector('.header p');
-        if (svg && p) {
-            svg.parentNode.removeChild(svg);
-            p.parentNode.removeChild(p);
-        }
-
-        // Asignar la imagen cargada al elemento img
-        img.src = reader.result;
-        img.style.display = "block"; // Mostrar la imagen
-
+      preview.src = reader.result;
+      preview.style.display = "block"; // Show the image
+  
+      const labelText = container.querySelector("#sms-imagen");
+      labelText.innerHTML = fileInput.value.split("\\").pop(); // Update image name
+    };
+  
+    reader.readAsDataURL(fileInput.files[0]);
+  }
+  
+  document.addEventListener("DOMContentLoaded", function() {
+    const fileInputs = document.querySelectorAll('.container-upload-img input[type="file"]'); // Select all file inputs
+  
+    for (const fileInput of fileInputs) {
+      fileInput.addEventListener("change", function(event) {
+        showImagePreview(event.target); // Pass the current file input to the function
+      });
     }
+  });
+  
 
-    reader.readAsDataURL(file);
-
-}
-
-document.addEventListener("DOMContentLoaded", function() {
-//Se actualiza el p con el nombre de la imagen y se manda a cargar la imagen
-    document.getElementById("file").addEventListener("change", function(event) {
-        var fileInput = this;
-        var fileName = fileInput.value.split("\\").pop(); 
-        var labelText = document.querySelector("#sms-imagen");
-        if (fileName) {
-            labelText.innerHTML = fileName;
-            showImagePreview(event.target.files[0]);
-        }
-    });
-});
+// document.addEventListener("DOMContentLoaded", function() {
+// //Se actualiza el p con el nombre de la imagen y se manda a cargar la imagen
+//     document.getElementById("file").addEventListener("change", function(event) {
+//         var fileInput = this;
+//         var fileName = fileInput.value.split("\\").pop(); 
+//         var labelText = document.querySelector("#sms-imagen");
+//         if (fileName) {
+//             labelText.innerHTML = fileName;
+//             showImagePreview(event.target.files[0]);
+//         }
+//     });
+// });
 
 document.addEventListener("DOMContentLoaded", function() {
     //Carga el svg si no existe ya que se elimina la imagen
@@ -92,3 +89,9 @@ function cargarSvg() {
     var labelText = document.querySelector("#sms-imagen");
     labelText.innerHTML = "No hay imagen";
 }
+
+
+
+
+
+
