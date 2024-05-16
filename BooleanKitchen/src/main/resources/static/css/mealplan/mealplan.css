@@ -1,0 +1,185 @@
+
+/* 
+    Created on : 14 may 2024, 13:56:24
+    Author     : BrayRPGs
+*/
+
+.data{
+    border: solid;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-content: flex-start;
+    border-color: darkgrey;
+    border-radius: 10px;
+    border-top-width: 2px;
+    border-bottom-width: 2px;
+    border-left-width: 5px;
+    border-right-width: 5px;
+    padding-top: 5px;
+    padding-right: 5px;
+    padding-bottom: 5px;
+    padding-left: 5px;
+    width: fit-content;
+}
+#up{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-content: space-around;
+    justify-content: space-evenly;
+    align-items: stretch;
+    border-radius: 5px;
+    font-family: cursive;
+    padding-bottom: 10px;
+}
+
+#contentDates{
+    text-align: right;
+    font-family: cursive;
+}
+
+#name{
+    background-color: #caffbe;
+    border-color: grey;
+    border-style: solid;
+    border-radius: 10px;
+    font-family: cursive;
+}
+
+#dateInit{
+    background-color: #caffbe;
+    border-color: grey;
+    border-style: double;
+    border-radius: 10px;
+    font-family: cursive;
+}
+#dateEnd{
+    background-color: #caffbe;
+    border-color: grey;
+    border-style: double;
+    border-radius: 10px;
+    font-family: cursive;
+}
+#typeDiet{
+    background-color: #caffbe;
+    border-color: grey;
+    border-style: solid;
+    border-radius: 10px;
+    font-family: cursive;
+}
+#center{
+
+    font-family: cursive;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+#description{
+    size: auto;
+    width: -webkit-fill-available;
+    background-color: #a0c4ff;
+    border-color: grey;
+    border-style: solid;
+    border-radius: 10px;
+    font-family: cursive;
+}
+
+#numberPerson{
+    background-color: #a0c4ff;
+    border-color: grey;
+    border-style: solid;
+    border-radius: 10px;
+    font-family: cursive;
+    margin-left: 50px;
+}
+
+#down{
+/*    background-color: #d4afb9;*/
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: space-around;
+    align-items: stretch;
+    font-family: cursive;
+}
+
+#cost{
+    background-color: #d4afb9;
+    border-style: dotted;
+    border-radius: 10px;
+    font-family: cursive;
+}
+.save{
+    background-color: #d4afb9;
+    border-style: solid;
+    border-radius: 10px;
+    border-color: #d4afb9;
+    font-family: cursive;
+    border: thin;
+    cursor: pointer;
+}
+
+#delete{
+    background-color: #d4afb9;
+    border-style: solid;
+    border-radius: 10px;
+    border-color: #d4afb9;
+    font-family: cursive;
+    border: thin;
+    cursor: pointer;
+}
+
+#state{
+    background-color: #d4afb9;
+    border-style: solid;
+    border-radius: 10px;
+    border-color: #d4afb9;
+    font-family: cursive;
+    border: thin;
+    cursor: pointer;
+}
+
+#addNewCard{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: center;
+}
+
+#btnAddCard{
+    min-width: fit-content;
+    font-size: -webkit-xxx-large;
+    padding-block: 0px;
+    margin-block: 5px;
+    cursor: pointer;
+}
+#listCards{
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    flex-wrap: nowrap;
+}
+li{
+    margin-bottom: 10px;
+}
+
+#Pageable{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: space-evenly;
+    align-items: stretch;
+}
+
+a{
+    color: darkgreen;
+}

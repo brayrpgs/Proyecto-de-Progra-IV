@@ -1,0 +1,79 @@
+form {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: space-around;
+    justify-content: space-between;
+    align-items: stretch;
+}
+
+table {
+    border-spacing: 0;
+    width: -webkit-fill-available;
+}
+thead {
+    font-family: cursive;
+}
+
+th {
+    border-bottom-style: double;
+    border-bottom-color: darkgreen;
+    border-bottom-width: medium;
+}
+
+td {
+    border-bottom-style: groove;
+    text-align: -webkit-center;
+}
+
+tr {
+    text-align: center;
+}
+
+#Pageable{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: space-evenly;
+    align-items: stretch;
+}
+
+a {
+    color: darkgreen;
+}
+
+#postNav{
+    display: flex;
+    align-items: stretch;
+    align-content: center;
+    justify-content: space-between;
+    justify-items: stretch;
+    flex-direction: row;
+    flex-wrap: nowrap;
+}
+
+#serch{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: center;
+    align-items: stretch;
+}
+
+#findBtn{
+    display: flex;
+    color: blue;
+    margin-bottom: 0px;
+    margin-left: 10px;
+    border-radius: 10px;
+    border: solid;
+    border-color: black;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: center;
+    align-items: stretch;
+    font-size: 23px;
+}
