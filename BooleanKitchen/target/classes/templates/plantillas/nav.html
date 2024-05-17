@@ -51,8 +51,8 @@
                     <img class="avatar-profile" src="/assets/default_profile.png" alt="Profile">
                     <div class="avatar-name-wrapper">
                         <div th:if="${usuario != null}">
-                            <div class="avatar-name-alias" th:text="${usuario.username}"></div>
-                            <div class="avatar-name"  th:text="${usuario.username}"></div>
+                            <div class="avatar-name-alias" th:text="${usuario.userName}"></div>
+                            <div class="avatar-name"  th:text="${usuario.userName}"></div>
                         </div>
                         <div th:if="${usuario == null}">
                             <div class="avatar-name-alias">Invitado</div>
