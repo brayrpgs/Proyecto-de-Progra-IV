@@ -282,7 +282,8 @@ button {
   }
   
   /* Style the input fields */
-  input {
+    #regForm input,
+    #recipeForm input {
     padding: 10px;
     width: 100%;
     font-size: 17px;

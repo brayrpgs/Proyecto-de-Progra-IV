@@ -122,6 +122,8 @@
     font-family: cursive;
     border: thin;
     cursor: pointer;
+    padding-left: 6px;
+    padding-right: 6px;
 }
 
 #delete{

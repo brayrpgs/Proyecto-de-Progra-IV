@@ -17,9 +17,10 @@ import jakarta.transaction.Transactional;
 @Service
 public class NoticeService {
 
+    @Autowired
     private final NoticeRepository noticeRepository;
 
-    @Autowired
+    
     public NoticeService(NoticeRepository noticeRepository) {
         this.noticeRepository = noticeRepository;
     }
