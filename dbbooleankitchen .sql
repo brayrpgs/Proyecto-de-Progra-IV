@@ -2,10 +2,10 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Servidor: 127.0.0.1
--- Tiempo de generación: 06-05-2024 a las 05:27:16
--- Versión del servidor: 10.4.32-MariaDB
--- Versión de PHP: 8.0.30
+-- Host: 127.0.0.1
+-- Generation Time: May 16, 2024 at 06:18 AM
+-- Server version: 10.4.32-MariaDB
+-- PHP Version: 8.0.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `dbbooleankitchen`
+-- Database: `dbbooleankitchen`
 --
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `tb_bk_admin`
+-- Table structure for table `tb_bk_admin`
 --
 
 CREATE TABLE `tb_bk_admin` (
@@ -38,7 +38,7 @@ CREATE TABLE `tb_bk_admin` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `tb_bk_category`
+-- Table structure for table `tb_bk_category`
 --
 
 CREATE TABLE `tb_bk_category` (
@@ -54,10 +54,21 @@ CREATE TABLE `tb_bk_category` (
   `CREADO_POR` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `tb_bk_category`
+--
+
+INSERT INTO `tb_bk_category` (`ID`, `IDENTIFICADOR`, `NOMBRE`, `DESCRIPCION`, `RUTA_IMG`, `ETIQUETA`, `FECHA`, `VISIBLE`, `COMENTARIO_ADMIN`, `CREADO_POR`) VALUES
+(4, 'CAT-001', 'Dieta', 'Categoria para una dieta', '2024 05 15 03 49 27Noticia1.jpg', 'RECETAS', '2024-05-15', 0, 'NS', 'Josue Porras'),
+(15, 'CAT-066', 'Dietas', 'Lo mas importante para mantener la salud', '2024 05 15 00 57 10dieta.jpg', 'UTENCILIO', '2024-05-15', 1, 'NS', 'Josue Porras'),
+(16, 'CAT-002', 'Gourmet', 'Comida de alta categoria', '2024 05 15 00 58 01gourmet.jpg', 'RECETAS', '2024-05-15', 1, 'NS', 'Josue Porras'),
+(17, 'CAT-004', 'cubiertos', 'Se usa especialmente para comer', '2024 05 15 00 59 38tenedor.jpeg', 'UTENCILIO', '2024-05-15', 1, 'NS', 'Josue Porras'),
+(23, 'CAT-030', 'Postres ', 'Rico en azucares', '2024 05 15 12 32 45postres.jpg', 'INGREDIENTE', '2024-05-15', 0, 'NS', 'Josue Porras');
+
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `tb_bk_comment`
+-- Table structure for table `tb_bk_comment`
 --
 
 CREATE TABLE `tb_bk_comment` (
@@ -77,10 +88,17 @@ CREATE TABLE `tb_bk_comment` (
   `MODIFICACION` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `tb_bk_comment`
+--
+
+INSERT INTO `tb_bk_comment` (`ID`, `ID_RECETA`, `ID_USUARIO`, `IDENTIFICADOR`, `FECHA`, `PUNTUACION`, `COMENTARIO`, `REACCIONES`, `TITULO`, `DIFICULTAD`, `CLARIDAD_INST`, `SUGERENCIA`, `RECOMENDACION`, `MODIFICACION`) VALUES
+(18, 22, 1, 'COM-00Buena receta2024-05-15T11:32:34.874513500', '2024-05-15 11:32:34', 3, 'Un comentario', 1, 'Buena receta', 'Intermedio', 10, '', 0, 0);
+
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `tb_bk_ingredient`
+-- Table structure for table `tb_bk_ingredient`
 --
 
 CREATE TABLE `tb_bk_ingredient` (
@@ -95,10 +113,17 @@ CREATE TABLE `tb_bk_ingredient` (
   `RUTA_IMG` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `tb_bk_ingredient`
+--
+
+INSERT INTO `tb_bk_ingredient` (`ID`, `IDENTIFICADOR`, `NOMBRE`, `CANTIDAD`, `PESO`, `ID_CATEGORIA`, `CALORIAS`, `DESCRIPCION`, `RUTA_IMG`) VALUES
+(5, 'ING-9975', 'Cebolla', 9, 9, 23, 9, 'Sin descripción', '2024 05 15 19 01 43Noticia3.jpg');
+
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `tb_bk_mealplan`
+-- Table structure for table `tb_bk_mealplan`
 --
 
 CREATE TABLE `tb_bk_mealplan` (
@@ -117,7 +142,7 @@ CREATE TABLE `tb_bk_mealplan` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `tb_bk_meal_recip`
+-- Table structure for table `tb_bk_meal_recip`
 --
 
 CREATE TABLE `tb_bk_meal_recip` (
@@ -129,14 +154,14 @@ CREATE TABLE `tb_bk_meal_recip` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `tb_bk_notice`
+-- Table structure for table `tb_bk_notice`
 --
 
 CREATE TABLE `tb_bk_notice` (
   `ID` int(11) NOT NULL,
   `IDENTIFICADOR` varchar(255) NOT NULL,
   `TITULO` varchar(255) NOT NULL,
-  `RESUMEN` varchar(400) NOT NULL,
+  `RESUMEN` varchar(800) NOT NULL,
   `FECHA` date NOT NULL,
   `AUTOR` varchar(50) NOT NULL,
   `ESTADO` tinyint(1) NOT NULL,
@@ -144,10 +169,17 @@ CREATE TABLE `tb_bk_notice` (
   `RUTA_IMG` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `tb_bk_notice`
+--
+
+INSERT INTO `tb_bk_notice` (`ID`, `IDENTIFICADOR`, `TITULO`, `RESUMEN`, `FECHA`, `AUTOR`, `ESTADO`, `URL`, `RUTA_IMG`) VALUES
+(3, 'NOT-12', 'Famoso chef descubre...', 'un nuevo ingrediente', '2000-01-21', 'Ceasar', 1, 'ninguna', '2024 05 15 21 56 41Soup_Spoon.jpg');
+
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `tb_bk_origin`
+-- Table structure for table `tb_bk_origin`
 --
 
 CREATE TABLE `tb_bk_origin` (
@@ -161,10 +193,17 @@ CREATE TABLE `tb_bk_origin` (
   `SABOR` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `tb_bk_origin`
+--
+
+INSERT INTO `tb_bk_origin` (`ID`, `IDENTIFICADOR`, `NOMBRE`, `DESCRIPCION`, `PAIS`, `RUTA_IMG`, `CONTINENTE`, `SABOR`) VALUES
+(1, 'ORI-001', 'Mexicana', 'desc', 'Mexico', 'receta.jpeg', 'jvg', 'jhg');
+
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `tb_bk_preparation`
+-- Table structure for table `tb_bk_preparation`
 --
 
 CREATE TABLE `tb_bk_preparation` (
@@ -178,10 +217,20 @@ CREATE TABLE `tb_bk_preparation` (
   `ALERTA` varchar(150) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `tb_bk_preparation`
+--
+
+INSERT INTO `tb_bk_preparation` (`ID`, `IDENTIFICADOR`, `ID_RECETA`, `DIFICULTAD`, `TIEMPO`, `RUTA_IMG`, `NOTA_AUTOR`, `ALERTA`) VALUES
+(11, 'PREP-Media2024-05-15T03:59:58.398913100', 22, 'Media', '01:00:00', 'PREP-Media2024-05-15T03-59-58.398913100Noticia3.jpg', 'Sencilla de hacer', 'Ninguna'),
+(12, 'PREP-Media2024-05-15T04:08:44.614140', 23, 'Media', '01:00:00', 'PREP-Media2024-05-15T04-08-44.614140Noticia2.jpg', 'Sencilla de hacer', 'Ninguna'),
+(13, 'PREP-Media2024-05-15T04:11:11.104447900', 24, 'Media', '01:00:00', 'PREP-Media2024-05-15T04-11-11.104447900Noticia1.jpg', 'Muy buena la receta', 'Ninguna'),
+(15, 'PREP-solo bueno2024-05-15T21:54:54.573677100', 26, 'solo bueno', '01:12:00', 'PREP-solo-bueno2024-05-15T21-54-54.573677100Tenedor-Mesa-Munique-1-55290.webp', 'ninguna', 'ninguna');
+
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `tb_bk_preparation_list`
+-- Table structure for table `tb_bk_preparation_list`
 --
 
 CREATE TABLE `tb_bk_preparation_list` (
@@ -192,10 +241,25 @@ CREATE TABLE `tb_bk_preparation_list` (
   `PASO` varchar(500) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `tb_bk_preparation_list`
+--
+
+INSERT INTO `tb_bk_preparation_list` (`ID`, `TITULO_PASO`, `RUTA_IMG`, `ID_PREPARACION`, `PASO`) VALUES
+(11, 'Se cocinan las papas con salsa', '2024 05 15 03 59 11Noticia3.jpg', 11, 'Cocinar las papas'),
+(12, 'Se cocina la carne', '2024 05 15 03 59 32Noticia3.jpg', 11, 'Cocinar la carne'),
+(13, 'Se le agregan olores ', '2024 05 15 03 59 56Noticia3.jpg', 11, 'Poner olores '),
+(14, 'Se pone a hervir agua ', '2024 05 15 04 08 09Noticia2.jpg', 12, 'Hervir agua'),
+(15, 'Se pone la pasta y se le pone sal', '2024 05 15 04 08 40Noticia2.jpg', 12, 'Poner la pasta'),
+(16, 'Se cocina el pescado', '2024 05 15 04 10 30Noticia1.jpg', 13, 'Cocinar el pescado'),
+(17, 'Se le pone limón al pescado', '2024 05 15 04 11 09Noticia1.jpg', 13, 'Poner limón'),
+(19, 'paso', '2024 05 15 21 54 41Tenedor-Mesa-Munique-1-55290.webp', 15, 'paso juan'),
+(20, 'paso tu', '2024 05 15 21 54 53Soup_Spoon.jpg', 15, 'paso tu');
+
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `tb_bk_recipe`
+-- Table structure for table `tb_bk_recipe`
 --
 
 CREATE TABLE `tb_bk_recipe` (
@@ -210,10 +274,20 @@ CREATE TABLE `tb_bk_recipe` (
   `ID_USUARIO` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `tb_bk_recipe`
+--
+
+INSERT INTO `tb_bk_recipe` (`ID`, `IDENTIFICADOR`, `NOMBRE`, `ID_ORIGEN`, `ID_CATEGORIA`, `CALIFICACION`, `RUTA_IMG`, `TOTAL_CALIFICACION`, `ID_USUARIO`) VALUES
+(22, 'REC-Carne con papas2024-05-15T03:59:58.399909300', 'Carne con papas', 1, 4, 0, 'REC-Carne-con-papas2024-05-15T03-59-58.401908800Noticia3.jpg', 0, 1),
+(23, 'REC-Pasta blanca2024-05-15T04:08:44.615140100', 'Pasta blanca', 1, 4, 0, 'REC-Pasta-blanca2024-05-15T04-08-44.616138300Noticia2.jpg', 0, 1),
+(24, 'REC-Pescado al lim2024-05-15T04:11:11.104447900', 'Pescado al lim', 1, 4, 0, 'REC-Pescado-al-lim2024-05-15T04-11-11.105447Noticia1.jpg', 0, 1),
+(26, 'REC-gallopinto2024-05-15T21:54:54.575724400', 'gallopinto', 1, 4, 0, 'REC-gallopinto2024-05-15T21-54-54.575724400Tenedor-Mesa-Munique-1-55290.webp', 0, 1);
+
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `tb_bk_recipe_in`
+-- Table structure for table `tb_bk_recipe_in`
 --
 
 CREATE TABLE `tb_bk_recipe_in` (
@@ -225,7 +299,7 @@ CREATE TABLE `tb_bk_recipe_in` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `tb_bk_recipe_utens`
+-- Table structure for table `tb_bk_recipe_utens`
 --
 
 CREATE TABLE `tb_bk_recipe_utens` (
@@ -237,7 +311,7 @@ CREATE TABLE `tb_bk_recipe_utens` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `tb_bk_shoplist`
+-- Table structure for table `tb_bk_shoplist`
 --
 
 CREATE TABLE `tb_bk_shoplist` (
@@ -254,7 +328,7 @@ CREATE TABLE `tb_bk_shoplist` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `tb_bk_shop_ingred`
+-- Table structure for table `tb_bk_shop_ingred`
 --
 
 CREATE TABLE `tb_bk_shop_ingred` (
@@ -266,7 +340,7 @@ CREATE TABLE `tb_bk_shop_ingred` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `tb_bk_shop_utens`
+-- Table structure for table `tb_bk_shop_utens`
 --
 
 CREATE TABLE `tb_bk_shop_utens` (
@@ -278,7 +352,7 @@ CREATE TABLE `tb_bk_shop_utens` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `tb_bk_user`
+-- Table structure for table `tb_bk_user`
 --
 
 CREATE TABLE `tb_bk_user` (
@@ -292,10 +366,17 @@ CREATE TABLE `tb_bk_user` (
   `TIPO_USUARIO` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `tb_bk_user`
+--
+
+INSERT INTO `tb_bk_user` (`ID`, `CREACION_AT`, `IDENTIFICADOR`, `NOMBRE_USUARIO`, `EMAIL`, `PASSWORD`, `RUTA_IMG`, `TIPO_USUARIO`) VALUES
+(1, '2024-05-12', 'USER-001', 'Daniel Briones', 'daniel@gmail.com', '123', 'no hay', 'ADMIN');
+
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `tb_bk_utensil`
+-- Table structure for table `tb_bk_utensil`
 --
 
 CREATE TABLE `tb_bk_utensil` (
@@ -311,11 +392,11 @@ CREATE TABLE `tb_bk_utensil` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Índices para tablas volcadas
+-- Indexes for dumped tables
 --
 
 --
--- Indices de la tabla `tb_bk_admin`
+-- Indexes for table `tb_bk_admin`
 --
 ALTER TABLE `tb_bk_admin`
   ADD PRIMARY KEY (`ID`),
@@ -323,7 +404,7 @@ ALTER TABLE `tb_bk_admin`
   ADD KEY `ID_USUARIO` (`ID_USUARIO`) USING BTREE;
 
 --
--- Indices de la tabla `tb_bk_category`
+-- Indexes for table `tb_bk_category`
 --
 ALTER TABLE `tb_bk_category`
   ADD PRIMARY KEY (`ID`),
@@ -331,7 +412,7 @@ ALTER TABLE `tb_bk_category`
   ADD UNIQUE KEY `NOMBRE` (`NOMBRE`);
 
 --
--- Indices de la tabla `tb_bk_comment`
+-- Indexes for table `tb_bk_comment`
 --
 ALTER TABLE `tb_bk_comment`
   ADD PRIMARY KEY (`ID`),
@@ -340,7 +421,7 @@ ALTER TABLE `tb_bk_comment`
   ADD KEY `ID_USUARIO` (`ID_USUARIO`) USING BTREE;
 
 --
--- Indices de la tabla `tb_bk_ingredient`
+-- Indexes for table `tb_bk_ingredient`
 --
 ALTER TABLE `tb_bk_ingredient`
   ADD PRIMARY KEY (`ID`),
@@ -349,7 +430,7 @@ ALTER TABLE `tb_bk_ingredient`
   ADD KEY `ID_CATEGORIA` (`ID_CATEGORIA`);
 
 --
--- Indices de la tabla `tb_bk_mealplan`
+-- Indexes for table `tb_bk_mealplan`
 --
 ALTER TABLE `tb_bk_mealplan`
   ADD PRIMARY KEY (`ID`),
@@ -357,7 +438,7 @@ ALTER TABLE `tb_bk_mealplan`
   ADD KEY `ID_USUARIO` (`ID_USUARIO`);
 
 --
--- Indices de la tabla `tb_bk_meal_recip`
+-- Indexes for table `tb_bk_meal_recip`
 --
 ALTER TABLE `tb_bk_meal_recip`
   ADD PRIMARY KEY (`ID`),
@@ -365,7 +446,7 @@ ALTER TABLE `tb_bk_meal_recip`
   ADD KEY `ID_RECETA` (`ID_RECETA`) USING BTREE;
 
 --
--- Indices de la tabla `tb_bk_notice`
+-- Indexes for table `tb_bk_notice`
 --
 ALTER TABLE `tb_bk_notice`
   ADD PRIMARY KEY (`ID`),
@@ -373,7 +454,7 @@ ALTER TABLE `tb_bk_notice`
   ADD UNIQUE KEY `URL` (`URL`);
 
 --
--- Indices de la tabla `tb_bk_origin`
+-- Indexes for table `tb_bk_origin`
 --
 ALTER TABLE `tb_bk_origin`
   ADD PRIMARY KEY (`ID`),
@@ -381,7 +462,7 @@ ALTER TABLE `tb_bk_origin`
   ADD UNIQUE KEY `NOMBRE` (`NOMBRE`);
 
 --
--- Indices de la tabla `tb_bk_preparation`
+-- Indexes for table `tb_bk_preparation`
 --
 ALTER TABLE `tb_bk_preparation`
   ADD PRIMARY KEY (`ID`),
@@ -389,14 +470,14 @@ ALTER TABLE `tb_bk_preparation`
   ADD KEY `ID_RECETA` (`ID_RECETA`) USING BTREE;
 
 --
--- Indices de la tabla `tb_bk_preparation_list`
+-- Indexes for table `tb_bk_preparation_list`
 --
 ALTER TABLE `tb_bk_preparation_list`
   ADD PRIMARY KEY (`ID`),
   ADD KEY `ID_PREPARACION` (`ID_PREPARACION`);
 
 --
--- Indices de la tabla `tb_bk_recipe`
+-- Indexes for table `tb_bk_recipe`
 --
 ALTER TABLE `tb_bk_recipe`
   ADD PRIMARY KEY (`ID`),
@@ -406,7 +487,7 @@ ALTER TABLE `tb_bk_recipe`
   ADD KEY `ID_USUARIO` (`ID_USUARIO`) USING BTREE;
 
 --
--- Indices de la tabla `tb_bk_recipe_in`
+-- Indexes for table `tb_bk_recipe_in`
 --
 ALTER TABLE `tb_bk_recipe_in`
   ADD PRIMARY KEY (`ID`),
@@ -414,7 +495,7 @@ ALTER TABLE `tb_bk_recipe_in`
   ADD KEY `ID_RECETA` (`ID_RECETA`);
 
 --
--- Indices de la tabla `tb_bk_recipe_utens`
+-- Indexes for table `tb_bk_recipe_utens`
 --
 ALTER TABLE `tb_bk_recipe_utens`
   ADD PRIMARY KEY (`ID`),
@@ -422,7 +503,7 @@ ALTER TABLE `tb_bk_recipe_utens`
   ADD KEY `ID_RECETA` (`ID_RECETA`);
 
 --
--- Indices de la tabla `tb_bk_shoplist`
+-- Indexes for table `tb_bk_shoplist`
 --
 ALTER TABLE `tb_bk_shoplist`
   ADD PRIMARY KEY (`ID`),
@@ -430,7 +511,7 @@ ALTER TABLE `tb_bk_shoplist`
   ADD KEY `ID_USUARIO` (`ID_USUARIO`);
 
 --
--- Indices de la tabla `tb_bk_shop_ingred`
+-- Indexes for table `tb_bk_shop_ingred`
 --
 ALTER TABLE `tb_bk_shop_ingred`
   ADD PRIMARY KEY (`ID`),
@@ -438,7 +519,7 @@ ALTER TABLE `tb_bk_shop_ingred`
   ADD KEY `ID_INGRENDIENTE` (`ID_INGRENDIENTE`) USING BTREE;
 
 --
--- Indices de la tabla `tb_bk_shop_utens`
+-- Indexes for table `tb_bk_shop_utens`
 --
 ALTER TABLE `tb_bk_shop_utens`
   ADD PRIMARY KEY (`ID`),
@@ -446,7 +527,7 @@ ALTER TABLE `tb_bk_shop_utens`
   ADD KEY `ID_UTENCILIO` (`ID_UTENCILIO`);
 
 --
--- Indices de la tabla `tb_bk_user`
+-- Indexes for table `tb_bk_user`
 --
 ALTER TABLE `tb_bk_user`
   ADD PRIMARY KEY (`ID`),
@@ -455,7 +536,7 @@ ALTER TABLE `tb_bk_user`
   ADD UNIQUE KEY `EMAIL` (`EMAIL`);
 
 --
--- Indices de la tabla `tb_bk_utensil`
+-- Indexes for table `tb_bk_utensil`
 --
 ALTER TABLE `tb_bk_utensil`
   ADD PRIMARY KEY (`ID`),
@@ -464,167 +545,167 @@ ALTER TABLE `tb_bk_utensil`
   ADD KEY `ID_CATEGORIA` (`ID_CATEGORIA`);
 
 --
--- AUTO_INCREMENT de las tablas volcadas
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT de la tabla `tb_bk_admin`
+-- AUTO_INCREMENT for table `tb_bk_admin`
 --
 ALTER TABLE `tb_bk_admin`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT de la tabla `tb_bk_category`
+-- AUTO_INCREMENT for table `tb_bk_category`
 --
 ALTER TABLE `tb_bk_category`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
--- AUTO_INCREMENT de la tabla `tb_bk_comment`
+-- AUTO_INCREMENT for table `tb_bk_comment`
 --
 ALTER TABLE `tb_bk_comment`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
--- AUTO_INCREMENT de la tabla `tb_bk_ingredient`
+-- AUTO_INCREMENT for table `tb_bk_ingredient`
 --
 ALTER TABLE `tb_bk_ingredient`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- AUTO_INCREMENT de la tabla `tb_bk_mealplan`
+-- AUTO_INCREMENT for table `tb_bk_mealplan`
 --
 ALTER TABLE `tb_bk_mealplan`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de la tabla `tb_bk_meal_recip`
+-- AUTO_INCREMENT for table `tb_bk_meal_recip`
 --
 ALTER TABLE `tb_bk_meal_recip`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de la tabla `tb_bk_notice`
+-- AUTO_INCREMENT for table `tb_bk_notice`
 --
 ALTER TABLE `tb_bk_notice`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT de la tabla `tb_bk_origin`
+-- AUTO_INCREMENT for table `tb_bk_origin`
 --
 ALTER TABLE `tb_bk_origin`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT de la tabla `tb_bk_preparation`
+-- AUTO_INCREMENT for table `tb_bk_preparation`
 --
 ALTER TABLE `tb_bk_preparation`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
--- AUTO_INCREMENT de la tabla `tb_bk_preparation_list`
+-- AUTO_INCREMENT for table `tb_bk_preparation_list`
 --
 ALTER TABLE `tb_bk_preparation_list`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
--- AUTO_INCREMENT de la tabla `tb_bk_recipe`
+-- AUTO_INCREMENT for table `tb_bk_recipe`
 --
 ALTER TABLE `tb_bk_recipe`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
--- AUTO_INCREMENT de la tabla `tb_bk_recipe_in`
+-- AUTO_INCREMENT for table `tb_bk_recipe_in`
 --
 ALTER TABLE `tb_bk_recipe_in`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de la tabla `tb_bk_recipe_utens`
+-- AUTO_INCREMENT for table `tb_bk_recipe_utens`
 --
 ALTER TABLE `tb_bk_recipe_utens`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de la tabla `tb_bk_shoplist`
+-- AUTO_INCREMENT for table `tb_bk_shoplist`
 --
 ALTER TABLE `tb_bk_shoplist`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de la tabla `tb_bk_shop_ingred`
+-- AUTO_INCREMENT for table `tb_bk_shop_ingred`
 --
 ALTER TABLE `tb_bk_shop_ingred`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de la tabla `tb_bk_shop_utens`
+-- AUTO_INCREMENT for table `tb_bk_shop_utens`
 --
 ALTER TABLE `tb_bk_shop_utens`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de la tabla `tb_bk_user`
+-- AUTO_INCREMENT for table `tb_bk_user`
 --
 ALTER TABLE `tb_bk_user`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT de la tabla `tb_bk_utensil`
+-- AUTO_INCREMENT for table `tb_bk_utensil`
 --
 ALTER TABLE `tb_bk_utensil`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- Restricciones para tablas volcadas
+-- Constraints for dumped tables
 --
 
 --
--- Filtros para la tabla `tb_bk_admin`
+-- Constraints for table `tb_bk_admin`
 --
 ALTER TABLE `tb_bk_admin`
   ADD CONSTRAINT `tb_bk_admin_ibfk_1` FOREIGN KEY (`ID_USUARIO`) REFERENCES `tb_bk_user` (`ID`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Filtros para la tabla `tb_bk_comment`
+-- Constraints for table `tb_bk_comment`
 --
 ALTER TABLE `tb_bk_comment`
   ADD CONSTRAINT `tb_bk_comment_ibfk_1` FOREIGN KEY (`ID_RECETA`) REFERENCES `tb_bk_recipe` (`ID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `tb_bk_comment_ibfk_2` FOREIGN KEY (`ID_USUARIO`) REFERENCES `tb_bk_user` (`ID`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Filtros para la tabla `tb_bk_ingredient`
+-- Constraints for table `tb_bk_ingredient`
 --
 ALTER TABLE `tb_bk_ingredient`
   ADD CONSTRAINT `tb_bk_ingredient_ibfk_1` FOREIGN KEY (`ID_CATEGORIA`) REFERENCES `tb_bk_category` (`ID`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Filtros para la tabla `tb_bk_mealplan`
+-- Constraints for table `tb_bk_mealplan`
 --
 ALTER TABLE `tb_bk_mealplan`
   ADD CONSTRAINT `tb_bk_mealplan_ibfk_1` FOREIGN KEY (`ID_USUARIO`) REFERENCES `tb_bk_user` (`ID`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Filtros para la tabla `tb_bk_meal_recip`
+-- Constraints for table `tb_bk_meal_recip`
 --
 ALTER TABLE `tb_bk_meal_recip`
   ADD CONSTRAINT `tb_bk_meal_recip_ibfk_1` FOREIGN KEY (`ID_RECETA`) REFERENCES `tb_bk_recipe` (`ID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `tb_bk_meal_recip_ibfk_2` FOREIGN KEY (`ID_MEAL`) REFERENCES `tb_bk_mealplan` (`ID`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Filtros para la tabla `tb_bk_preparation`
+-- Constraints for table `tb_bk_preparation`
 --
 ALTER TABLE `tb_bk_preparation`
   ADD CONSTRAINT `tb_bk_preparation_ibfk_1` FOREIGN KEY (`ID_RECETA`) REFERENCES `tb_bk_recipe` (`ID`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Filtros para la tabla `tb_bk_preparation_list`
+-- Constraints for table `tb_bk_preparation_list`
 --
 ALTER TABLE `tb_bk_preparation_list`
   ADD CONSTRAINT `tb_bk_preparation_list_ibfk_1` FOREIGN KEY (`ID_PREPARACION`) REFERENCES `tb_bk_preparation` (`ID`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Filtros para la tabla `tb_bk_recipe`
+-- Constraints for table `tb_bk_recipe`
 --
 ALTER TABLE `tb_bk_recipe`
   ADD CONSTRAINT `tb_bk_recipe_ibfk_2` FOREIGN KEY (`ID_CATEGORIA`) REFERENCES `tb_bk_category` (`ID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
@@ -632,41 +713,41 @@ ALTER TABLE `tb_bk_recipe`
   ADD CONSTRAINT `tb_bk_recipe_ibfk_4` FOREIGN KEY (`ID_USUARIO`) REFERENCES `tb_bk_user` (`ID`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Filtros para la tabla `tb_bk_recipe_in`
+-- Constraints for table `tb_bk_recipe_in`
 --
 ALTER TABLE `tb_bk_recipe_in`
   ADD CONSTRAINT `tb_bk_recipe_in_ibfk_1` FOREIGN KEY (`ID_RECETA`) REFERENCES `tb_bk_recipe` (`ID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `tb_bk_recipe_in_ibfk_2` FOREIGN KEY (`ID_INGREDIENTE`) REFERENCES `tb_bk_ingredient` (`ID`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Filtros para la tabla `tb_bk_recipe_utens`
+-- Constraints for table `tb_bk_recipe_utens`
 --
 ALTER TABLE `tb_bk_recipe_utens`
   ADD CONSTRAINT `tb_bk_recipe_utens_ibfk_1` FOREIGN KEY (`ID_UTENCILIO`) REFERENCES `tb_bk_utensil` (`ID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `tb_bk_recipe_utens_ibfk_2` FOREIGN KEY (`ID_RECETA`) REFERENCES `tb_bk_recipe` (`ID`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Filtros para la tabla `tb_bk_shoplist`
+-- Constraints for table `tb_bk_shoplist`
 --
 ALTER TABLE `tb_bk_shoplist`
   ADD CONSTRAINT `tb_bk_shoplist_ibfk_1` FOREIGN KEY (`ID_USUARIO`) REFERENCES `tb_bk_user` (`ID`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Filtros para la tabla `tb_bk_shop_ingred`
+-- Constraints for table `tb_bk_shop_ingred`
 --
 ALTER TABLE `tb_bk_shop_ingred`
   ADD CONSTRAINT `tb_bk_shop_ingred_ibfk_1` FOREIGN KEY (`ID_INGRENDIENTE`) REFERENCES `tb_bk_ingredient` (`ID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `tb_bk_shop_ingred_ibfk_2` FOREIGN KEY (`ID_SHOP`) REFERENCES `tb_bk_shoplist` (`ID`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Filtros para la tabla `tb_bk_shop_utens`
+-- Constraints for table `tb_bk_shop_utens`
 --
 ALTER TABLE `tb_bk_shop_utens`
   ADD CONSTRAINT `tb_bk_shop_utens_ibfk_1` FOREIGN KEY (`ID_UTENCILIO`) REFERENCES `tb_bk_utensil` (`ID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `tb_bk_shop_utens_ibfk_2` FOREIGN KEY (`ID_SHOP`) REFERENCES `tb_bk_shoplist` (`ID`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Filtros para la tabla `tb_bk_utensil`
+-- Constraints for table `tb_bk_utensil`
 --
 ALTER TABLE `tb_bk_utensil`
   ADD CONSTRAINT `tb_bk_utensil_ibfk_1` FOREIGN KEY (`ID_CATEGORIA`) REFERENCES `tb_bk_category` (`ID`) ON DELETE NO ACTION ON UPDATE NO ACTION;
