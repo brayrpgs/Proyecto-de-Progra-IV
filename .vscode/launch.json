@@ -9,6 +9,16 @@
             "projectName": "booleanKitchen",
             "args": "",
             "envFile": "${workspaceFolder}/.env"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-UsuarioApplication<booleanKitchen>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.prograIV.Usuario.UsuarioApplication",
+            "projectName": "booleanKitchen",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
         }
     ]
 }
