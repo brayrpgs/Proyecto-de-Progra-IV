@@ -3,13 +3,14 @@ package cr.ac.una.booleanKitchen.Data;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
 public class ConectarDB {
 
-    private final static String databaseName = "db_hotel";
+    private final static String databaseName = "dbbooleankitchen";
     private final static String user = "root";
     private final static String pass = "";
 
@@ -18,6 +19,7 @@ public class ConectarDB {
 
     private final static String url = ""
             + "jdbc:mysql://" + host + ":" + port + "/" + databaseName;
+    private final static String url2="";
     private static Connection conexion; //java.sql connection variable de librería
 
     public static Connection conectar() {
@@ -29,9 +31,12 @@ public class ConectarDB {
         }
         try {
             conexion = DriverManager.getConnection(url, user, pass);
-            System.out.println("Se estableció conexión con la base de datos");
         } catch (SQLException e) {
-            System.out.println("Error de conexión" + e.getMessage());
+            try {
+                conexion = DriverManager.getConnection(url2, user, pass);
+            } catch (SQLException ex) {
+                Logger.getLogger(ConectarDB.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
         return conexion;
     }

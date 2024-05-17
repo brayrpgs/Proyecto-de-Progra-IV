@@ -1,0 +1,23 @@
+
+<div id="aux">
+    <p th:text="${message}"></p>
+</div>
+
+<div id="auxIndex" th:if="${Ingredient != null}">
+    
+    <h1>Detalles del Ingrediente</h1>
+    <p>Código: <span th:text="${Ingredient.code}"></span></p>
+    <p>Nombre: <span th:text="${Ingredient.name}"></span></p>
+    <p>Cantidad: <span th:text="${Ingredient.quantity}"></span></p>
+    <p>Peso: <span th:text="${Ingredient.weight}"></span></p>
+    <p>Categoría: <span th:text="${Ingredient.categoryName}"></span></p>
+    <p>Calorías: <span th:text="${Ingredient.calories}"></span></p>
+    <p>Descripción: <span th:text="${Ingredient.description}"></span></p>
+    <p style="text-align: center;">Imagen</p>
+    <div style="text-align: center; width: 100%;">
+        <img th:src="@{'/img/ingredientes/' + ${Ingredient.image}}" 
+             th:alt="${Ingredient.image}" 
+             style="width: 300px; height: auto; max-width: 100%;" />
+    </div>
+    
+</div>

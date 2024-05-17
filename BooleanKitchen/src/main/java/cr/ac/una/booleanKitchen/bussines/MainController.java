@@ -6,7 +6,7 @@ package cr.ac.una.booleanKitchen.bussines;
 
 /**
  *
- * @author BrayRPGs
+ * @author BrayRPGs EL NOVIO DE DIEGO
  */
 public class MainController {
     

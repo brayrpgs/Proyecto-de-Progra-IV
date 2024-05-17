@@ -1,0 +1,29 @@
+La idea es no usar tablas, si no, mostrar la información en cards y que se vea más bonito. Pero no es obligatorio, en algunas partes se puede mostrar alguna información en tablas
+
+Para usar estos diseños se debe usar la siguiente estructura:
+
+<div class="main-container">
+    <h1 style="text-align: center;">⭐Top 10 mejores recetas⭐</h1>
+    <div class="container">
+        <div class="card">
+            <div class="card-image">
+                <!-- IMG o SVG -->
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 5H4V19L13.2923 9.70649C13.6828 9.31595 14.3159 9.31591 14.7065 9.70641L20 15.0104V5ZM2 3.9934C2 3.44476 2.45531 3 2.9918 3H21.0082C21.556 3 22 3.44495 22 3.9934V20.0066C22 20.5552 21.5447 21 21.0082 21H2.9918C2.44405 21 2 20.5551 2 20.0066V3.9934ZM8 11C6.89543 11 6 10.1046 6 9C6 7.89543 6.89543 7 8 7C9.10457 7 10 7.89543 10 9C10 10.1046 9.10457 11 8 11Z"></path></svg>
+            </div>
+            <div class="category"> Category </div>
+            <div class="heading"> A heading that must span over two lines
+                <div class="author"> By <span class="name">Abi</span> 20 days ago</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+1. La clase main-container es indispensable para que se ajuste a diferentes pantallas
+
+2. El h1 es el titulo de lo que van a mostrar
+
+3. La clase container y card son necesarias que vayan juntas para mantener el estilo de los componentes
+
+4. card-image es donde se va almacenar la imagen, el svg es el que se va a utilizar por defecto si no se encotrara la imagen. Caso contrario es un elemento image
+
