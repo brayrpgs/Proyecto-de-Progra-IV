@@ -8,6 +8,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
         <title>Tabla de Categoria</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<<<<<<< HEAD
          <link rel="stylesheet" th:href="@{/css/cat/style.css}"/>
         <link rel="stylesheet" type="text/css" th:href="@{/css/stNav.css}">
         <link rel="stylesheet" type="text/css" th:href="@{/css/stFooter.css}">
@@ -18,6 +19,18 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
     </head>
     <body>
          <div th:replace="plantillas/nav :: nav"></div>
+=======
+         <link rel="stylesheet" th:href="@{/css/category/style.css}"/>
+        <link rel="stylesheet" th:href="@{/css/category/footer.css}"/>
+        <link rel="stylesheet" th:href="@{/css/category/nav.css}"/>
+         <link rel="stylesheet" th:href="@{/css/category/recetasynoticias.css}"/>
+         <link rel="stylesheet" th:href="@{/css/category/btnModel.css}"/>
+        <link rel="stylesheet" th:href="@{/css/category/colores_fuentes.css}"/>
+        <script text="text/javascript" th:src="@{/js/category_funtions.js}"></script>
+    </head>
+    <body>
+         <div th:replace="category/nav :: nav"></div>
+>>>>>>> 90eed0b00afdd806e93f131d4f117b7bde4217cb
         
         <div class="container">
             
@@ -52,7 +65,11 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                         <td th:text="${category.idSerial}" th:value="${category.idSerial}" ></td>
                         <td th:text="${category.name}"></td>
                         <td>
+<<<<<<< HEAD
                             <img th:src="@{'/imgCat/' + ${category.image}}" alt="Imagen vista"/>
+=======
+                            <img th:src="@{'/img/' + ${category.urlImagen}}" alt="Imagen vista"/>
+>>>>>>> 90eed0b00afdd806e93f131d4f117b7bde4217cb
                         </td>
 
                         <td th:text="${#temporals.format(category.date, 'dd-MM-yyyy')}"></td>
@@ -68,7 +85,11 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                                     </svg>
                                 </button>
                                       </a>
+<<<<<<< HEAD
                                 <button onclick="confirmAction(this)" type="button" th:attr="idSerial=${category.idSerial},url=${category.image},data-pageCurrent=${page.number},
+=======
+                                <button onclick="confirmAction(this)" type="button" th:attr="idSerial=${category.idSerial},url=${category.urlImagen},data-pageCurrent=${page.number},
+>>>>>>> 90eed0b00afdd806e93f131d4f117b7bde4217cb
                                     data-pageElements=${page.getNumberOfElements()}" class="deleteBtn" alt="Eliminar">
                                     <svg
                                         class="delete-top"
@@ -115,7 +136,11 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                             <dialog  id="view-category">
                                 <h1>Detalles de categoría</h1>
                                 <h2 th:text="'Categoría: '+${category.name}"></h2>
+<<<<<<< HEAD
                                  <img th:src="@{'/imgCat/' + ${category.image}}" alt="Imagen vista"/>
+=======
+                                 <img th:src="@{'/img/' + ${category.urlImagen}}" alt="Imagen vista"/>
+>>>>>>> 90eed0b00afdd806e93f131d4f117b7bde4217cb
                                  <p th:text="'No.Serial: '+${category.idSerial}"></p>
                                  <p th:text="'Descripción: '+${category.description}"></p>
                                  <p th:text="'Etiqueta: '+${category.label}"></p>
@@ -202,6 +227,10 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
          
           </script>
           
+<<<<<<< HEAD
         <footer th:replace="plantillas/footer :: footer"></footer>
+=======
+        <footer th:replace="category/footer :: footer"></footer>
+>>>>>>> 90eed0b00afdd806e93f131d4f117b7bde4217cb
     </body>
 </html>

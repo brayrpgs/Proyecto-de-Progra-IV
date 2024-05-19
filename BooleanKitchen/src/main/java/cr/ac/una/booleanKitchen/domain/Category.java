@@ -39,7 +39,11 @@ public class Category {
     @Column(name="DESCRIPCION")
     private String description;
     @Column(name="RUTA_IMG")
+<<<<<<< HEAD
     private String image;
+=======
+    private String urlImagen;
+>>>>>>> 90eed0b00afdd806e93f131d4f117b7bde4217cb
     @Column(name="ETIQUETA")
     private String label; //eqtiqueta de categoria: utencilio, ingrediente, receta
     @Column(name="CREADO_POR")
@@ -57,7 +61,11 @@ public class Category {
     public Category() {
     }
 
+<<<<<<< HEAD
     public Category(int id, String idSerial, String name, String description, String image, String label, String createBy, boolean catVisible, int quantity, String comment, LocalDate date) {
+=======
+    public Category(int id, String idSerial, String name, String description, String urlImagen, String label, String createBy, boolean catVisible, int quantity, String comment, LocalDate date) {
+>>>>>>> 90eed0b00afdd806e93f131d4f117b7bde4217cb
         this.id = id;
         this.idSerial = idSerial;
         this.name = name;
@@ -70,6 +78,16 @@ public class Category {
         this.comment = comment;
         this.date = date;
     }
+<<<<<<< HEAD
   
+=======
+
+
+    
+
+   
+    
+    
+>>>>>>> 90eed0b00afdd806e93f131d4f117b7bde4217cb
     
 }
