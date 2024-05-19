@@ -56,12 +56,11 @@
                         <div class="swiper">
                             <div class="swiper-wrapper">
                                 <div class="swiper-slide" th:each="noticia : ${noticias}">
-                                    <a href="#" style="text-decoration: none;">
-                                        <img th:src="@{/assets/__${noticia.image}__}" alt="Imagen de una noticia">
+                                    <a th:href="@{'/c_noticia/noticias/verNoticia?URL=' + ${noticia.URL}}" style="text-decoration: none;">
+                                        <img th:src="@{/imgNot/__${noticia.RUTA_IMG}__}" alt="Imagen de una noticia">
                                         <div class="news-details">
-                                            <h2 th:text="${noticia.tittle}"></h2>
-                                            <p th:text="${noticia.resume}"></p>
-                                            <p th:text="${noticia.author}"></p>
+                                            <h2 th:text="${noticia.TITULO}"></h2>
+                                            <p th:text="${noticia.AUTHOR}"></p>
                                         </div>
                                     </a>
                                 </div>

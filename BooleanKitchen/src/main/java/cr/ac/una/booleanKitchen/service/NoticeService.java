@@ -24,7 +24,7 @@ public class NoticeService {
     public NoticeService(NoticeRepository noticeRepository) {
         this.noticeRepository = noticeRepository;
     }
-    
+      
 
     public void saveNotice(Notice notice) {
         // Guardar la instancia de Notice en la base de datos
