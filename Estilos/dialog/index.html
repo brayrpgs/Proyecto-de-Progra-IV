@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../colores_fuentes.css">
+    <link rel="stylesheet" href="/dialog/style.css">
+    <script src="/dialog/main.js"></script>
+    <title>Abrir dialog</title>
+
+
+    <!-- Este estilo es solo para este boton -->
+    <style>
+
+        body button{
+            background-color: rgb(102, 102, 224);
+            color: white;
+            width: 100px;
+            height: 50px;
+        }
+
+    
+    </style>
+
+</head>
+<body>
+
+    <button data-open>Abrir dialog</button>
+    
+
+
+    <dialog id="modal">
+        <h1 style="text-align: center;">Modal</h1>
+        <div class="container-elements">
+            <div class="inputs-modal">
+                <div class="inputs-items">
+                    <div class="wave-group">
+                        <input required="" type="text" class="input">
+                        <span class="bar"></span>
+                        <label class="label">
+                            <span class="label-char" style="--index: 0">N</span>
+                            <span class="label-char" style="--index: 1">o</span>
+                            <span class="label-char" style="--index: 2">m</span>
+                            <span class="label-char" style="--index: 3">b</span>
+                            <span class="label-char" style="--index: 4">r</span>
+                            <span class="label-char" style="--index: 5">e</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div style="padding: 4%;">
+              <button class="modal-btn" onclick="enviarDatos()">Enviar</button>
+              <button class="modal-btn" data-close>Cerrar</button>
+            </div>
+        </div>
+    </dialog>
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,4 @@
+Esta estructura es por si ocupan los dos botones juntos
+
+Deben importar los estilos especificos para cada uno de los botones
+

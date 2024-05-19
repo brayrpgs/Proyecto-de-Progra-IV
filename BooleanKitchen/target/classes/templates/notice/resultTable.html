@@ -1,0 +1,170 @@
+<div id="tableContainer">
+
+    <th:block th:if="${#lists.isEmpty(pageNumbers)}">
+        <h2 style="text-align: center;">No hay noticias ingresadas</h2>
+    </th:block>
+
+    <th:block th:unless="${#lists.isEmpty(pageNumbers)}">
+        <table>
+            <thead>
+                <tr>
+                    <th>Identificador</th>
+                    <th>Título</th>
+                    <th>Autor</th>
+                    <th>Imagen</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="item : ${page.content}">
+                    <td th:text="${item.IDENTIFICADOR}"></td>
+                    <td th:text="${item.TITULO}"></td>
+                    <td th:text="${item.AUTHOR}"></td>
+                    <td>
+                        <Img th:src="@{'/img/notice/' + ${item.RUTA_IMG}}" th:alt="${item.RUTA_IMG}">
+
+                        </Img>
+                    </td>
+
+                    <td style="width: 50px;">
+                        <div class="contenedor-acciones">
+                            <form id="buttonDelete">
+
+                                <button type="button" th:attr="item-ID=${item.ID}
+                            , item-RUTA_IMG=${item.RUTA_IMG} , item-TITULO=${item.TITULO},
+                            data-pageCurrent=${page.number},
+                                    data-pageElements=${page.getNumberOfElements()}" onclick="deleteNotice(this)"
+                                    class="deleteBtn" alt="Eliminar">
+                                    <svg class="delete-top" viewBox="0 0 39 7" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <line y1="5" x2="39" y2="5" stroke="white" stroke-width="4"></line>
+                                        <line x1="12" y1="1.5" x2="26.0357" y2="1.5" stroke="white" stroke-width="3">
+                                        </line>
+                                    </svg>
+                                    <svg class="delete-bottom" viewBox="0 0 33 39" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <mask id="path-1-inside-1_8_19" fill="white">
+                                            <path
+                                                d="M0 0H33V35C33 37.2091 31.2091 39 29 39H4C1.79086 39 0 37.2091 0 35V0Z">
+                                            </path>
+                                        </mask>
+                                        <path
+                                            d="M0 0H33H0ZM37 35C37 39.4183 33.4183 43 29 43H4C-0.418278 43 -4 39.4183 -4 35H4H29H37ZM4 43C-0.418278 43 -4 39.4183 -4 35V0H4V35V43ZM37 0V35C37 39.4183 33.4183 43 29 43V35V0H37Z"
+                                            fill="white" mask="url(#path-1-inside-1_8_19)"></path>
+                                        <path d="M12 6L12 29" stroke="white" stroke-width="4"></path>
+                                        <path d="M21 6V29" stroke="white" stroke-width="4"></path>
+                                    </svg>
+                                </button>
+
+                            </form>
+                            <form th:action="@{'/c_noticia/noticias/actualizarNoticia'}" method="get">
+                                <input type="hidden" name="IDENTIFICADOR" th:value="${item.IDENTIFICADOR}" />
+                                <button class="editBtn" alt="Editar" type="submit">
+                                    <svg height="1em" viewBox="0 0 512 512">
+                                        <path
+                                            d="M410.3 231l11.3-11.3-33.9-33.9-62.1-62.1L291.7 89.8l-11.3 11.3-22.6 22.6L58.6 322.9c-10.4 10.4-18 23.3-22.2 37.4L1 480.7c-2.5 8.4-.2 17.5 6.1 23.7s15.3 8.5 23.7 6.1l120.3-35.4c14.1-4.2 27-11.8 37.4-22.2L387.7 253.7 410.3 231zM160 399.4l-9.1 22.7c-4 3.1-8.5 5.4-13.3 6.9L59.4 452l23-78.1c1.4-4.9 3.8-9.4 6.9-13.3l22.7-9.1v32c0 8.8 7.2 16 16 16h32zM362.7 18.7L348.3 33.2 325.7 55.8 314.3 67.1l33.9 33.9 62.1 62.1 33.9 33.9 11.3-11.3 22.6-22.6 14.5-14.5c25-25 25-65.5 0-90.5L453.3 18.7c-25-25-65.5-25-90.5 0zm-47.4 168l-144 144c-6.2 6.2-16.4 6.2-22.6 0s-6.2-16.4 0-22.6l144-144c6.2-6.2 16.4-6.2 22.6 0s6.2 16.4 0 22.6z">
+                                        </path>
+                                    </svg>
+                                </button>
+                            </form>
+                            <form id="buttonShow">
+
+                                <button type="button" th:attr="item-id=${item.ID}" onclick="showIngredient(this)"
+                                    alt="Mostrar">
+                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                        viewBox="0 0 576 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com/ License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+                                        <path
+                                            d="M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 156 17.3 208 2.5 243.7c-3.3 7.9-3.3 16.7 0 24.6C17.3 304 48.6 356 95.4 399.4C142.5 443.2 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C433.5 68.8 368.8 32 288 32zM144 256a144 144 0 1 1 288 0 144 144 0 1 1 -288 0zm144-64c0 35.3-28.7 64-64 64c-7.1 0-13.9-1.2-20.3-3.3c-5.5-1.8-11.9 1.6-11.7 7.4c.3 6.9 1.3 13.8 3.2 20.7c13.7 51.2 66.4 81.6 117.6 67.9s81.6-66.4 67.9-117.6c-11.1-41.5-47.8-69.4-88.6-71.1c-5.8-.2-9.2 6.1-7.4 11.7c2.1 6.4 3.3 13.2 3.3 20.3z" />
+                                    </svg>
+                                </button>
+
+                            </form>
+                        </div>
+                    </td>
+
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="pagination-container">
+            <nav aria-label="Page navigation" class="page_navigation">
+                <ul class="pagination">
+                    <li th:classappend="${page.first} ? 'disabled' : ''" title="Primera página">
+                        <a th:href="@{'?page=0&size=' + ${page.size}}">
+                            <svg fill="blue" height="25px" width="25px" version="1.1" id="Layer_1"
+                                xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve"
+                                transform="rotate(180)">
+                                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                                <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                                <g id="SVGRepo_iconCarrier">
+                                    <path
+                                        d="M0,381.4l237.7-118.9L0,143.6V381.4z M237.7,262.5v118.9l237.7-118.9L237.7,143.6V262.5z M475.4,143.6v118.9v118.9H512 V143.6H475.4z">
+                                    </path>
+                                </g>
+                            </svg>
+                        </a>
+                    </li>
+                    <li th:classappend="${page.first} ? 'disabled' : ''" title="Página anterior">
+                        <a th:with="prevPage=${page.number - 1}"
+                            th:href="@{'?page=' + ${prevPage} + '&size=' + ${page.size}}">
+                            <svg fill="blue" height="25px" width="25px" version="1.1" id="XMLID_287_"
+                                xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                viewBox="0 0 24 24" xml:space="preserve" transform="rotate(180)">
+                                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                                <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                                <g id="SVGRepo_iconCarrier">
+                                    <g id="next">
+                                        <g>
+                                            <polygon points="6.8,23.7 5.4,22.3 15.7,12 5.4,1.7 6.8,0.3 18.5,12 ">
+                                            </polygon>
+                                        </g>
+                                    </g>
+                                </g>
+                            </svg>
+                        </a>
+                    </li>
+                    <li th:each="i : ${pageNumbers}" th:classappend="${i == page.number + 1} ? 'active' : ''">
+                        <a th:with="pageNum=${i - 1}" th:href="@{'?page=' + ${pageNum} + '&size=' + ${page.size}}"
+                            th:text="${i}"></a>
+                    </li>
+                    <li th:classappend="${page.last} ? 'disabled' : ''" title="Página siguiente">
+                        <a th:with="nextPage=${page.number + 1}"
+                            th:href="@{'?page=' + ${nextPage} + '&size=' + ${page.size}}">
+                            <svg fill="blue" height="25px" width="25px" version="1.1" id="XMLID_287_"
+                                xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                viewBox="0 0 24 24" xml:space="preserve" transform="rotate(0)">
+                                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                                <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                                <g id="SVGRepo_iconCarrier">
+                                    <g id="next">
+                                        <g>
+                                            <polygon points="6.8,23.7 5.4,22.3 15.7,12 5.4,1.7 6.8,0.3 18.5,12 ">
+                                            </polygon>
+                                        </g>
+                                    </g>
+                                </g>
+                            </svg>
+                        </a>
+                    </li>
+                    <li th:classappend="${page.last} ? 'disabled' : ''" title="Ultima página">
+                        <a th:with="lastPage=${page.totalPages - 1}"
+                            th:href="@{'?page=' + ${lastPage} + '&size=' + ${page.size}}">
+                            <svg fill="blue" height="25px" width="25px" version="1.1" id="Layer_1"
+                                xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve">
+                                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                                <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                                <g id="SVGRepo_iconCarrier">
+                                    <path
+                                        d="M0,381.4l237.7-118.9L0,143.6V381.4z M237.7,262.5v118.9l237.7-118.9L237.7,143.6V262.5z M475.4,143.6v118.9v118.9H512 V143.6H475.4z">
+                                    </path>
+                                </g>
+                            </svg>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </th:block>
+</div>
