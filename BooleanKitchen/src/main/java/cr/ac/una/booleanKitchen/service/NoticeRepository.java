@@ -4,7 +4,6 @@ import java.util.Optional;
 
 import org.springframework.data.repository.PagingAndSortingRepository;
 import cr.ac.una.booleanKitchen.domain.Notice;
-import java.util.List;
 
 public interface NoticeRepository extends PagingAndSortingRepository<Notice, Integer> {
     Notice save(Notice notice);

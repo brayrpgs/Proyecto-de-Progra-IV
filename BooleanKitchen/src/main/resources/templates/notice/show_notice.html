@@ -50,9 +50,10 @@
     <br><br><br><br>
 
     <h1 style="text-align: center;" th:text="${notice.TITULO}"></h1>
+    
     <br>
     <div class="noticia-container">
-        <img class="noticia-img" th:src="@{'/img/notice/' + ${notice.RUTA_IMG}}" th:alt="${notice.RUTA_IMG}">
+        <img class="noticia-img" th:src="@{'/imgNot/' + ${notice.RUTA_IMG}}" th:alt="${notice.RUTA_IMG}">
 
         <p th:text="${notice.RESUMEN}">
             
@@ -64,7 +65,7 @@
             <span th:unless="${notice.AUTHOR == 'Anónimo'}">Escrito por el autor: <span th:text="${notice.AUTHOR}"></span></span>
         </h2>
 
-        <a href="/">
+        <a href="/c_inicio/index">
             <button>
                 Regresar al menu principal
             </button>

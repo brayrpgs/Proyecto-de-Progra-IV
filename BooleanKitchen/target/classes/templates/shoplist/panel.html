@@ -14,6 +14,7 @@
         <link rel="stylesheet" th:href="@{/css/stFooter.css}" />
         <link rel="stylesheet" th:href="@{/css/stModal.css}" />
         <link rel="stylesheet" th:href="@{/css/shoplist/insert.css}" />
+        <link rel="stylesheet" th:href="@{/css/stRecetasYNoticias.css}">
         <script th:src="@{/js/jsNav.js}"></script>
         <script th:src="@{/js/shoplist/shoplist.js}"></script>
     </head>
@@ -21,7 +22,7 @@
     <body>
         <div th:insert="~{ plantillas/nav :: nav }"></div>
         <br />
-        <h1>Lista de Compras</h1>
+        <h1 style="margin-top: 50px;">Lista de Compras</h1>
         <span id="postNav">
             <button id="insert" style="color: blue; margin-bottom: 10px;" , th:attr="onclick='showComponentInsert()'" value="0"
                     title="insertar registros">

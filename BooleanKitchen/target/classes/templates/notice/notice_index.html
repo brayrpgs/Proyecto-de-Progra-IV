@@ -134,7 +134,9 @@
 
     <div class="container">
         <br><br>
-        <h1 style="text-align: center;">Panel de control de noticias</h1>
+        <h1>
+            <a th:href="@{/c_inicio/index}" th:text="'Noticias'" style="color: lightcoral;text-decoration: none">Noticias</a>
+        </h1>
 
         <div style="text-align: center;">
             <a href="/c_noticia/noticias/agregarNoticias">
@@ -167,7 +169,7 @@
                             <td th:text="${item.TITULO}"></td>
                             <td th:text="${item.AUTHOR}"></td>
                             <td>
-                                <Img th:src="@{'/img/notice/' + ${item.RUTA_IMG}}" th:alt="${item.RUTA_IMG}">
+                                <Img th:src="@{'/imgNot/' + ${item.RUTA_IMG}}" th:alt="${item.RUTA_IMG}">
 
                                 </Img>
                             </td>

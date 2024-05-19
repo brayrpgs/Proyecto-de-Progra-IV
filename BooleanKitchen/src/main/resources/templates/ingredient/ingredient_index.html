@@ -159,7 +159,9 @@
 
     <div id="contenedor">
         <br><br>
-        <h1>Ingredientes</h1>
+        <h1>
+            <a th:href="@{/c_inicio/index}" th:text="'Ingredientes'" style="color: lightcoral;">Ingredientes</a>
+        </h1>
 
         <a href="/c_ingrediente/ingredientes/agregarIngrediente">
             <button>Agregar Ingrediente</button>
@@ -191,9 +193,7 @@
                             <td th:text="${item.categoryName}"></td>
                             <td class="description" th:text="${item.description}"></td>
                             <td>
-                                <Img th:src="@{'/img/ingredientes/' + ${item.image}}" th:alt="${item.image}">
-
-                                </Img>
+                                <img th:src="@{'/imgIng/' + ${item.image}}" th:alt="${item.image}">
                             </td>
                             <td style="width: 50px;">
                                 <div class="contenedor-acciones">
