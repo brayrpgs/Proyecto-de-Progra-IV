@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <title>Actualizar Noticia</title>
+        <meta charset="UTF-8">
+        <script text="text/javascript" th:src="@{/js/functionsNotice.js}"></script>
+        <script text="text/javascript" th:src="@{/js/jsUpload_img.js}"></script>
+        <link rel="stylesheet" th:href="@{/css/stColores_fuentes.css}">
+        <link rel="stylesheet" th:href="@{/css/stNav.css}">
+        <link rel="stylesheet" th:href="@{/css/stFooter.css}">
+        <link rel="stylesheet" th:href="@{/css/stDialog.css}">
+        <link rel="stylesheet" th:href="@{/css/stInputs_Select_uimg.css}">
+        <link rel="stylesheet" th:href="@{/css/stRecetasYNoticias.css}">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+            .container-elements{
+                width: 400px;
+            }
+            input[type="file"] {
+                margin-bottom: 10px;
+            }
+
+            #imageContainer-file,
+            #imageContainer-file2,
+            #imageContainer-file3 {
+                margin-bottom: 10px;
+            }
+
+            #imageContainer-file img,
+            #imageContainer-file2 img,
+            #imageContainer-file3 img {
+                max-width: 300px;
+                max-height: 300px;
+            }
+        </style>
+        <style>
+            .form-container {
+                position: relative;
+
+            }
+
+            .image-container {
+                position: absolute;
+                margin-left: 150px;
+
+            }
+
+            .identifier {
+                position: absolute;
+                margin-top: 10px;
+                margin-left: 600px;
+
+            }
+
+            .tittle {
+                position: absolute;
+                margin-top: 10px;
+                margin-left: 1000px;
+            }
+
+            .summary {
+
+                position: absolute;
+                margin-top: 153px;
+                margin-left: 600px;
+
+            }
+
+            .date {
+                position: absolute;
+                margin-top: 90px;
+                margin-left: 1000px;
+
+            }
+
+            .author {
+                position: absolute;
+                margin-top: 72px;
+                margin-left: 600px;
+            }
+
+            .state {
+                position: absolute;
+                margin-top: 220px;
+                margin-left: 600px;
+
+            }
+
+            .url {
+                position: absolute;
+                margin-top: 170px;
+                margin-left: 1000px;
+
+            }
+
+            .button-updatePosition {
+                position: absolute;
+                margin-top: 250px;
+                margin-left: 1025px;
+            }
+
+            .button-updateStyle {
+                font-size: 15px;
+                padding: 11px 23px;
+            }
+
+            .button-returnPosition {
+                position: absolute;
+                margin-top: 250px;
+                margin-left: 1225px;
+            }
+
+            .button-returnStyle {
+                font-size: 15px;
+                padding: 11px 23px;
+            }
+
+            .border-box {
+                position: absolute;
+                top: -2px;
+                left: 148px;
+                width: 1300px;
+                height: 350px;
+                border: 3px solid #000000;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+                border-radius: 10px;
+            }
+        </style>
+
+    </head>
+
+    <body>
+
+        <div th:replace="plantillas/nav :: nav"></div>
+        <br><br>
+        <h1 style="text-align: center">Actualizar Noticia</h1>
+        <br>
+
+        <br>
+
+        <div class="form-container">
+            <div class="border-box"></div>
+            <form id="myForm">
+
+                <div class="image-container">
+
+                    <div class="container-elements">
+                        <div class="inputs-items">
+                            <div class="container-upload-img">
+                                <input type="file" accept="image/*" name="file" id="file" oninput="this.className = ''" required>
+                                <div id="imageContainer-file">
+                                    <img src="/assets/uploadimg.jpg" alt="">
+                                </div>
+                                <button id="deleteButton" class="deleteBtn" alt="Eliminar"
+                                        onclick="deleteImage('file')">
+                                    <svg class="delete-top" viewBox="0 0 39 7" fill="none"
+                                         xmlns="http://www.w3.org/2000/svg">
+                                    <line y1="5" x2="39" y2="5" stroke="white" stroke-width="4"></line>
+                                    <line x1="12" y1="1.5" x2="26.0357" y2="1.5" stroke="white"
+                                          stroke-width="3"></line>
+                                    </svg>
+                                    <svg class="delete-bottom" viewBox="0 0 33 39" fill="none"
+                                         xmlns="http://www.w3.org/2000/svg">
+                                    <mask id="path-1-inside-1_8_19" fill="white">
+                                        <path
+                                            d="M0 0H33V35C33 37.2091 31.2091 39 29 39H4C1.79086 39 0 37.2091 0 35V0Z">
+                                        </path>
+                                    </mask>
+                                    <path
+                                        d="M0 0H33H0ZM37 35C37 39.4183 33.4183 43 29 43H4C-0.418278 43 -4 39.4183 -4 35H4H29H37ZM4 43C-0.418278 43 -4 39.4183 -4 35V0H4V35V43ZM37 0V35C37 39.4183 33.4183 43 29 43V35V0H37Z"
+                                        fill="white" mask="url(#path-1-inside-1_8_19)"></path>
+                                    <path d="M12 6L12 29" stroke="white" stroke-width="4"></path>
+                                    <path d="M21 6V29" stroke="white" stroke-width="4"></path>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="identifier">
+
+                    <!--Identificador de la noticia-->
+                    <div class="container-elements">
+                        <div class="inputs-modal">
+                            <div class="inputs-items">
+                                <div class="wave-group">
+
+                                    <input class="input" type="text" name="identifier" id="identifier" required
+                                           th:value="${item.IDENTIFICADOR}" 
+                                           readonly autocomplete="off" title="Formato válido: NOT-[números]"
+                                           oninput="addNotPrefix(this);">
+                                    <span class="bar"></span>
+                                    <label class="label">
+                                        <span class="label-char" style="--index: 0">I</span>
+                                        <span class="label-char" style="--index: 1">d</span>
+                                        <span class="label-char" style="--index: 2">e</span>
+                                        <span class="label-char" style="--index: 3">n</span>
+                                        <span class="label-char" style="--index: 4">t</span>
+                                        <span class="label-char" style="--index: 5">i</span>
+                                        <span class="label-char" style="--index: 6">f</span>
+                                        <span class="label-char" style="--index: 7">i</span>
+                                        <span class="label-char" style="--index: 8">c</span>
+                                        <span class="label-char" style="--index: 9">a</span>
+                                        <span class="label-char" style="--index: 10">d</span>
+                                        <span class="label-char" style="--index: 11">o</span>
+                                        <span class="label-char" style="--index: 12">r</span>
+                                    </label>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tittle">
+                    <!--Titulo de la noticia-->
+                    <div class="container-elements">
+                        <div class="inputs-modal">
+                            <div class="inputs-items">
+                                <div class="wave-group">
+
+                                    <input class="input" name="tittle" id="tittle"
+                                           th:value="${item.TITULO}" required autocomplete="off"
+                                           title="Asegúrate de no dejar el campo en blanco">
+
+                                    <span class="bar"></span>
+                                    <label class="label">
+                                        <span class="label-char" style="--index: 0">T</span>
+                                        <span class="label-char" style="--index: 1">í</span>
+                                        <span class="label-char" style="--index: 2">t</span>
+                                        <span class="label-char" style="--index: 3">u</span>
+                                        <span class="label-char" style="--index: 4">l</span>
+                                        <span class="label-char" style="--index: 5">o</span>
+                                    </label>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="summary">
+                    <!--Resumen de la noticia-->
+                    <div class="container-elements">
+                        <div class="inputs-modal">
+                            <div class="inputs-items">
+                                <div class="wave-group">
+
+                                    <textarea style="resize: none;" class="input" name="summary" id="summary"
+                                              autocomplete="off" 
+                                              th:text="${item.RESUMEN}" title="Asegúrate de no dejar el campo en blanco"
+                                              required maxlength="800"></textarea>
+
+                                    <span class="bar"></span>
+                                    <label class="label">
+                                        <span class="label-char" style="--index: 0">R</span>
+                                        <span class="label-char" style="--index: 1">e</span>
+                                        <span class="label-char" style="--index: 2">s</span>
+                                        <span class="label-char" style="--index: 3">u</span>
+                                        <span class="label-char" style="--index: 4">m</span>
+                                        <span class="label-char" style="--index: 5">e</span>
+                                        <span class="label-char" style="--index: 6">n</span>
+                                    </label>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="date">
+                    <!--Fecha de la noticia-->
+                    <div class="container-elements">
+                        <div class="inputs-modal">
+                            <div class="inputs-items">
+                                <div class="wave-group">
+
+                                    <input class="input" type="date" required 
+                                           th:value="${item.FECHA}" id="date">
+
+                                    <span class="bar"></span>
+                                    <label class="label">
+                                        <span class="label-char" style="--index: 0">F</span>
+                                        <span class="label-char" style="--index: 1">e</span>
+                                        <span class="label-char" style="--index: 2">c</span>
+                                        <span class="label-char" style="--index: 3">h</span>
+                                        <span class="label-char" style="--index: 4">a</span>
+                                    </label>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="author">
+                    <!--Autor de la noticia-->
+                    <div class="container-elements">
+                        <div class="inputs-modal">
+                            <div class="inputs-items">
+                                <div class="wave-group">
+
+                                    <input class="input" type="text" 
+                                           autocomplete="off" 
+                                           th:value="${item.AUTHOR}" placeholder="(Opcional)" name="author" id="author">
+
+                                    <span class="bar"></span>
+                                    <label class="label">
+                                        <span class="label-char" style="--index: 0">A</span>
+                                        <span class="label-char" style="--index: 1">u</span>
+                                        <span class="label-char" style="--index: 2">t</span>
+                                        <span class="label-char" style="--index: 3">o</span>
+                                        <span class="label-char" style="--index: 4">r</span>
+                                    </label>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="url">
+
+                    <!--url de la noticia-->
+
+                    <div class="container-elements">
+
+                        <div class="inputs-modal">
+                            <div class="inputs-items">
+
+                                <div class="wave-group">
+
+                                    <input class="input" type="text" name="url" id="url" 
+                                           th:value="${item.URL}" autocomplete="off"
+                                           title="Asegúrate de no dejar el campo en blanco" oninput="deleteBlankSpace(this)"
+                                           required>
+                                    <span class="bar"></span>
+                                    <label class="label">
+                                        <span class="label-char" style="--index: 0">U</span>
+                                        <span class="label-char" style="--index: 1">R</span>
+                                        <span class="label-char" style="--index: 2">L</span>
+
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="state">
+
+                    <!--Estado de la noticia-->
+                    <div class="container-elements">
+                        <div class="inputs-items">
+                            <div class="wave-group">
+
+
+                                <h3 style="text-align: center;">¿Que estado deseas que tenga la noticia?</h3>
+
+                                <div style="text-align: center;">
+                                    <input type="checkbox" name="state" id="state"
+                                           th:checked="${item.ESTADO}" onchange="changeMessageToCheckBox()">
+                                    <label id="stateLabel" for="state" th:text="${item.ESTADO ? 'Disponible' : 'No Disponible'}"></label>
+                                </div>
+
+
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="button-updatePosition">
+
+                    <button class="button-updateStyle" type="button" onclick="update()">
+                        Actualizar Noticia
+                    </button>
+
+                </div>
+                <div class="button-returnPosition">
+
+                    <a href="/c_noticia/noticias"><button class="button-returnStyle" type="button">Regresar a la
+                            tabla</button></a>
+
+                </div>
+
+            </form>
+
+            <dialog id="modal">
+                <div id="aux">
+
+                </div>
+
+                <button onclick="closeDialog()">Cerrar</button>
+
+            </dialog>
+
+            <br><br>
+        </div>
+
+        <br><br><br><br><br><br>
+        <br><br><br><br><br><br>
+        <br><br><br><br><br><br>
+        <br><br><br><br><br><br>
+
+        <div th:replace="plantillas/footer :: footer"></div>
+    </body>
+
+</html>

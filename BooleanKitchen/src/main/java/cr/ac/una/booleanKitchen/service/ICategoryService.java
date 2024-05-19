@@ -4,7 +4,6 @@
  */
 package cr.ac.una.booleanKitchen.service;
 
-
 import cr.ac.una.booleanKitchen.domain.Category;
 import java.util.List;
 import org.springframework.data.domain.Page;
@@ -12,21 +11,19 @@ import org.springframework.data.domain.Pageable;
 
 /**
  *
- * @author josue
+ * @author Usuario
  */
 public interface ICategoryService {
+    public List<Category> getCategory();
+
      public int guardar(Category Cat);
+      public void EliminarCategoria (int codigo);
     
-    public List getCategorias();
-    
-    public void EliminarCategoria (int codigo);
-    
-    Category getCategory(String cat);
+    Category getCategoryOnly(String cat);
     
     public int DeleteCategory(String cat);
     
     public boolean modifyCat(Category cat);
     
     public Page<Category> getPage(Pageable page);
-    
 }

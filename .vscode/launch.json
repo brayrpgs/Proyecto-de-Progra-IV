@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-PaginasDeRecetasApplication<booleanKitchen>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "cr.ac.una.booleanKitchen.PaginasDeRecetasApplication",
+            "projectName": "booleanKitchen",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}

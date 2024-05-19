@@ -16,7 +16,6 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
-
 /**
  *
  * @author josue
@@ -40,7 +39,7 @@ public class Category {
     @Column(name="DESCRIPCION")
     private String description;
     @Column(name="RUTA_IMG")
-    private String urlImagen;
+    private String image;
     @Column(name="ETIQUETA")
     private String label; //eqtiqueta de categoria: utencilio, ingrediente, receta
     @Column(name="CREADO_POR")
@@ -58,12 +57,12 @@ public class Category {
     public Category() {
     }
 
-    public Category(int id, String idSerial, String name, String description, String urlImagen, String label, String createBy, boolean catVisible, int quantity, String comment, LocalDate date) {
+    public Category(int id, String idSerial, String name, String description, String image, String label, String createBy, boolean catVisible, int quantity, String comment, LocalDate date) {
         this.id = id;
         this.idSerial = idSerial;
         this.name = name;
         this.description = description;
-        this.urlImagen = urlImagen;
+        this.image = image;
         this.label = label;
         this.createBy = createBy;
         this.catVisible = catVisible;
@@ -71,12 +70,6 @@ public class Category {
         this.comment = comment;
         this.date = date;
     }
-
-
-    
-
-   
-    
-    
+  
     
 }

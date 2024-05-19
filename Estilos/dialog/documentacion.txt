@@ -1,0 +1,36 @@
+Un dialog lleva la siguiente estructura
+
+<dialog id="modal">
+    <h1 style="text-align: center;">Modal</h1>
+    <div class="container-elements">
+        <div class="inputs-modal">
+            <div class="inputs-items">
+                <div class="wave-group">
+                    <input required="" type="text" class="input">
+                    <span class="bar"></span>
+                    <label class="label">
+                        <span class="label-char" style="--index: 0">N</span>
+                        <span class="label-char" style="--index: 1">o</span>
+                        <span class="label-char" style="--index: 2">m</span>
+                        <span class="label-char" style="--index: 3">b</span>
+                        <span class="label-char" style="--index: 4">r</span>
+                        <span class="label-char" style="--index: 5">e</span>
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div style="padding: 4%;">
+            <button class="modal-btn" onclick="enviarDatos()">Enviar</button>
+            <button class="modal-btn" data-close>Cerrar</button>
+        </div>
+    </div>
+</dialog>
+
+Nota:
+Es importante poner en cerrar el "data-close" al boton que cierra
+Para el botón que abre el dialod debe llevar "data-open"
+
+Y se debe incluir el js que abre el dialog
+
+
+No es necesario cambiar las clases del modal, ya que todos tienen los mismos diseños, lo que cambian son los componentes (inputs, etc)

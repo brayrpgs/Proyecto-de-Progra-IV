@@ -1,12 +1,9 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package cr.ac.una.booleanKitchen.Controller;
 
 
+
 import cr.ac.una.booleanKitchen.domain.Category;
-import cr.ac.una.booleanKitchen.service.CategoryServiceUpdate;
+import cr.ac.una.booleanKitchen.service.CategoryService;
 import cr.ac.una.booleanKitchen.service.ICategoryService;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -41,7 +38,7 @@ public class CategoryController {
     public static String getUrlAct() {
         return urlAct;
     }
-
+    //para permanencia de las url de imagenes a la hora de modificar
     public static void setUrlAct(String urlAct) {
         CategoryController.urlAct = urlAct;
     }
@@ -53,7 +50,7 @@ public class CategoryController {
       
        // model.addAttribute("uploadsDir", uploadsDir);
        // model.addAttribute("ListaCategory", new CategoryServiceUpdate().obtenerCat());
-        model.addAttribute("Labels", new CategoryServiceUpdate().getListLabel());
+        model.addAttribute("Labels", new CategoryService().getListLabel());
         
         
         return "category/category_View";
@@ -61,7 +58,7 @@ public class CategoryController {
     
     @GetMapping({"/viewTable"})
     public String tableView(@PageableDefault(size = 4, page = 0) Pageable pageable,Model model){
-     
+        //realizo paginacion
         refreshTable(pageable, model);
         
         return "category/viewTable";
@@ -73,7 +70,7 @@ public class CategoryController {
       
        // model.addAttribute("uploadsDir", uploadsDir);
        // model.addAttribute("ListaCategory", catRepo.getCategorias());
-         model.addAttribute("Labels", new CategoryServiceUpdate().getListLabel());
+         model.addAttribute("Labels", new CategoryService().getListLabel());
          //refreshTable(pageable, model);
         
         return "redirect:/categoriaIndex/categoria";
@@ -85,23 +82,21 @@ public class CategoryController {
     public String createCat(@RequestParam("img")MultipartFile file,@ModelAttribute Category cat,@RequestParam("Visibilidad")String status,
             @RequestParam("notaAdmin")String notaAdmin,Model model){
           LocalDate local= LocalDate.now();
-          
-            if(new CategoryServiceUpdate().validation(cat, status)){
+          //validacion de datos vacios
+            if(new CategoryService().validation(cat, status)){
             
             if(!file.isEmpty()){
-                
-          
-             
+            //creo la categoria
               cat=CreateCategory( cat,  local, status, notaAdmin, file);
-              
+              //espero la respuesta de la Base de datos 
               int statusData=catRepo.guardar(cat);
                 controlStatus(statusData, model,cat);
-              
+              //si ocurre un error en el camino
                 if(statusData<0){
                     return "category/category_View";
                 }else{
-                 
-                    new CategoryServiceUpdate().insertImg(file, cat.getUrlImagen());
+                 //si todo bien, ingreso la imagen a la carpeta respectiva
+                    new CategoryService().insertImg(file, cat.getImage());
                    
                    
                 }
@@ -119,11 +114,12 @@ public class CategoryController {
             
         }
             
-             model.addAttribute("Labels", new CategoryServiceUpdate().getListLabel());
+             model.addAttribute("Labels", new CategoryService().getListLabel());
         return "category/category_View";
     }
  
    private void controlStatus(int status, Model model, Category cat) {
+       //me traduce el error de base de datos
     switch (status) {
         case -1 -> {
             showMessage ("Error", "circle-xmark-regular","Identificador está siendo utilizado actualmente por otra categoría.",model);
@@ -142,18 +138,18 @@ public class CategoryController {
               model.addAttribute("dateElement", cat);}
     }
   
-         model.addAttribute("Labels", new CategoryServiceUpdate().getListLabel());
+         model.addAttribute("Labels", new CategoryService().getListLabel());
 }
 
     
    
     
     private Category CreateCategory(Category cat, LocalDate local,String status,String notaAdmin,MultipartFile file){
-              String note=(notaAdmin.trim().isEmpty())?"NS":notaAdmin;
+             String note=(notaAdmin.trim().isEmpty())?"NS":notaAdmin;
               cat.setId(0);
-              cat.setCatVisible(new CategoryServiceUpdate().getVisibleCat(status));
+              cat.setCatVisible(new CategoryService().getVisibleCat(status));
               cat.setQuantity(0);
-              cat.setUrlImagen(new CategoryServiceUpdate().getRoute(file));
+              cat.setImage(new CategoryService().getRoute(file));
               cat.setDate(local);
               cat.setComment(note);//commit: 
               cat.setCreateBy("Josue Porras");
@@ -163,16 +159,17 @@ public class CategoryController {
     
 
     @GetMapping({"/ModicarDatos/{idCode}"})
-    
+    //selecciona la categoria que deseo modificar
     public String modifyCategory(@PathVariable String idCode, Model model){
         
-           Category cat=catRepo.getCategory(idCode);
-            if(cat.getComment().trim().equalsIgnoreCase("NS")){
+           Category cat=catRepo.getCategoryOnly(idCode);
+           if(cat.getComment().trim().equalsIgnoreCase("NS")){
            cat.setComment("");     
            }
+          
            model.addAttribute("selectedCat", cat);
-           setUrlAct(cat.getUrlImagen());
-            model.addAttribute("Labels", new CategoryServiceUpdate().getListLabel());
+           setUrlAct(cat.getImage());
+            model.addAttribute("Labels", new CategoryService().getListLabel());
          
        return "category/category_View";
     }
@@ -182,10 +179,10 @@ public class CategoryController {
     public String ModifyTerm(@PageableDefault(size = 4, page = 0) Pageable pageable,@RequestParam("img")MultipartFile file,@ModelAttribute Category cat,@RequestParam("Visibilidad")String status,
             @RequestParam("notaAdmin")String notaAdmin,Model model){
         LocalDate local= LocalDate.now();
-            
-            if(new CategoryServiceUpdate().validation(cat, status)){
-             String note=(notaAdmin.trim().isEmpty()|| notaAdmin.trim().equalsIgnoreCase("Sin nota de autor"))?"NS":notaAdmin;
-              cat.setCatVisible(new CategoryServiceUpdate().getVisibleCat(status));
+            //valido que los datos no este vacios
+            if(new CategoryService().validation(cat, status)){
+            String note=(notaAdmin.trim().isEmpty()|| notaAdmin.trim().equalsIgnoreCase("Sin nota de autor"))?"NS":notaAdmin;
+              cat.setCatVisible(new CategoryService().getVisibleCat(status));
               cat.setQuantity(0);
               
               cat.setDate(local);
@@ -193,19 +190,19 @@ public class CategoryController {
               cat.setCreateBy("Josue Porras");
               
               if(file.isEmpty()){
-                  cat.setUrlImagen(getUrlAct());
+                  cat.setImage(getUrlAct());
               if(catRepo.modifyCat(cat)){
                   
               }     
               }else{
                
-              cat.setUrlImagen(new CategoryServiceUpdate().getRoute(file));    
+              cat.setImage(new CategoryService().getRoute(file));    
              
               
               
               if(catRepo.modifyCat(cat)){
-                   new CategoryServiceUpdate().insertImg(file, cat.getUrlImagen());
-                   new CategoryServiceUpdate().deleteImage(getUrlAct());
+                   new CategoryService().insertImg(file, cat.getImage());
+                   new CategoryService().deleteImage(getUrlAct());
                    
               }
               }
@@ -214,8 +211,8 @@ public class CategoryController {
                setUrlAct("");
             }else{
                  showMessage("adMessage", "pen-to-square-regular","Faltan datos por llenar, error al modificar." , model);
-                   model.addAttribute("Labels", new CategoryServiceUpdate().getListLabel());
-                 cat.setUrlImagen(getUrlAct());
+                   model.addAttribute("Labels", new CategoryService().getListLabel());
+                 cat.setImage(getUrlAct());
                  model.addAttribute("selectedCat", cat);
                  
                  
@@ -224,9 +221,8 @@ public class CategoryController {
               
        
            //model.addAttribute("ListaCategory", catRepo.getCategorias());
-           // refreshTable(pageable, model);
-            model.addAttribute("Labels", new CategoryServiceUpdate().getListLabel());
-        
+            //refreshTable(pageable, model);
+           model.addAttribute("Labels", new CategoryService().getListLabel());
          return "category/category_View";
     }
     
@@ -236,10 +232,10 @@ public class CategoryController {
      
      public String EliminarCategory(@PathVariable String idCode,@PathVariable String url, Model model,@PageableDefault(size = 4, page = 0) Pageable pageable){
       int status=catRepo.DeleteCategory(idCode);
-      
+      //si elimina la cat, elimino todo lo asociado
           switch (status) {
               case 1 -> {
-                  if( !new CategoryServiceUpdate().deleteImage(url)){
+                  if( !new CategoryService().deleteImage(url)){
                       showMessage("Error", "circle-xmark-regular", "Error de conectividad", model);
                   }     showMessage("success", "square-check-regular", "Categoría eliminada con éxito.", model);
               }
@@ -248,6 +244,7 @@ public class CategoryController {
               default -> {
               }
           }
+         
            //model.addAttribute("ListaCategory", catRepo.getCategorias());
            refreshTable(pageable, model);
          
@@ -256,7 +253,7 @@ public class CategoryController {
      
      @GetMapping({"/returnAddCat"})
      public String returnAddCat (Model model){
-          model.addAttribute("Labels", new CategoryServiceUpdate().getListLabel());
+          model.addAttribute("Labels", new CategoryService().getListLabel());
          
          return "category/category_View" ;
      }
@@ -272,18 +269,18 @@ public class CategoryController {
         if (cat !=null){
          model.addAttribute("dateElement", cat);   
         }
-         model.addAttribute("Labels", new CategoryServiceUpdate().getListLabel());
-          model.addAttribute("ListaCategory", catRepo.getCategorias());
+         model.addAttribute("Labels", new CategoryService().getListLabel());
+          model.addAttribute("ListaCategory", catRepo.getCategory());
     }
     
-   
+   //metodo de mensajes en la vista
     public void showMessage (String type, String imgSelect,String message,Model model){
         model.addAttribute("class", type);
         model.addAttribute("type", imgSelect);
         model.addAttribute("message", message);
     }
     
-    
+    //metodo de paginacion
     public void refreshTable(Pageable pageable, Model model) {
         Page<Category> page = catRepo.getPage(PageRequest.of(pageable.getPageNumber(), pageable.getPageSize()));
         // model.addAttribute("ListaCategory", catRepo.getCategorias());
@@ -311,5 +308,3 @@ public class CategoryController {
     }
     
 }
-
-
