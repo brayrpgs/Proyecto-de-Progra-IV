@@ -37,7 +37,7 @@ public class UtensilioService implements IUtensilioService {
     }
 
     @Override
-    public List leerUtensilio() {
+    public List<Utensil> leerUtensilio() {
         return serUtl.findAll();
     }
 

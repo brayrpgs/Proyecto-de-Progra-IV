@@ -14,7 +14,7 @@ import java.util.List;
 public interface IUtensilioService {
     public void crearUtensilio(Utensil utensilio);
 
-    public List leerUtensilio();
+    public List<Utensil> leerUtensilio();
     
     public Utensil getUtensilio(String identificador);
 
