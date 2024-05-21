@@ -74,7 +74,7 @@ public class PreparationService implements IPreparationService {
     }
 
     public LinkedList<String> getDifficulty() {
-        LinkedList<String> list = new LinkedList();
+        LinkedList<String> list = new LinkedList<String>();
         list.add("Novato");
         list.add("Cocinero");
         list.add("Chef");
@@ -194,7 +194,7 @@ public class PreparationService implements IPreparationService {
     }
 
     public List<Step> getStepsByPrep(Preparation prep) {
-        List<Step> steps = new ArrayList();
+        List<Step> steps = new ArrayList<>();
         for (Step step : Utilidades.stepsLis) {
             step.setPreparation(prep);
             steps.add(step);

@@ -23,7 +23,7 @@ public class Utilidades {
             Date.valueOf(LocalDate.now()));
 
     // para preparacion
-    public static List<Step> stepsLis = new ArrayList();
+    public static List<Step> stepsLis = new ArrayList<>();
     public static int index;
 
     public static Preparation preparacion = new Preparation();
