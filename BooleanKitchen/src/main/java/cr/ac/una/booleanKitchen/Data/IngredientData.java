@@ -3,7 +3,6 @@ package cr.ac.una.booleanKitchen.Data;
 import cr.ac.una.booleanKitchen.domain.Ingredient;
 import cr.ac.una.booleanKitchen.domain.Category;
 import cr.ac.una.booleanKitchen.domain.ConectarDB;
-import static cr.ac.una.booleanKitchen.domain.ConectarDB.conectar;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
