@@ -64,7 +64,7 @@ public class DataOrigin extends ConectarDB{
     }
   }
     public LinkedList<Origin> getListOfOrigin() throws SQLException{
-        LinkedList<Origin> origins = new LinkedList();
+        LinkedList<Origin> origins = new LinkedList<>();
         String sql = "SELECT * FROM "+TBORIGIN+";";
         Connection conexion = conectar();
         PreparedStatement statement = conexion.prepareStatement(sql);
