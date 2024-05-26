@@ -13,7 +13,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 /**
  *
- * @author josue
+ * @author Brayan rosales 
  */
 public class ImagenService {
 
