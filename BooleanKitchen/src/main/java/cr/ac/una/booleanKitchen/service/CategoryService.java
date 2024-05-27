@@ -101,7 +101,7 @@ public class CategoryService implements ICategoryService{
     }
       //Por el momento tengo las eqtiquetas en Backend, mas adelante las implemento en BD.
       public LinkedList<String> getListLabel(){
-          LinkedList<String> list= new LinkedList<String>();
+          LinkedList<String> list= new LinkedList<>();
           list.add("INGREDIENTE");
           list.add("UTENCILIO");
           list.add("RECETAS");

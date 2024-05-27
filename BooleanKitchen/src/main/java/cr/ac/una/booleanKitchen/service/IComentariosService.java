@@ -7,21 +7,21 @@ package cr.ac.una.booleanKitchen.service;
 import cr.ac.una.booleanKitchen.domain.Comment;
 import java.util.List;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+
 /**
  *
  * @author Usuario
  */
 public interface IComentariosService {
      public void guardar(Comment comentario);
-    
-//     public Comment getCommentSelect(String identificador);
      
      public List<Comment> getComments();
  
-//     public void deleteCom(String idSerial);
-     public List<Comment> findByRecetaId(String identificador);
-     
      public Comment findByIdentificador(String identificador);
      
      public void eliminar(Comment comentario);
+     
+     Page<Comment> findByRecipeId(String identificador, Pageable pageable);
 }

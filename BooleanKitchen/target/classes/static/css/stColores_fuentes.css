@@ -1,5 +1,4 @@
-
-:root{
+:root {
     /* Tamaño para el texto */
     --text-size: 14px;
     --size-btn: 55px;
@@ -32,6 +31,13 @@
     /* Btn Editar animado */
     --background-color-btn-edit-animated: rgb(54, 179, 54);
     --background-color-btn-edit-animated-hover: rgb(61, 161, 43);
+
+
+    /* Notificaciones */
+    --notification-background: #313e2c;
+    --notification-primary: #aaec8a;
+    --notification-error-background: #4a2c2c;
+    --notification-error-primary: #f28b82;
 }
 
 body {

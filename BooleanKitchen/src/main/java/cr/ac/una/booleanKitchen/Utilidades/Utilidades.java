@@ -19,7 +19,7 @@ import java.util.List;
  * @author Usuario
  */
 public class Utilidades {
-    public static final User user = new User(1, "Daniel Briones", "ejemplo@gmail.com", "1234", "admin", "", "USE-001",
+    public static final User user = new User(1, "Daniel Briones", "ejemplo@gmail.com", "1234", "admin", "SaprissaCampeon40.jpg", "USE-001",
             Date.valueOf(LocalDate.now()));
 
     // para preparacion

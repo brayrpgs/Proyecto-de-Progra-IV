@@ -1,30 +1,149 @@
-<div th:if="${comentarios != null and !comentarios.empty}">
-    <div class="comment" th:each="comentario : ${comentarios}">
-        <p><span>Daniel Briones</span> - <span th:text="${comentario.antiguedad}"></span></p>
-        <div class="dropdown">
-            <div class="card__menu"><svg xmlns="http://www.w3.org/2000/svg" width="4" viewBox="0 0 4 20" height="20" fill="none"><g fill="#000"><path d="m2 4c1.10457 0 2-.89543 2-2s-.89543-2-2-2-2 .89543-2 2 .89543 2 2 2z"></path><path d="m2 12c1.10457 0 2-.8954 2-2 0-1.10457-.89543-2-2-2s-2 .89543-2 2c0 1.1046.89543 2 2 2z"></path><path d="m2 20c1.10457 0 2-.8954 2-2s-.89543-2-2-2-2 .8954-2 2 .89543 2 2 2z"></path></g></svg></div>
-            <div class="dropdown-menu">
-                <input type="hidden" id="idComentario" name="idCategoria" th:value="${comentario.identificador}">
-                    <input type="hidden" name="identificadorReceta" id="identificadorReceta" th:value="${receta.identificador}">
-                    <button onclick="editComment(this)">Editar</button>
+<div th:if="${page.content != null and page.content.size() != 0}">
+    <div class="pagination-container-pageSizeOpt" th:if="${page.content != null and !page.content.empty}">
+        <div>
+            <span>Mostrar </span>
+            <select id="pageSize" name="size" onchange="changePageSize()">
+                <option th:each="size : ${pageSizeOptions}" th:value="${size}" th:text="${size}"
+                    th:selected="${size == page.size}"></option>
+
+            </select>
+            <span> por página</span>
+        </div>
+    </div>
+    <div class="container-comment-order">
+        <div class="comment" th:each="comentario : ${page.content}">
+            <p><span>Daniel Briones</span> - <span th:text="${comentario.antiguedad}"></span></p>
+            <div class="dropdown">
+                <div class="card__menu">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="4" viewBox="0 0 4 20" height="20"
+                        fill="none">
+                        <g fill="#000">
+                            <path d="m2 4c1.10457 0 2-.89543 2-2s-.89543-2-2-2-2 .89543-2 2 .89543 2 2 2z">
+                            </path>
+                            <path
+                                d="m2 12c1.10457 0 2-.8954 2-2 0-1.10457-.89543-2-2-2s-2 .89543-2 2c0 1.1046.89543 2 2 2z">
+                            </path>
+                            <path d="m2 20c1.10457 0 2-.8954 2-2s-.89543-2-2-2-2 .8954-2 2 .89543 2 2 2z">
+                            </path>
+                        </g>
+                    </svg>
+                </div>
+                <div class="dropdown-menu">
+                    <input type="hidden" id="idComentario" name="idCategoria" th:value="${comentario.identificador}">
+                    <input type="hidden" name="identificadorReceta" id="identificadorReceta" th:value="${idReceta}">
+                    <button onclick="cargarFormulario(this)">Editar</button>
                     <button onclick="deleteComment(this)">Eliminar</button>
+                </div>
+            </div>
+            <h2 th:text="${comentario.title}"></h2>
+            <h4 th:text="${comentario.comment}"></h4>
+            <p th:text=" 'Dificultad: ' + ${comentario.dificultad}"></p>
+            <p th:text=" 'Claridad de instrucciones: ' + ${comentario.claridadInstrucciones}"></p>
+            <p th:text=" 'Realizo alguna modificación: ' + ${comentario.realizoUnaModificacion ? 'Si' : 'No'}">
+            </p>
+            <p
+                th:text=" 'Sugerencias: ' + (${comentario.sugerencia} != '' ? comentario.sugerencia : 'Sin sugerencias')">
+            </p>
+            <p th:text=" 'Recomendaría la receta: ' + ${comentario.recomendariaLaReceta ? 'Si' : 'No'}"></p>
+            <div class="reactions">
+                <label class="container">
+                    <input type="hidden" id="idComentario" name="idComentario"
+                        th:value="${comentario.identificador}">
+                    <input class="like" id="like" type="checkbox" onchange="like_dislike(this)">
+                    <svg id="Glyph" version="1.1" viewBox="0 0 32 32" xml:space="preserve"
+                        xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                        <path
+                            d="M29.845,17.099l-2.489,8.725C26.989,27.105,25.804,28,24.473,28H11c-0.553,0-1-0.448-1-1V13  c0-0.215,0.069-0.425,0.198-0.597l5.392-7.24C16.188,4.414,17.05,4,17.974,4C19.643,4,21,5.357,21,7.026V12h5.002  c1.265,0,2.427,0.579,3.188,1.589C29.954,14.601,30.192,15.88,29.845,17.099z"
+                            id="XMLID_254_"></path>
+                        <path
+                            d="M7,12H3c-0.553,0-1,0.448-1,1v14c0,0.552,0.447,1,1,1h4c0.553,0,1-0.448,1-1V13C8,12.448,7.553,12,7,12z   M5,25.5c-0.828,0-1.5-0.672-1.5-1.5c0-0.828,0.672-1.5,1.5-1.5c0.828,0,1.5,0.672,1.5,1.5C6.5,24.828,5.828,25.5,5,25.5z"
+                            id="XMLID_256_"></path>
+                    </svg>
+                    <span id="numero-likes" th:text="${comentario.reaccionesPositivas}"></span>
+                </label>
             </div>
         </div>
-        <h2 th:text="${comentario.title}"></h2>
-        <h4 th:text="${comentario.comment}"></h4>
-        <p th:text=" 'Dificultad: ' + ${comentario.dificultad}"></p>
-        <p th:text=" 'Claridad de instrucciones: ' + ${comentario.claridadInstrucciones}"></p>
-        <p th:text=" 'Realizo alguna modificación: ' + ${comentario.realizoUnaModificacion ? 'Si' : 'No'}"></p>
-        <p th:text=" 'Sugerencias: ' + ${comentario.sugerencia != '' ? comentario.sugerencia : 'Sin sugerencias'}"></p>
-        <p th:text=" 'Recomendaría la receta: ' + ${comentario.recomendariaLaReceta ? 'Si' : 'No'}"></p>
-        <div class="reactions">
-            <label class="container">
-                <input type="hidden" id="idComentario" name="idComentario" th:value="${comentario.identificador}">
-                <input class="like" id="like" type="checkbox" onchange="like_dislike(this)">
-                <svg id="Glyph" version="1.1" viewBox="0 0 32 32" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M29.845,17.099l-2.489,8.725C26.989,27.105,25.804,28,24.473,28H11c-0.553,0-1-0.448-1-1V13  c0-0.215,0.069-0.425,0.198-0.597l5.392-7.24C16.188,4.414,17.05,4,17.974,4C19.643,4,21,5.357,21,7.026V12h5.002  c1.265,0,2.427,0.579,3.188,1.589C29.954,14.601,30.192,15.88,29.845,17.099z" id="XMLID_254_"></path><path d="M7,12H3c-0.553,0-1,0.448-1,1v14c0,0.552,0.447,1,1,1h4c0.553,0,1-0.448,1-1V13C8,12.448,7.553,12,7,12z   M5,25.5c-0.828,0-1.5-0.672-1.5-1.5c0-0.828,0.672-1.5,1.5-1.5c0.828,0,1.5,0.672,1.5,1.5C6.5,24.828,5.828,25.5,5,25.5z" id="XMLID_256_"></path></svg>
-                <span id="numero-likes" th:text="${comentario.reaccionesPositivas}"></span>
-            </label>
+    </div>
+
+    <div class="pagination-container">
+        <nav aria-label="Page navigation" class="page_navigation">
+            <ul class="pagination">
+                <li th:classappend="${page.first} ? 'disabled' : ''" title="Primera página">
+                    <a th:href="@{'?page=0&size=' + ${page.size}} + '&identificadorReceta=' + ${idReceta}">
+                        <svg fill="blue" height="25px" width="25px" version="1.1" id="Layer_1"
+                            xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                            viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve"
+                            transform="rotate(180)">
+                            <path
+                                d="M0,381.4l237.7-118.9L0,143.6V381.4z M237.7,262.5v118.9l237.7-118.9L237.7,143.6V262.5z M475.4,143.6v118.9v118.9H512 V143.6H475.4z">
+                            </path>
+                        </svg>
+                    </a>
+                </li>
+                <li th:classappend="${page.first} ? 'disabled' : ''" title="Página anterior">
+                    <a th:with="prevPage=${page.number - 1}"
+                        th:href="@{'?page=' + ${prevPage} + '&size=' + ${page.size}} + '&identificadorReceta=' + ${idReceta}">
+                        <svg fill="blue" height="25px" width="25px" version="1.1" id="XMLID_287_"
+                            xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                            viewBox="0 0 24 24" xml:space="preserve" transform="rotate(180)">
+                            <polygon points="6.8,23.7 5.4,22.3 15.7,12 5.4,1.7 6.8,0.3 18.5,12 "></polygon>
+                        </svg>
+                    </a>
+                </li>
+                <li th:each="i : ${pageNumbers}" th:classappend="${i == page.number + 1} ? 'active' : ''">
+                    <a th:with="pageNum=${i - 1}"
+                        th:href="@{'?page=' + ${pageNum} + '&size=' + ${page.size}} + '&identificadorReceta=' + ${idReceta}"
+                        th:text="${i}"></a>
+                </li>
+                <li th:classappend="${page.last} ? 'disabled' : ''" title="Página siguiente">
+                    <a th:with="nextPage=${page.number + 1}"
+                        th:href="@{'?page=' + ${nextPage} + '&size=' + ${page.size}} + '&identificadorReceta=' + ${idReceta}">
+                        <svg fill="blue" height="25px" width="25px" version="1.1" id="XMLID_287_"
+                            xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                            viewBox="0 0 24 24" xml:space="preserve" transform="rotate(0)">
+                            <polygon points="6.8,23.7 5.4,22.3 15.7,12 5.4,1.7 6.8,0.3 18.5,12 "></polygon>
+                        </svg>
+                    </a>
+                </li>
+                <li th:classappend="${page.last} ? 'disabled' : ''" title="Ultima página">
+                    <a th:with="lastPage=${page.totalPages - 1}"
+                        th:href="@{'?page=' + ${lastPage} + '&size=' + ${page.size}} + '&identificadorReceta=' + ${idReceta}">
+                        <svg fill="blue" height="25px" width="25px" version="1.1" id="Layer_1"
+                            xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                            viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve">
+                            <path
+                                d="M0,381.4l237.7-118.9L0,143.6V381.4z M237.7,262.5v118.9l237.7-118.9L237.7,143.6V262.5z M475.4,143.6v118.9v118.9H512 V143.6H475.4z">
+                            </path>
+                        </svg>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</div>
+
+<div th:if="${page.content == null || page.content.size() == 0}">
+    Se el primero en comentar!!
+</div>
+
+
+<div th:if="${message != null || !message.empty}" id="unaNotificacion">
+    <div class="notification" th:classappend="${error ? 'error' : ''}">
+        <div class="notification__body">
+            <div th:if="${error}">
+                <img th:src="@{/assets/error-circle.svg}" 
+                    alt="Notification Icon" 
+                    class="notification__icon">
+            </div>
+            <div th:if="${!error}">
+                <img th:src="@{/assets/check-circle.svg}" 
+                    alt="Notification Icon"
+                    class="notification__icon">
+            </div>
+
+            <span th:text="${message}"></span>
         </div>
+        <div class="notification__progress" th:classappend="${error ? 'error' : ''}"></div>
     </div>
 </div>
 

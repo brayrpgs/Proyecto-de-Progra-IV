@@ -12,6 +12,7 @@
     <link rel="stylesheet" th:href="@{/css/stNav.css}">
     <link rel="stylesheet" th:href="@{/css/stFooter.css}">
     <link rel="stylesheet" th:href="@{/css/stRecetasYNoticias.css}">
+    <script text="text/javascript" th:src="@{/js/jsNav.js}" defer></script>
 
     <style>
         #contenedor {
@@ -157,11 +158,8 @@
 
     <div th:replace="plantillas/nav :: nav"></div>
 
-    <div id="contenedor">
-        <br><br>
-        <h1>
-            <a th:href="@{/c_inicio/index}" th:text="'Ingredientes'" style="color: lightcoral;">Ingredientes</a>
-        </h1>
+    <div id="contenedor" style="margin-top: 55px;">
+        <h1>Ingredientes</h1>
 
         <a href="/c_ingrediente/ingredientes/agregarIngrediente">
             <button>Agregar Ingrediente</button>
@@ -193,7 +191,9 @@
                             <td th:text="${item.categoryName}"></td>
                             <td class="description" th:text="${item.description}"></td>
                             <td>
-                                <img th:src="@{'/imgIng/' + ${item.image}}" th:alt="${item.image}">
+                                <Img th:src="@{'/img/ingredientes/' + ${item.image}}" th:alt="${item.image}">
+
+                                </Img>
                             </td>
                             <td style="width: 50px;">
                                 <div class="contenedor-acciones">

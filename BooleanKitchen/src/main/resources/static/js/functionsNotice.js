@@ -270,7 +270,7 @@ function changeMessageToCheckBox() {
     document.getElementById("url").value = "";
   
     var header = document.querySelector(".headerP");
-    var img = document.getElementById("file");
+    var img = document.getElementById("imagen-usuario");
   
     // Si existe una imagen cargada, la eliminamos
     if (img && !img.hidden) {

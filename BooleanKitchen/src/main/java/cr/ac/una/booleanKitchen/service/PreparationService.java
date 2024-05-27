@@ -74,7 +74,7 @@ public class PreparationService implements IPreparationService {
     }
 
     public LinkedList<String> getDifficulty() {
-        LinkedList<String> list = new LinkedList<String>();
+        LinkedList<String> list = new LinkedList<>();
         list.add("Novato");
         list.add("Cocinero");
         list.add("Chef");

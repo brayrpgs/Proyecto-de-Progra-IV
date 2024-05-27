@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Error</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .error-container {
+            text-align: center;
+        }
+
+        .error-code {
+            font-size: 5em;
+            color: #ff6f61;
+            animation: bounce 1s infinite;
+        }
+
+        .error-message {
+            font-size: 1.5em;
+            margin-top: 10px;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-30px);
+            }
+            60% {
+                transform: translateY(-15px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="error-container">
+        <div class="error-code" id="errorCode">404</div>
+        <div class="error-message" id="errorMessage">Something went wrong.</div>
+        <div>Redirigido en: <span id="countdown">10</span> segundos</div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const errorCode = urlParams.get('code');
+            const errorMessage = urlParams.get('message');
+
+            document.getElementById('errorCode').textContent = errorCode || 'Error';
+            document.getElementById('errorMessage').textContent = errorMessage || 'Something went wrong.';
+
+            let countdown = 10;
+            const countdownSpan = document.getElementById('countdown');
+            const countdownInterval = setInterval(() => {
+                countdown--;
+                countdownSpan.textContent = countdown;
+                if (countdown <= 0) {
+                    clearInterval(countdownInterval);
+                    // Cambiar la URL a la que quieres redirigir
+                    window.location.href = '/c_inicio/index';
+                }
+            }, 1000);
+        });
+    </script>
+</body>
+</html>
+
+
+<!-- 
+
+
+import org.springframework.boot.web.servlet.error.ErrorController;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+@Controller
+public class CustomErrorController implements ErrorController {
+
+    @RequestMapping("/error")
+    public String handleError(HttpServletRequest request, HttpServletResponse response, Model model) {
+        int statusCode = response.getStatus();
+        String errorMessage = getErrorMessage(statusCode);
+        
+        model.addAttribute("code", statusCode);
+        model.addAttribute("message", errorMessage);
+        
+        return "error";
+    }
+
+    private String getErrorMessage(int statusCode) {
+        switch (statusCode) {
+            case 400: return "Bad Request";
+            case 401: return "Unauthorized";
+            case 403: return "Forbidden";
+            case 404: return "Not Found";
+            case 500: return "Internal Server Error";
+            default: return "Unexpected Error";
+        }
+    }
+
+    @Override
+    public String getErrorPath() {
+        return "/error";
+    }
+}
+
+
+
+
+
+//En propiedades
+server.error.path=/error
+
+
+
+ -->

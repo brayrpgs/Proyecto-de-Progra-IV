@@ -19,8 +19,3 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 
-
-function enviarDatos(){
-  // Solo simulación
-  alert("Enviar datos");
-}

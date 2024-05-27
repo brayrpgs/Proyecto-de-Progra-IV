@@ -4,19 +4,14 @@
  */
 package cr.ac.una.booleanKitchen.Controller;
 
+import cr.ac.una.booleanKitchen.Logica.LogicaReceta;
 import cr.ac.una.booleanKitchen.Utilidades.Utilidades;
-import cr.ac.una.booleanKitchen.domain.Ingredient;
-import cr.ac.una.booleanKitchen.domain.Notice;
-import cr.ac.una.booleanKitchen.domain.Origin;
-import cr.ac.una.booleanKitchen.domain.Utensil;
 import cr.ac.una.booleanKitchen.service.ICategoryService;
 import cr.ac.una.booleanKitchen.service.IRecetaService;
-import cr.ac.una.booleanKitchen.service.IngredientService;
-import cr.ac.una.booleanKitchen.service.NoticeRepository;
-
-import java.util.LinkedList;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -29,48 +24,35 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping("/c_inicio")
 public class ControllerPaginaInicio {
-
-    @Autowired
-    private IRecetaService recetaService;
-
     @Autowired
     private ICategoryService categoryService;
 
     @Autowired
-	private NoticeRepository noticeRepository;
+    private IRecetaService recetaService;
 
-    //llamar
     @GetMapping({ "/index" })
     public String inicio(Model model) {
-        model.addAttribute("usuario", Utilidades.user);
+        model.addAttribute("usuario", Utilidades.user);        
+        model.addAttribute("mejoresRecetas", recetaService.findTop10ByOrderByCalificacionDesc());
 
-        LinkedList<Origin> origenes = new LinkedList<>();
-        origenes.add(new Origin(1, "Mexicana", "", "UTE-001", "", "receta.jpeg", "", ""));
 
-        LinkedList<Ingredient> ingredients = IngredientService.getIngredients();
-
-        LinkedList<Utensil> utensils = new LinkedList<>();
-        utensils.add(new Utensil(1, "UTE-001", "Cuchara", "", null, "", 0, 0, ""));
-
-        LinkedList<Notice> notices = noticeRepository.findAllNotices();
-
-        model.addAttribute("categorias", categoryService.getCategory());
-        model.addAttribute("origen", origenes);
-        model.addAttribute("utensilios", utensils);
-        model.addAttribute("ingredientes", ingredients);
-        model.addAttribute("noticias", notices);
-
-        // Traer el top 10
-        model.addAttribute("mejoresRecetas", recetaService.mejoresRecetas());
+        //Trae todos los datos necesarios para agregar una nueva receta
+        LogicaReceta.datosParaAgregarReceta(model, categoryService);
 
         return "paginaInicio";
     }
 
     @GetMapping("/verRecetas")
-    public String verRecetas(Model model) {
+    public String verRecetas(@PageableDefault(size = 4, page = 0) Pageable pageable, Model model) {
         model.addAttribute("usuario", Utilidades.user);
 
-        model.addAttribute("recetas", recetaService.getRecipes());
+        // model.addAttribute("recetas", recetaService.getRecipes());
+
+        //Obtiene la paginación de la receta
+        LogicaReceta.paginacionRecetas(model, "", pageable, recetaService);
+
+        //Trae todos los datos necesarios para agregar una nueva receta
+        LogicaReceta.datosParaAgregarReceta(model, categoryService);
         return "verRecetas";
     }
 
@@ -80,4 +62,5 @@ public class ControllerPaginaInicio {
         model.addAttribute("usuario", Utilidades.user);
         return "showProfile";
     }
+
 }

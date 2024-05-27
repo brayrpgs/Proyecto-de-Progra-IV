@@ -48,3 +48,34 @@ button, .modal-btn{
     cursor: pointer;
 }
 
+
+.container-elements {
+    width: 400px;
+}
+
+input[type="file"] {
+    margin-bottom: 10px;
+}
+
+.btnDelete-container{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+
+#imageContainer-file,
+#imageContainer-file2,
+#imageContainer-file3 {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+#imageContainer-file img,
+#imageContainer-file2 img,
+#imageContainer-file3 img {
+    max-width: 300px;
+    max-height: 300px;
+}
+

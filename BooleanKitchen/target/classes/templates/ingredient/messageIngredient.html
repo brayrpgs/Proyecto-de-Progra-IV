@@ -15,7 +15,7 @@
     <p>Descripción: <span th:text="${Ingredient.description}"></span></p>
     <p style="text-align: center;">Imagen</p>
     <div style="text-align: center; width: 100%;">
-        <img th:src="@{'/imgIng/' + ${Ingredient.image}}" 
+        <img th:src="@{'/img/ingredientes/' + ${Ingredient.image}}" 
              th:alt="${Ingredient.image}" 
              style="width: 300px; height: auto; max-width: 100%;" />
     </div>

@@ -21,13 +21,7 @@
     --BLANCO: white;
     --LEMON:#DCB239;
     --GREEN: #5bc1a5;
-}
 
-body {
-    font-family: "Segoe UI", "Noto Sans", "sans-serif", "Blanc-Regular";
-    font-size: var(--text-size);
-    min-height: 90vh;
-    background-color: #f4f6f4;
 }
 
 * {

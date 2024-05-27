@@ -1,0 +1,19 @@
+<div th:if="${message != null || !message.empty}" id="unaNotificacion">
+    <div class="notification" th:classappend="${error ? 'error' : ''}">
+        <div class="notification__body">
+            <div th:if="${error}">
+                <img th:src="@{/assets/error-circle.svg}" 
+                    alt="Notification Icon" 
+                    class="notification__icon">
+            </div>
+            <div th:if="${!error}">
+                <img th:src="@{/assets/check-circle.svg}" 
+                    alt="Notification Icon"
+                    class="notification__icon">
+            </div>
+
+            <span th:text="${message}"></span>
+        </div>
+        <div class="notification__progress" th:classappend="${error ? 'error' : ''}"></div>
+    </div>
+</div>

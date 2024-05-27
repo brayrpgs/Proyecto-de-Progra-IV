@@ -8,6 +8,9 @@ import cr.ac.una.booleanKitchen.domain.Comment;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 /**
@@ -32,11 +35,6 @@ public class serviceComentario implements IComentariosService {
     }
 
     @Override
-    public List<Comment> findByRecetaId(String identificador) {
-        return repoComment.findByRecipeIdentificador(identificador);
-    }
-
-    @Override
     public Comment findByIdentificador(String identificador) {
         return repoComment.findByIdentificador(identificador);
     }
@@ -44,6 +42,11 @@ public class serviceComentario implements IComentariosService {
     @Override
     public void eliminar(Comment comentario){
         repoComment.delete(comentario);
+    }
+
+    @Override
+    public Page<Comment> findByRecipeId(String identificador, Pageable pageable) {
+        return repoComment.findByRecipeId(identificador, PageRequest.of(pageable.getPageNumber(), pageable.getPageSize()));
     }
 
 }

@@ -1,130 +1,840 @@
 <!DOCTYPE html>
 
 <html lang="es">
-    <head>
-        <title>Comentarios</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" type="text/css" th:href="@{/css/stComentarios.css}">
-    </head>
-    <body>
-        <div class="comment-section">
 
-            <form id="commentForm" method="get">
-                <input type="hidden" name="identificadorReceta" id="identificadorReceta" th:value="${receta.identificador}">
-                <h2>Deja un comentario</h2>
-                <div class="container-items-form" style="display: flex; flex-wrap: wrap;">
-                    <div class="container-item-form" style="width: 250px;">
-                        <label for="puntuation">Califica la receta: <span style="color: red;">*</span></label><br>
-                        <div>
-                            <div class="rating">
-                                <input value="5" name="rate" id="star5" type="radio">
-                                <label title="text" for="star5"></label>
-                                <input value="4" name="rate" id="star4" type="radio">
-                                <label title="text" for="star4"></label>
-                                <input value="3" name="rate" id="star3" type="radio">
-                                <label title="text" for="star3"></label>
-                                <input value="2" name="rate" id="star2" type="radio">
-                                <label title="text" for="star2"></label>
-                                <input value="1" name="rate" id="star1" type="radio" checked="">
-                                <label title="text" for="star1"></label>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="container-item-form" style="width: 250px;">
-                        <label for="commentTitle">Título:<span style="color: red;">*</span></label><br>
-                        <input type="text" id="commentTitle" name="commentTitle" required><br>
-                    </div>
-                    <div class="container-item-form" style="width: 250px;">
-                        <label for="commentContent">Comentario: <span style="color: red;">*</span></label><br>
-                        <textarea id="commentContent" name="commentContent" value='Hola' rows="4"></textarea><br>
-                    </div>
-                    <div class="container-item-form" style="width: 250px;">
-                        <label for="difficult">Dificultad: <span style="color: red;">*</span></label><br>
-                        <select name="difficult-select" id="dificultad">
-                            <option value="Fácil">Fácil</option>
-                            <option value="Intermedio">Intermedio</option>
-                            <option value="Difícil">Difícil</option>
-                        </select><br>
-                    </div>
-                    <div class="container-item-form" style="width: 250px;">
-                        <label for="clarity_instructions">Claridad de instrucciones: <span
-                                style="color: red;">*</span></label><br>
-                        <input type="number" id="clarity_instructions" min="1" max="10" required oninput="validarNumero(event)" value="1"><br>
-                    </div>
-                    <div class="container-item-form" style="width: 250px;">
-                        <label for="modification">Realizó alguna modificación a la receta? <span
-                                style="color: red;">*</span></label>
-                        <div>
-                            <input type="radio" name="modification" id="modification-yes" checked="true">
-                            <label for="modification-yes">Sí</label>
-                            <input type="radio" name="modification" id="modification-no">
-                            <label for="modification-no">No</label>
-                        </div><br>
-                    </div>
-                    <div class="container-item-form" style="width: 250px;">
-                        <label for="suggestion">Sugerencias:</label><br>
-                        <input type="text" id="suggestion"><br>
-                    </div>
-                    <div class="container-item-form" style="width: 250px;">
-                        <label for="recommendation">Recomendaría la receta? <span style="color: red;">*</span></label>
-                        <div>
-                            <input type="radio" name="recommendation" id="recommendation-yes" checked="">
-                            <label for="recommendation-yes">Sí</label>
-                            <input type="radio" name="recommendation" id="recommendation-no">
-                            <label for="recommendation-no">No</label>
-                        </div><br>
-                    </div>
+<head>
+    <title>Comentarios</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/stComentarios.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/stPaginacion.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/Notificaciones/notificaciones.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/stColores_fuentes.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/stNav.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/stFooter.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/stRecetasYNoticias.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/stModal.css}">
+
+    <script text="text/javascript" th:src="@{/js/jsNav.js}" defer></script>
+
+    <script text="text/javascript" th:src="@{/js/jsModalAdd.js}"></script>
+
+    <style>
+        .container-elements {
+            width: 400px;
+        }
+
+        input[type="file"] {
+            margin-bottom: 10px;
+        }
+
+        #imageContainer-file,
+        #imageContainer-file2,
+        #imageContainer-file3 {
+            margin-bottom: 10px;
+        }
+
+        #imageContainer-file img,
+        #imageContainer-file2 img,
+        #imageContainer-file3 img {
+            max-width: 300px;
+            max-height: 300px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div th:replace="plantillas/nav :: nav"></div>
+
+
+    <div class="comment-section">
+        <input type="hidden" name="identificadorReceta" id="identificadorReceta"
+        th:value="${idReceta}">
+
+        <div class="container-btn-newComment">
+            <button id="nuevoComentario" onclick="cargarFormularioComentarioNuevo()">Nuevo comentario</button>
+        </div>
+
+
+        <div class="comments-container" id="comments">
+            <div class="pagination-container-pageSizeOpt" th:if="${page.content != null and !page.content.empty}">
+                <div>
+                    <span>Mostrar </span>
+                    <select id="pageSize" name="size" onchange="changePageSizeComentario()">
+                        <option th:each="size : ${pageSizeOptions}" th:value="${size}" th:text="${size}"
+                            th:selected="${page.size == size}"></option>
+                    </select>
+                    <span> por página</span>
                 </div>
-
-
-                <button id="enviar" onclick="enviarComentario(event)">
-                    <div class="svg-wrapper-1">
-                        <div class="svg-wrapper">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
-                            <path fill="none" d="M0 0h24v24H0z"></path>
-                            <path fill="currentColor"
-                                  d="M1.946 9.315c-.522-.174-.527-.455.01-.634l19.087-6.362c.529-.176.832.12.684.638l-5.454 19.086c-.15.529-.455.547-.679.045L12 14l6-8-8 6-8.054-2.685z">
-                            </path>
+            </div>
+            <div class="container-comment-order">
+                <div class="comment" th:each="comentario : ${page.content}">
+                    <p><span>Daniel Briones</span> - <span th:text="${comentario.antiguedad}"></span></p>
+                    <div class="dropdown">
+                        <div class="card__menu">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="4" viewBox="0 0 4 20" height="20"
+                                fill="none">
+                                <g fill="#000">
+                                    <path d="m2 4c1.10457 0 2-.89543 2-2s-.89543-2-2-2-2 .89543-2 2 .89543 2 2 2z">
+                                    </path>
+                                    <path
+                                        d="m2 12c1.10457 0 2-.8954 2-2 0-1.10457-.89543-2-2-2s-2 .89543-2 2c0 1.1046.89543 2 2 2z">
+                                    </path>
+                                    <path d="m2 20c1.10457 0 2-.8954 2-2s-.89543-2-2-2-2 .8954-2 2 .89543 2 2 2z">
+                                    </path>
+                                </g>
                             </svg>
                         </div>
-                    </div>
-                    <span>Enviar</span>
-                </button>
-            </form>
-
-            <div class="comments-container" id="comments">
-                <div th:if="${comentarios != null and !comentarios.empty}">
-                    <div class="comment" th:each="comentario : ${comentarios}">
-                        <p><span>Daniel Briones</span> - <span th:text="${comentario.antiguedad}"></span></p>
-                        <div class="dropdown">
-                            <div class="card__menu"><svg xmlns="http://www.w3.org/2000/svg" width="4" viewBox="0 0 4 20" height="20" fill="none"><g fill="#000"><path d="m2 4c1.10457 0 2-.89543 2-2s-.89543-2-2-2-2 .89543-2 2 .89543 2 2 2z"></path><path d="m2 12c1.10457 0 2-.8954 2-2 0-1.10457-.89543-2-2-2s-2 .89543-2 2c0 1.1046.89543 2 2 2z"></path><path d="m2 20c1.10457 0 2-.8954 2-2s-.89543-2-2-2-2 .8954-2 2 .89543 2 2 2z"></path></g></svg></div>
-                            <div class="dropdown-menu">
-                                <input type="hidden" id="idComentario" name="idCategoria" th:value="${comentario.identificador}">
-                                <input type="hidden" name="identificadorReceta" id="identificadorReceta" th:value="${receta.identificador}">
-                                <button onclick="editComment(this)">Editar</button>
-                                <button onclick="deleteComment(this)">Eliminar</button>
-                            </div>
+                        <div class="dropdown-menu">
+                            <input type="hidden" id="idComentario" name="idCategoria"
+                                th:value="${comentario.identificador}">
+                            <button onclick="cargarFormulario(this)">Editar</button>
+                            <button onclick="deleteComment(this)">Eliminar</button>
                         </div>
-                        <h2 th:text="${comentario.title}"></h2>
-                        <h4 th:text="${comentario.comment}"></h4>
-                        <p th:text=" 'Dificultad: ' + ${comentario.dificultad}"></p>
-                        <p th:text=" 'Claridad de instrucciones: ' + ${comentario.claridadInstrucciones}"></p>
-                        <p th:text=" 'Realizo alguna modificación: ' + ${comentario.realizoUnaModificacion ? 'Si' : 'No'}"></p>
-                        <p th:text=" 'Sugerencias: ' + ${comentario.sugerencia != '' ? comentario.sugerencia : 'Sin sugerencias'}"></p>
-                        <p th:text=" 'Recomendaría la receta: ' + ${comentario.recomendariaLaReceta ? 'Si' : 'No'}"></p>
-                        <div class="reactions">
-                            <label class="container">
-                                <input type="hidden" id="idComentario" name="idComentario" th:value="${comentario.identificador}">
-                                <input class="like" id="like" type="checkbox" onchange="like_dislike(this)">
-                                <svg id="Glyph" version="1.1" viewBox="0 0 32 32" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M29.845,17.099l-2.489,8.725C26.989,27.105,25.804,28,24.473,28H11c-0.553,0-1-0.448-1-1V13  c0-0.215,0.069-0.425,0.198-0.597l5.392-7.24C16.188,4.414,17.05,4,17.974,4C19.643,4,21,5.357,21,7.026V12h5.002  c1.265,0,2.427,0.579,3.188,1.589C29.954,14.601,30.192,15.88,29.845,17.099z" id="XMLID_254_"></path><path d="M7,12H3c-0.553,0-1,0.448-1,1v14c0,0.552,0.447,1,1,1h4c0.553,0,1-0.448,1-1V13C8,12.448,7.553,12,7,12z   M5,25.5c-0.828,0-1.5-0.672-1.5-1.5c0-0.828,0.672-1.5,1.5-1.5c0.828,0,1.5,0.672,1.5,1.5C6.5,24.828,5.828,25.5,5,25.5z" id="XMLID_256_"></path></svg>
-                                <span id="numero-likes" th:text="${comentario.reaccionesPositivas}"></span>
-                            </label>
+                    </div>
+                    <h2 th:text="${comentario.title}"></h2>
+                    <h4 th:text="${comentario.comment}"></h4>
+                    <p th:text=" 'Dificultad: ' + ${comentario.dificultad}"></p>
+                    <p th:text=" 'Claridad de instrucciones: ' + ${comentario.claridadInstrucciones}"></p>
+                    <p th:text=" 'Realizo alguna modificación: ' + ${comentario.realizoUnaModificacion ? 'Si' : 'No'}">
+                    </p>
+                    <p
+                        th:text=" 'Sugerencias: ' + (${comentario.sugerencia} != '' ? comentario.sugerencia : 'Sin sugerencias')">
+                    </p>
+                    <p th:text=" 'Recomendaría la receta: ' + ${comentario.recomendariaLaReceta ? 'Si' : 'No'}"></p>
+                    <div class="reactions">
+                        <label class="container">
+                            <input type="hidden" id="idComentario" name="idComentario"
+                                th:value="${comentario.identificador}">
+                            <input class="like" id="like" type="checkbox" onchange="like_dislike(this)">
+                            <svg id="Glyph" version="1.1" viewBox="0 0 32 32" xml:space="preserve"
+                                xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                <path
+                                    d="M29.845,17.099l-2.489,8.725C26.989,27.105,25.804,28,24.473,28H11c-0.553,0-1-0.448-1-1V13  c0-0.215,0.069-0.425,0.198-0.597l5.392-7.24C16.188,4.414,17.05,4,17.974,4C19.643,4,21,5.357,21,7.026V12h5.002  c1.265,0,2.427,0.579,3.188,1.589C29.954,14.601,30.192,15.88,29.845,17.099z"
+                                    id="XMLID_254_"></path>
+                                <path
+                                    d="M7,12H3c-0.553,0-1,0.448-1,1v14c0,0.552,0.447,1,1,1h4c0.553,0,1-0.448,1-1V13C8,12.448,7.553,12,7,12z   M5,25.5c-0.828,0-1.5-0.672-1.5-1.5c0-0.828,0.672-1.5,1.5-1.5c0.828,0,1.5,0.672,1.5,1.5C6.5,24.828,5.828,25.5,5,25.5z"
+                                    id="XMLID_256_"></path>
+                            </svg>
+                            <span id="numero-likes" th:text="${comentario.reaccionesPositivas}"></span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pagination-container">
+                <nav aria-label="Page navigation" class="page_navigation">
+                    <ul class="pagination">
+                        <li th:classappend="${page.first} ? 'disabled' : ''" title="Primera página">
+                            <a th:href="@{'?page=0&size=' + ${page.size}} + '&identificadorReceta=' + ${idReceta}">
+                                <svg fill="blue" height="25px" width="25px" version="1.1" id="Layer_1"
+                                    xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve"
+                                    transform="rotate(180)">
+                                    <path
+                                        d="M0,381.4l237.7-118.9L0,143.6V381.4z M237.7,262.5v118.9l237.7-118.9L237.7,143.6V262.5z M475.4,143.6v118.9v118.9H512 V143.6H475.4z">
+                                    </path>
+                                </svg>
+                            </a>
+                        </li>
+                        <li th:classappend="${page.first} ? 'disabled' : ''" title="Página anterior">
+                            <a th:with="prevPage=${page.number - 1}"
+                                th:href="@{'?page=' + ${prevPage} + '&size=' + ${page.size}} + '&identificadorReceta=' + ${idReceta}">
+                                <svg fill="blue" height="25px" width="25px" version="1.1" id="XMLID_287_"
+                                    xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    viewBox="0 0 24 24" xml:space="preserve" transform="rotate(180)">
+                                    <polygon points="6.8,23.7 5.4,22.3 15.7,12 5.4,1.7 6.8,0.3 18.5,12 "></polygon>
+                                </svg>
+                            </a>
+                        </li>
+                        <li th:each="i : ${pageNumbers}" th:classappend="${i == page.number + 1} ? 'active' : ''">
+                            <a th:with="pageNum=${i - 1}"
+                                th:href="@{'?page=' + ${pageNum} + '&size=' + ${page.size}} + '&identificadorReceta=' + ${idReceta}"
+                                th:text="${i}"></a>
+                        </li>
+                        <li th:classappend="${page.last} ? 'disabled' : ''" title="Página siguiente">
+                            <a th:with="nextPage=${page.number + 1}"
+                                th:href="@{'?page=' + ${nextPage} + '&size=' + ${page.size}} + '&identificadorReceta=' + ${idReceta}">
+                                <svg fill="blue" height="25px" width="25px" version="1.1" id="XMLID_287_"
+                                    xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    viewBox="0 0 24 24" xml:space="preserve" transform="rotate(0)">
+                                    <polygon points="6.8,23.7 5.4,22.3 15.7,12 5.4,1.7 6.8,0.3 18.5,12 "></polygon>
+                                </svg>
+                            </a>
+                        </li>
+                        <li th:classappend="${page.last} ? 'disabled' : ''" title="Ultima página">
+                            <a th:with="lastPage=${page.totalPages - 1}"
+                                th:href="@{'?page=' + ${lastPage} + '&size=' + ${page.size}} + '&identificadorReceta=' + ${idReceta}">
+                                <svg fill="blue" height="25px" width="25px" version="1.1" id="Layer_1"
+                                    xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve">
+                                    <path
+                                        d="M0,381.4l237.7-118.9L0,143.6V381.4z M237.7,262.5v118.9l237.7-118.9L237.7,143.6V262.5z M475.4,143.6v118.9v118.9H512 V143.6H475.4z">
+                                    </path>
+                                </svg>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+
+        <div class="modify-comment-container" id="modify-comment-container">
+
+        </div>
+
+    </div>
+
+    <div class="container-notification" id="container-notification"></div>
+
+    <footer th:replace="plantillas/footer :: footer"></footer>
+
+
+    <dialog id="modal-add-recipe">
+        <form id="recipeForm" method="post" th:action="@{/c_receta/nuevaReceta}" enctype="multipart/form-data"
+            style="margin-top: 65px;">
+            <div style="position: relative;">
+                <button id="closeBtn" type="button" onclick="closeModal()"
+                    style=" background: none; border: none; color: white;">
+                    <svg height="20" viewBox="0 0 20 20" width="20" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="m15.8333 5.34166-1.175-1.175-4.6583 4.65834-4.65833-4.65834-1.175 1.175 4.65833 4.65834-4.65833 4.6583 1.175 1.175 4.65833-4.6583 4.6583 4.6583 1.175-1.175-4.6583-4.6583z"
+                            fill="#393a37"></path>
+                    </svg>
+                </button>
+            </div>
+            <h1 style="text-align: center; width: 100%; text-transform: uppercase;">Publica tus recetas favoritas 🥣
+            </h1>
+
+            <div class="tab">
+                <div class="contenedor-nueva-receta" style="width: 100%;">
+                    <div style="width: 100%; display: flex; justify-content: center; flex-wrap: wrap;">
+                        <div class="container-elements" style="width: 400px;">
+                            <div class="inputs-modal">
+                                <div class="inputs-items">
+                                    <div class="wave-group">
+                                        <input required="" name="nombre" type="text" id="input"
+                                            oninput="this.className = ''">
+                                        <span class="bar"></span>
+                                        <label class="label">
+                                            <span class="label-char" style="--index: 0">N</span>
+                                            <span class="label-char" style="--index: 1">o</span>
+                                            <span class="label-char" style="--index: 2">m</span>
+                                            <span class="label-char" style="--index: 3">b</span>
+                                            <span class="label-char" style="--index: 4">r</span>
+                                            <span class="label-char" style="--index: 5">e</span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="inputs-items">
+                                    <div class="wave-group">
+                                        <select name="origen" required="" oninput="this.className = ''">
+                                            <option value="" disabled selected hidden></option>
+                                            <option th:each="origen : ${origen}" th:value="${origen.identificador}"
+                                                th:text="${origen.name}"></option>
+                                        </select>
+                                        <span class="bar"></span>
+                                        <label class="label">
+                                            <span class="label-char" style="--index: 0">O</span>
+                                            <span class="label-char" style="--index: 1">r</span>
+                                            <span class="label-char" style="--index: 2">i</span>
+                                            <span class="label-char" style="--index: 3">g</span>
+                                            <span class="label-char" style="--index: 4">e</span>
+                                            <span class="label-char" style="--index: 5">n</span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="inputs-items">
+                                    <div class="wave-group">
+                                        <select name="categoria" required="" oninput="this.className = ''">
+                                            <option value="" disabled selected hidden></option>
+                                            <option th:each="cat : ${categorias}" th:value="${cat.idSerial}"
+                                                th:text="${cat.name}"></option>
+                                        </select>
+                                        <span class="bar"></span>
+                                        <label class="label">
+                                            <span class="label-char" style="--index: 0">C</span>
+                                            <span class="label-char" style="--index: 1">a</span>
+                                            <span class="label-char" style="--index: 2">t</span>
+                                            <span class="label-char" style="--index: 3">e</span>
+                                            <span class="label-char" style="--index: 4">g</span>
+                                            <span class="label-char" style="--index: 5">o</span>
+                                            <span class="label-char" style="--index: 6">r</span>
+                                            <span class="label-char" style="--index: 7">i</span>
+                                            <span class="label-char" style="--index: 8">a</span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="inputs-items">
+                                    <div class="container-upload-img">
+                                        <input type="file" accept="image/*" name="img_receta" id="file"
+                                            oninput="this.className = ''" required>
+                                        <div id="imageContainer-file">
+                                            <img src="/assets/uploadimg.jpg" alt="">
+                                        </div>
+                                        <button id="deleteButton" class="deleteBtn" alt="Eliminar"
+                                            onclick="deleteImage('file')">
+                                            <svg class="delete-top" viewBox="0 0 39 7" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <line y1="5" x2="39" y2="5" stroke="white" stroke-width="4"></line>
+                                                <line x1="12" y1="1.5" x2="26.0357" y2="1.5" stroke="white"
+                                                    stroke-width="3"></line>
+                                            </svg>
+                                            <svg class="delete-bottom" viewBox="0 0 33 39" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <mask id="path-1-inside-1_8_19" fill="white">
+                                                    <path
+                                                        d="M0 0H33V35C33 37.2091 31.2091 39 29 39H4C1.79086 39 0 37.2091 0 35V0Z">
+                                                    </path>
+                                                </mask>
+                                                <path
+                                                    d="M0 0H33H0ZM37 35C37 39.4183 33.4183 43 29 43H4C-0.418278 43 -4 39.4183 -4 35H4H29H37ZM4 43C-0.418278 43 -4 39.4183 -4 35V0H4V35V43ZM37 0V35C37 39.4183 33.4183 43 29 43V35V0H37Z"
+                                                    fill="white" mask="url(#path-1-inside-1_8_19)"></path>
+                                                <path d="M12 6L12 29" stroke="white" stroke-width="4"></path>
+                                                <path d="M21 6V29" stroke="white" stroke-width="4"></path>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <script text="text/javascript" th:src="@{/js/jsComentarios.js}"></script>
-    </body>
+
+            <div class="tab">
+                <div class="contenedor-nueva-receta" style="width: 100%;">
+                    <div style="width: 100%; display: flex; justify-content: center; flex-wrap: wrap;">
+                        <div class="container-elements">
+                            <div class="inputs-modal">
+                                <div class="inputs-items">
+                                    <div class="wave-group">
+                                        <select name="utensilios" required="false" oninput="this.className = ''"
+                                            onclick="agregarUtensilios(this)">
+                                            <option value="" disabled selected hidden></option>
+                                            <option th:each="utensilios : ${utensilios}"
+                                                th:value="${utensilios.identificador}" th:text="${utensilios.nombre}">
+                                            </option>
+                                        </select>
+                                        <span class="bar"></span>
+                                        <label class="label">
+                                            <span class="label-char" style="--index: 0">U</span>
+                                            <span class="label-char" style="--index: 1">t</span>
+                                            <span class="label-char" style="--index: 2">e</span>
+                                            <span class="label-char" style="--index: 3">n</span>
+                                            <span class="label-char" style="--index: 4">s</span>
+                                            <span class="label-char" style="--index: 5">i</span>
+                                            <span class="label-char" style="--index: 6">l</span>
+                                            <span class="label-char" style="--index: 7">i</span>
+                                            <span class="label-char" style="--index: 8">o</span>
+                                            <span class="label-char" style="--index: 9">s</span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="inputs-items">
+                                    <div class="wave-group">
+                                        <div class="table-container">
+                                            <table id="table-utensilios">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Utensilio</th>
+                                                        <th>Acción</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody id="tbody-table1">
+                                                    <!-- <tr th:each="p :${Producto}">
+                                                        <td th:text="${p.nombre}">Nombre</td>
+                                                        <td class="acciones">
+                                                            <button class="deleteBtn" alt="Eliminar" title="Eliminar utensilio" onclick="eliminarUtensilios(this)">
+                                                                <svg
+                                                                    class="delete-top"
+                                                                    viewBox="0 0 39 7"
+                                                                    fill="none"
+                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                    >
+                                                                <line y1="5" x2="39" y2="5" stroke="white" stroke-width="4"></line>
+                                                                <line
+                                                                    x1="12"
+                                                                    y1="1.5"
+                                                                    x2="26.0357"
+                                                                    y2="1.5"
+                                                                    stroke="white"
+                                                                    stroke-width="3"
+                                                                    ></line>
+                                                                </svg>
+                                                                <svg
+                                                                    class="delete-bottom"
+                                                                    viewBox="0 0 33 39"
+                                                                    fill="none"
+                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                    >
+                                                                <mask id="path-1-inside-1_8_19" fill="white">
+                                                                    <path
+                                                                        d="M0 0H33V35C33 37.2091 31.2091 39 29 39H4C1.79086 39 0 37.2091 0 35V0Z"
+                                                                        ></path>
+                                                                </mask>
+                                                                <path
+                                                                    d="M0 0H33H0ZM37 35C37 39.4183 33.4183 43 29 43H4C-0.418278 43 -4 39.4183 -4 35H4H29H37ZM4 43C-0.418278 43 -4 39.4183 -4 35V0H4V35V43ZM37 0V35C37 39.4183 33.4183 43 29 43V35V0H37Z"
+                                                                    fill="white"
+                                                                    mask="url(#path-1-inside-1_8_19)"
+                                                                    ></path>
+                                                                <path d="M12 6L12 29" stroke="white" stroke-width="4"></path>
+                                                                <path d="M21 6V29" stroke="white" stroke-width="4"></path>
+                                                                </svg>
+                                                            </button>
+                                                        </td>
+                                                    </tr> -->
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab">
+                <div class="contenedor-nueva-receta" style="width: 100%;">
+                    <div style="width: 100%; display: flex; justify-content: center; flex-wrap: wrap;">
+                        <div class="container-elements" style="margin-left: 30px;">
+                            <div class="inputs-modal">
+                                <div class="inputs-items">
+                                    <div class="wave-group">
+                                        <select name="ingredientes" required="false" oninput="this.className = ''"
+                                            onchange="agregarIngrediente(this)">
+                                            <option value="" disabled selected hidden></option>
+                                            <option th:each="ingredientes : ${ingredientes}"
+                                                th:value="${ingredientes.code}" th:text="${ingredientes.name}"></option>
+                                        </select>
+                                        <span class="bar"></span>
+                                        <label class="label">
+                                            <span class="label-char" style="--index: 0">I</span>
+                                            <span class="label-char" style="--index: 1">n</span>
+                                            <span class="label-char" style="--index: 2">g</span>
+                                            <span class="label-char" style="--index: 3">r</span>
+                                            <span class="label-char" style="--index: 4">e</span>
+                                            <span class="label-char" style="--index: 5">d</span>
+                                            <span class="label-char" style="--index: 6">i</span>
+                                            <span class="label-char" style="--index: 7">e</span>
+                                            <span class="label-char" style="--index: 8">n</span>
+                                            <span class="label-char" style="--index: 9">t</span>
+                                            <span class="label-char" style="--index: 10">e</span>
+                                            <span class="label-char" style="--index: 11">s</span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="inputs-items">
+                                    <div class="wave-group">
+                                        <div class="table-container">
+                                            <table id="table-ingredients">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Ingrediente</th>
+                                                        <th>Acción</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody id="tbody-table2">
+                                                    <!--                                                    <tr th:each="p :${Producto}" th:value="${p.codigo}">
+                                                        <td th:text="${p.nombre}">Nombre</td>
+                                                        <td class="acciones">
+                                                            <button class="deleteBtn" alt="Eliminar" title="Eliminar de favoritos" onclick="eliminarIngredientes(this)">
+                                                                <svg
+                                                                    class="delete-top"
+                                                                    viewBox="0 0 39 7"
+                                                                    fill="none"
+                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                    >
+                                                                <line y1="5" x2="39" y2="5" stroke="white" stroke-width="4"></line>
+                                                                <line
+                                                                    x1="12"
+                                                                    y1="1.5"
+                                                                    x2="26.0357"
+                                                                    y2="1.5"
+                                                                    stroke="white"
+                                                                    stroke-width="3"
+                                                                    ></line>
+                                                                </svg>
+                                                                <svg
+                                                                    class="delete-bottom"
+                                                                    viewBox="0 0 33 39"
+                                                                    fill="none"
+                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                    >
+                                                                <mask id="path-1-inside-1_8_19" fill="white">
+                                                                    <path
+                                                                        d="M0 0H33V35C33 37.2091 31.2091 39 29 39H4C1.79086 39 0 37.2091 0 35V0Z"
+                                                                        ></path>
+                                                                </mask>
+                                                                <path
+                                                                    d="M0 0H33H0ZM37 35C37 39.4183 33.4183 43 29 43H4C-0.418278 43 -4 39.4183 -4 35H4H29H37ZM4 43C-0.418278 43 -4 39.4183 -4 35V0H4V35V43ZM37 0V35C37 39.4183 33.4183 43 29 43V35V0H37Z"
+                                                                    fill="white"
+                                                                    mask="url(#path-1-inside-1_8_19)"
+                                                                    ></path>
+                                                                <path d="M12 6L12 29" stroke="white" stroke-width="4"></path>
+                                                                <path d="M21 6V29" stroke="white" stroke-width="4"></path>
+                                                                </svg>
+                                                            </button>
+                                                        </td>
+                                                    </tr>-->
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab">
+                <div class="contenedor-nueva-receta" style="width: 100%;">
+                    <div style="width: 100%; display: flex; justify-content: center; flex-wrap: wrap;">
+                        <div class="container-elements" style="margin-left: 30px;">
+                            <div class="inputs-modal">
+                                <div class="inputs-items">
+                                    <div class="wave-group">
+                                        <input name="dificultad" required="" type="text" id="input"
+                                            oninput="this.className = ''">
+                                        <span class="bar"></span>
+                                        <label class="label">
+                                            <span class="label-char" style="--index: 0">D</span>
+                                            <span class="label-char" style="--index: 1">i</span>
+                                            <span class="label-char" style="--index: 2">f</span>
+                                            <span class="label-char" style="--index: 3">i</span>
+                                            <span class="label-char" style="--index: 4">c</span>
+                                            <span class="label-char" style="--index: 5">u</span>
+                                            <span class="label-char" style="--index: 6">l</span>
+                                            <span class="label-char" style="--index: 7">t</span>
+                                            <span class="label-char" style="--index: 8">a</span>
+                                            <span class="label-char" style="--index: 9">d</span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="inputs-items">
+                                    <div class="wave-group">
+                                        <input name="tiempo" required="" type="text" placeholder="" id="hora"
+                                            oninput="this.className = ''">
+                                        <span class="bar"></span>
+                                        <label class="label">
+                                            <span class="label-char" style="--index: 0">T</span>
+                                            <span class="label-char" style="--index: 1">i</span>
+                                            <span class="label-char" style="--index: 2">e</span>
+                                            <span class="label-char" style="--index: 3">m</span>
+                                            <span class="label-char" style="--index: 4">p</span>
+                                            <span class="label-char" style="--index: 5">o</span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="inputs-items">
+                                    <div class="wave-group">
+                                        <input name="advertencias" required="" type="text" placeholder="" id="input"
+                                            oninput="this.className = ''">
+                                        <span class="bar"></span>
+                                        <label class="label">
+                                            <span class="label-char" style="--index: 0">A</span>
+                                            <span class="label-char" style="--index: 1">d</span>
+                                            <span class="label-char" style="--index: 2">v</span>
+                                            <span class="label-char" style="--index: 3">e</span>
+                                            <span class="label-char" style="--index: 4">r</span>
+                                            <span class="label-char" style="--index: 5">t</span>
+                                            <span class="label-char" style="--index: 6">e</span>
+                                            <span class="label-char" style="--index: 7">n</span>
+                                            <span class="label-char" style="--index: 8">c</span>
+                                            <span class="label-char" style="--index: 9">i</span>
+                                            <span class="label-char" style="--index: 10">a</span>
+                                            <span class="label-char" style="--index: 11">s</span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="inputs-items">
+                                    <div class="wave-group">
+                                        <input name="nota" required="" type="text" placeholder="" id="input"
+                                            oninput="this.className = ''">
+                                        <span class="bar"></span>
+                                        <label class="label">
+                                            <span class="label-char" style="--index: 0">N</span>
+                                            <span class="label-char" style="--index: 1">o</span>
+                                            <span class="label-char" style="--index: 2">t</span>
+                                            <span class="label-char" style="--index: 3">a</span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="inputs-items">
+                                    <div class="container-upload-img">
+                                        <input type="file" accept="image/*" name="img_preparacion" id="file2"
+                                            oninput="this.className = ''" required>
+                                        <div id="imageContainer-file2">
+                                            <img src="/assets/uploadimg.jpg" alt="">
+                                        </div>
+                                        <button id="deleteButton" class="deleteBtn" alt="Eliminar"
+                                            onclick="deleteImage('file2')">
+                                            <svg class="delete-top" viewBox="0 0 39 7" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <line y1="5" x2="39" y2="5" stroke="white" stroke-width="4"></line>
+                                                <line x1="12" y1="1.5" x2="26.0357" y2="1.5" stroke="white"
+                                                    stroke-width="3"></line>
+                                            </svg>
+                                            <svg class="delete-bottom" viewBox="0 0 33 39" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <mask id="path-1-inside-1_8_19" fill="white">
+                                                    <path
+                                                        d="M0 0H33V35C33 37.2091 31.2091 39 29 39H4C1.79086 39 0 37.2091 0 35V0Z">
+                                                    </path>
+                                                </mask>
+                                                <path
+                                                    d="M0 0H33H0ZM37 35C37 39.4183 33.4183 43 29 43H4C-0.418278 43 -4 39.4183 -4 35H4H29H37ZM4 43C-0.418278 43 -4 39.4183 -4 35V0H4V35V43ZM37 0V35C37 39.4183 33.4183 43 29 43V35V0H37Z"
+                                                    fill="white" mask="url(#path-1-inside-1_8_19)"></path>
+                                                <path d="M12 6L12 29" stroke="white" stroke-width="4"></path>
+                                                <path d="M21 6V29" stroke="white" stroke-width="4"></path>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="tab">
+                <div class="contenedor-nueva-receta" style="width: 100%;">
+                    <div style="width: 100%; display: flex; justify-content: center; flex-wrap: wrap;">
+                        <div class="container-elements" style="width: 400px; margin-left: 30px;">
+                            <div class="inputs-modal">
+
+                                <div class="inputs-items">
+                                    <div class="wave-group">
+                                        <input required type="text" id="Titulo" oninput="this.className = ''">
+                                        <span class="bar"></span>
+                                        <label class="label">
+                                            <span class="label-char" style="--index: 0">T</span>
+                                            <span class="label-char" style="--index: 1">i</span>
+                                            <span class="label-char" style="--index: 2">t</span>
+                                            <span class="label-char" style="--index: 3">u</span>
+                                            <span class="label-char" style="--index: 4">l</span>
+                                            <span class="label-char" style="--index: 5">o</span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="inputs-items">
+                                    <div class="wave-group">
+                                        <input required type="text" id="input_paso" oninput="this.className = ''">
+                                        <span class="bar"></span>
+                                        <label class="label">
+                                            <span class="label-char" style="--index: 0">P</span>
+                                            <span class="label-char" style="--index: 1">a</span>
+                                            <span class="label-char" style="--index: 2">s</span>
+                                            <span class="label-char" style="--index: 3">o</span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="inputs-items">
+                                    <div class="container-upload-img">
+                                        <input type="file" accept="image/*" name="img_paso" id="file3"
+                                            oninput="this.className = ''" required>
+                                        <div id="imageContainer-file3">
+                                            <img src="/assets/uploadimg.jpg" alt="">
+                                        </div>
+                                        <button id="deleteButton" class="deleteBtn" alt="Eliminar"
+                                            onclick="deleteImage('file3')">
+                                            <svg class="delete-top" viewBox="0 0 39 7" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <line y1="5" x2="39" y2="5" stroke="white" stroke-width="4"></line>
+                                                <line x1="12" y1="1.5" x2="26.0357" y2="1.5" stroke="white"
+                                                    stroke-width="3"></line>
+                                            </svg>
+                                            <svg class="delete-bottom" viewBox="0 0 33 39" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <mask id="path-1-inside-1_8_19" fill="white">
+                                                    <path
+                                                        d="M0 0H33V35C33 37.2091 31.2091 39 29 39H4C1.79086 39 0 37.2091 0 35V0Z">
+                                                    </path>
+                                                </mask>
+                                                <path
+                                                    d="M0 0H33H0ZM37 35C37 39.4183 33.4183 43 29 43H4C-0.418278 43 -4 39.4183 -4 35H4H29H37ZM4 43C-0.418278 43 -4 39.4183 -4 35V0H4V35V43ZM37 0V35C37 39.4183 33.4183 43 29 43V35V0H37Z"
+                                                    fill="white" mask="url(#path-1-inside-1_8_19)"></path>
+                                                <path d="M12 6L12 29" stroke="white" stroke-width="4"></path>
+                                                <path d="M21 6V29" stroke="white" stroke-width="4"></path>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="inputs-items">
+                                    <div class="wave-group">
+                                        <div class="table-container">
+                                            <table id="table-pasos">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Titulo</th>
+                                                        <th>Paso</th>
+                                                        <th>Imagen</th>
+                                                        <th>Acciones</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody id="tbody-table3">
+                                                    <tr th:each="p :${Producto}">
+                                                        <td th:text="${p.nombre}">Paso</td>
+                                                        <td><img style="width: 50px; height: 50px;"
+                                                                src="../assets/Noticia1.jpg" alt=""></td>
+                                                        <td class="acciones">
+                                                            <div
+                                                                style="width: 100%; display: flex; justify-content: center;">
+                                                                <button class="editBtn" alt="Editar"
+                                                                    onclick="editarPaso(this)">
+                                                                    <svg height="1em" viewBox="0 0 512 512">
+                                                                        <path
+                                                                            d="M410.3 231l11.3-11.3-33.9-33.9-62.1-62.1L291.7 89.8l-11.3 11.3-22.6 22.6L58.6 322.9c-10.4 10.4-18 23.3-22.2 37.4L1 480.7c-2.5 8.4-.2 17.5 6.1 23.7s15.3 8.5 23.7 6.1l120.3-35.4c14.1-4.2 27-11.8 37.4-22.2L387.7 253.7 410.3 231zM160 399.4l-9.1 22.7c-4 3.1-8.5 5.4-13.3 6.9L59.4 452l23-78.1c1.4-4.9 3.8-9.4 6.9-13.3l22.7-9.1v32c0 8.8 7.2 16 16 16h32zM362.7 18.7L348.3 33.2 325.7 55.8 314.3 67.1l33.9 33.9 62.1 62.1 33.9 33.9 11.3-11.3 22.6-22.6 14.5-14.5c25-25 25-65.5 0-90.5L453.3 18.7c-25-25-65.5-25-90.5 0zm-47.4 168l-144 144c-6.2 6.2-16.4 6.2-22.6 0s-6.2-16.4 0-22.6l144-144c6.2-6.2 16.4-6.2 22.6 0s6.2 16.4 0 22.6z">
+                                                                        </path>
+                                                                    </svg>
+                                                                </button>
+                                                                <button class="deleteBtn" alt="Eliminar"
+                                                                    onclick="eliminarPaso(this)">
+                                                                    <svg class="delete-top" viewBox="0 0 39 7"
+                                                                        fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                        <line y1="5" x2="39" y2="5" stroke="white"
+                                                                            stroke-width="4"></line>
+                                                                        <line x1="12" y1="1.5" x2="26.0357" y2="1.5"
+                                                                            stroke="white" stroke-width="3"></line>
+                                                                    </svg>
+                                                                    <svg class="delete-bottom" viewBox="0 0 33 39"
+                                                                        fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                        <mask id="path-1-inside-1_8_19" fill="white">
+                                                                            <path
+                                                                                d="M0 0H33V35C33 37.2091 31.2091 39 29 39H4C1.79086 39 0 37.2091 0 35V0Z">
+                                                                            </path>
+                                                                        </mask>
+                                                                        <path
+                                                                            d="M0 0H33H0ZM37 35C37 39.4183 33.4183 43 29 43H4C-0.418278 43 -4 39.4183 -4 35H4H29H37ZM4 43C-0.418278 43 -4 39.4183 -4 35V0H4V35V43ZM37 0V35C37 39.4183 33.4183 43 29 43V35V0H37Z"
+                                                                            fill="white"
+                                                                            mask="url(#path-1-inside-1_8_19)"></path>
+                                                                        <path d="M12 6L12 29" stroke="white"
+                                                                            stroke-width="4"></path>
+                                                                        <path d="M21 6V29" stroke="white"
+                                                                            stroke-width="4"></path>
+                                                                    </svg>
+                                                                </button>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="inputs-items">
+                                    <div class="wave-group">
+                                        <button class="modal-btn" onclick="agregarPaso(this)">Agregar paso</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div style="display: flex; justify-content: center;">
+                <button type="button" id="prevBtn" onclick="nextPrev(-1, event)">Anterior</button>
+                <button type="button" id="nextBtn" onclick="nextPrev(1, event)">Siguiente</button>
+            </div>
+
+            <div style="text-align:center;margin-top:40px;">
+                <span class="step"></span>
+                <span class="step"></span>
+                <span class="step"></span>
+                <span class="step"></span>
+                <span class="step"></span>
+            </div>
+
+        </form>
+    </dialog>
+
+
+    <!-- Variables de paginación -->
+    <script th:inline="javascript">
+        const totalElements = /*[[${page.totalElements}]]*/ 0;
+        const currentPage = /*[[${page.number}]]*/ 0;
+        const currentPageSize = /*[[${page.size}]]*/ 10;
+        const idReceta = /*[[${idReceta}]]*/ "";
+    </script>
+
+
+    <script>
+
+        function cargarFormulario(button) {
+            event.preventDefault();
+            var idReceta = document.getElementById("identificadorReceta").value;
+            var idComentario = button.parentElement.querySelector("#idComentario").value;
+
+            var url = "/c_comentarios/cargarFormularioEditar?identificadorComentario=" + idComentario + "&identificadorReceta=" + idReceta;
+
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.open("GET", url, true);
+
+            // Enviar la solicitud
+            xmlhttp.send();
+
+            // Manejar la respuesta
+            xmlhttp.onreadystatechange = function () {
+                if (this.readyState === 4) {
+
+                    if (this.status === 200) {
+
+                        // Si la respuesta es exitosa, actualizar el contenido del contenedor de comentarios
+                        var contenedor = document.getElementById("modify-comment-container");
+                        contenedor.innerHTML = this.responseText;
+                        document.getElementById("commentFormModify").style.display = "block";
+                        
+                    }
+                }
+            };
+        }
+
+        function cargarFormularioComentarioNuevo() {
+            event.preventDefault();
+            var idReceta = document.getElementById("identificadorReceta").value;
+
+            var url = "/c_comentarios/cargarFormularioComentar?identificadorReceta=" + idReceta;
+
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.open("GET", url, true);
+
+            // Enviar la solicitud
+            xmlhttp.send();
+
+            // Manejar la respuesta
+            xmlhttp.onreadystatechange = function () {
+                if (this.readyState === 4) {
+
+                    if (this.status === 200) {
+
+                        // Si la respuesta es exitosa, actualizar el contenido del contenedor de comentarios
+                        var contenedor = document.getElementById("modify-comment-container");
+                        contenedor.innerHTML = this.responseText;
+                        document.getElementById("commentForm").style.display = "block";
+                        
+                    }
+                }
+            };
+        }
+
+    </script>
+
+
+
+
+    <script text="text/javascript" th:src="@{/js/jsComentarios.js}"></script>
+    <script text="text/javascript" th:src="@{/js/jsPaginacion.js}" defer></script>
+    <script text="text/javascript" th:src="@{/js/Notificacion/notificacion.js}" defer></script>
+
+
+    <script text="text/javascript" th:src="@{/js/jsValidacionAgregarReceta.js}" defer></script>
+</body>
+
 </html>

@@ -6,14 +6,13 @@
         <meta charset="UTF-8">
         <script text="text/javascript" th:src="@{/js/functionsNotice.js}"></script>
         <script text="text/javascript" th:src="@{/js/jsUpload_img.js}"></script>
-        <link rel="stylesheet" type="text/css" th:href="@{/css/stBtnEliminar.css}">
-        <link rel="stylesheet" type="text/css" th:href="@{/css/stColores_fuentes.css}">
-        <link rel="stylesheet" type="text/css" th:href="@{/css/stFooter.css}">
-        <link rel="stylesheet" type="text/css" th:href="@{/css/stRecetasYNoticias.css}">
-        <link rel="stylesheet" type="text/css" th:href="@{/css/stNav.css}">
-        <link rel="stylesheet" type="text/css" th:href="@{/css/stModal.css}">
+        <link rel="stylesheet" th:href="@{/css/stColores_fuentes.css}">
+        <link rel="stylesheet" th:href="@{/css/stNav.css}">
+        <link rel="stylesheet" th:href="@{/css/stFooter.css}">
+        <link rel="stylesheet" th:href="@{/css/stDialog.css}">
+        <link rel="stylesheet" th:href="@{/css/stInputs_Select_uimg.css}">
+        <link rel="stylesheet" th:href="@{/css/stRecetasYNoticias.css}">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <script text="text/javascript" th:src="@{/js/jsModalAdd.js}"></script>
 <style>
             .container-elements{
                 width: 400px;
@@ -152,11 +151,11 @@
                     <div class="container-elements">
                         <div class="inputs-items">
                             <div class="container-upload-img">
-                                <input type="file" accept="image/*" name="img_receta" id="file" oninput="this.className = ''" required>
+                                <input type="file" accept="image/*" name="file" id="file" oninput="this.className = ''" required>
                                 <div id="imageContainer-file">
                                     <img src="/assets/uploadimg.jpg" alt="">
                                 </div>
-                                <button type="button" id="deleteButton" class="deleteBtn" alt="Eliminar"
+                                <button id="deleteButton" class="deleteBtn" alt="Eliminar"
                                         onclick="deleteImage('file')">
                                     <svg class="delete-top" viewBox="0 0 39 7" fill="none"
                                          xmlns="http://www.w3.org/2000/svg">
@@ -381,7 +380,7 @@
                 </div>
                 <div class="button-clearPosition">
 
-                    <button class="button-clearStyle" type="button" onclick="clearFields()">
+                    <button class="button-clearStyle" type="submit" onclick="clearFields()">
                         Limpiar Formulario
                     </button>
 

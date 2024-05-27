@@ -24,7 +24,7 @@ public class NoticeService {
     public NoticeService(NoticeRepository noticeRepository) {
         this.noticeRepository = noticeRepository;
     }
-      
+    
 
     public void saveNotice(Notice notice) {
         // Guardar la instancia de Notice en la base de datos
@@ -71,7 +71,7 @@ public class NoticeService {
 
                 String nameFinal = date + image.getOriginalFilename();
 
-                Path path = Path.of("BooleanKitchen","src" , "main", "resources", 
+                Path path = Path.of("src" , "main", "resources", 
                 "static" , "imgNot", nameFinal);   
                 
                 Files.createFile(path);
@@ -91,7 +91,7 @@ public class NoticeService {
     public boolean deleteImage(String imageName) {
         
         try {
-            Path path = Path.of("BooleanKitchen","src" , "main", "resources", 
+            Path path = Path.of("src" , "main", "resources", 
                 "static" , "imgNot", imageName);  
             Files.deleteIfExists(path);
             return true;

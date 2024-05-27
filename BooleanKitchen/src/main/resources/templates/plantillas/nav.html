@@ -9,13 +9,13 @@
             <nav class="menu__wrapper">
                 <div class="logo__wrapper">
                     <a
-                        href="#"
+                        href="/c_inicio/index"
                         title="Logo"
                         class="logo"
                         >
                         <img class="logo" height="40" width="40" src="/assets/logo.png" alt="Boolean Kitchen">
                         </a>
-                    <a href="#" class="page__title">
+                    <a href="/c_inicio/index" class="page__title">
                         Boolean Kitchen
                     </a>
                 </div>
@@ -34,21 +34,25 @@
                         </div>
 
                         <div class="searchbar-center">
-                            <div class="searchbar-input-spacer"></div>
+                            <form id="buscarRecetaForm" method="get" th:action="@{/c_receta/buscarReceta}">
+                                <div class="searchbar-input-spacer"></div>
 
-                            <input type="text" class="searchbar-input" maxlength="2048" name="q" autocapitalize="off" autocomplete="off" title="Search" role="combobox" placeholder="Buscar receta">
+                                <input type="text" class="searchbar-input" maxlength="2048" name="buscarReceta" autocapitalize="off" autocomplete="off" title="Search" role="combobox" placeholder="Buscar receta">
+                            </form>
                         </div>
                     </div>
                 </div>
 
                 <div class="action-buttons">
-                    <img id="avatar-navbar" class="avatar-profile" src="/assets/default_profile.png" alt="Profile">
+                    <img id="avatar-navbar" class="avatar-profile" th:src="@{/assets/default_profile.png}" alt="Profile" th:if="${usuario == null}">
+                    <img id="avatar-navbar" class="avatar-profile" th:src="@{/assets/__${usuario.imagenFileName}__}" alt="Profile" th:if="${usuario != null}">
                 </div>
             </nav>
 
             <div class="navigation__menu hide none">
                 <div class="avatar-wrapper">
-                    <img class="avatar-profile" src="/assets/default_profile.png" alt="Profile">
+                    <img class="avatar-profile" th:src="@{/assets/default_profile.png}" alt="Profile" th:if="${usuario == null}">
+                    <img class="avatar-profile" th:src="@{/assets/__${usuario.imagenFileName}__}" alt="Profile" th:if="${usuario != null}">
                     <div class="avatar-name-wrapper">
                         <div th:if="${usuario != null}">
                             <div class="avatar-name-alias" th:text="${usuario.userName}"></div>

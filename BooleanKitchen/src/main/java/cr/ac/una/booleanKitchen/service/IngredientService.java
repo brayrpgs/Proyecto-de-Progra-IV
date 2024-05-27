@@ -99,7 +99,7 @@ public class IngredientService {
 
                 String nameFinal = date + image.getOriginalFilename();
 
-                Path path = Path.of("BooleanKitchen","src" , "main", "resources", 
+                Path path = Path.of("src" , "main", "resources", 
                 "static" , "imgIng" ,nameFinal);   
                 
                 Files.createFile(path);
@@ -119,7 +119,7 @@ public class IngredientService {
     public boolean deleteImage(String imageName) {
         
         try {
-            Path path = Path.of("BooleanKitchen","src" , "main", "resources", 
+            Path path = Path.of("src" , "main", "resources", 
                 "static" , "imgIng", imageName);  
             Files.deleteIfExists(path);
             return true;

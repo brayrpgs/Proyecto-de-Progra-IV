@@ -12,6 +12,7 @@
     <link rel="stylesheet" th:href="@{/css/stNav.css}">
     <link rel="stylesheet" th:href="@{/css/stFooter.css}">
     <link rel="stylesheet" th:href="@{/css/stRecetasYNoticias.css}">
+    <script text="text/javascript" th:src="@{/js/jsNav.js}" defer></script>
 
     <style>
         table {
@@ -133,10 +134,7 @@
     <div th:replace="plantillas/nav :: nav"></div>
 
     <div class="container">
-        <br><br>
-        <h1>
-            <a th:href="@{/c_inicio/index}" th:text="'Noticias'" style="color: lightcoral;text-decoration: none">Noticias</a>
-        </h1>
+        <h1 style="text-align: center; margin-top: 55px;">Panel de control de noticias</h1>
 
         <div style="text-align: center;">
             <a href="/c_noticia/noticias/agregarNoticias">
@@ -169,7 +167,7 @@
                             <td th:text="${item.TITULO}"></td>
                             <td th:text="${item.AUTHOR}"></td>
                             <td>
-                                <Img th:src="@{'/imgNot/' + ${item.RUTA_IMG}}" th:alt="${item.RUTA_IMG}">
+                                <Img th:src="@{'/img/notice/' + ${item.RUTA_IMG}}" th:alt="${item.RUTA_IMG}">
 
                                 </Img>
                             </td>

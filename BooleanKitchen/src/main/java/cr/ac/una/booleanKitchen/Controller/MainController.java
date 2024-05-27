@@ -9,9 +9,11 @@ import org.springframework.web.bind.annotation.GetMapping;
  * @author Daniel Briones
  */
 @Controller
-public class MainController {
+public class MainController{
     @GetMapping({ "/", "/home", "/index", "/login" })
     public String inicio() {
         return "login";
     }
+
+
 }
