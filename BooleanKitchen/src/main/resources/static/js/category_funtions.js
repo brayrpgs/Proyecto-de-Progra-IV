@@ -57,7 +57,32 @@ function openDialog(event) {
     }
   }
   
-  
+  function SearchCategory(){
+
+     var search = document.getElementById("search").value;
+      
+    //alert(description);
+    
+    if(search.trim()===''){
+        search='NS';
+    }
+    // alert(search);
+    var modal = document.getElementById("container-table");
+   
+
+    var xmlhttp = new XMLHttpRequest();
+      xmlhttp.open("GET", "/categoriaIndex/searchCategory/"+search, true);
+      xmlhttp.send();
+
+    xmlhttp.onreadystatechange= function (){
+
+        if(this.readyState === 4 && this.status === 200){
+            modal.innerHTML = this.responseText;
+           document.getElementById("search").value='';
+        }
+  
+    };
+};
   
   
    function closeNotification(){

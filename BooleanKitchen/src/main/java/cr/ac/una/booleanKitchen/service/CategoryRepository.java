@@ -3,6 +3,8 @@ package cr.ac.una.booleanKitchen.service;
 
 import cr.ac.una.booleanKitchen.domain.Category;
 import jakarta.transaction.Transactional;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -28,4 +30,9 @@ public interface CategoryRepository extends JpaRepository<Category, Integer>{
     @Transactional
     @Query(value = "UPDATE tb_bk_category SET NOMBRE = :#{#category.name}, DESCRIPCION = :#{#category.description}, ETIQUETA = :#{#category.label}, FECHA = :#{#category.date}, VISIBLE = :#{#category.catVisible}, CREADO_POR = :#{#category.createBy}, COMENTARIO_ADMIN = :#{#category.comment}, RUTA_IMG = :#{#category.image} WHERE IDENTIFICADOR = :identificador", nativeQuery = true)
     int updateCategory(@Param("category") Category category, @Param("identificador") String identificador);
+    
+   @Query("SELECT c FROM Category c WHERE c.idSerial LIKE %?1% OR c.name LIKE %?1% OR c.description LIKE %?1%")
+   Page<Category> findByCategoryFilter(String partialName, Pageable pageable);
+
+    
 }

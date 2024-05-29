@@ -262,6 +262,18 @@ public class CategoryController {
      public String exiCat(Model model){
          return "index";
      }
+     
+     @GetMapping({"/searchCategory/{search}"})
+     public String searchCategory(Model model,@PathVariable String search,@PageableDefault(size = 4, page = 0) Pageable pageable){
+         if(!search.trim().equalsIgnoreCase("NS")){
+         refreshTableByFilter(pageable, model, search);     
+         }else{
+             refreshTable(pageable, model);
+         }
+        
+         
+         return "category/tableCategory";
+     }
     
     
 
@@ -283,6 +295,34 @@ public class CategoryController {
     //metodo de paginacion
     public void refreshTable(Pageable pageable, Model model) {
         Page<Category> page = catRepo.getPage(PageRequest.of(pageable.getPageNumber(), pageable.getPageSize()));
+        // model.addAttribute("ListaCategory", catRepo.getCategorias());
+        model.addAttribute("numberOfElements", page.getNumberOfElements());
+        model.addAttribute("page", page);
+  
+        var totalPages = page.getTotalPages();
+        var currentPage = page.getNumber();
+
+        var start = Math.max(1, currentPage);
+        var end = Math.min(currentPage + 5, totalPages);
+
+        if (totalPages > 0) {
+            List<Integer> pageNumbers = new ArrayList<>();
+            for (int i = start; i <= end; i++) {
+                pageNumbers.add(i);
+            }
+
+            model.addAttribute("pageNumbers", pageNumbers);
+        }
+
+        List<Integer> pageSizeOptions = Arrays.asList( 4,10, 20, 50, 100);
+        model.addAttribute("pageSizeOptions", pageSizeOptions);
+
+    }
+    
+    
+     //metodo de paginacion por filtro
+    public void refreshTableByFilter(Pageable pageable, Model model,String filter) {
+        Page<Category> page = catRepo.getPagebyFilter(filter, pageable);
         // model.addAttribute("ListaCategory", catRepo.getCategorias());
         model.addAttribute("numberOfElements", page.getNumberOfElements());
         model.addAttribute("page", page);
