@@ -12,6 +12,7 @@
     <link rel="stylesheet" th:href="@{/css/stNav.css}">
     <link rel="stylesheet" th:href="@{/css/stFooter.css}">
     <link rel="stylesheet" th:href="@{/css/stRecetasYNoticias.css}">
+    <link rel="stylesheet" th:href="@{/css/stPaginacion.css}">
     <script text="text/javascript" th:src="@{/js/jsNav.js}" defer></script>
 
     <style>
@@ -167,7 +168,7 @@
                             <td th:text="${item.TITULO}"></td>
                             <td th:text="${item.AUTHOR}"></td>
                             <td>
-                                <Img th:src="@{'/img/notice/' + ${item.RUTA_IMG}}" th:alt="${item.RUTA_IMG}">
+                                <Img th:src="@{'/imgNot/' + ${item.RUTA_IMG}}" th:alt="${item.RUTA_IMG}">
 
                                 </Img>
                             </td>

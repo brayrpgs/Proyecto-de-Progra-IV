@@ -52,7 +52,7 @@
     <h1 style="text-align: center;" th:text="${notice.TITULO}"></h1>
     <br>
     <div class="noticia-container">
-        <img class="noticia-img" th:src="@{'/img/notice/' + ${notice.RUTA_IMG}}" th:alt="${notice.RUTA_IMG}">
+        <img class="noticia-img" th:src="@{'/imgNot/' + ${notice.RUTA_IMG}}" th:alt="${notice.RUTA_IMG}">
 
         <p th:text="${notice.RESUMEN}">
             
