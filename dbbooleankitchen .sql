@@ -46,7 +46,7 @@ CREATE TABLE `tb_bk_category` (
   `IDENTIFICADOR` varchar(255) NOT NULL,
   `NOMBRE` varchar(255) NOT NULL,
   `DESCRIPCION` varchar(255) NOT NULL,
-  `RUTA_IMG` varchar(100) NOT NULL,
+  `RUTA_IMG` varchar(200) NOT NULL,
   `ETIQUETA` varchar(255) NOT NULL,
   `FECHA` date NOT NULL,
   `VISIBLE` tinyint(1) NOT NULL,
@@ -110,7 +110,7 @@ CREATE TABLE `tb_bk_ingredient` (
   `ID_CATEGORIA` int(11) NOT NULL,
   `CALORIAS` float NOT NULL,
   `DESCRIPCION` varchar(100) NOT NULL,
-  `RUTA_IMG` varchar(100) NOT NULL
+  `RUTA_IMG` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -166,7 +166,7 @@ CREATE TABLE `tb_bk_notice` (
   `AUTOR` varchar(50) NOT NULL,
   `ESTADO` tinyint(1) NOT NULL,
   `URL` varchar(255) NOT NULL,
-  `RUTA_IMG` varchar(100) NOT NULL
+  `RUTA_IMG` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -188,7 +188,7 @@ CREATE TABLE `tb_bk_origin` (
   `NOMBRE` varchar(100) NOT NULL,
   `DESCRIPCION` varchar(255) NOT NULL,
   `PAIS` varchar(100) NOT NULL,
-  `RUTA_IMG` varchar(100) NOT NULL,
+  `RUTA_IMG` varchar(200) NOT NULL,
   `CONTINENTE` varchar(255) NOT NULL,
   `SABOR` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -212,7 +212,7 @@ CREATE TABLE `tb_bk_preparation` (
   `ID_RECETA` int(11) NOT NULL,
   `DIFICULTAD` varchar(50) NOT NULL,
   `TIEMPO` time NOT NULL,
-  `RUTA_IMG` varchar(100) NOT NULL,
+  `RUTA_IMG` varchar(200) NOT NULL,
   `NOTA_AUTOR` varchar(255) NOT NULL,
   `ALERTA` varchar(150) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -269,7 +269,7 @@ CREATE TABLE `tb_bk_recipe` (
   `ID_ORIGEN` int(11) NOT NULL,
   `ID_CATEGORIA` int(11) NOT NULL,
   `CALIFICACION` int(11) NOT NULL,
-  `RUTA_IMG` varchar(100) NOT NULL,
+  `RUTA_IMG` varchar(200) NOT NULL,
   `TOTAL_CALIFICACION` int(11) NOT NULL,
   `ID_USUARIO` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -362,7 +362,7 @@ CREATE TABLE `tb_bk_user` (
   `NOMBRE_USUARIO` varchar(255) NOT NULL,
   `EMAIL` varchar(255) NOT NULL,
   `PASSWORD` varchar(255) NOT NULL,
-  `RUTA_IMG` varchar(100) NOT NULL,
+  `RUTA_IMG` varchar(200) NOT NULL,
   `TIPO_USUARIO` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
