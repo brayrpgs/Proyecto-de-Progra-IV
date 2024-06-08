@@ -50,7 +50,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
         } 
           
         
-          form  input[type="submit"],
+          form  input[type="submit"],form  input[type="button"],
           form  button[type="submit"],.Container-enlace button{
                 background-color: purple;
                 color: white;
@@ -62,7 +62,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
                 transition: background-color 0.3s;
         }
         
-        form .form-button input[type="submit"]:hover,
+        form .form-button input[type="submit"]:hover, form input[type="button"]:hover,
         form .form-button button[type="submit"]:hover{
             background-color:rgb(107, 58, 58) ;
         }

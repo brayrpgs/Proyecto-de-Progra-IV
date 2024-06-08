@@ -24,6 +24,7 @@ function openDialog(event) {
   }
   
   function handleFormSubmit(event) {
+      alert('hola');
     event.preventDefault(); // Previene el envío por defecto del formulario
 
     const submitter = event.submitter; // Obtiene el botón que disparó el evento submit
