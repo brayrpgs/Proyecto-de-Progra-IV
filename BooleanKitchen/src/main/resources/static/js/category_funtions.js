@@ -23,6 +23,22 @@ function openDialog(event) {
     });
   }
   
+  function handleFormSubmit(event) {
+    event.preventDefault(); // Previene el envío por defecto del formulario
+
+    const submitter = event.submitter; // Obtiene el botón que disparó el evento submit
+
+    if (submitter.name === 'submit' && submitter.value === 'Agregar') {
+        sendCategoryForm();
+    } else if (submitter.name === 'submitModify' ) {
+        ModifyCategoryForm();
+    } else if (submitter.name === 'submitReturn') {
+        cambiarAccion('/categoriaIndex/returnMainCat');
+    }
+
+    return false; // Previene el envío por defecto
+}
+
   
   //agregar categoria
   
