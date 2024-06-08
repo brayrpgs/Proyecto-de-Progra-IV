@@ -1,32 +1,8 @@
-<!DOCTYPE html>
-<!--
-Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
-Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
--->
-<html xmls:th="http://thymeleaf.org">
-    <head>
-        <title>Agregacion de categorias</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" >
-        <link rel="stylesheet" th:href="@{/css/cat/style.css}"/>
-        <link rel="stylesheet" th:href="@{/css/cat/btnModel.css}"/>
-        <link rel="stylesheet" th:href="@{/css/cat/colores_fuentes.css}"/>
-        <link rel="stylesheet" type="text/css" th:href="@{/css/stNav.css}">
-        <link rel="stylesheet" type="text/css" th:href="@{/css/stFooter.css}">
-        <link rel="stylesheet" th:href="@{/css/cat/recetasynoticias.css}"/>
-        <script th:src="@{/js/main.js}"></script>
-        <script text="text/javascript" th:src="@{/js/category_funtions.js}"></script>
 
-    </head>
-    <body>
-        <div th:replace="plantillas/nav :: nav"></div>
-        <!-- creacion de formulario --> 
 
-        <div id="container" class="container">
+            <dialog th:class="${class}" open id="view-message" th:if="${message}">
 
-            <dialog th:class="${class}" id="view-message" >
-
-                <div th:class="'warning ' + ${class}" id="notificacion">
+                <div th:class="'warning ' + ${class}" th:if="${message}" id="notificacion">
                     <img style="width: 20px; height: 30px;" th:src="@{'/icono/' + ${type} + '.svg'}"  alt="alt"/>
                     <p><b th:text="${message}"></b></p>
                 </div>
@@ -44,7 +20,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                 <!-- hABILITAR EL SU -->
                 <h1>Administrador de categorias</h1>
 
-                <form id="formulario-dinamico" method="post" th:action="@{/categoriaIndex/agregarCat}"  enctype="multipart/form-data" >
+                <form id="formulario-dinamico" method="post" th:action="@{/categoriaIndex/agregarCat}" enctype="multipart/form-data" >
 
 
                     <div class="formulario-ingreso">
@@ -261,12 +237,3 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                     </button>
                 </a>
             </div>
-
-        </div>
-        <br/>
-        
-        
-        <footer th:replace="plantillas/footer :: footer"></footer>
-
-    </body>
-</html>

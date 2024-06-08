@@ -1,5 +1,5 @@
 
-<dialog th:class="${class}" open id="view-message">
+<dialog th:class="${class}" open id="view-message" th:if="${message}">
 
     <div th:class="'warning ' + ${class}" th:if="${message}" id="notificacion">
         <img style="width: 20px; height: 30px;" th:src="@{'/icono/' + ${type} + '.svg'}"  alt="alt"/>
@@ -13,7 +13,6 @@
 </dialog>
 
 <div id="container-table" class="container-table">
-<h1>Lista de categorías registradas</h1>
 
          <th:block th:if="${page.content.empty}">
              <p>No hay categorías disponibles.</p>

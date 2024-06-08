@@ -24,6 +24,189 @@ function openDialog(event) {
   }
   
   
+  //agregar categoria
+  
+  function sendCategoryForm(){
+    
+    document.getElementById("formulario-dinamico").addEventListener("submit", function(event) {
+        // Evitar que se envíe el formulario
+        event.preventDefault();
+    });
+
+    
+        var idSerial = document.getElementById("idSerial").value.trim();
+        var name = document.getElementById("name").value;
+        var description = document.getElementById("description").value;
+        var img=document.getElementById("file").files[0];
+        var label = document.getElementById("label").value;
+        var visibility = document.querySelector('input[name="Visibilidad"]:checked').value;
+        var notaAdmin = document.getElementById("notaAdmin").value;
+        
+        if (!idSerial || !name.trim() || !description.trim() || !label.trim()) {
+            var classType='adMessage';
+            var type='pen-to-square-regular';
+            var message='Faltan datos por llenar';
+           // alert('Por favor, complete todos los campos requeridos.');
+              document.getElementById("view-message").className = classType;
+              document.getElementById("notificacion").className = 'warning ' + classType;
+              document.querySelector("#notificacion img").src = '/icono/' + type + '.svg';
+              document.querySelector("#notificacion p b").textContent = message;
+              var dialog = document.getElementById("view-message");
+              dialog.showModal();
+            return; // Evita el envío del formulario
+        }
+        
+        if(!/^CAT-\d{3,}$/.test(idSerial)){
+             var classType='adMessage';
+            var type='triangle-exclamation-solid';
+            var message='El identificador tiene que contener al menos 3 numeros como mínimo.';
+           
+              document.getElementById("view-message").className = classType;
+              document.getElementById("notificacion").className = 'warning ' + classType;
+              document.querySelector("#notificacion img").src = '/icono/' + type + '.svg';
+              document.querySelector("#notificacion p b").textContent = message;
+              var dialog = document.getElementById("view-message");
+              dialog.showModal();
+            return; // Evita el envío del formulario
+        }
+        
+        if(!img){
+           // alert('Entrando');
+             var classType='adMessage';
+            var type='file-regular';
+            var message='La imagen se encuentra vacia, por favor, llenar';
+             document.getElementById("view-message").className = classType;
+              document.getElementById("notificacion").className = 'warning ' + classType;
+              document.querySelector("#notificacion img").src = '/icono/' + type + '.svg';
+              document.querySelector("#notificacion p b").textContent = message;
+              var dialog = document.getElementById("view-message");
+              dialog.showModal();
+              return;
+        }
+        
+        
+    //alert(description);
+    
+    var modal = document.getElementById("container");
+
+    var xmlhttp = new XMLHttpRequest();
+    var formData = new FormData();
+    
+    formData.append('idSerial', idSerial);
+    formData.append('name', name);
+    formData.append('img', img);
+    formData.append('label', label);
+    formData.append('description', description);
+    formData.append('Visibilidad', visibility);
+    formData.append('notaAdmin', notaAdmin);
+
+    xmlhttp.open("POST", "/categoriaIndex/agregarCat", true);
+    xmlhttp.send(formData);
+
+    xmlhttp.onreadystatechange= function (){
+
+        if(this.readyState === 4 && this.status === 200){
+            document.getElementById("idSerial").value = "CAT-";
+            document.getElementById("name").value = "";
+            document.getElementById("description").value = "";
+            document.getElementById("file").value = ""; // Para limpiar el campo de archivo, establece su valor en ""
+            document.getElementById("label").index = 0;
+            document.getElementById("notaAdmin").value = "";
+            modal.innerHTML = this.responseText;
+           
+         
+            
+
+
+        }
+  
+    };
+};
+
+
+function ModifyCategoryForm(){
+    
+    document.getElementById("formulario-dinamico").addEventListener("submit", function(event) {
+        // Evitar que se envíe el formulario
+        event.preventDefault();
+    });
+
+    
+        var idSerial = document.getElementById("idSerial").value.trim();
+        var name = document.getElementById("name").value;
+        var description = document.getElementById("description").value;
+        var img=document.getElementById("file").files[0];
+        var label = document.getElementById("label").value;
+        var visibility = document.querySelector('input[name="Visibilidad"]:checked').value;
+        var notaAdmin = document.getElementById("notaAdmin").value;
+        
+        if (!idSerial || !name.trim() || !description.trim() || !label.trim()) {
+            var classType='adMessage';
+            var type='pen-to-square-regular';
+            var message='Faltan datos por llenar';
+           // alert('Por favor, complete todos los campos requeridos.');
+              document.getElementById("view-message").className = classType;
+              document.getElementById("notificacion").className = 'warning ' + classType;
+              document.querySelector("#notificacion img").src = '/icono/' + type + '.svg';
+              document.querySelector("#notificacion p b").textContent = message;
+              var dialog = document.getElementById("view-message");
+              dialog.showModal();
+            return; // Evita el envío del formulario
+        }
+        
+        if(!/^CAT-\d{3,}$/.test(idSerial)){
+             var classType='adMessage';
+            var type='triangle-exclamation-solid';
+            var message='El identificador tiene que contener al menos 3 numeros como mínimo.';
+           
+              document.getElementById("view-message").className = classType;
+              document.getElementById("notificacion").className = 'warning ' + classType;
+              document.querySelector("#notificacion img").src = '/icono/' + type + '.svg';
+              document.querySelector("#notificacion p b").textContent = message;
+              var dialog = document.getElementById("view-message");
+              dialog.showModal();
+            return; // Evita el envío del formulario
+        }
+        
+    
+    //alert(description);
+    
+    var modal = document.getElementById("container");
+
+    var xmlhttp = new XMLHttpRequest();
+    var formData = new FormData();
+    
+    formData.append('idSerial', idSerial);
+    formData.append('name', name);
+    formData.append('img', img);
+    formData.append('label', label);
+    formData.append('description', description);
+    formData.append('Visibilidad', visibility);
+    formData.append('notaAdmin', notaAdmin);
+
+    xmlhttp.open("POST", "/categoriaIndex/TerminarModificaciones", true);
+    xmlhttp.send(formData);
+
+    xmlhttp.onreadystatechange= function (){
+
+        if(this.readyState === 4 && this.status === 200){
+            document.getElementById("idSerial").value = "CAT-";
+            document.getElementById("name").value = "";
+            document.getElementById("description").value = "";
+            document.getElementById("file").value = ""; // Para limpiar el campo de archivo, establece su valor en ""
+            document.getElementById("label").index = 0;
+            document.getElementById("notaAdmin").value = "";
+            modal.innerHTML = this.responseText;
+           
+            var dialog = document.getElementById("view-message");
+              dialog.showModal();
+ 
+        }
+  
+    };
+};
+
+  
   
    function cambiarAccion(accion) {
       document.getElementById('formulario-dinamico').action = accion;
@@ -57,7 +240,32 @@ function openDialog(event) {
     }
   }
   
-  
+  function SearchCategory(){
+
+     var search = document.getElementById("search").value;
+      
+    //alert(description);
+    
+    if(search.trim()===''){
+        search='NS';
+    }
+    // alert(search);
+    var modal = document.getElementById("container-table");
+   
+
+    var xmlhttp = new XMLHttpRequest();
+      xmlhttp.open("GET", "/categoriaIndex/searchCategory/"+search, true);
+      xmlhttp.send();
+
+    xmlhttp.onreadystatechange= function (){
+
+        if(this.readyState === 4 && this.status === 200){
+            modal.innerHTML = this.responseText;
+           document.getElementById("search").value='';
+        }
+  
+    };
+};
   
   
    function closeNotification(){

@@ -188,5 +188,10 @@ private int getErrorStatus(String message) {
     public void EliminarCategoria(int codigo) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
+
+    @Override
+    public Page<Category> getPagebyFilter(String filter, Pageable page) {
+      return categoryRepository.findByCategoryFilter(filter, page);
+    }
       
 }

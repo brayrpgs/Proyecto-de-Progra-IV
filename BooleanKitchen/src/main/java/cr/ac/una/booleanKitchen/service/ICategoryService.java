@@ -26,4 +26,7 @@ public interface ICategoryService {
     public boolean modifyCat(Category cat);
     
     public Page<Category> getPage(Pageable page);
+    
+    public Page<Category> getPagebyFilter(String filter,Pageable page);
+    
 }
