@@ -4,12 +4,16 @@
  */
 package cr.ac.una.booleanKitchen.service;
 
+
 import cr.ac.una.booleanKitchen.domain.Utensil;
 import java.util.List;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+
 /**
  *
- * @author josue
+ * @author Ceasar
  */
 public interface IUtensilioService {
     public void crearUtensilio(Utensil utensilio);
@@ -19,4 +23,6 @@ public interface IUtensilioService {
     public Utensil getUtensilio(String identificador);
 
     public void EliminarUtensilio(int codigo);
+
+    public Page<Utensil>getPageUtensil(Pageable pageable);
 }

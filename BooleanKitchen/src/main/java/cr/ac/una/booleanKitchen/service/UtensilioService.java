@@ -17,6 +17,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -50,7 +52,10 @@ public class UtensilioService implements IUtensilioService {
     public Utensil getUtensilio(String identificador) {
        return serUtl.findByIdentificador(identificador);
     }
-    
+    @Override
+    public Page<Utensil> getPageUtensil(Pageable pageable){
+        return serUtl.findAll(pageable);
+    }
     
 
     public final String UPLOAD = "src/main/resources/static/img";
@@ -68,33 +73,6 @@ public class UtensilioService implements IUtensilioService {
     }
 
     
-    /*
-    public boolean insertImg(MultipartFile file, String route) {
-        if (!file.isEmpty()) {
-            try {
-                byte[] bytes = file.getBytes();
-                Path path = Paths.get(UPLOAD + "/" + route);
-                Files.write(path, bytes);
-                return true;
-            } catch (IOException e) {
-                return false;
-            }
-        }
-        return false;
-    }
-
-    public boolean deleteImage(String imageName) {
-        try {
-            Path imagePath = Paths.get(UPLOAD, imageName);
-            Files.deleteIfExists(imagePath);
-            return true;
-        } catch (Exception e) {
-            e.printStackTrace();
-            return false;
-        }
-
-    }
-*/
     
     //Agrego eso a la carpeta y la imagen con el nuevo nombre
        public boolean  insertImg(MultipartFile file,String route){
