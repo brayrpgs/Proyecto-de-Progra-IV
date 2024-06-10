@@ -11,7 +11,13 @@ import cr.ac.una.booleanKitchen.service.ICategoryService;
 import cr.ac.una.booleanKitchen.service.IUtensilioService;
 import cr.ac.una.booleanKitchen.service.UtensilioService;
 import java.util.List;
+import java.util.ArrayList;
+import java.util.Arrays;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -61,10 +67,9 @@ public class ControllerUtensil {
     }
 
     @GetMapping("/utensilioindex")
-    public String CrudUtensilio(Model model) {
+    public String CrudUtensilio(Model model,@PageableDefault(size = 4, page = 0) Pageable pageable) {
         model.addAttribute("selectCat", catSer.getCategory());
-        List<Utensil> utnl = utnServ.leerUtensilio();
-        model.addAttribute("TablaUtensilio", utnl);
+        findAll(pageable,model);
         return "utensilio/utensilioindex";
     }
 
@@ -77,7 +82,7 @@ public class ControllerUtensil {
             @RequestParam("precio") float precio,
             @RequestParam("cantidad") int cantidad,
             @RequestParam("descripcion") String descripcion,
-            Model model) {
+            Model model,@PageableDefault(size = 4, page = 0) Pageable pageable) {
 
         if (!file.isEmpty()) {
             String fileS = new UtensilioService().getRoute(file);
@@ -100,15 +105,14 @@ public class ControllerUtensil {
             model.addAttribute("mensaje", "Falta imagen");
 
         }
-        List<Utensil> utnl = utnServ.leerUtensilio();
-        model.addAttribute("TablaUtensilio", utnl);
+        findAll(pageable,model);
 
         return "utensilio/utensilioindex";
     }
 
     @GetMapping("/modificarUtensilio/{identificador}")
     public String modificarUtensilio(@PathVariable String identificador,
-            Model model) {
+            Model model,@PageableDefault(size = 4, page = 0) Pageable pageable) {
         model.addAttribute("selectCat", catSer.getCategory());
 
         Utensil utn = utnServ.getUtensilio(identificador);
@@ -118,8 +122,7 @@ public class ControllerUtensil {
 
         model.addAttribute("selectUtensil", utn);
 
-        List<Utensil> utnl = utnServ.leerUtensilio();
-        model.addAttribute("TablaUtensilio", utnl);
+        findAll(pageable,model);
 
         return "utensilio/utensilioindex";
     }
@@ -133,7 +136,7 @@ public class ControllerUtensil {
             @RequestParam("precio") float precio,
             @RequestParam("cantidad") int cantidad,
             @RequestParam("descripcion") String descripcion,
-            Model model) {
+            Model model,@PageableDefault(size = 4, page = 0) Pageable pageable) {
 
         String fileS = (!file.isEmpty()) ? new UtensilioService().getRoute(file) : getImage();
         if(!file.isEmpty()){
@@ -149,23 +152,47 @@ public class ControllerUtensil {
         setImage("");
         
         model.addAttribute("selectCat", catSer.getCategory());
-        List<Utensil> utnl = utnServ.leerUtensilio();
-        model.addAttribute("TablaUtensilio", utnl);
+        findAll(pageable,model);
 
         return "utensilio/utensilioindex";
     }
     
     @GetMapping("/BorrarUtensilio/{identificador}/{rutaDeImagen}")
-    public String eliminarUtensilio(@PathVariable String identificador,@PathVariable String rutaDeImagen,Model model){
+    public String eliminarUtensilio(@PathVariable String identificador,@PathVariable String rutaDeImagen,Model model,@PageableDefault(size = 4, page = 0) Pageable pageable){
         
         utnServ.EliminarUtensilio(utnServ.getUtensilio(identificador).getId());
         new UtensilioService().deleteImage(rutaDeImagen);
         model.addAttribute("selectCat", catSer.getCategory());
-        List<Utensil> utnl = utnServ.leerUtensilio();
-        model.addAttribute("TablaUtensilio", utnl);
+        findAll(pageable,model);
         
     
         return "utensilio/afterdeleteutensil";
     }
+   
+   
+    public void findAll(@PageableDefault(size = 10, page = 0) Pageable pageable, Model model) {
+		Page<Utensil> page = utnServ
+				.getPageUtensil(PageRequest.of(pageable.getPageNumber(), pageable.getPageSize()));
+		
+		model.addAttribute("page", page);
+		var totalPages = page.getTotalPages();
+		var currentPage = page.getNumber();
+		
+		var start = Math.max(1, currentPage);
+		var end = Math.min(currentPage + 5, totalPages);
+		
+		if (totalPages > 0) {
+			List<Integer> pageNumbers = new ArrayList<>();
+			for (int i = start; i <= end; i++) {
+				pageNumbers.add(i);
+			}
+			
+			model.addAttribute("pageNumbers", pageNumbers);
+		}
+		
+		
+		List<Integer> pageSizeOptions = Arrays.asList(10,20, 50, 100);
+		model.addAttribute("pageSizeOptions", pageSizeOptions);
+	}
 
 }

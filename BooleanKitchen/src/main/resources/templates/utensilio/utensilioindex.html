@@ -9,6 +9,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
         <meta charset="UTF-8">
         <script text="text/javascript" th:src="@{/js/funcionUtensilio.js}"></script>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" th:href="@{/css/stPaginacion.css}">
         <link rel="stylesheet" type="text/css" th:href="@{/css/stBtnEditar.css}">
         <link rel="stylesheet" type="text/css" th:href="@{/css/stBtnEliminar.css}">
         <link rel="stylesheet" type="text/css" th:href="@{/css/stColores_fuentes.css}">
@@ -321,12 +322,12 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                     <h2>Lista de Utensilios</h2>
                     <div id="TablaUtensilio">
 
-                        <th:block th:if="${#lists.isEmpty(TablaUtensilio)}">
+                        <th:block th:if="${#lists.isEmpty(page.content)}">
                             <p>No hay Utensilios disponibles.</p>
                         </th:block>
 
                         <table>
-                            <th:block th:if="${not #lists.isEmpty(TablaUtensilio)}">
+                            <th:block th:if="${not #lists.isEmpty(page.content)}">
                                 <thead>
                                     <tr>
                                         <th>Identificador</th>
@@ -341,7 +342,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr th:each="temp : ${TablaUtensilio}">
+                                    <tr th:each="temp : ${page.content}">
                                         <td th:text="${temp.identificador}"></td>
                                         <td th:text="${temp.nombre}"></td>
                                         <td th:text="${temp.material}"></td>
@@ -407,6 +408,35 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                                     </tr>
                                 </tbody>
                         </table>
+                        <div class="pagination-container">
+                            <nav aria-label="Page navigation" class="page_navigation">
+                                <ul class="pagination">
+                                    <li th:classappend="${page.first} ? 'disabled' : ''" title="Primera página">
+                                        <a th:href="@{'?page=0&size=' + ${page.size}}">
+                                            <svg fill="blue" height="25px" width="25px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve" transform="rotate(180)"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M0,381.4l237.7-118.9L0,143.6V381.4z M237.7,262.5v118.9l237.7-118.9L237.7,143.6V262.5z M475.4,143.6v118.9v118.9H512 V143.6H475.4z"></path> </g></svg>
+                                        </a>
+                                    </li>
+                                    <li th:classappend="${page.first} ? 'disabled' : ''" title="Página anterior">
+                                        <a th:with="prevPage=${page.number - 1}" th:href="@{'?page=' + ${prevPage} + '&size=' + ${page.size}}">
+                                            <svg fill="blue" height="25px" width="25px" version="1.1" id="XMLID_287_" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24 24" xml:space="preserve" transform="rotate(180)"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g id="next"> <g> <polygon points="6.8,23.7 5.4,22.3 15.7,12 5.4,1.7 6.8,0.3 18.5,12 "></polygon> </g> </g> </g></svg>
+                                        </a>
+                                    </li>
+                                    <li th:each="i : ${pageNumbers}" th:classappend="${i == page.number + 1} ? 'active' : ''">
+                                        <a th:with="pageNum=${i - 1}" th:href="@{'?page=' + ${pageNum} + '&size=' + ${page.size}}" th:text="${i}"></a>
+                                    </li>
+                                    <li th:classappend="${page.last} ? 'disabled' : ''" title="Página siguiente">
+                                        <a th:with="nextPage=${page.number + 1}" th:href="@{'?page=' + ${nextPage} + '&size=' + ${page.size}}">
+                                            <svg fill="blue" height="25px" width="25px" version="1.1" id="XMLID_287_" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24 24" xml:space="preserve" transform="rotate(0)"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g id="next"> <g> <polygon points="6.8,23.7 5.4,22.3 15.7,12 5.4,1.7 6.8,0.3 18.5,12 "></polygon> </g> </g> </g></svg>
+                                        </a>
+                                    </li>
+                                    <li th:classappend="${page.last} ? 'disabled' : ''" title="Ultima página">
+                                        <a th:with="lastPage=${page.totalPages - 1}" th:href="@{'?page=' + ${lastPage} + '&size=' + ${page.size}}">
+                                            <svg fill="blue" height="25px" width="25px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M0,381.4l237.7-118.9L0,143.6V381.4z M237.7,262.5v118.9l237.7-118.9L237.7,143.6V262.5z M475.4,143.6v118.9v118.9H512 V143.6H475.4z"></path> </g></svg>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
                         </th:block>
                     </div>
                 </div>

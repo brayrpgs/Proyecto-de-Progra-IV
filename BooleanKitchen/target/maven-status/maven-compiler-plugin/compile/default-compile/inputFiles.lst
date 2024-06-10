@@ -1,55 +1,72 @@
-C:\Users\BrayRPGs\Documents\NetBeansProjects\Proyecto-de-Progra-IV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\service\comentarioRepository.java
-C:\Users\BrayRPGs\Documents\NetBeansProjects\Proyecto-de-Progra-IV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\domain\Person.java
-C:\Users\BrayRPGs\Documents\NetBeansProjects\Proyecto-de-Progra-IV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\service\IComentariosService.java
-C:\Users\BrayRPGs\Documents\NetBeansProjects\Proyecto-de-Progra-IV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\bussines\MainController.java
-C:\Users\BrayRPGs\Documents\NetBeansProjects\Proyecto-de-Progra-IV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\Controller\ControllerComentarios.java
-C:\Users\BrayRPGs\Documents\NetBeansProjects\Proyecto-de-Progra-IV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\Controller\IngredientController.java
-C:\Users\BrayRPGs\Documents\NetBeansProjects\Proyecto-de-Progra-IV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\service\ICategoryService.java
-C:\Users\BrayRPGs\Documents\NetBeansProjects\Proyecto-de-Progra-IV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\service\UtensilioService.java
-C:\Users\BrayRPGs\Documents\NetBeansProjects\Proyecto-de-Progra-IV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\Controller\LoginController.java
-C:\Users\BrayRPGs\Documents\NetBeansProjects\Proyecto-de-Progra-IV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\service\NoticeService.java
-C:\Users\BrayRPGs\Documents\NetBeansProjects\Proyecto-de-Progra-IV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\service\utensilioRepository.java
-C:\Users\BrayRPGs\Documents\NetBeansProjects\Proyecto-de-Progra-IV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\Data\ConectarDB.java
-C:\Users\BrayRPGs\Documents\NetBeansProjects\Proyecto-de-Progra-IV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\domain\Step.java
-C:\Users\BrayRPGs\Documents\NetBeansProjects\Proyecto-de-Progra-IV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\Controller\ControllerPaginaInicio.java
-C:\Users\BrayRPGs\Documents\NetBeansProjects\Proyecto-de-Progra-IV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\service\IRecetaService.java
-C:\Users\BrayRPGs\Documents\NetBeansProjects\Proyecto-de-Progra-IV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\service\OriginServices.java
-C:\Users\BrayRPGs\Documents\NetBeansProjects\Proyecto-de-Progra-IV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\domain\Recipe.java
-C:\Users\BrayRPGs\Documents\NetBeansProjects\Proyecto-de-Progra-IV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\domain\Image.java
-C:\Users\BrayRPGs\Documents\NetBeansProjects\Proyecto-de-Progra-IV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\Controller\OriginController.java
-C:\Users\BrayRPGs\Documents\NetBeansProjects\Proyecto-de-Progra-IV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\domain\Preparation.java
-C:\Users\BrayRPGs\Documents\NetBeansProjects\Proyecto-de-Progra-IV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\domain\Comment.java
-C:\Users\BrayRPGs\Documents\NetBeansProjects\Proyecto-de-Progra-IV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\service\CategoryService.java
-C:\Users\BrayRPGs\Documents\NetBeansProjects\Proyecto-de-Progra-IV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\service\ImagenService.java
-C:\Users\BrayRPGs\Documents\NetBeansProjects\Proyecto-de-Progra-IV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\Controller\PreparationController.java
-C:\Users\BrayRPGs\Documents\NetBeansProjects\Proyecto-de-Progra-IV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\service\IUtensilioService.java
-C:\Users\BrayRPGs\Documents\NetBeansProjects\Proyecto-de-Progra-IV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\Controller\ControllerReceta.java
-C:\Users\BrayRPGs\Documents\NetBeansProjects\Proyecto-de-Progra-IV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\Controller\NoticeController.java
-C:\Users\BrayRPGs\Documents\NetBeansProjects\Proyecto-de-Progra-IV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\service\NoticeRepository.java
-C:\Users\BrayRPGs\Documents\NetBeansProjects\Proyecto-de-Progra-IV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\domain\ConectarDB.java
-C:\Users\BrayRPGs\Documents\NetBeansProjects\Proyecto-de-Progra-IV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\service\RecetaRepository.java
-C:\Users\BrayRPGs\Documents\NetBeansProjects\Proyecto-de-Progra-IV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\service\serviceComentario.java
-C:\Users\BrayRPGs\Documents\NetBeansProjects\Proyecto-de-Progra-IV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\domain\Ingredient.java
-C:\Users\BrayRPGs\Documents\NetBeansProjects\Proyecto-de-Progra-IV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\domain\Utensil.java
-C:\Users\BrayRPGs\Documents\NetBeansProjects\Proyecto-de-Progra-IV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\domain\Admin.java
-C:\Users\BrayRPGs\Documents\NetBeansProjects\Proyecto-de-Progra-IV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\service\CategoryRepository.java
-C:\Users\BrayRPGs\Documents\NetBeansProjects\Proyecto-de-Progra-IV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\service\preparationRepository.java
-C:\Users\BrayRPGs\Documents\NetBeansProjects\Proyecto-de-Progra-IV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\Controller\ControllerUtensil.java
-C:\Users\BrayRPGs\Documents\NetBeansProjects\Proyecto-de-Progra-IV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\PaginasDeRecetasApplication.java
-C:\Users\BrayRPGs\Documents\NetBeansProjects\Proyecto-de-Progra-IV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\Data\IngredientData.java
-C:\Users\BrayRPGs\Documents\NetBeansProjects\Proyecto-de-Progra-IV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\Utilidades\Utilidades.java
-C:\Users\BrayRPGs\Documents\NetBeansProjects\Proyecto-de-Progra-IV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\service\IPreparationService.java
-C:\Users\BrayRPGs\Documents\NetBeansProjects\Proyecto-de-Progra-IV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\service\serviceReceta.java
-C:\Users\BrayRPGs\Documents\NetBeansProjects\Proyecto-de-Progra-IV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\domain\Category.java
-C:\Users\BrayRPGs\Documents\NetBeansProjects\Proyecto-de-Progra-IV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\domain\Origin.java
-C:\Users\BrayRPGs\Documents\NetBeansProjects\Proyecto-de-Progra-IV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\domain\Notice.java
-C:\Users\BrayRPGs\Documents\NetBeansProjects\Proyecto-de-Progra-IV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\service\IngredientRepository.java
-C:\Users\BrayRPGs\Documents\NetBeansProjects\Proyecto-de-Progra-IV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\Data\DataOrigin.java
-C:\Users\BrayRPGs\Documents\NetBeansProjects\Proyecto-de-Progra-IV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\Controller\CategoryController.java
-C:\Users\BrayRPGs\Documents\NetBeansProjects\Proyecto-de-Progra-IV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\Controller\MainController.java
-C:\Users\BrayRPGs\Documents\NetBeansProjects\Proyecto-de-Progra-IV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\domain\ShopList.java
-C:\Users\BrayRPGs\Documents\NetBeansProjects\Proyecto-de-Progra-IV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\domain\MealPlan.java
-C:\Users\BrayRPGs\Documents\NetBeansProjects\Proyecto-de-Progra-IV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\domain\User.java
-C:\Users\BrayRPGs\Documents\NetBeansProjects\Proyecto-de-Progra-IV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\service\PreparationService.java
-C:\Users\BrayRPGs\Documents\NetBeansProjects\Proyecto-de-Progra-IV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\service\IngredientService.java
-C:\Users\BrayRPGs\Documents\NetBeansProjects\Proyecto-de-Progra-IV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\Data\AccesoDatosReceta.java
+C:\Users\Ceasa\OneDrive\Escritorio\Programcion 4\Proyecto Final\Proyecto-de-Progra-IV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\service\AdminRepository.java
+C:\Users\Ceasa\OneDrive\Escritorio\Programcion 4\Proyecto Final\Proyecto-de-Progra-IV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\Controller\NoticeController.java
+C:\Users\Ceasa\OneDrive\Escritorio\Programcion 4\Proyecto Final\Proyecto-de-Progra-IV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\service\NoticeRepository.java
+C:\Users\Ceasa\OneDrive\Escritorio\Programcion 4\Proyecto Final\Proyecto-de-Progra-IV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\domain\Category.java
+C:\Users\Ceasa\OneDrive\Escritorio\Programcion 4\Proyecto Final\Proyecto-de-Progra-IV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\service\preparationRepository.java
+C:\Users\Ceasa\OneDrive\Escritorio\Programcion 4\Proyecto Final\Proyecto-de-Progra-IV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\domain\Admin.java
+C:\Users\Ceasa\OneDrive\Escritorio\Programcion 4\Proyecto Final\Proyecto-de-Progra-IV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\Controller\UserController.java
+C:\Users\Ceasa\OneDrive\Escritorio\Programcion 4\Proyecto Final\Proyecto-de-Progra-IV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\service\IServiceMealplan.java
+C:\Users\Ceasa\OneDrive\Escritorio\Programcion 4\Proyecto Final\Proyecto-de-Progra-IV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\domain\UserDto.java
+C:\Users\Ceasa\OneDrive\Escritorio\Programcion 4\Proyecto Final\Proyecto-de-Progra-IV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\Utilidades\Utilidades.java
+C:\Users\Ceasa\OneDrive\Escritorio\Programcion 4\Proyecto Final\Proyecto-de-Progra-IV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\service\IPreparationService.java
+C:\Users\Ceasa\OneDrive\Escritorio\Programcion 4\Proyecto Final\Proyecto-de-Progra-IV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\Controller\ControllerReceta.java
+C:\Users\Ceasa\OneDrive\Escritorio\Programcion 4\Proyecto Final\Proyecto-de-Progra-IV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\domain\Image.java
+C:\Users\Ceasa\OneDrive\Escritorio\Programcion 4\Proyecto Final\Proyecto-de-Progra-IV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\Logica\LogicaReceta.java
+C:\Users\Ceasa\OneDrive\Escritorio\Programcion 4\Proyecto Final\Proyecto-de-Progra-IV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\Controller\ControllerUtensil.java
+C:\Users\Ceasa\OneDrive\Escritorio\Programcion 4\Proyecto Final\Proyecto-de-Progra-IV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\Controller\PreparationController.java
+C:\Users\Ceasa\OneDrive\Escritorio\Programcion 4\Proyecto Final\Proyecto-de-Progra-IV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\domain\ShopList.java
+C:\Users\Ceasa\OneDrive\Escritorio\Programcion 4\Proyecto Final\Proyecto-de-Progra-IV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\domain\Person.java
+C:\Users\Ceasa\OneDrive\Escritorio\Programcion 4\Proyecto Final\Proyecto-de-Progra-IV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\domain\User.java
+C:\Users\Ceasa\OneDrive\Escritorio\Programcion 4\Proyecto Final\Proyecto-de-Progra-IV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\Controller\ShoplistController.java
+C:\Users\Ceasa\OneDrive\Escritorio\Programcion 4\Proyecto Final\Proyecto-de-Progra-IV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\Data\ShoplistJPA.java
+C:\Users\Ceasa\OneDrive\Escritorio\Programcion 4\Proyecto Final\Proyecto-de-Progra-IV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\service\ImagenService.java
+C:\Users\Ceasa\OneDrive\Escritorio\Programcion 4\Proyecto Final\Proyecto-de-Progra-IV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\Controller\MealPlanController.java
+C:\Users\Ceasa\OneDrive\Escritorio\Programcion 4\Proyecto Final\Proyecto-de-Progra-IV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\service\UtensilioService.java
+C:\Users\Ceasa\OneDrive\Escritorio\Programcion 4\Proyecto Final\Proyecto-de-Progra-IV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\PaginasDeRecetasApplication.java
+C:\Users\Ceasa\OneDrive\Escritorio\Programcion 4\Proyecto Final\Proyecto-de-Progra-IV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\service\OriginRepoisitory.java
+C:\Users\Ceasa\OneDrive\Escritorio\Programcion 4\Proyecto Final\Proyecto-de-Progra-IV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\Data\IngredientData.java
+C:\Users\Ceasa\OneDrive\Escritorio\Programcion 4\Proyecto Final\Proyecto-de-Progra-IV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\domain\Step.java
+C:\Users\Ceasa\OneDrive\Escritorio\Programcion 4\Proyecto Final\Proyecto-de-Progra-IV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\service\IngredientService.java
+C:\Users\Ceasa\OneDrive\Escritorio\Programcion 4\Proyecto Final\Proyecto-de-Progra-IV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\service\serviceReceta.java
+C:\Users\Ceasa\OneDrive\Escritorio\Programcion 4\Proyecto Final\Proyecto-de-Progra-IV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\service\ServiceShopList.java
+C:\Users\Ceasa\OneDrive\Escritorio\Programcion 4\Proyecto Final\Proyecto-de-Progra-IV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\service\UserRepository.java
+C:\Users\Ceasa\OneDrive\Escritorio\Programcion 4\Proyecto Final\Proyecto-de-Progra-IV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\Controller\MainController.java
+C:\Users\Ceasa\OneDrive\Escritorio\Programcion 4\Proyecto Final\Proyecto-de-Progra-IV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\service\PreparationService.java
+C:\Users\Ceasa\OneDrive\Escritorio\Programcion 4\Proyecto Final\Proyecto-de-Progra-IV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\service\IngredientRepository.java
+C:\Users\Ceasa\OneDrive\Escritorio\Programcion 4\Proyecto Final\Proyecto-de-Progra-IV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\service\IComentariosService.java
+C:\Users\Ceasa\OneDrive\Escritorio\Programcion 4\Proyecto Final\Proyecto-de-Progra-IV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\Controller\ControllerComentarios.java
+C:\Users\Ceasa\OneDrive\Escritorio\Programcion 4\Proyecto Final\Proyecto-de-Progra-IV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\Controller\IngredientController.java
+C:\Users\Ceasa\OneDrive\Escritorio\Programcion 4\Proyecto Final\Proyecto-de-Progra-IV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\domain\ConectarDB.java
+C:\Users\Ceasa\OneDrive\Escritorio\Programcion 4\Proyecto Final\Proyecto-de-Progra-IV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\service\IOriginService.java
+C:\Users\Ceasa\OneDrive\Escritorio\Programcion 4\Proyecto Final\Proyecto-de-Progra-IV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\Data\ConectarDB.java
+C:\Users\Ceasa\OneDrive\Escritorio\Programcion 4\Proyecto Final\Proyecto-de-Progra-IV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\service\CategoryService.java
+C:\Users\Ceasa\OneDrive\Escritorio\Programcion 4\Proyecto Final\Proyecto-de-Progra-IV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\domain\Preparation.java
+C:\Users\Ceasa\OneDrive\Escritorio\Programcion 4\Proyecto Final\Proyecto-de-Progra-IV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\Controller\OriginController.java
+C:\Users\Ceasa\OneDrive\Escritorio\Programcion 4\Proyecto Final\Proyecto-de-Progra-IV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\domain\Origin.java
+C:\Users\Ceasa\OneDrive\Escritorio\Programcion 4\Proyecto Final\Proyecto-de-Progra-IV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\Data\MealplanJPA.java
+C:\Users\Ceasa\OneDrive\Escritorio\Programcion 4\Proyecto Final\Proyecto-de-Progra-IV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\security\SecurityConfig.java
+C:\Users\Ceasa\OneDrive\Escritorio\Programcion 4\Proyecto Final\Proyecto-de-Progra-IV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\service\IRecetaService.java
+C:\Users\Ceasa\OneDrive\Escritorio\Programcion 4\Proyecto Final\Proyecto-de-Progra-IV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\service\IUtensilioService.java
+C:\Users\Ceasa\OneDrive\Escritorio\Programcion 4\Proyecto Final\Proyecto-de-Progra-IV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\Controller\ControllerPaginaInicio.java
+C:\Users\Ceasa\OneDrive\Escritorio\Programcion 4\Proyecto Final\Proyecto-de-Progra-IV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\domain\Notice.java
+C:\Users\Ceasa\OneDrive\Escritorio\Programcion 4\Proyecto Final\Proyecto-de-Progra-IV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\service\OriginServices.java
+C:\Users\Ceasa\OneDrive\Escritorio\Programcion 4\Proyecto Final\Proyecto-de-Progra-IV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\service\comentarioRepository.java
+C:\Users\Ceasa\OneDrive\Escritorio\Programcion 4\Proyecto Final\Proyecto-de-Progra-IV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\service\NoticeService.java
+C:\Users\Ceasa\OneDrive\Escritorio\Programcion 4\Proyecto Final\Proyecto-de-Progra-IV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\service\ServiceMealPlan.java
+C:\Users\Ceasa\OneDrive\Escritorio\Programcion 4\Proyecto Final\Proyecto-de-Progra-IV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\domain\Ingredient.java
+C:\Users\Ceasa\OneDrive\Escritorio\Programcion 4\Proyecto Final\Proyecto-de-Progra-IV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\domain\AdminDto.java
+C:\Users\Ceasa\OneDrive\Escritorio\Programcion 4\Proyecto Final\Proyecto-de-Progra-IV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\domain\Recipe.java
+C:\Users\Ceasa\OneDrive\Escritorio\Programcion 4\Proyecto Final\Proyecto-de-Progra-IV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\Controller\LoginController.java
+C:\Users\Ceasa\OneDrive\Escritorio\Programcion 4\Proyecto Final\Proyecto-de-Progra-IV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\service\IServiceShoplist.java
+C:\Users\Ceasa\OneDrive\Escritorio\Programcion 4\Proyecto Final\Proyecto-de-Progra-IV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\domain\Comment.java
+C:\Users\Ceasa\OneDrive\Escritorio\Programcion 4\Proyecto Final\Proyecto-de-Progra-IV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\service\RecetaRepository.java
+C:\Users\Ceasa\OneDrive\Escritorio\Programcion 4\Proyecto Final\Proyecto-de-Progra-IV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\Controller\CategoryController.java
+C:\Users\Ceasa\OneDrive\Escritorio\Programcion 4\Proyecto Final\Proyecto-de-Progra-IV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\Data\DataOrigin.java
+C:\Users\Ceasa\OneDrive\Escritorio\Programcion 4\Proyecto Final\Proyecto-de-Progra-IV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\domain\Utensil.java
+C:\Users\Ceasa\OneDrive\Escritorio\Programcion 4\Proyecto Final\Proyecto-de-Progra-IV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\Data\AccesoDatosReceta.java
+C:\Users\Ceasa\OneDrive\Escritorio\Programcion 4\Proyecto Final\Proyecto-de-Progra-IV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\service\CategoryRepository.java
+C:\Users\Ceasa\OneDrive\Escritorio\Programcion 4\Proyecto Final\Proyecto-de-Progra-IV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\service\ICategoryService.java
+C:\Users\Ceasa\OneDrive\Escritorio\Programcion 4\Proyecto Final\Proyecto-de-Progra-IV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\Logica\LogicaGeneral.java
+C:\Users\Ceasa\OneDrive\Escritorio\Programcion 4\Proyecto Final\Proyecto-de-Progra-IV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\service\serviceComentario.java
+C:\Users\Ceasa\OneDrive\Escritorio\Programcion 4\Proyecto Final\Proyecto-de-Progra-IV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\domain\MealPlan.java
+C:\Users\Ceasa\OneDrive\Escritorio\Programcion 4\Proyecto Final\Proyecto-de-Progra-IV\BooleanKitchen\src\main\java\cr\ac\una\booleanKitchen\service\utensilioRepository.java

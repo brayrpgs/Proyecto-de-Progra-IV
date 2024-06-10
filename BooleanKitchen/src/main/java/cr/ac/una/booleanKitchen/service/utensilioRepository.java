@@ -12,7 +12,7 @@ import org.springframework.data.repository.query.Param;
 
 /**
  *
- * @author josue
+ * @author Ceasar
  */
 public interface utensilioRepository extends JpaRepository<Utensil, Integer> {
     @Query(value = "SELECT * FROM tb_bk_utensil WHERE IDENTIFICADOR = :identificador", nativeQuery = true)
