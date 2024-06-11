@@ -1,4 +1,4 @@
-package cr.ac.una.booleanKitchen.data;
+package cr.ac.una.booleanKitchen.Data;
 
 import cr.ac.una.booleanKitchen.domain.Ingredient;
 import cr.ac.una.booleanKitchen.domain.Category;

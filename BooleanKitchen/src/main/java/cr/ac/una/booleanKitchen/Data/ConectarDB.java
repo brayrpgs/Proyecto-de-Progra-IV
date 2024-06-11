@@ -1,5 +1,5 @@
 
-package cr.ac.una.booleanKitchen.data;
+package cr.ac.una.booleanKitchen.Data;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
