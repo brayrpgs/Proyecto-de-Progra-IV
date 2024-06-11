@@ -13,260 +13,260 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
         <link rel="stylesheet" th:href="@{/css/cat/colores_fuentes.css}"/>
         <link rel="stylesheet" type="text/css" th:href="@{/css/stNav.css}">
         <link rel="stylesheet" type="text/css" th:href="@{/css/stFooter.css}">
-        <!-- <link rel="stylesheet" th:href="@{/css/cat/recetasynoticias.css}"/> -->
-        <link rel="stylesheet" type="text/css" th:href="@{/css/stRecetasYNoticias.css}">
-         <script th:src="@{/js/main.js}"></script>
+        <link rel="stylesheet" th:href="@{/css/cat/recetasynoticias.css}"/>
+        <script th:src="@{/js/main.js}"></script>
         <script text="text/javascript" th:src="@{/js/category_funtions.js}"></script>
-        <script text="text/javascript" th:src="@{/js/jsNav.js}" defer></script>
-        
+
     </head>
     <body>
-         <div th:replace="plantillas/nav :: nav"></div>
+        <div th:replace="plantillas/nav :: nav"></div>
         <!-- creacion de formulario --> 
 
-        <div class="container">
-            
-           
-            
-            
-            <div class="form-container">
-                 
+        <div id="container" class="container">
+
+            <dialog th:class="${class}" id="view-message" >
+
+                <div th:class="'warning ' + ${class}" id="notificacion">
+                    <img style="width: 20px; height: 30px;" th:src="@{'/icono/' + ${type} + '.svg'}"  alt="alt"/>
+                    <p><b th:text="${message}"></b></p>
+                </div>
+
+                <button id="cancel" data-close onclick="closeDialogNotification()" style="background-color: red;">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z"/></svg>
+                </button>
+
+            </dialog>
+
+
+            <div id="form-container" class="form-container">
+
+                <div id="aux">
                 <!-- hABILITAR EL SU -->
-               <h1>Administrador de categorias</h1>
-               
-               <div th:class="'warning ' + ${class}" th:if="${message}" id="notificacion">
-                   <img style="width: 20px; height: 30px;" th:src="@{'/icono/' + ${type} + '.svg'}"  alt="alt"/>
-                   <p><b th:text="${message}"></b></p>
-                   <button id="cerrar" onclick="closeNotification()" style="background-color: transparent;">
-                       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M376.6 84.5c11.3-13.6 9.5-33.8-4.1-45.1s-33.8-9.5-45.1 4.1L192 206 56.6 43.5C45.3 29.9 25.1 28.1 11.5 39.4S-3.9 70.9 7.4 84.5L150.3 256 7.4 427.5c-11.3 13.6-9.5 33.8 4.1 45.1s33.8 9.5 45.1-4.1L192 306 327.4 468.5c11.3 13.6 31.5 15.4 45.1 4.1s15.4-31.5 4.1-45.1L233.7 256 376.6 84.5z"/></svg>
-                   </button>
-               </div>
+                <h1>Administrador de categorias</h1>
 
-                 
-                <form id="formulario-dinamico"  method="post" th:action="@{/categoriaIndex/agregarCat}" enctype="multipart/form-data" >
+                <form id="formulario-dinamico" method="post"   enctype="multipart/form-data" >
 
-                    
+
                     <div class="formulario-ingreso">
-                 
-                 
+
+
                         <div class="first-Container">
-                        
-                    <!-- Agrego: IDSERIAL -->
-                   
-                    <div class="container-elements">
-                        <div class="inputs-modal">
-                            <div class="inputs-items">
-                                <div class="wave-group">
-                                    <input required type="text" class="input" name="idSerial" autocomplete="off" th:value="${selectedCat != null ? selectedCat.idSerial : (dateElement != null ? dateElement.idSerial : 'CAT-')}" th:readonly="${selectedCat != null}"  oninput="addCatPrefix(this)" >
-                                    <span class="bar"></span>
-                                    <label class="label">
-                                        <span class="label-char" style="--index: 0">C</span>
-                                        <span class="label-char" style="--index: 1">.</span>
-                                        <span class="label-char" style="--index: 2">S</span>
-                                        <span class="label-char" style="--index: 3">e</span>
-                                        <span class="label-char" style="--index: 4">r</span>
-                                        <span class="label-char" style="--index: 5">i</span>
-                                        <span class="label-char" style="--index: 6">a</span>
-                                        <span class="label-char" style="--index: 7">l</span>
-                                    </label>
+
+                            <!-- Agrego: IDSERIAL -->
+
+                            <div class="container-elements">
+                                <div class="inputs-modal">
+                                    <div class="inputs-items">
+                                        <div class="wave-group">
+                                            <input required type="text" class="input" id="idSerial" name="idSerial" autocomplete="off" th:value="${selectedCat != null ? selectedCat.idSerial : (dateElement != null ? dateElement.idSerial : 'CAT-')}" th:readonly="${selectedCat != null}"  oninput="addCatPrefix(this)" >
+                                            <span class="bar"></span>
+                                            <label class="label">
+                                                <span class="label-char" style="--index: 0">C</span>
+                                                <span class="label-char" style="--index: 1">.</span>
+                                                <span class="label-char" style="--index: 2">S</span>
+                                                <span class="label-char" style="--index: 3">e</span>
+                                                <span class="label-char" style="--index: 4">r</span>
+                                                <span class="label-char" style="--index: 5">i</span>
+                                                <span class="label-char" style="--index: 6">a</span>
+                                                <span class="label-char" style="--index: 7">l</span>
+                                            </label>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-               
-                    <!-- Agrego: NOMBRE -->
-                 
-                    <div class="container-elements">
-                        <div class="inputs-modal">
-                            <div class="inputs-items">
-                                <div class="wave-group">                                                                <!-- si selecciono una categoria -->
-                                    <input required type="text" class="input" name="name" autocomplete="off" th:value="${selectedCat != null ? selectedCat.name : (dateElement != null ? dateElement.name : '')}" oninput="validateDates(this)">
-                                    <span class="bar"></span>
-                                    <label class="label">
-                                        <span class="label-char" style="--index: 0">N</span>
-                                        <span class="label-char" style="--index: 1">o</span>
-                                        <span class="label-char" style="--index: 2">m</span>
-                                        <span class="label-char" style="--index: 3">b</span>
-                                        <span class="label-char" style="--index: 4">r</span>
-                                        <span class="label-char" style="--index: 5">e</span>
-                                    </label>
+
+                            <!-- Agrego: NOMBRE -->
+
+                            <div class="container-elements">
+                                <div class="inputs-modal">
+                                    <div class="inputs-items">
+                                        <div class="wave-group">                                                                <!-- si selecciono una categoria -->
+                                            <input required type="text" class="input"  id="name"  name="name" autocomplete="off" th:value="${selectedCat != null ? selectedCat.name : (dateElement != null ? dateElement.name : '')}" oninput="validateDates(this)">
+                                            <span class="bar"></span>
+                                            <label class="label">
+                                                <span class="label-char" style="--index: 0">N</span>
+                                                <span class="label-char" style="--index: 1">o</span>
+                                                <span class="label-char" style="--index: 2">m</span>
+                                                <span class="label-char" style="--index: 3">b</span>
+                                                <span class="label-char" style="--index: 4">r</span>
+                                                <span class="label-char" style="--index: 5">e</span>
+                                            </label>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
 
 
-                    <!-- Agrego: DESCRIPCION -->
+                            <!-- Agrego: DESCRIPCION -->
 
-                      <div class="container-elements">
-                        <div class="inputs-modal">
-                            <div class="inputs-items">
-                                <div class="wave-group">
-                                    <input required type="text" class="input" name="description" autocomplete="off"  th:value="${selectedCat != null ? selectedCat.description : (dateElement != null ? dateElement.description : '')}" oninput="validateDates(this)">
-                                    <span class="bar"></span>
-                                    <label class="label">
-                                        <span class="label-char" style="--index: 0">D</span>
-                                        <span class="label-char" style="--index: 1">e</span>
-                                        <span class="label-char" style="--index: 2">s</span>
-                                        <span class="label-char" style="--index: 3">c</span>
-                                        <span class="label-char" style="--index: 4">r</span>
-                                        <span class="label-char" style="--index: 5">i</span>
-                                        <span class="label-char" style="--index: 6">p</span>
-                                        <span class="label-char" style="--index: 7">c</span>
-                                        <span class="label-char" style="--index: 8">i</span>
-                                        <span class="label-char" style="--index: 9">ó</span>
-                                        <span class="label-char" style="--index: 10">n</span>
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    </div>
-                    
-                        <div class="second-container">
-                      <!-- SELECCION DE IMAGEN -->
-                        <div class="container-elements"> 
-                            <div class="inputs-modal">
-                                <div class="inputs-items">
-                                    <div class="container-upload-img" id="dropArea" ondragover="allowDrop(event)" ondrop="drop(event)"> 
-                                        <div class="headImgInput" id="header"> 
-                                            <svg viewBox="0 0 24 24" fill="" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path fill-rule="evenodd" clip-rule="evenodd" d="M10 1C9.73478 1 9.48043 1.10536 9.29289 1.29289L3.29289 7.29289C3.10536 7.48043 3 7.73478 3 8V20C3 21.6569 4.34315 23 6 23H7C7.55228 23 8 22.5523 8 22C8 21.4477 7.55228 21 7 21H6C5.44772 21 5 20.5523 5 20V9H10C10.5523 9 11 8.55228 11 8V3H18C18.5523 3 19 3.44772 19 4V9C19 9.55228 19.4477 10 20 10C20.5523 10 21 9.55228 21 9V4C21 2.34315 19.6569 1 18 1H10ZM9 7H6.41421L9 4.41421V7ZM14 15.5C14 14.1193 15.1193 13 16.5 13C17.8807 13 19 14.1193 19 15.5V16V17H20C21.1046 17 22 17.8954 22 19C22 20.1046 21.1046 21 20 21H13C11.8954 21 11 20.1046 11 19C11 17.8954 11.8954 17 13 17H14V16V15.5ZM16.5 11C14.142 11 12.2076 12.8136 12.0156 15.122C10.2825 15.5606 9 17.1305 9 19C9 21.2091 10.7909 23 13 23H20C22.2091 23 24 21.2091 24 19C24 17.1305 22.7175 15.5606 20.9844 15.122C20.7924 12.8136 18.858 11 16.5 11Z" fill=""></path> </g></svg>
-                                            <p>Cargar imagen</p>
-                                        </div> 
-                                        <label for="file" class="imgInput" id="deleteBtn"> 
-                                            <svg fill="#000000" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path d="M15.331 6H8.5v20h15V14.154h-8.169z"></path><path d="M18.153 6h-.009v5.342H23.5v-.002z"></path></g></svg> 
-                                            <p id="sms-imagen">No hay imagen</p> 
-                                            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M5.16565 10.1534C5.07629 8.99181 5.99473 8 7.15975 8H16.8402C18.0053 8 18.9237 8.9918 18.8344 10.1534L18.142 19.1534C18.0619 20.1954 17.193 21 16.1479 21H7.85206C6.80699 21 5.93811 20.1954 5.85795 19.1534L5.16565 10.1534Z" stroke="#000000" stroke-width="2"></path> <path d="M19.5 5H4.5" stroke="#000000" stroke-width="2" stroke-linecap="round"></path> <path d="M10 3C10 2.44772 10.4477 2 11 2H13C13.5523 2 14 2.44772 14 3V5H10V3Z" stroke="#000000" stroke-width="2"></path> </g></svg>
-                                        </label> 
-                                        <input id="file" name="img" type="file" onclick=" eventAct()" accept="image/*"> 
+                            <div class="container-elements">
+                                <div class="inputs-modal">
+                                    <div class="inputs-items">
+                                        <div class="wave-group">
+                                            <input required type="text" class="input" id="description" name="description" autocomplete="off"  th:value="${selectedCat != null ? selectedCat.description : (dateElement != null ? dateElement.description : '')}" oninput="validateDates(this)">
+                                            <span class="bar"></span>
+                                            <label class="label">
+                                                <span class="label-char" style="--index: 0">D</span>
+                                                <span class="label-char" style="--index: 1">e</span>
+                                                <span class="label-char" style="--index: 2">s</span>
+                                                <span class="label-char" style="--index: 3">c</span>
+                                                <span class="label-char" style="--index: 4">r</span>
+                                                <span class="label-char" style="--index: 5">i</span>
+                                                <span class="label-char" style="--index: 6">p</span>
+                                                <span class="label-char" style="--index: 7">c</span>
+                                                <span class="label-char" style="--index: 8">i</span>
+                                                <span class="label-char" style="--index: 9">ó</span>
+                                                <span class="label-char" style="--index: 10">n</span>
+                                            </label>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    
 
-                    <!-- imagen Visual -->
-                    <div th:if="${selectedCat !=null}" class="form-column">
-                        <span class="etiqueta">Imagen cargada en el sistema</span> <br/>
-                         <img th:if="${selectedCat != null}" th:src="@{'/imgCat/' + ${selectedCat.image}}" alt="Imagen Cargada" /> 
-                    </div>
-               </div>
- 
+                        <div class="second-container">
+                            <!-- SELECCION DE IMAGEN -->
+                            <div class="container-elements"> 
+                                <div class="inputs-modal">
+                                    <div class="inputs-items">
+                                        <div class="container-upload-img" id="dropArea" ondragover="allowDrop(event)" ondrop="drop(event)"> 
+                                            <div class="headImgInput" id="header"> 
+                                                <svg viewBox="0 0 24 24" fill="" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path fill-rule="evenodd" clip-rule="evenodd" d="M10 1C9.73478 1 9.48043 1.10536 9.29289 1.29289L3.29289 7.29289C3.10536 7.48043 3 7.73478 3 8V20C3 21.6569 4.34315 23 6 23H7C7.55228 23 8 22.5523 8 22C8 21.4477 7.55228 21 7 21H6C5.44772 21 5 20.5523 5 20V9H10C10.5523 9 11 8.55228 11 8V3H18C18.5523 3 19 3.44772 19 4V9C19 9.55228 19.4477 10 20 10C20.5523 10 21 9.55228 21 9V4C21 2.34315 19.6569 1 18 1H10ZM9 7H6.41421L9 4.41421V7ZM14 15.5C14 14.1193 15.1193 13 16.5 13C17.8807 13 19 14.1193 19 15.5V16V17H20C21.1046 17 22 17.8954 22 19C22 20.1046 21.1046 21 20 21H13C11.8954 21 11 20.1046 11 19C11 17.8954 11.8954 17 13 17H14V16V15.5ZM16.5 11C14.142 11 12.2076 12.8136 12.0156 15.122C10.2825 15.5606 9 17.1305 9 19C9 21.2091 10.7909 23 13 23H20C22.2091 23 24 21.2091 24 19C24 17.1305 22.7175 15.5606 20.9844 15.122C20.7924 12.8136 18.858 11 16.5 11Z" fill=""></path> </g></svg>
+                                                <p>Cargar imagen</p>
+                                            </div> 
+                                            <label for="file" class="imgInput" id="deleteBtn"> 
+                                                <svg fill="#000000" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path d="M15.331 6H8.5v20h15V14.154h-8.169z"></path><path d="M18.153 6h-.009v5.342H23.5v-.002z"></path></g></svg> 
+                                                <p id="sms-imagen">No hay imagen</p> 
+                                                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M5.16565 10.1534C5.07629 8.99181 5.99473 8 7.15975 8H16.8402C18.0053 8 18.9237 8.9918 18.8344 10.1534L18.142 19.1534C18.0619 20.1954 17.193 21 16.1479 21H7.85206C6.80699 21 5.93811 20.1954 5.85795 19.1534L5.16565 10.1534Z" stroke="#000000" stroke-width="2"></path> <path d="M19.5 5H4.5" stroke="#000000" stroke-width="2" stroke-linecap="round"></path> <path d="M10 3C10 2.44772 10.4477 2 11 2H13C13.5523 2 14 2.44772 14 3V5H10V3Z" stroke="#000000" stroke-width="2"></path> </g></svg>
+                                            </label> 
+                                            <input id="file" name="img" type="file" onclick=" eventAct()" accept="image/*"> 
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <!-- imagen Visual -->
+                            <div th:if="${selectedCat !=null}" class="form-column">
+                                <span class="etiqueta">Imagen cargada en el sistema</span> <br/>
+                                <img th:if="${selectedCat != null}" th:src="@{'/imgCat/' + ${selectedCat.image}}" alt="Imagen Cargada" /> 
+                            </div>
+                        </div>
+
                         <div class="thirt-container">
-                     <!-- Agrego: ETIQUETAS-->
-                     <div class="container-elements">
-                         <div class="inputs-modal">
-                             <div class="inputs-items">
-                                 <div class="wave-group">
-                                     <select required="" name="label" class="select" onmousedown="this.size=5;"
-                                             onchange="this.size=0;"
-                                             onblur="this.size=0;">
-                                         <option style="display: none;" value=""></option>
-                                         <option  th:if="${Labels!=null or !Labels.isEmpty()}" th:each="lab: ${Labels}" th:text="${lab}" th:value="${lab}" th:selected="${selectedCat != null && selectedCat.label == lab}"></option>
+                            <!-- Agrego: ETIQUETAS-->
+                            <div class="container-elements">
+                                <div class="inputs-modal">
+                                    <div class="inputs-items">
+                                        <div class="wave-group">
+                                            <select required="" id="label" name="label" class="select" onmousedown="this.size = 5;"
+                                                    onchange="this.size = 0;"
+                                                    onblur="this.size = 0;">
+                                                <option style="display: none;" value=""></option>
+                                                <option  th:if="${Labels!=null or !Labels.isEmpty()}" th:each="lab: ${Labels}" th:text="${lab}" th:value="${lab}" th:selected="${selectedCat != null && selectedCat.label == lab}"></option>
 
-                                     </select>
-                                     <span class="bar"></span>
-                                     <label class="label">
-                                         <span class="label-char" style="--index: 0">E</span>
-                                         <span class="label-char" style="--index: 1">t</span>
-                                         <span class="label-char" style="--index: 2">i</span>
-                                         <span class="label-char" style="--index: 3">q</span>
-                                         <span class="label-char" style="--index: 4">u</span>
-                                         <span class="label-char" style="--index: 5">e</span>
-                                         <span class="label-char" style="--index: 6">t</span>
-                                         <span class="label-char" style="--index: 7">a</span>
-                                     </label>
-                                 </div>
-                             </div>
-                         </div>
-                     </div>
+                                            </select>
+                                            <span class="bar"></span>
+                                            <label class="label">
+                                                <span class="label-char" style="--index: 0">E</span>
+                                                <span class="label-char" style="--index: 1">t</span>
+                                                <span class="label-char" style="--index: 2">i</span>
+                                                <span class="label-char" style="--index: 3">q</span>
+                                                <span class="label-char" style="--index: 4">u</span>
+                                                <span class="label-char" style="--index: 5">e</span>
+                                                <span class="label-char" style="--index: 6">t</span>
+                                                <span class="label-char" style="--index: 7">a</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
 
-         
-                       <!-- Agrego: PUBLICO U OCULTO -->
-                       <div class="form-column">
-                           <span class="etiqueta">Visibilidad de la Categoría</span> <br/>
-                           <div class="radio-slection">
-                         
-                           <label>
-                               <input type="radio" id="publico" name="Visibilidad" value="Activo" th:checked="${selectedCat != null? selectedCat.catVisible ==true: ''}">
-                               <span >Público</span>
-                           </label>
-                          
-                           <label >
-                                <input type="radio" id="privado" name="Visibilidad" value="Inactivo" th:checked="${selectedCat != null? selectedCat.catVisible !=true: ''}">
-                               <span >Privado</span>
-                           </label>
-                           </div>
-                       </div>
-                   
-                  
-                     <!-- Agrego: NOTA ADMINISTRADOR -->
 
-                      <div class="container-elements">
-                        <div class="inputs-modal">
-                            <div class="inputs-items">
-                                <div class="wave-group">
-                                    <input  type="text" class="input"  name="notaAdmin"  autocomplete="off" placeholder="(opcional)" th:value="${selectedCat != null ? selectedCat.comment!=''?selectedCat.comment:'Sin nota de autor' : (dateElement != null ? dateElement.comment : '')}">
-                                    <span class="bar"></span>
-                                    <label class="label">
-                                        <span class="label-char" style="--index: 0">N</span>
-                                        <span class="label-char" style="--index: 1">.</span>
-                                        <span class="label-char" style="--index: 2">A</span>
-                                        <span class="label-char" style="--index: 3">d</span>
-                                        <span class="label-char" style="--index: 4">m</span>
-                                        <span class="label-char" style="--index: 5">i</span>
-                                        <span class="label-char" style="--index: 6">n</span>
+                            <!-- Agrego: PUBLICO U OCULTO -->
+                            <div class="form-column">
+                                <span class="etiqueta">Visibilidad de la Categoría</span> <br/>
+                                <div class="radio-slection">
+
+                                    <label>
+                                        <input type="radio" id="publico" name="Visibilidad" value="Activo" th:checked="${selectedCat != null? selectedCat.catVisible ==true: ''}">
+                                        <span >Público</span>
+                                    </label>
+
+                                    <label >
+                                        <input type="radio" id="privado" name="Visibilidad" value="Inactivo" th:checked="${selectedCat != null? selectedCat.catVisible !=true: ''}" >
+                                        <span >Privado</span>
                                     </label>
                                 </div>
                             </div>
-                        </div>
+
+
+                            <!-- Agrego: NOTA ADMINISTRADOR -->
+
+                            <div class="container-elements">
+                                <div class="inputs-modal">
+                                    <div class="inputs-items">
+                                        <div class="wave-group">
+                                            <input  type="text" class="input" id="notaAdmin"  name="notaAdmin"  autocomplete="off" placeholder="(opcional)" th:value="${selectedCat != null ? selectedCat.comment!=''?selectedCat.comment:'Sin nota de autor' : (dateElement != null ? dateElement.comment : '')}">
+                                            <span class="bar"></span>
+                                            <label class="label">
+                                                <span class="label-char" style="--index: 0">N</span>
+                                                <span class="label-char" style="--index: 1">.</span>
+                                                <span class="label-char" style="--index: 2">A</span>
+                                                <span class="label-char" style="--index: 3">d</span>
+                                                <span class="label-char" style="--index: 4">m</span>
+                                                <span class="label-char" style="--index: 5">i</span>
+                                                <span class="label-char" style="--index: 6">n</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>  
+
                     </div>
-                   </div>  
-                     
-                      </div>
-                   
-                    
-                         <!-- Agrego: BOTONES -->
-                     
-                         
-                     <input type="submit" name="submit" value="Agregar"  th:if="${selectedCat == null}" />
-                     <button type="submit" name="submit" 
-                             onclick="cambiarAccion('/categoriaIndex/TerminarModificaciones')" 
-                             th:if="${selectedCat != null}">
+
+
+                    <!-- Agrego: BOTONES -->
+
+
+                    <input type="button" onclick="sendCategoryForm()"  name="submit" value="Agregar"  th:if="${selectedCat == null}" />
+                    <button type="submit" name="submitModify"  
+                            onclick="ModifyCategoryForm()"
+                            th:if="${selectedCat != null}">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M64 32C28.7 32 0 60.7 0 96V416c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V173.3c0-17-6.7-33.3-18.7-45.3L352 50.7C340 38.7 323.7 32 306.7 32H64zm0 96c0-17.7 14.3-32 32-32H288c17.7 0 32 14.3 32 32v64c0 17.7-14.3 32-32 32H96c-17.7 0-32-14.3-32-32V128zM224 288a64 64 0 1 1 0 128 64 64 0 1 1 0-128z"/></svg>
-                     </button>
+                    </button>
 
                     <br/>
                     <br/>
-                      <button type="submit" name="submit" onkeyup=""
-                             onclick="cambiarAccion('/categoriaIndex/returnMainCat')" 
-                             th:if="${selectedCat != null}">
-                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z"/></svg>
-                     </button>
-                  
- 
-                 
-                         
-                
+                    <button type="submit" name="submitReturn" onkeyup=""
+                            onclick="cambiarAccion('')"
+                            th:if="${selectedCat != null}">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z"/></svg>
+                    </button>
+
                 </form>
+                </div>
             </div>
-            
+
             <div class="Container-enlace">
                 <a href="/categoriaIndex/viewTable">
                     <button> 
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M64 256V160H224v96H64zm0 64H224v96H64V320zm224 96V320H448v96H288zM448 256H288V160H448v96zM64 32C28.7 32 0 60.7 0 96V416c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H64z"/></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M64 256V160H224v96H64zm0 64H224v96H64V320zm224 96V320H448v96H288zM448 256H288V160H448v96zM64 32C28.7 32 0 60.7 0 96V416c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H64z"/></svg>
                     </button>
                 </a>
-                 <a href="/c_inicio/index">
+                <a href="/c_inicio/index">
                     <button> 
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
                     </button>
                 </a>
             </div>
-           
+
         </div>
         <br/>
-         <footer th:replace="plantillas/footer :: footer"></footer>
+        
+        
+        <footer th:replace="plantillas/footer :: footer"></footer>
 
     </body>
 </html>
