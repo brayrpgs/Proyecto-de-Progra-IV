@@ -37,6 +37,7 @@ public class IngredientController {
 	@Autowired
 	private IngredientService IngredientService;
 
+
     @GetMapping(value = "/ingredientes")
 	public String findAll(@PageableDefault(size = 4, page = 0) Pageable pageable, Model model) {
 		Page<Ingredient> page = ingredientRepository

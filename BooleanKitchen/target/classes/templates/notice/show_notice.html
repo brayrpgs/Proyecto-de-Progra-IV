@@ -14,34 +14,22 @@
     <link rel="stylesheet" th:href="@{/css/stRecetasYNoticias.css}">
     <link rel="stylesheet" th:href="@{/css/stPaginacion.css}">
 
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+
     <style>
-    .noticia-container {
-    text-align: center;
-    max-width: 80%; /* Limita el ancho del contenedor al 80% de la página */
-    margin: 0 auto; /* Centra horizontalmente el contenedor */
-    overflow: hidden; /* Oculta cualquier parte de la imagen que exceda el contenedor */
-}
+        .img-container {
+            width: 100%;
+            height: 550px; /* Altura deseada */
+            
+        }
 
-.noticia-img {
-    max-width: 100%; /* Establece el ancho máximo de la imagen al 100% del contenedor */
-    height: auto; /* Ajusta la altura de la imagen automáticamente */
-    display: block; /* Hace que la imagen sea un elemento de bloque */
-    margin-left: auto; /* Centra la imagen horizontalmente */
-    margin-right: auto; /* Centra la imagen horizontalmente */
-    max-height: 400px; /* Establece una altura máxima para la imagen */
-}
-
-.noticia-texto {
-    max-width: 50%; /* Limita el ancho del texto al 50% del contenedor */
-    margin-left: 20px; /* Añade un margen a la izquierda para separar el texto de la imagen */
-}
-
-.noticia-texto p {
-    text-align: center;
-    column-count: 2; /* Divide el texto en dos columnas */
-    column-gap: 20px; /* Añade un espacio entre las columnas */
-}
+        .img-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
     </style>
+</head>
 
 <body>
 
@@ -49,28 +37,28 @@
 
     <br><br><br><br>
 
-    <h1 style="text-align: center;" th:text="${notice.TITULO}"></h1>
-    <br>
-    <div class="noticia-container">
-        <img class="noticia-img" th:src="@{'/imgNot/' + ${notice.RUTA_IMG}}" th:alt="${notice.RUTA_IMG}">
-
-        <p th:text="${notice.RESUMEN}">
-            
-        </p>
-
-        <h2>Fecha de publicación: <span th:text="${notice.FECHA}"></span></h2>
-        <h2>
-            <span th:if="${notice.AUTHOR == 'Anónimo'}">Escrito por un autor anónimo</span>
-            <span th:unless="${notice.AUTHOR == 'Anónimo'}">Escrito por el autor: <span th:text="${notice.AUTHOR}"></span></span>
-        </h2>
-
-        <a href="/">
-            <button>
-                Regresar al menu principal
-            </button>
-        </a>
-        
+    <div class="bg-white dark:bg-gray-950 rounded-lg shadow-md overflow-hidden">
+        <div class="img-container">
+            <img th:src="@{'/imgNot/' + ${notice.RUTA_IMG}}" th:alt="${notice.RUTA_IMG}" />
+        </div>
+        <div class="p-6">
+            <div class="flex items-center justify-between mb-4">
+                <h2 class="text-2xl font-bold text-gray-900 dark:text-gray-50" th:text="${notice.TITULO}"></h2>
+                <p class="text-gray-500 dark:text-gray-400 text-sm" th:text="${notice.FECHA}"></p>
+            </div>
+            <p class="text-gray-600 dark:text-gray-400 mb-4" th:text="${notice.RESUMEN}">
+                
+            </p>
+            <div class="flex items-center">
+                
+                <h2>
+                    <span th:if="${notice.AUTHOR == 'Anónimo'}">Escrito por un autor anónimo</span>
+                    <span th:unless="${notice.AUTHOR == 'Anónimo'}">Escrito por el autor: <span th:text="${notice.AUTHOR}"></span></span>
+                </h2>
+            </div>
+        </div>
     </div>
+
     <br><br><br><br>
     <div th:replace="plantillas/footer :: footer"></div>
 
