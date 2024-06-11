@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -80,10 +81,10 @@ public class ShoplistController {
         boolean status = jpa.save(s);
         String quest;
         if(!status){
-            quest = "fail";
+            quest = "save fail";
             return new ResponseEntity<>(quest, HttpStatus.NOT_ACCEPTABLE);
         }
-         quest = "success";
+         quest = "save success";
         return new ResponseEntity<>(quest, HttpStatus.CREATED);
     }
     
@@ -93,7 +94,7 @@ public class ShoplistController {
     }
     
     //TODO
-    @DeleteMapping("/eliminar/{id}")
+    @DeleteMapping("/eliminareliminareliminar/{id}")
     public ResponseEntity<String> delete(@PathVariable Integer id){
         if(jpa.delete(id)){
             return new ResponseEntity<>("delete success",HttpStatus.OK);
@@ -101,6 +102,17 @@ public class ShoplistController {
         else{
             return new ResponseEntity<>("delete fail",HttpStatus.NOT_FOUND);
         }
-        
+    }
+    
+    @PutMapping("/actualizar")
+    public ResponseEntity<String> update(@RequestBody ShopList s){
+        String quest;
+        boolean status = jpa.save(s);
+        if(!status){
+            quest = "update fail";
+            return new ResponseEntity<>(quest, HttpStatus.NOT_ACCEPTABLE);
+        }
+         quest = "update success";
+        return new ResponseEntity<>(quest, HttpStatus.CREATED);
     }
 }

@@ -3,6 +3,7 @@ cr\ac\una\booleanKitchen\domain\MealPlan.class
 cr\ac\una\booleanKitchen\service\IngredientRepository.class
 cr\ac\una\booleanKitchen\Controller\MainController.class
 cr\ac\una\booleanKitchen\Controller\NoticeController.class
+cr\ac\una\booleanKitchen\Data\MealplanJPA.class
 cr\ac\una\booleanKitchen\domain\Recipe.class
 cr\ac\una\booleanKitchen\Controller\OriginController.class
 cr\ac\una\booleanKitchen\service\preparationRepository.class
@@ -45,6 +46,7 @@ cr\ac\una\booleanKitchen\Controller\ControllerReceta.class
 cr\ac\una\booleanKitchen\service\serviceReceta.class
 cr\ac\una\booleanKitchen\Data\DataOrigin.class
 cr\ac\una\booleanKitchen\Controller\ControllerPaginaInicio.class
+cr\ac\una\booleanKitchen\Data\ShoplistJPA.class
 cr\ac\una\booleanKitchen\domain\Ingredient.class
 cr\ac\una\booleanKitchen\service\utensilioRepository.class
 cr\ac\una\booleanKitchen\service\ICategoryService.class
