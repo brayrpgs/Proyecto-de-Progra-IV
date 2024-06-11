@@ -9,20 +9,20 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.ui.Model;
-import cr.ac.una.booleanKitchen.domain.Ingredient;
+//import cr.ac.una.booleanKitchen.domain.Ingredient;
 import cr.ac.una.booleanKitchen.domain.Origin;
 import cr.ac.una.booleanKitchen.domain.Recipe;
 import cr.ac.una.booleanKitchen.domain.Utensil;
 import cr.ac.una.booleanKitchen.service.ICategoryService;
 import cr.ac.una.booleanKitchen.service.IRecetaService;
-import cr.ac.una.booleanKitchen.service.IngredientService;
+//import cr.ac.una.booleanKitchen.service.IngredientService;
 
 public class LogicaReceta {
     public static void datosParaAgregarReceta(Model model, ICategoryService categoryService) {
         LinkedList<Origin> origenes = new LinkedList<>();
         origenes.add(new Origin(1, "Mexicana", "", "UTE-001", "", "receta.jpeg", "", ""));
 
-        LinkedList<Ingredient> ingredients = IngredientService.getIngredients();
+        //LinkedList<Ingredient> ingredients = IngredientService.getIngredients();
 
         LinkedList<Utensil> utensils = new LinkedList<>();
         utensils.add(new Utensil(25, "UTE-001", "Cuchara", "", null, "", 0, 0, ""));

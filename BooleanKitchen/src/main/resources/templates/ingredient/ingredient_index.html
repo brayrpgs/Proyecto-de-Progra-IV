@@ -12,6 +12,7 @@
     <link rel="stylesheet" th:href="@{/css/stNav.css}">
     <link rel="stylesheet" th:href="@{/css/stFooter.css}">
     <link rel="stylesheet" th:href="@{/css/stRecetasYNoticias.css}">
+    <link rel="stylesheet" th:href="@{/css/stPaginacion.css}">
     <script text="text/javascript" th:src="@{/js/jsNav.js}" defer></script>
 
     <style>
@@ -191,7 +192,7 @@
                             <td th:text="${item.categoryName}"></td>
                             <td class="description" th:text="${item.description}"></td>
                             <td>
-                                <Img th:src="@{'/img/ingredientes/' + ${item.image}}" th:alt="${item.image}">
+                                <Img th:src="@{'/imgIng/' + ${item.image}}" th:alt="${item.image}">
 
                                 </Img>
                             </td>
