@@ -94,7 +94,7 @@ public class ShoplistController {
     }
     
     //TODO
-    @DeleteMapping("/eliminareliminareliminar/{id}")
+    @DeleteMapping("/eliminar/{id}")
     public ResponseEntity<String> delete(@PathVariable Integer id){
         if(jpa.delete(id)){
             return new ResponseEntity<>("delete success",HttpStatus.OK);
