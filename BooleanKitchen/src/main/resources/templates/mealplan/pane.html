@@ -23,6 +23,11 @@
     margin-top: 50px;
     margin-bottom: 10px;
     margin-left: 70px">Plan de Comidas</h1>
+    <span class="search" id="serch">
+        <input type="search" id="findInput" placeholder="Buscar" style="margin-bottom: 10px;" />
+        <button id="findBtn" style="color: blue; margin-bottom: 10px;" title="buscar registros"
+            onclick="search()">&#128270</button>
+    </span>
     <ol id="listCards">
         <!-- aca th:each con if -->
         <li th:insert="~{ mealplan/setAll :: li }">
