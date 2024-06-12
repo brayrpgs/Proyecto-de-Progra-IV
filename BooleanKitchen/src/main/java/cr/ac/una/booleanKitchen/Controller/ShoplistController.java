@@ -5,6 +5,9 @@ import cr.ac.una.booleanKitchen.service.IServiceShoplist;
 import cr.ac.una.booleanKitchen.service.ServiceShopList;
 import java.sql.Date;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -49,7 +52,16 @@ public class ShoplistController {
             @RequestParam String brand, @RequestParam Boolean state, @RequestParam String date) {
         System.out.println(id);
         ShopList shopList = new ShopList(id, name, amount, notes, brand, state, Date.valueOf(date), 01);
-        jpa.save(shopList);
+        //jpa.save(shopList);
+        // Configurar encabezados
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+
+        // Crear la solicitud HTTP
+        HttpEntity<ShopList> request = new HttpEntity<>(shopList, headers);
+
+        // Enviar la solicitud POST
+        restTemplate.postForObject("http://localhost:8080/shoplist/guardar", request, ShopList.class);
         return "redirect:/shoplist/panel";
     }
 

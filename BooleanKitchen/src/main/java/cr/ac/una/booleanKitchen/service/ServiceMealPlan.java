@@ -45,8 +45,7 @@ public class ServiceMealPlan implements IServiceMealplan{
 
     @Override
     public List<MealPlan> search(String data) {
-        //return jpa.findByPartialName(data);
-        return null;
+        return jpa.findByPartialName(data);
     }
 
     public ServiceMealPlan(MealplanJPA jpa) {
