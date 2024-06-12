@@ -78,7 +78,7 @@ public class ServiceShopList implements IServiceShoplist {
             pageableCollection.add(i);
         }
         //cantidad de paginas 
-        model.addAttribute("pageableCollection", pages.getTotalPages());
+        model.addAttribute("pageableCollection", pages.getTotalPages()-1);
         //endpoints del crud
         String delete = "/shoplist/deleteById";
         model.addAttribute("delete", delete);
