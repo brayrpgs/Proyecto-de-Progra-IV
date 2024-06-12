@@ -15,6 +15,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
+import org.springframework.web.client.RestTemplate;
 
 /**
  *
@@ -42,30 +43,31 @@ public class ServiceShopList implements IServiceShoplist {
         return jpa.findAll(pageable);
     }
 
-    public void setOptionsPane(Model model, Integer numPage, IServiceShoplist jpa) {
+    public void setOptionsPane(Model model, Integer numPage, IServiceShoplist jpa, RestTemplate t) {
         //nombres de las columnas 
         String[] dataColum = {"Nombre", "Cantidad", "Notas", "Marca", "Estado", "Fecha", "Acciones"};
         model.addAttribute("dataColum", dataColum);
-        Page<ShopList> page;
+        PageResponse<ShopList> pages;
         int totalPages;
         if (numPage != null) {
             //datos paginados
-            page = jpa.getAll(numPage);
-            model.addAttribute("dataDB", jpa.getAll(numPage).toList());
+            pages = new RestClientService().getClient(numPage,t);
+            model.addAttribute("dataDB",pages.getContent());
             //la pagina
-            model.addAttribute("page", page);
+            model.addAttribute("page", pages);
             //cantidad paginas
-            totalPages = page.getTotalPages();
+            totalPages = pages.getTotalPages();
             model.addAttribute("totalPages", totalPages);
             //pagina actual
             model.addAttribute("numPage", numPage);
         } else {
             //datos paginados
-            page = jpa.getAll(0);
-            model.addAttribute("dataDB", jpa.getAll(0).toList());
-            model.addAttribute("page", page);
+            pages = new RestClientService().getClient(0,t);
+            model.addAttribute("dataDB", pages.getContent());
+            //la pagina
+            model.addAttribute("page", pages);
             //cantidad paginas
-            totalPages = page.getTotalPages();
+            totalPages = pages.getTotalPages();
             model.addAttribute("totalPages", totalPages);
             //pagina actual
             model.addAttribute("numPage", 0);
@@ -76,7 +78,7 @@ public class ServiceShopList implements IServiceShoplist {
             pageableCollection.add(i);
         }
         //cantidad de paginas 
-        model.addAttribute("pageableCollection", pageableCollection);
+        model.addAttribute("pageableCollection", pages.getTotalPages());
         //endpoints del crud
         String delete = "/shoplist/deleteById";
         model.addAttribute("delete", delete);
