@@ -55,7 +55,9 @@ public class ShoplistController {
 
     @PostMapping("/deleteById")
     public String deleteShopList(@RequestParam Integer id) {
-        jpa.delete(id);
+        //jpa.delete(id);
+        String url = "http://localhost:8080/shoplist/eliminar/"+id;
+        restTemplate.delete(url);
         return "redirect:/shoplist/panel";
     }
 

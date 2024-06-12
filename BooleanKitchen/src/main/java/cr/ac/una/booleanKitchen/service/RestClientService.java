@@ -21,6 +21,8 @@ public class RestClientService {
         );
         return response.getBody();
     }
+
+    
     /* 
     public Page<ShopList> getClient(int numPage, RestTemplate t) {
         String url = "http://localhost:8080/shoplist/mostrar/"+numPage;
