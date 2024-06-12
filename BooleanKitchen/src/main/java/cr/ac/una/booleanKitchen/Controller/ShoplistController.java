@@ -4,8 +4,8 @@ import cr.ac.una.booleanKitchen.domain.ShopList;
 import cr.ac.una.booleanKitchen.service.IServiceShoplist;
 import cr.ac.una.booleanKitchen.service.ServiceShopList;
 import java.sql.Date;
-import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -89,8 +89,8 @@ public class ShoplistController {
     }
     
     @GetMapping("/mostrar/{page}")
-    public ResponseEntity<List<ShopList>> show(@PathVariable int page){
-        return new ResponseEntity<>(jpa.getAll(page).toList(),HttpStatus.OK);
+    public ResponseEntity<Page> show(@PathVariable int page){
+        return new ResponseEntity<>(jpa.getAll(page),HttpStatus.OK);
     }
     
     //TODO
