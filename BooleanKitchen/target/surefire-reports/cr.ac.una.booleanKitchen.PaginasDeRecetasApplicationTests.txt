@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: cr.ac.una.booleanKitchen.PaginasDeRecetasApplicationTests
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 7.345 s -- in cr.ac.una.booleanKitchen.PaginasDeRecetasApplicationTests
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 8.589 s -- in cr.ac.una.booleanKitchen.PaginasDeRecetasApplicationTests
