@@ -90,5 +90,12 @@ public class MealPlanController {
         jpa.delete(Id);
         return "redirect:/mealplan/pane";
     }
+
+    @GetMapping("/find")
+    public String find(@RequestParam String data, Model model) {
+        //lista las validaciones de busqueda
+        model.addAttribute("dataDB", jpa.search(data));
+        return "mealplan/setAll";
+    }
     
 }
