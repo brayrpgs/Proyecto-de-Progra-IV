@@ -14,5 +14,7 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface MealplanJPA extends JpaRepository<MealPlan, Integer> {
+  @Query("SELECT sl  FROM MealPlan sl WHERE sl.name LIKE %?1% OR sl.description LIKE %?1% OR sl.typeDiet LIKE %?1%")
+    List<MealPlan> findByPartialName(String partialName);
 
 }
