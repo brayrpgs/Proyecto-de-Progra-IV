@@ -46,7 +46,7 @@ public class UserController {
     private AdminRepository adminRepo;
     @Autowired
     private BCryptPasswordEncoder passwordEncoder;//Encriptar contraseña
-    @GetMapping("/")
+    @GetMapping("/index")
     public String showIndex() {
     return "index";
     }

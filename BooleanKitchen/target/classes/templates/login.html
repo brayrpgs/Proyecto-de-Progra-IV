@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, 
     initial-scale=1.0">
-    <title>Login</title>
+    <title>Iniciar Sesión</title>
     <link rel="stylesheet" type="text/css" th:href="@{/css/stLogin.css}">
     <link rel='stylesheet' href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css'>
     <link rel='stylesheet' href='https://fonts.googleapis.com/css2?family=Poppins&amp;display=swap'>
@@ -18,19 +18,19 @@
         <div class="login-box">
             <div class="login-header">
 
-                <span> Login</span>
+                <span>Login</span>
             </div>
             <form method="get" th:action="@{/controller_login/access}">
                 <div class="input-box">
                     <input type="text" id="user" name="user" class="input-field" required>
 
-                    <label for="user" class="label">Username
+                    <label for="user" class="label">Usuario
                     </label>
                     <i class="bx bx-user icon"></i>
                 </div>
                 <div class="input-box">
                     <input type="password" name="pass" id="pass" class="input-field" autocomplete="off">
-                    <label for="pass" class="label">Password</label>
+                    <label for="pass" class="label">Contraseña</label>
                     <i class="bx bx-lock-alt icon" id="show-password">
 
                     </i>
@@ -38,23 +38,23 @@
                 <div class="remember-forgot">
                     <div class="remember-me">
                         <input type="checkbox" id="remember">
-                        <label for="remember">Remember me</label>
+                        <label for="remember">Recuerdame</label>
                     </div>
                     <div class="forgot">
-                        <a href="#">Forgot password</a>
+                        <a href="#">Olvido su contraseña?</a>
                     </div>
                 </div>
 
                 <div class="input-box">
-                    <input id="button-login" type="submit" class="input-submit" value="Login">
+                    <input id="button-login" type="submit" class="input-submit" value="Iniciar sesión">
                 </div>
                 <div class="register">
-                    <span>Don't have an account?
-                        <a href="#">Register</a></span>
+                    <span>No tienes una cuenta?
+                        <a href="/users/create">Registrar</a></span>
                 </div>
                 <div class="horizontal-line"></div>
                 <div class="input-guest">
-                    <input type="submit" class="input-submit" value="Guest User">
+                    <input type="submit" class="input-submit" value="Modo Invitado">
                 </div>
             </form>
         </div>
